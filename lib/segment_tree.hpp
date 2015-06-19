@@ -2,12 +2,12 @@
 
 template<typename T> class SegmentTree {
 private:
-  const T INF;
+  const T DEFAULT;
   int n;
   vector<T> d;
   
   T query(int a, int b, int k, int l, int r) {
-    if (r <= a || b <= l) return INF;
+    if (r <= a || b <= l) return DEFAULT;
     if (a <= l && r <= b) return d[k];
     T vl = query(a, b, k * 2 + 1, l, (l + r) / 2);
     T vr = query(a, b, k * 2 + 2, (l + r) / 2, r);
@@ -18,9 +18,9 @@ protected:
   virtual T function(T l, T r) = 0;
   
 public:
-  SegmentTree(int m) : INF(numeric_limits<T>::max()) {
+  SegmentTree(int m, T def = numeric_limits<T>::max()) : DEFAULT(def) {
     n = 1 << (32 - __builtin_clz(m - 1));
-    d.resize(2 * n - 1, INF);
+    d.resize(2 * n - 1, DEFAULT);
   }
 
   void update(int k, T a) {
@@ -35,5 +35,9 @@ public:
   // [a,b)
   T query(int a, int b) {
     return query(a, b, 0, 0, n);
+  }
+
+  T getValue(int k) {
+    return d[k + n - 1];
   }
 };
