@@ -1,4 +1,3 @@
-#include "template.hpp"
 #include "rmq.hpp"
 
 int main() {
