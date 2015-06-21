@@ -7,27 +7,27 @@ public:
   virtual Arithmetic operator*=(const Arithmetic& a) {return a;};
   virtual Arithmetic operator/=(const Arithmetic& a) {return a;};
   
-  Arithmetic operator+(const Arithmetic& a) const {
+  Arithmetic operator+(const Arithmetic& r) const {
     Arithmetic res = *this;
-    res += a;
+    res += r;
     return res;
   }
   
-  Arithmetic operator-(const Arithmetic& a) const {
+  Arithmetic operator-(const Arithmetic& r) const {
     Arithmetic res = *this;
-    res -= a;
+    res -= r;
     return res;
   }
   
-  Arithmetic operator*(const Arithmetic& a) const {
+  Arithmetic operator*(const Arithmetic& r) const {
     Arithmetic res = *this;
-    res *= a;
+    res *= r;
     return res;
   }
   
-  Arithmetic operator/(const Arithmetic& a) const {
+  Arithmetic operator/(const Arithmetic& r) const {
     Arithmetic res = *this;
-    res /= a;
+    res /= r;
     return res;
   }
 };
