@@ -10,7 +10,7 @@ private:
     bool operator<(const State& state) const {return cost > state.cost;}
   };
 
-  Graph<Edge> graph;
+  const Graph<Edge> graph;
 
 public:
   const Cost INF;
