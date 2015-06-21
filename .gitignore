@@ -1,4 +1,5 @@
 a.out
+a.exe
 in
 out
 ans
@@ -6,3 +7,4 @@ ans
 *.out
 *.ans
 *.diff
+*.txt
