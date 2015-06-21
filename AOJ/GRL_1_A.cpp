@@ -14,7 +14,7 @@ int main() {
     cin >> s >> t >> d;
     graph.addEdge((Edge){s, t, d});
   }
-  ShortestPath<AdjacencyList, Edge> shortestPath = graph;
+  ShortestPath<AdjacencyList, Edge> shortestPath(graph);
   shortestPath.run(r);
   for (int c : shortestPath.dist) {
     if (c != shortestPath.INF) cout << c << endl;
