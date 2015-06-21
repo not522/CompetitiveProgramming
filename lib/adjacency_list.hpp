@@ -19,6 +19,12 @@ public:
     graph[edge.from].emplace_back(edge);
   }
 
+  void addUndirectedEdge(Edge edge) {
+    addEdge(edge);
+    swap(edge.from, edge.to);
+    addEdge(edge);
+  }
+
   vector<Edge> getEdges(int from, int to) {
     vector<Edge> res;
     for (const auto& edge : edges(from)) {
