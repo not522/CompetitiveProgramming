@@ -1,6 +1,6 @@
-#include "graph.hpp"
+#include "template.hpp"
 
-template<typename Edge> class ShortestPath : public Graph<Edge> {
+template<template<typename Edge> class Graph, typename Edge> class ShortestPath {
 private:
   typedef __typeof(Edge::cost) Cost;
 
@@ -10,24 +10,25 @@ private:
     bool operator<(const State& state) const {return cost > state.cost;}
   };
 
+  Graph<Edge> graph;
+
 public:
   const Cost INF;
 
   vector<Cost> dist;
 
-  ShortestPath(const Graph<Edge>& graph) : Graph<Edge>(graph), INF(numeric_limits<Cost>::max()) {}
+  ShortestPath(const Graph<Edge>& graph) : graph(graph), INF(numeric_limits<Cost>::max()) {}
   
   void run (int from) {
     priority_queue<State> que;
     que.push((State){from, 0});
-    dist.resize(this->graph.size(), INF);
-    
+    dist.resize(graph.size(), INF);
     while (!que.empty()) {
       State now = que.top();
       que.pop();
       if (dist[now.pos] <= now.cost) continue;
       dist[now.pos] = now.cost;
-      for (const Edge& edge : this->graph[now.pos]) {
+      for (const Edge& edge : graph.edges(now.pos)) {
         if (dist[edge.to] < now.cost + edge.cost) continue;
         que.push((State){edge.to, now.cost + edge.cost});
       }

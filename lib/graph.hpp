@@ -1,14 +1,10 @@
+#pragma once
 #include "template.hpp"
 
 template<typename Edge> class Graph {
-protected:
-  vector<vector<Edge>> graph;
-
 public:
-  Graph(int n = 0) : graph(n) {}
-  
-  void addEdge(const Edge& edge) {
-    if (int(graph.size()) <= max(edge.from, edge.to)) graph.resize(max(edge.from, edge.to) + 1);
-    graph[edge.from].emplace_back(edge);
-  }
+  virtual int size() const {return 0;};
+  virtual vector<Edge> edges(int v) const {(void)v; return vector<Edge>();}
+  virtual void addEdge(const Edge& edge) {(void)edge;};
+  virtual vector<Edge> getEdges(int from, int to) const {(void)from; (void)to; return vector<Edge>();};
 };
