@@ -26,4 +26,8 @@ public:
     }
     return res;
   }
+
+  int getDegree(int v) {
+    return graph[v].size();
+  }
 };

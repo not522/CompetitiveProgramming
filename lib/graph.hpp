@@ -7,4 +7,5 @@ public:
   virtual vector<Edge> edges(int v) const {(void)v; return vector<Edge>();}
   virtual void addEdge(const Edge& edge) {(void)edge;};
   virtual vector<Edge> getEdges(int from, int to) const {(void)from; (void)to; return vector<Edge>();};
+  virtual int getDegree(int v) const {(void)v; return 0;}
 };
