@@ -7,11 +7,11 @@ private:
 public:
   AdjacencyList(int n) : graph(n) {}
 
-  int size() {
+  int size() const {
     return graph.size();
   }
 
-  vector<Edge> edges(int v) {
+  vector<Edge> edges(int v) const {
     return graph[v];
   }
   
@@ -25,7 +25,7 @@ public:
     addEdge(edge);
   }
 
-  vector<Edge> getEdges(int from, int to) {
+  vector<Edge> getEdges(int from, int to) const {
     vector<Edge> res;
     for (const auto& edge : edges(from)) {
       if (edge.to == to) res.emplace_back(edge);
@@ -33,7 +33,7 @@ public:
     return res;
   }
 
-  int getDegree(int v) {
+  int getDegree(int v) const {
     return graph[v].size();
   }
 };
