@@ -1,6 +1,7 @@
 #include "inverse.hpp"
+#include "arithmetic.hpp"
 
-class Mint {
+class Mint : public Arithmetic {
 private:
   static long long mod;
   static Inverse inverse;
@@ -41,30 +42,6 @@ public:
 		val *= inverse(m.val);
 		val %= mod;
 		return *this;
-	}
-	
-	Mint operator+(const Mint& m) const {
-		Mint res = *this;
-		res += m;
-		return res;
-	}
-	
-	Mint operator-(const Mint& m) const {
-		Mint res = *this;
-		res -= m;
-		return res;
-	}
-	
-	Mint operator*(const Mint& m) const {
-		Mint res = *this;
-		res *= m;
-		return res;
-	}
-	
-	Mint operator/(const Mint& m) const {
-		Mint res = *this;
-		res /= m;
-		return res;
 	}
 	
 	Mint operator++() {return val += 1;}
