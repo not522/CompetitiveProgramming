@@ -1,7 +1,7 @@
 #include "graph.hpp"
 
 template<typename Edge> class AdjacencyList : public Graph<Edge> {
-protected:
+private:
   vector<vector<Edge>> graph;
 
 public:
