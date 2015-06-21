@@ -86,8 +86,8 @@ Mint pow(const Mint& m, long long n) {
   return mm;
 }
 
-long long Mint::mod;
-Inverse Mint::inverse;
+long long Mint::mod = 1000000007;
+Inverse Mint::inverse(1000000007);
 
 ostream& operator<<(ostream& os, Mint a) {
 	os << (long long)a;
@@ -97,6 +97,6 @@ ostream& operator<<(ostream& os, Mint a) {
 istream& operator>>(istream& is, Mint& a) {
 	long long n;
 	is >> n;
-	a = Mint(n);
+	a = n;
 	return is;
 }
