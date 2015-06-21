@@ -20,14 +20,14 @@ public:
   void run (int from) {
     priority_queue<State> que;
     que.push((State){from, 0});
-    dist.resize(this->edges.size(), INF);
+    dist.resize(this->graph.size(), INF);
     
     while (!que.empty()) {
       State now = que.top();
       que.pop();
       if (dist[now.pos] <= now.cost) continue;
       dist[now.pos] = now.cost;
-      for (const Edge& edge : this->edges[now.pos]) {
+      for (const Edge& edge : this->graph[now.pos]) {
         if (dist[edge.to] < now.cost + edge.cost) continue;
         que.push((State){edge.to, now.cost + edge.cost});
       }
