@@ -1,3 +1,4 @@
+#pragma once
 #include "graph.hpp"
 
 template<typename Edge> class AdjacencyList : public Graph<Edge> {

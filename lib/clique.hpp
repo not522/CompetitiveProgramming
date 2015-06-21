@@ -1,3 +1,4 @@
+#pragma once
 #include "template.hpp"
 
 template<template<typename Edge> class Graph, typename Edge> class Clique {

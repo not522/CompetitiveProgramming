@@ -1,3 +1,4 @@
+#pragma once
 #include "segment_tree.hpp"
 
 template<typename T> class RMQ : public SegmentTree<T> {

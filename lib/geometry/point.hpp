@@ -1,3 +1,4 @@
+#pragma once
 #include "geometry/real.hpp"
 
 class Point {
