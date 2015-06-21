@@ -5,7 +5,7 @@ private:
   vector<vector<Edge>> graph;
 
 public:
-  AdjacencyList(int n = 0) : graph(n) {}
+  AdjacencyList(int n) : graph(n) {}
 
   int size() {
     return graph.size();
@@ -16,7 +16,6 @@ public:
   }
   
   void addEdge(const Edge& edge) {
-    if (int(graph.size()) <= max(edge.from, edge.to)) graph.resize(max(edge.from, edge.to) + 1);
     graph[edge.from].emplace_back(edge);
   }
 
