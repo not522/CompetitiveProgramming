@@ -1,5 +1,5 @@
 #pragma once
-#include "inverse.hpp"
+#include "math/inverse.hpp"
 
 class Mint {
 private:

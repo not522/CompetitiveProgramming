@@ -1,5 +1,5 @@
 #pragma once
-#include "graph.hpp"
+#include "graph/graph.hpp"
 
 template<typename Edge> class AdjacencyMatrix : public Graph<Edge> {
 private:
