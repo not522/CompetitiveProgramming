@@ -1,4 +1,4 @@
-#include "segment_tree.hpp"
+#include "container/segment_tree.hpp"
 
 template<typename T> class RSQ : public SegmentTree<T> {
 protected:

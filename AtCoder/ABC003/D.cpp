@@ -1,5 +1,5 @@
-#include "mint.hpp"
-#include "combination.hpp"
+#include "math/mint.hpp"
+#include "math/combination.hpp"
 
 int main() {
   int r, c, x, y, d, l;

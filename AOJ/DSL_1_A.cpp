@@ -1,4 +1,4 @@
-#include "union_find.hpp"
+#include "container/union_find.hpp"
 
 int main() {
   int n, q;

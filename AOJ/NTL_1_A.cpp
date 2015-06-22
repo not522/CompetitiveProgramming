@@ -1,4 +1,4 @@
-#include "prime.hpp"
+#include "math/prime.hpp"
 
 int main() {
   int n;

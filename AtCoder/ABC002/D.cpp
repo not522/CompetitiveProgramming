@@ -1,5 +1,5 @@
-#include "adjacency_matrix.hpp"
-#include "clique.hpp"
+#include "graph/adjacency_matrix.hpp"
+#include "graph/clique.hpp"
 
 struct Edge {int from, to;};
 

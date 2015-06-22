@@ -1,4 +1,4 @@
-#include "mint.hpp"
+#include "math/mint.hpp"
 
 int main() {
   Mint m;

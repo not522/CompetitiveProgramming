@@ -1,5 +1,5 @@
-#include "adjacency_list.hpp"
-#include "shortest_path.hpp"
+#include "graph/adjacency_list.hpp"
+#include "graph/shortest_path.hpp"
 
 struct Edge {
   int from, to, cost;
