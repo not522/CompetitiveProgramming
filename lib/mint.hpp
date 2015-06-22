@@ -73,19 +73,11 @@ public:
 	operator long long() {
 		return val;
 	}
-};
 
-Mint pow(const Mint& m, long long n) {
-  if (n == 0) {
+  Mint identity() const {
     return 1;
-  } else if (n < 0) {
-    return pow(m, -n);
   }
-  Mint mm = pow(m, n / 2);
-  mm *= mm;
-  if (n % 2) mm *= m;
-  return mm;
-}
+};
 
 long long Mint::mod = 1000000007;
 Inverse Mint::inverse(1000000007);
