@@ -28,15 +28,20 @@ public:
     for (int i = 0; i < n; ++i) {
       int p = i;
       for (int j = i + 1; j < n; ++j) {
-        if (abs(mat[j][i]) > abs(mat[p][i])) p = i;
+        if (abs(mat[j][i]) > abs(mat[p][i])) p = j;
       }
       swap(mat[i], mat[p]);
       swap(inv[i], inv[p]);
       for (int j = i + 1; j < n; ++j) mat[i][j] /= mat[i][i];
       for (int j = 0; j < n; ++j) inv[i][j] /= mat[i][i];
-      for (int j = i + 1; j < n; ++j) {
-        for (int k = i + 1; k < n; ++k) mat[j][k] -= mat[j][i] * mat[i][k];
-        for (int k = 0; k < n; ++k) inv[j][k] -= mat[j][i] * inv[i][k];
+mat[i][i] = 1;
+      for (int j = 0; j < n; ++j) {
+        if (i == j) continue;
+        T a = mat[j][i];
+        for (int k = 0; k < n; ++k) {
+          inv[j][k] -= a * inv[i][k];
+          mat[j][k] -= a * mat[i][k];
+        }
       }
     }
     return inv;
