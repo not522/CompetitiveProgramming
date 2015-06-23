@@ -2,7 +2,7 @@
 #include "graph/graph.hpp"
 
 template<typename Edge> class AdjacencyList : public Graph<Edge> {
-private:
+protected:
   vector<vector<Edge>> graph;
 
 public:
@@ -10,10 +10,6 @@ public:
 
   int size() const {
     return graph.size();
-  }
-
-  vector<Edge> edges(int v) const {
-    return graph[v];
   }
   
   void addEdge(const Edge& edge) {
@@ -28,7 +24,7 @@ public:
 
   vector<Edge> getEdges(int from, int to) const {
     vector<Edge> res;
-    for (const auto& edge : edges(from)) {
+    for (const auto& edge : graph[from]) {
       if (edge.to == to) res.emplace_back(edge);
     }
     return res;
@@ -36,5 +32,9 @@ public:
 
   int getDegree(int v) const {
     return graph[v].size();
+  }
+
+  vector<Edge>& operator[](int v) {
+    return graph[v];
   }
 };

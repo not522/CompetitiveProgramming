@@ -3,7 +3,7 @@
 
 template<template<typename Edge> class Graph, typename Edge> class ShortestPath {
 private:
-  typedef __typeof(Edge::cost) Cost;
+  typedef typename Edge::CostType Cost;
 
   struct State {
     int pos;
@@ -11,7 +11,7 @@ private:
     bool operator<(const State& state) const {return cost > state.cost;}
   };
 
-  const Graph<Edge> graph;
+  Graph<Edge> graph;
 
 public:
   const Cost INF;
@@ -29,7 +29,7 @@ public:
       que.pop();
       if (dist[now.pos] <= now.cost) continue;
       dist[now.pos] = now.cost;
-      for (const Edge& edge : graph.edges(now.pos)) {
+      for (const Edge& edge : graph[now.pos]) {
         if (dist[edge.to] < now.cost + edge.cost) continue;
         que.push((State){edge.to, now.cost + edge.cost});
       }

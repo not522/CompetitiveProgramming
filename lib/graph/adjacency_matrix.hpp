@@ -12,16 +12,6 @@ public:
     return graph.size();
   }
 
-  vector<Edge> edges(int v) const {
-    vector<Edge> res;
-    for (const auto& edges : graph[v]) {
-      for (const auto& edge : edges) {
-        res.emplace_back(edge);
-      }
-    }
-    return res;
-  }
-
   void addEdge(const Edge& edge) {
     graph[edge.from][edge.to].emplace_back(edge);
   }
