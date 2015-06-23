@@ -1,4 +1,7 @@
 import argparse
+import os
+
+library_path = os.getenv('LIBRARY_PATH')
 
 def getHeader(file, headers):
     for raw_line in open(file):
@@ -11,7 +14,7 @@ def getHeader(file, headers):
         header = line.split('"')[1]
         if header not in headers:
             headers.append(header)
-            getHeader('/home/not/git/procon/lib/' + header, headers)
+            getHeader(library_path + header, headers)
 
 parser = argparse.ArgumentParser(description='include local library')
 parser.add_argument('file', help='source file')
