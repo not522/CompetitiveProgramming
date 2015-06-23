@@ -3,7 +3,7 @@
 
 template<template<typename Edge> class Graph, typename Edge> class ShortestPath {
 private:
-  typedef __typeof(Edge::cost) Cost;
+  typedef typename Edge::CostType Cost;
 
   struct State {
     int pos;
