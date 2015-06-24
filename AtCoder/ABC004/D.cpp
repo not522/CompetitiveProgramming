@@ -20,5 +20,5 @@ int main() {
     graph.add_edge(WeightedResidualEdge<int, int>(box[i], sink, 1, 0));
   }
   MinCostFlow<int, int> mcf(graph);
-  cout << mcf.run(source, sink, accumulate(n.begin(), n.end(), 0)) << endl;
+  cout << mcf.solve(source, sink, accumulate(n.begin(), n.end(), 0)) << endl;
 }

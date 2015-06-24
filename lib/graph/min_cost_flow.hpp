@@ -12,7 +12,7 @@ private:
 public:
   MinCostFlow(const ResidualGraph<WeightedResidualEdge<Capacity, Cost>>& graph) : INF(numeric_limits<Cost>::max()), graph(graph), h(graph.size(), 0), dist(graph.size(), 0), prevv(graph.size(), 0), preve(graph.size(), 0) {}
   
-  Cost run(int s, int t, Capacity f) {
+  Cost solve(int s, int t, Capacity f) {
     int res = 0;
     while (f > 0) {
       priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> que;

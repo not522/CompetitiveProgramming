@@ -20,7 +20,7 @@ public:
 
   ShortestPath(const Graph<Edge>& graph) : graph(graph), INF(numeric_limits<Cost>::max()) {}
   
-  void run (int from) {
+  void solve(int from) {
     priority_queue<State> que;
     que.push((State){from, 0});
     dist.resize(graph.size(), INF);

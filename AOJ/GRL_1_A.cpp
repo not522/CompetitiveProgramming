@@ -12,7 +12,7 @@ int main() {
     graph.addEdge(WeightedEdge<int>(s, t, d));
   }
   ShortestPath<AdjacencyList, WeightedEdge<int>> shortestPath(graph);
-  shortestPath.run(r);
+  shortestPath.solve(r);
   for (int c : shortestPath.dist) {
     if (c != shortestPath.INF) cout << c << endl;
     else cout << "INF" << endl;

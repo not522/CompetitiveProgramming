@@ -17,5 +17,5 @@ int main() {
     }
   }
   BipartiteMatching matching(graph);
-  cout << (matching.run() == m ? "yes" : "no") << endl;
+  cout << (matching.solve() == m ? "yes" : "no") << endl;
 }

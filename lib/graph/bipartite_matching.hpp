@@ -24,7 +24,7 @@ private:
 public:
   BipartiteMatching(const AdjacencyList<Edge>& graph) : graph(graph), match(graph.size(), -1), used(graph.size()) {}
   
-  int run() {
+  int solve() {
     int res = 0;
     for (int i = 0; i < graph.size(); ++i) {
       if (match[i] >= 0) continue;
