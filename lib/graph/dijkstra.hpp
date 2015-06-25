@@ -25,7 +25,7 @@ private:
 
 protected:
   void push(const State& state) {
-    this->que.push(state);
+    que.push(state);
     dist[state.pos] = state.cost;
   }
   
