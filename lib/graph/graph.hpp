@@ -3,9 +3,9 @@
 
 template<typename Edge> class Graph {
 public:
-  virtual int size() const {return 0;};
-  virtual void addEdge(const Edge& edge) {(void)edge;};
-  virtual void addUndirectedEdge(Edge edge) {(void)edge;};
-  virtual vector<Edge> getEdges(int from, int to) const {(void)from; (void)to; return vector<Edge>();};
-  virtual int getDegree(int v) const {(void)v; return 0;}
+  virtual int size() const = 0;
+  virtual void addEdge(const Edge& edge) = 0;
+  virtual void addUndirectedEdge(Edge edge) = 0;
+  virtual vector<Edge> getEdges(int from, int to) const = 0;
+  virtual int getDegree(int v) const = 0;
 };
