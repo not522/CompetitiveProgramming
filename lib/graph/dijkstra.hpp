@@ -9,21 +9,24 @@ template<typename Edge> struct DijkstraState {
   
   DijkstraState(int pos, Cost cost = 0) : pos(pos), cost(cost) {}
   
-  DijkstraState next(const Edge& edge) {
+  DijkstraState next(const Edge& edge) const {
     return DijkstraState(edge.to, cost + edge.cost);
   }
   
   bool operator<(const DijkstraState& state) const {return cost > state.cost;}
 };
 
-template<typename Edge> class Dijkstra : public Search<Edge, DijkstraState<Edge>> {
+template<typename Graph> class Dijkstra : public Search<Graph, DijkstraState<typename Graph::EdgeType>> {
 private:
+  typedef typename Graph::EdgeType Edge;
   typedef typename Edge::CostType Cost;
   typedef DijkstraState<Edge> State;
 
+protected:
+  const Cost INF;
+
   priority_queue<State> que;
 
-protected:
   void push(const State& state) {
     que.push(state);
     dist[state.pos] = state.cost;
@@ -35,18 +38,22 @@ protected:
     return now;
   }
   
-  bool canPruning(const State& state) {
-    return dist[state.pos] <= state.cost;
-  }
-  
   bool isRunning() {
     return !que.empty();
   }
+  
+  bool canPruning(const State& state) {
+    return dist[state.pos] <= state.cost;
+  }
 
 public:
-  const Cost INF;
-
   vector<Cost> dist;
 
-  Dijkstra(int n) : Search<Edge, State>(n), INF(numeric_limits<Cost>::max()), dist(n, INF) {}
+  Dijkstra(Graph& graph, int from) : Search<Graph, State>(graph), INF(numeric_limits<Cost>::max()), dist(graph.size(), INF) {
+    this->solve(from);
+  }
 };
+
+template<typename Graph> Dijkstra<Graph> inline dijkstra(Graph& graph, int from) {
+  return Dijkstra<Graph>(graph, from);
+}
