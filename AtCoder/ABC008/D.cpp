@@ -1,6 +1,6 @@
-#include "dp/divide_and_conquer.hpp"
+#include "dp/memoized_recursion.hpp"
 
-class Bullion : public DivideAndConquer<int, int, int, int, int> {
+class Bullion : public MemoizedRecursion<int, int, int, int, int> {
 private:
   vector<pair<int, int>> c;
   map<array<int, 4>, int> m;

@@ -1,7 +1,7 @@
 #pragma once
 #include "template.hpp"
 
-template<typename T, typename... Args> class DivideAndConquer {
+template<typename T, typename... Args> class MemoizedRecursion {
 protected:
   virtual bool used(Args...) = 0;
   virtual T memo(Args...) = 0;
