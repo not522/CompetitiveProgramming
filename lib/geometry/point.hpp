@@ -1,7 +1,7 @@
 #pragma once
 #include "geometry/real.hpp"
 
-class Point {
+class Point : public Arithmetic<Point> {
 public:
   Real x, y;
   
@@ -22,40 +22,21 @@ public:
   }
 
   Point operator*=(const Point& p) {
-    x *= p.x;
-    y *= p.y;
-    return *this;
+    Real xx = x * p.x - y * p.y;
+    Real yy = x * p.y + y * p.x;
+    return *this = Point(xx, yy);
   }
 
   Point operator/=(const Point& p) {
-    x /= p.x;
-    y /= p.y;
-    return *this;
+    Real nrm = p.norm();
+    Real xx = (x * p.x + y * p.y) / nrm;
+    Real yy = (x * p.y - y * p.x) / nrm;
+    return *this = Point(xx, yy);
   }
-	
-	Point operator+(const Point& m) const {
-		Point res = *this;
-		res += m;
-		return res;
-	}
-	
-	Point operator-(const Point& m) const {
-		Point res = *this;
-		res -= m;
-		return res;
-	}
-	
-	Point operator*(const Point& m) const {
-		Point res = *this;
-		res *= m;
-		return res;
-	}
-	
-	Point operator/(const Point& m) const {
-		Point res = *this;
-		res /= m;
-		return res;
-	}
+
+  Real norm() const {
+    return x * x + y * y;
+  }
 };
 
 ostream& operator<<(ostream& os, Point a) {

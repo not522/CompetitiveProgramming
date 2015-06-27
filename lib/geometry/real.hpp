@@ -1,7 +1,7 @@
 #pragma once
-#include "template.hpp"
+#include "arithmetic.hpp"
 
-class Real {
+class Real : public Arithmetic<Real> {
 private:
   long double val;
 
@@ -30,30 +30,6 @@ public:
     return *this;
   }
 	
-	Real operator+(const Real& m) const {
-		Real res = *this;
-		res += m;
-		return res;
-	}
-	
-	Real operator-(const Real& m) const {
-		Real res = *this;
-		res -= m;
-		return res;
-	}
-	
-	Real operator*(const Real& m) const {
-		Real res = *this;
-		res *= m;
-		return res;
-	}
-	
-	Real operator/(const Real& m) const {
-		Real res = *this;
-		res /= m;
-		return res;
-	}
-  
   operator long double() {
     return val;
   }
