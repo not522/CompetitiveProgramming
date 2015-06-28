@@ -14,7 +14,11 @@ protected:
     return m[{l, b, r, t}];
   }
 
-  int value(int l, int b, int r, int t) {
+  void push(int v, int l, int b, int r, int t) {
+    m[{l, b, r, t}] = v;
+  }
+
+  int eval(int l, int b, int r, int t) {
     int res = 0;
     for (const auto& k : c) {
       if (k.first < l || r < k.first || k.second < b || t < k.second) continue;
@@ -26,10 +30,6 @@ protected:
       res = max(res, a);
     }
     return res;
-  }
-
-  void push(int v, int l, int b, int r, int t) {
-    m[{l, b, r, t}] = v;
   }
 
 public:
