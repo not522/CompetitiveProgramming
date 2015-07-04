@@ -4,12 +4,21 @@
 template<typename Edge> class ResidualGraph : public AdjacencyList<Edge> {
 public:
   ResidualGraph(int n) : AdjacencyList<Edge>(n) {}
-  
-  void add_edge(const Edge& edge) {
-    Edge e = edge;
-    e.rev = this->graph[edge.to].size();
-    this->graph[edge.from].emplace_back(e);
+
+  template<typename... Args> void addEdge(Args... args) {
+    Edge edge(args...);
+    edge.rev = this->graph[edge.to].size();
+    this->graph[edge.from].emplace_back(edge);
     Edge rev = edge.reverse();
+    this->graph[rev.from].emplace_back(rev);
+  }
+
+  template<typename... Args> void addUndirectedEdge(Args... args) {
+    Edge edge(args...);
+    edge.rev = this->graph[edge.to].size();
+    this->graph[edge.from].emplace_back(edge);
+    Edge rev = edge.reverse();
+    rev.cap = edge.cap;
     this->graph[rev.from].emplace_back(rev);
   }
 

@@ -12,11 +12,13 @@ public:
     return graph.size();
   }
   
-  void addEdge(const Edge& edge) {
+  template<typename... Args> void addEdge(Args... args) {
+    Edge edge(args...);
     graph[edge.from].emplace_back(edge);
   }
 
-  void addUndirectedEdge(Edge edge) {
+  template<typename... Args> void addUndirectedEdge(Args... args) {
+    Edge edge(args...);
     addEdge(edge);
     swap(edge.from, edge.to);
     addEdge(edge);
