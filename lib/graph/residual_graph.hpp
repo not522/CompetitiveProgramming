@@ -10,6 +10,7 @@ public:
     edge.rev = this->graph[edge.to].size();
     this->graph[edge.from].emplace_back(edge);
     Edge rev = edge.reverse();
+    rev.rev = this->graph[rev.to].size() - 1;
     this->graph[rev.from].emplace_back(rev);
   }
 
@@ -18,6 +19,7 @@ public:
     edge.rev = this->graph[edge.to].size();
     this->graph[edge.from].emplace_back(edge);
     Edge rev = edge.reverse();
+    rev.rev = this->graph[rev.to].size() - 1;
     rev.cap = edge.cap;
     this->graph[rev.from].emplace_back(rev);
   }
