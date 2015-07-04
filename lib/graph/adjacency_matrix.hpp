@@ -24,6 +24,16 @@ public:
     addEdge(edge);
   }
 
+  vector<Edge> getEdges() const {
+    vector<Edge> res;
+    for (const auto& edges : graph) {
+      for (const auto& edge : edges) {
+        res.insert(res.end(), edge.begin(), edge.end());
+      }
+    }
+    return res;
+  }
+  
   vector<Edge> getEdges(int from, int to) const {
     return graph[from][to];
   }
