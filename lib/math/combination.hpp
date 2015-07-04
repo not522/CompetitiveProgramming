@@ -19,9 +19,7 @@ public:
     if (n < m) return 0;
     if (n < (int)comb.size()) return comb[n][m];
     T res = 1;
-    for (int i = 1; i <= n; ++i) res *= i;
-    for (int i = 1; i <= m; ++i) res /= i;
-    for (int i = 1; i <= n - m; ++i) res /= i;
+    for (int i = 0; i < min(m, n - m); ++i) res = res * (n - i) / (i + 1);
     return res;
   }
 
