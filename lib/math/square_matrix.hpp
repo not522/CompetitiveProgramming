@@ -2,19 +2,15 @@
 #include "math/bitwise.hpp"
 #include "math/matrix.hpp"
 
-template<typename T> class SquareMatrix : public Matrix<T> {
+template<typename T> class SquareMatrix : public Matrix<T>, public arithmetic::Division<SquareMatrix<T>> {
 public:
   SquareMatrix(int n) : Matrix<T>(n, n) {}
 
   SquareMatrix(const Matrix<T>& m) : Matrix<T>(m) {}
 
-	SquareMatrix operator/=(SquareMatrix& m) {
+	SquareMatrix operator/=(const SquareMatrix& m) {
 		return *this *= m.inverse();
 	}
-
-  SquareMatrix operator/(SquareMatrix m) {
-    return *this * m.inverse();
-  }
 
   SquareMatrix identity() const {
     SquareMatrix res(this->size());

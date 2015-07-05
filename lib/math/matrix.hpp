@@ -1,7 +1,8 @@
 #pragma once
+#include "arithmetic.hpp"
 #include "math/vector.hpp"
 
-template<typename T> class Matrix {
+template<typename T> class Matrix : public IndivisibleArithmetic<Matrix<T>> {
 protected:
   vector<vector<T>> val;
   
@@ -22,23 +23,8 @@ public:
 		return *this;
 	}
 
-  Matrix operator*=(Matrix m) {
-    return *this = *this * m;
-  }
-
-  Matrix operator+(const Matrix& m) const {
-    Matrix res = *this;
-    res += m;
-    return res;
-  }
-
-  Matrix operator-(const Matrix& m) const {
-    Matrix res = *this;
-    res -= m;
-    return res;
-  }
-
-  Matrix operator*(Matrix m) {
+  Matrix operator*=(const Matrix& _m) {
+    Matrix &m = const_cast<Matrix&>(_m);
     Matrix res(size(), m[0].size());
     for (int i = 0; i < size(); ++i) {
       for (int j = 0; j < m.size(); ++j) {
@@ -47,7 +33,7 @@ public:
         }
       }
     }
-    return res;
+    return *this = res;
   }
   
   Vector<T> operator*(Vector<T>& v) {

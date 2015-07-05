@@ -1,29 +1,44 @@
 #pragma once
 #include "template.hpp"
 
-template<typename T> class Arithmetic {
-public:
-  T operator+(const T& v) const {
-    T res(static_cast<const T&>(*this));
-    res += v;
-    return res;
-  }
-  
-  T operator-(const T& v) const {
-    T res(static_cast<const T&>(*this));
-    res -= v;
-    return res;
-  }
-  
-  T operator*(const T& v) const {
-    T res(static_cast<const T&>(*this));
-    res *= v;
-    return res;
-  }
-  
-  T operator/(const T& v) const {
-    T res(static_cast<const T&>(*this));
-    res /= v;
-    return res;
-  }
-};
+namespace arithmetic {
+  template<typename T> class Addition {
+  public:
+    T operator+(const T& v) const {
+      T res(static_cast<const T&>(*this));
+      res += v;
+      return res;
+    }
+  };
+
+  template<typename T> class Subtraction {
+  public:
+    T operator-(const T& v) const {
+      T res(static_cast<const T&>(*this));
+      res -= v;
+      return res;
+    }
+  };
+
+  template<typename T> class Multiplication {
+  public:
+    T operator*(const T& v) const {
+      T res(static_cast<const T&>(*this));
+      res *= v;
+      return res;
+    }
+  };
+
+  template<typename T> class Division {
+  public:
+    T operator/(const T& v) const {
+      T res(static_cast<const T&>(*this));
+      res /= v;
+      return res;
+    }
+  };
+}
+
+template<typename T> class IndivisibleArithmetic : public arithmetic::Addition<T>, public arithmetic::Subtraction<T>, public arithmetic::Multiplication<T> {};
+
+template<typename T> class Arithmetic : public IndivisibleArithmetic<T>, public arithmetic::Division<T> {};
