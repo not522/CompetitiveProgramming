@@ -1,3 +1,4 @@
+#pragma once
 #include "graph/graph.hpp"
 
 template<typename Cost> class AllPairsShortestPath {
