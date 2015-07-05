@@ -1,15 +1,14 @@
 #pragma once
-#include "arithmetic.hpp"
 #include "math/vector.hpp"
 
 template<typename T> class Matrix : public IndivisibleArithmetic<Matrix<T>> {
 protected:
-  vector<vector<T>> val;
+  vector<Vector<T>> val;
   
 public:
-  Matrix(int n, int m) : val(n, vector<T>(m, 0)) {}
+  Matrix(int n, int m) : val(n, Vector<T>(m)) {}
 
-  vector<T>& operator[](int n) {
+  Vector<T>& operator[](int n) {
     return val[n];
   }
 	
@@ -36,11 +35,9 @@ public:
     return *this = res;
   }
   
-  Vector<T> operator*(Vector<T>& v) {
+  Vector<T> operator*(const Vector<T>& v) {
     Vector<T> res(size());
-    for (int i = 0; i < size(); ++i) {
-      for (int j = 0; j < v.size(); ++j) res[i] += val[i][j] * v[j];
-    }
+    for (int i = 0; i < size(); ++i) res[i] += val[i] * v;
     return res;
   }
 

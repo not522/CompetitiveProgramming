@@ -1,7 +1,7 @@
 #pragma once
-#include "template.hpp"
+#include "arithmetic.hpp"
 
-template<typename T> class Vector {
+template<typename T> class Vector : public arithmetic::Addition<Vector<T>>, public arithmetic::Subtraction<Vector<T>> {
 protected:
   vector<T> val;
 
@@ -21,26 +21,20 @@ public:
     for (int i = 0; i < size(); ++i) val[i] -= v[i];
 		return *this;
 	}
-	
-  Vector operator+(const Vector& v) const {
-    Vector res = *this;
-    res += v;
-    return res;
-  }
-
-  Vector operator-(const Vector& v) const {
-    Vector res = *this;
-    res -= v;
-    return res;
-  }
 
   T operator*(const Vector& v) const {
-    T res = 0;
-    for (int i = 0; i < size(); ++i) res += val[i] + v[i];
-    return res;
+    return inner_product(val.begin(), val.end(), const_cast<Vector&>(v).begin(), T(0));
   }
 
   int size() const {
     return val.size();
+  }
+
+  typename vector<T>::const_iterator begin() const {
+    return val.begin();
+  }
+
+  typename vector<T>::const_iterator end() const {
+    return val.end();
   }
 };
