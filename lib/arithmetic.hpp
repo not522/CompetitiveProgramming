@@ -6,8 +6,7 @@ namespace arithmetic {
   public:
     T operator+(const T& v) const {
       T res(static_cast<const T&>(*this));
-      res += v;
-      return res;
+      return res += v;
     }
   };
 
@@ -15,8 +14,7 @@ namespace arithmetic {
   public:
     T operator-(const T& v) const {
       T res(static_cast<const T&>(*this));
-      res -= v;
-      return res;
+      return res -= v;
     }
   };
 
@@ -24,8 +22,7 @@ namespace arithmetic {
   public:
     T operator*(const T& v) const {
       T res(static_cast<const T&>(*this));
-      res *= v;
-      return res;
+      return res *= v;
     }
   };
 
@@ -33,8 +30,7 @@ namespace arithmetic {
   public:
     T operator/(const T& v) const {
       T res(static_cast<const T&>(*this));
-      res /= v;
-      return res;
+      return res /= v;
     }
   };
 }
