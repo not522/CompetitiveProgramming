@@ -8,7 +8,7 @@ int main() {
   for (int i = 0; i < n; ++i) {
     Point p;
     cin >> p.x >> p.y;
-    if (abs(p - a) + abs(p - b) <= t * v) {
+    if ((p - a).abs() + (p - b).abs() <= t * v) {
       cout << "YES" << endl;
       return 0;
     }
