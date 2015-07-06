@@ -3,11 +3,11 @@
 
 class Bitset : public Bitwise<Bitset> {
 private:
-  size_t arraySize(size_t n) {
+  int arraySize(int n) {
     return (n + 63) / 64;
   }
 
-  void resize(size_t n) {
+  void resize(int n) {
     val.resize(arraySize(n));
   }
   
@@ -39,7 +39,7 @@ public:
     }
   };
   
-  Bitset(size_t n) : val(arraySize(n), 0) {}
+  Bitset(int n) : val(arraySize(n), 0) {}
 
   reference operator[](int n) {
     return reference(val.begin() + n / 64, n % 64);
@@ -47,23 +47,23 @@ public:
 
   Bitset operator&=(const Bitset& b) {
     if (val.size() < b.val.size()) val.resize(b.val.size());
-    for (size_t i = 0; i < val.size(); ++i) {
-      if (i < b.val.size()) val[i] &= b.val[i];
+    for (int i = 0; i < (int)val.size(); ++i) {
+      if (i < (int)b.val.size()) val[i] &= b.val[i];
     }
     return *this;
   }
 
   Bitset operator|=(const Bitset& b) {
     if (val.size() < b.val.size()) val.resize(b.val.size());
-    for (size_t i = 0; i < val.size(); ++i) {
-      if (i < b.val.size()) val[i] |= b.val[i];
+    for (int i = 0; i < (int)val.size(); ++i) {
+      if (i < (int)b.val.size()) val[i] |= b.val[i];
     }
     return *this;
   }
 
   Bitset operator^=(const Bitset& b) {
     if (val.size() < b.val.size()) val.resize(b.val.size());
-    for (size_t i = 0; i < val.size(); ++i) {
+    for (int i = 0; i < val.size(); ++i) {
       if (i < b.val.size()) val[i] ^= b.val[i];
     }
     return *this;
