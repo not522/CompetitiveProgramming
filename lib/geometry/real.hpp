@@ -32,10 +32,6 @@ public:
     return *this;
   }
 
-  bool operator==(Real r) const {
-    return *this <= r && r <= *this;
-  }
-
   bool operator<(Real r) const {
     return val < r.val - EPS;
   }
