@@ -5,7 +5,7 @@ template<typename Graph, typename State> class Search {
 protected:
   typedef typename Graph::EdgeType Edge;
 
-  const Graph& graph;
+  const Graph graph;
   vector<bool> visited;
 
   virtual void push(const State&) = 0;
