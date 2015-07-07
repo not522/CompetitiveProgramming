@@ -43,12 +43,15 @@ namespace bfs_distance {
   template<typename Graph> class BFSDistance : public BFS<Graph> {
   private:
     typedef typename BFS<Graph>::State State;
+
     void visit(const State& state) {
       if (state.prev != -1) dis[state.pos] = dis[state.prev] + 1;
     }
+
   public:
-    BFSDistance(const Graph& graph) : BFS<Graph>(graph), dis(graph.size(), 0) {}
     vector<int> dis;
+
+    BFSDistance(const Graph& graph) : BFS<Graph>(graph), dis(graph.size(), 0) {}
   };
 }
 
