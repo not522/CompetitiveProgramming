@@ -22,6 +22,6 @@ int main() {
       }
     }
   }
-  auto info = bfs(graph, sy * c + sx);
-  cout << info.dist[gy * c + gx] << endl;
+  auto info = bfsDistance(graph, sy * c + sx);
+  cout << info.dis[gy * c + gx] << endl;
 }

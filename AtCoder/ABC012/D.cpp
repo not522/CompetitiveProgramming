@@ -12,9 +12,8 @@ int main() {
     --a; --b;
     graph.addUndirectedEdge(a, b, t);
   }
-  AllPairsShortestPath<int> allPairsShortestPath;
-  auto dis = allPairsShortestPath.solve(graph);
+  auto info = shortestPath(graph);
   int res = numeric_limits<int>::max();
-  for (const auto& d : dis) res = min(res, *max_element(d.begin(), d.end()));
+  for (const auto& d : info.dis) res = min(res, *max_element(d.begin(), d.end()));
   cout << res << endl;
 }

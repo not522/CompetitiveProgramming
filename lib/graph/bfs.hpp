@@ -1,22 +1,24 @@
 #pragma once
 #include "graph/search.hpp"
 
-template<typename Edge> struct BFSState {
-  int pos, prev;
+namespace bfs {
+  template<typename Edge> struct BFSState {
+    int pos, prev;
 
-  BFSState(int pos, int prev = -1) : pos(pos), prev(prev) {}
+    BFSState(int pos, int prev = -1) : pos(pos), prev(prev) {}
   
-  BFSState next(const Edge& edge) const {
-    return BFSState(edge.to, pos);
-  }
-};
+    BFSState next(const Edge& edge) const {
+      return BFSState(edge.to, pos);
+    }
+  };
+}
 
-template<typename Graph> class BFS : public Search<Graph, BFSState<typename Graph::EdgeType>> {
-private:
-  typedef typename Graph::EdgeType Edge;
-  typedef BFSState<Edge> State;
-  
+template<typename Graph> class BFS : public Search<Graph, bfs::BFSState<typename Graph::EdgeType>> {
 protected:
+  typedef typename Graph::EdgeType Edge;
+  typedef bfs::BFSState<Edge> State;
+
+private:
   queue<State> que;
   
   void push(const State& state) {
@@ -33,18 +35,25 @@ protected:
     return !que.empty();
   }
 
-  void visit(const State& state) {
-    if (state.prev != -1) dist[state.pos] = dist[state.prev] + 1;
-  }
-
 public:
-  vector<int> dist;
-  
-  BFS(Graph& graph, int from) : Search<Graph, State>(graph), dist(graph.size(), 0) {
-    this->solve(from);
-  }
+  BFS(const Graph& graph) : Search<Graph, State>(graph) {}
 };
 
-template<typename Graph> BFS<Graph> inline bfs(Graph& graph, int from) {
-  return BFS<Graph>(graph, from);
+namespace bfs_distance {
+  template<typename Graph> class BFSDistance : public BFS<Graph> {
+  private:
+    typedef typename BFS<Graph>::State State;
+    void visit(const State& state) {
+      if (state.prev != -1) dis[state.pos] = dis[state.prev] + 1;
+    }
+  public:
+    BFSDistance(const Graph& graph) : BFS<Graph>(graph), dis(graph.size(), 0) {}
+    vector<int> dis;
+  };
+}
+
+template<typename Graph> inline bfs_distance::BFSDistance<Graph> bfsDistance(const Graph& graph, int from) {
+  bfs_distance::BFSDistance<Graph> bfs(graph);
+  bfs.solve(from);
+  return bfs;
 }
