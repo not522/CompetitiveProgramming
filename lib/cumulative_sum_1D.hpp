@@ -15,7 +15,7 @@ private:
 public:
   CumulativeSum1D(int n) : val(n + 1, Value(0)) {}
 
-  template<class T> CumulativeSum1D(T v) {
+  template<typename T> CumulativeSum1D(T v) {
     val.resize(v.size() + 1, Value(0));
     partial_sum(v.begin(), v.end(), val.begin() + 1);
   }
@@ -31,14 +31,13 @@ public:
   // [i,j)
   Value sum(int i, int j) {
     if (rangeAdd && !rangeValue.empty()) {
-      vector<Value> diff(val.size());
-      adjacent_difference(val.begin(), val.end(), diff.begin());
-      adjacent_difference(diff.begin(), diff.end(), diff.begin());
+      adjacent_difference(val.begin(), val.end(), val.begin());
+      adjacent_difference(val.begin(), val.end(), val.begin());
       for (const auto& v : rangeValue) {
-        diff[v.i + 1] += v.v;
-        diff[v.j + 1] -= v.v;
+        val[v.i + 1] += v.v;
+        val[v.j + 1] -= v.v;
       }
-      partial_sum(diff.begin(), diff.end(), val.begin());
+      partial_sum(val.begin(), val.end(), val.begin());
       partial_sum(val.begin(), val.end(), val.begin());
       rangeValue.clear();
     }
