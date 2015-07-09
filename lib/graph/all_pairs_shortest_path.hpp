@@ -1,5 +1,5 @@
 #pragma once
-#include "graph/graph.hpp"
+#include "template.hpp"
 
 template<typename Graph> class WarshallFloyd {
 private:
