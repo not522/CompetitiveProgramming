@@ -2,9 +2,9 @@
 #include "geometry/point.hpp"
 
 inline Real dot(const Point& a, const Point& b) {
-  return a.real() * b.real() + a.imag() * b.imag();
+  return a.x * b.x + a.y * b.y;
 }
 
 inline Real det(const Point& a, const Point& b) {
-  return a.real() * b.imag() - a.imag() * b.real();
+  return a.x * b.y - a.y * b.x;
 }

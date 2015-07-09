@@ -15,7 +15,7 @@ public:
 };
 
 ostream& operator<<(ostream& os, const Line& line) {
-	os << "[" << line.a << "," << line.b << "]";
+	os << line.a << " " << line.b;
 	return os;
 }
 

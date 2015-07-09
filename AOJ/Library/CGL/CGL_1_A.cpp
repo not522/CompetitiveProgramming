@@ -9,6 +9,6 @@ int main() {
     Point p, r;
     cin >> p;
     r = perpendicular(Line(p1, p2), p);
-    cout << fixed << setprecision(15) << r.x << " " << fixed << setprecision(15) << r.y << endl;
+    cout << r << endl;
   }
 }
