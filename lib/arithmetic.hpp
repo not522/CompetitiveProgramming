@@ -4,33 +4,33 @@
 namespace arithmetic {
   template<typename T> class Addition {
   public:
-    T operator+(const T& v) const {
+    template<typename V> T operator+(const V& v) const {
       T res(static_cast<const T&>(*this));
-      return res += v;
+      return res += static_cast<T>(v);
     }
   };
 
   template<typename T> class Subtraction {
   public:
-    T operator-(const T& v) const {
+    template<typename V> T operator-(const V& v) const {
       T res(static_cast<const T&>(*this));
-      return res -= v;
+      return res -= static_cast<T>(v);
     }
   };
 
   template<typename T> class Multiplication {
   public:
-    T operator*(const T& v) const {
+    template<typename V> T operator*(const V& v) const {
       T res(static_cast<const T&>(*this));
-      return res *= v;
+      return res *= static_cast<T>(v);
     }
   };
 
   template<typename T> class Division {
   public:
-    T operator/(const T& v) const {
+    template<typename V> T operator/(const V& v) const {
       T res(static_cast<const T&>(*this));
-      return res /= v;
+      return res /= static_cast<T>(v);
     }
   };
 }

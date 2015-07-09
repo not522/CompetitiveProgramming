@@ -3,23 +3,23 @@
 
 template<typename T> class Ordered {
 public:
-  bool operator==(const T& v) const {
-    return !(v < static_cast<const T&>(*this) || static_cast<const T&>(*this) < v);
+  template<typename V> bool operator==(const V& v) const {
+    return !(static_cast<T>(v) < static_cast<const T&>(*this) || static_cast<const T&>(*this) < static_cast<T>(v));
   }
   
-  bool operator!=(const T& v) const {
-    return v < static_cast<const T&>(*this) || static_cast<const T&>(*this) < v;
+  template<typename V> bool operator!=(const V& v) const {
+    return static_cast<T>(v) < static_cast<const T&>(*this) || static_cast<const T&>(*this) < static_cast<T>(v);
   }
 
-  bool operator>(const T& v) const {
-    return v < static_cast<const T&>(*this);
+  template<typename V> bool operator>(const V& v) const {
+    return static_cast<T>(v) < static_cast<const T&>(*this);
   }
 
-  bool operator<=(const T& v) const {
-    return !(v < static_cast<const T&>(*this));
+  template<typename V> bool operator<=(const V& v) const {
+    return !(static_cast<T>(v) < static_cast<const T&>(*this));
   }
 
-  bool operator>=(const T& v) const {
-    return !(static_cast<const T&>(*this) < v);
+  template<typename V> bool operator>=(const V& v) const {
+    return !(static_cast<const T&>(*this) < static_cast<T>(v));
   }
 };

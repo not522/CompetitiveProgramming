@@ -12,31 +12,31 @@ public:
 
   Real(long double val) : val(val) {}
 
-  Real operator+=(const Real& r) {
-    val += r.val;
+  template<typename T> Real operator+=(const T& r) {
+    val += static_cast<Real>(r).val;
     return *this;
   }
   
-  Real operator-=(const Real& r) {
-    val -= r.val;
+  template<typename T> Real operator-=(const T& r) {
+    val -= static_cast<Real>(r).val;
     return *this;
   }
   
-  Real operator*=(const Real& r) {
-    val *= r.val;
+  template<typename T> Real operator*=(const T& r) {
+    val *= static_cast<Real>(r).val;
     return *this;
   }
   
-  Real operator/=(const Real& r) {
-    val /= r.val;
+  template<typename T> Real operator/=(const T& r) {
+    val /= static_cast<Real>(r).val;
     return *this;
+  }
+  
+  template<typename T> bool operator<(const T r) const {
+    return val < static_cast<long double>(r) - EPS;
   }
 
-  bool operator<(Real r) const {
-    return val < r.val - EPS;
-  }
-
-  operator long double() {
+  operator long double() const {
     return val;
   }
 };

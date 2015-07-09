@@ -1,61 +1,29 @@
 #pragma once
 #include "geometry/real.hpp"
 
-class Point : public Arithmetic<Point> {
+class Point : public complex<Real> {
 public:
-  Real x, y;
-  
   Point() {}
 
-  Point (const Real& x, const Real& y) : x(x), y(y) {}
-  
-  Point operator+=(const Point& p) {
-    x += p.x;
-    y += p.y;
-    return *this;
-  }
+  Point(const Real& x, const Real& y) : complex<Real>(x, y) {}
 
-  Point operator-=(const Point& p) {
-    x -= p.x;
-    y -= p.y;
-    return *this;
-  }
-
-  Point operator*=(const Point& p) {
-    Real xx = x * p.x - y * p.y;
-    Real yy = x * p.y + y * p.x;
-    return *this = Point(xx, yy);
-  }
-
-  Point operator/=(const Point& p) {
-    Real nrm = p.norm();
-    Real xx = (x * p.x + y * p.y) / nrm;
-    Real yy = (x * p.y - y * p.x) / nrm;
-    return *this = Point(xx, yy);
-  }
-
-  Point operator*=(const Real& r) {
-    x *= r;
-    y *= r;
-    return *this;
-  }
-
-  Point operator*(const Real& r) const {
-    Point res(static_cast<const Point&>(*this));
-    return res *= r;
-  }
+  Point(const complex<Real> z) : complex<Real>(z) {}
 
   Real norm() const {
-    return x * x + y * y;
+    return real() * real() + imag() * imag();
   }
 
   Real abs() const {
-    return sqrt(norm());
+    return std::abs(*this);
   }
 };
 
+inline Real norm(const Point& point) {
+  return point.norm();
+}
+
 ostream& operator<<(ostream& os, const Point& point) {
-	os << "(" << point.x << "," << point.y << ")";
+	os << "(" << point.real() << "," << point.imag() << ")";
 	return os;
 }
 
