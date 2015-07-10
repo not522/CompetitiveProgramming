@@ -3,9 +3,9 @@
 
 namespace bfs {
   template<typename Edge> struct BFSState {
-    int pos, prev;
+    int pos, prv;
 
-    BFSState(int pos, int prev = -1) : pos(pos), prev(prev) {}
+    BFSState(int pos, int prv = -1) : pos(pos), prv(prv) {}
   
     BFSState next(const Edge& edge) const {
       return BFSState(edge.to, pos);
@@ -45,7 +45,7 @@ namespace bfs_distance {
     typedef typename BFS<Graph>::State State;
 
     void visit(const State& state) {
-      if (state.prev != -1) dis[state.pos] = dis[state.prev] + 1;
+      if (state.prv != -1) dis[state.pos] = dis[state.prv] + 1;
     }
 
   public:
