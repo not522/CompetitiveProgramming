@@ -59,3 +59,9 @@ template<typename Graph> inline Dijkstra<Graph> shortestPath(Graph& graph, int f
   dijkstra.solve(from);
   return dijkstra;
 }
+
+template<typename Graph> inline typename Graph::EdgeType::CostType shortestPath(Graph& graph, int from, int to) {
+  Dijkstra<Graph> dijkstra(graph);
+  dijkstra.solve(from);
+  return dijkstra.dis[to];
+}
