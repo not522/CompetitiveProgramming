@@ -25,7 +25,7 @@ public:
       if (visited[now.pos]) continue;
       visited[now.pos] = true;
       visit(now);
-      for (const Edge& edge : const_cast<Graph&>(graph)[now.pos]) {
+      for (const Edge& edge : graph.getEdges(now.pos)) {
         State nextState = now.next(edge);
         if (visited[nextState.pos]) continue;
         if (canPruning(nextState)) continue;

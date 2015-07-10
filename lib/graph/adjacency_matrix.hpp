@@ -33,7 +33,15 @@ public:
     }
     return res;
   }
-  
+
+  vector<Edge> getEdges(int from) const {
+    vector<Edge> res;
+    for (const auto& edge : graph[from]) {
+      res.insert(res.end(), edge.begin(), edge.end());
+    }
+    return res;
+  }
+
   vector<Edge> getEdges(int from, int to) const {
     return graph[from][to];
   }

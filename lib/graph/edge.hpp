@@ -2,6 +2,8 @@
 #include "template.hpp"
 
 struct Edge {
+  typedef int CostType;
+  const static int cost = 1;
   int from, to;
   Edge(int from, int to) : from(from), to(to) {};
 };
