@@ -32,6 +32,10 @@ public:
     return res;
   }
 
+  vector<Edge> getEdges(int from) const {
+    return graph[from];
+  }
+
   vector<Edge> getEdges(int from, int to) const {
     vector<Edge> res;
     for (const auto& edge : graph[from]) {

@@ -1,11 +1,11 @@
-#include "cumulative_sum.hpp"
+#include "cumulative_sum_2D.hpp"
 
 int main() {
   int n;
   cin >> n;
   vector<vector<int>> d(n, vector<int>(n));
   for (auto& i : d) for (int& j : i) cin >> j;
-  CumulativeSum2D<vector<vector<int>>> cumulativeSum2D(d);
+  CumulativeSum2D<int> cumulativeSum2D(d);
   vector<int> res(n * n + 1, 0);
   for (int i = 0; i < n; ++i) {
     for (int j = 0; j < n; ++j) {

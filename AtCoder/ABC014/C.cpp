@@ -1,4 +1,4 @@
-#include "cumulative_sum.hpp"
+#include "cumulative_sum_1D.hpp"
 
 int main() {
   int n;
