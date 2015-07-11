@@ -7,6 +7,8 @@ public:
 
   Point() {}
 
+  Point(const Real& x) : x(x), y(0) {}
+
   Point(const Real& x, const Real& y) : x(x), y(y) {}
 
   Point operator+=(const Point& p) {
@@ -23,15 +25,17 @@ public:
 
   Point operator*=(const Point& p) {
     Real xx = x * p.x - y * p.y;
-    Real yy = x * p.y + y * p.x;
-    return *this = Point(xx, yy);
+    y = x * p.y + y * p.x;
+    x = xx;
+    return *this;
   }
 
   Point operator/=(const Point& p) {
     Real nrm = p.norm();
     Real xx = (x * p.x + y * p.y) / nrm;
-    Real yy = (x * p.y - y * p.x) / nrm;
-    return *this = Point(xx, yy);
+    y = (y * p.x - x * p.y) / nrm;
+    x = xx;
+    return *this;
   }
 
   Real norm() const {
@@ -47,12 +51,12 @@ inline Real norm(const Point& point) {
   return point.norm();
 }
 
-ostream& operator<<(ostream& os, const Point& point) {
-	os << fixed << setprecision(15) << point.x << " " << fixed << setprecision(15) << point.y;
+inline ostream& operator<<(ostream& os, const Point& point) {
+	os << point.x << " " << point.y;
 	return os;
 }
 
-istream& operator>>(istream& is, Point& point) {
+inline istream& operator>>(istream& is, Point& point) {
   Real x, y;
 	is >> x >> y;
 	point = Point(x, y);

@@ -11,7 +11,7 @@ struct Edge {
 template<typename Cost> struct WeightedEdge : public Edge {
   typedef Cost CostType;
   Cost cost;
-  WeightedEdge(int from, int to, Cost cost) : Edge(from, to), cost(cost) {}
+  WeightedEdge(int from, int to, Cost cost = 0) : Edge(from, to), cost(cost) {}
 };
 
 template<typename Capacity> struct ResidualEdge : public Edge {

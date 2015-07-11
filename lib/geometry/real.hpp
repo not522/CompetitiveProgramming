@@ -43,12 +43,14 @@ public:
 
 long double Real::EPS = 1e-8;
 
-ostream& operator<<(ostream& os, Real a) {
-	os << (long double)a;
-	return os;
+inline ostream& operator<<(ostream& os, const Real& a) {
+  stringstream ss;
+	ss << fixed << setprecision(15) << (long double)a;
+  os << ss.str();
+  return os;
 }
 
-istream& operator>>(istream& is, Real& a) {
+inline istream& operator>>(istream& is, Real& a) {
 	long double n;
 	is >> n;
 	a = n;

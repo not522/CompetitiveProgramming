@@ -22,12 +22,13 @@ public:
     push(State(from));
     while (isRunning()) {
       State now = next();
-      if (visited[now.pos]) continue;
-      visited[now.pos] = true;
+      int pos = now.getPos();
+      if (visited[pos]) continue;
+      visited[pos] = true;
       visit(now);
-      for (const Edge& edge : graph.getEdges(now.pos)) {
+      for (const Edge& edge : graph.getEdges(pos)) {
         State nextState = now.next(edge);
-        if (visited[nextState.pos]) continue;
+        if (visited[nextState.getPos()]) continue;
         if (canPruning(nextState)) continue;
         push(nextState);
       }

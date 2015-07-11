@@ -7,7 +7,7 @@ public:
 
   Polygon(int n) : vector<Point>(n) {}
   
-  vector<Segment> getSides() {
+  vector<Segment> getSides() const {
     vector<Segment> res;
     Point pre = back();
     for (const auto& point : *this) {

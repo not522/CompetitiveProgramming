@@ -23,7 +23,6 @@ public:
     int a = calcAncestor(v, depth - 1);
     return ancestor[v][depth] = calcAncestor(a, depth - 1);
   }
-    
 
   int solve(int v1, int v2) {
     int d1 = calcDepth(v1);

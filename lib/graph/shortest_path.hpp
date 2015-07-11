@@ -1,24 +1,33 @@
 #pragma once
 #include "graph/search.hpp"
+#include "graph/tree.hpp"
 
 namespace dijkstra {
   template<typename Edge> struct DijkstraState {
     typedef typename Edge::CostType Cost;
-  
-    int pos;
+
+    Edge edge;
     Cost cost;
-  
-    DijkstraState(int pos, Cost cost = 0) : pos(pos), cost(cost) {}
-  
+
+    DijkstraState(int pos) : edge(pos, pos), cost(0) {}
+
+    DijkstraState(const Edge& edge, Cost cost) : edge(edge), cost(cost) {}
+
     DijkstraState next(const Edge& edge) const {
-      return DijkstraState(edge.to, cost + edge.cost);
+      return DijkstraState(edge, cost + edge.cost);
     }
-  
-    bool operator<(const DijkstraState& state) const {return cost > state.cost;}
+
+    bool operator<(const DijkstraState& state) const {
+      return cost > state.cost;
+    }
+
+    int getPos() const {
+      return edge.to;
+    }
   };
 }
 
-template<typename Graph> class Dijkstra : public Search<Graph, dijkstra::DijkstraState<typename Graph::EdgeType>> {
+template<typename Graph, bool Restoration = false> class Dijkstra : public Search<Graph, dijkstra::DijkstraState<typename Graph::EdgeType>> {
 private:
   typedef typename Graph::EdgeType Edge;
   typedef typename Edge::CostType Cost;
@@ -31,27 +40,38 @@ protected:
 
   void push(const State& state) {
     que.push(state);
-    dis[state.pos] = state.cost;
+    dis[state.getPos()] = state.cost;
   }
-  
+
   State next() {
     State now = que.top();
     que.pop();
     return now;
   }
-  
+
   bool isRunning() {
     return !que.empty();
   }
-  
+
+  void visit(const State& state) {
+    if (Restoration) {
+      auto e = state.edge;
+      swap(e.from, e.to);
+      shortestPathTree.addEdge(e);
+    }
+  }
+
   bool canPruning(const State& state) {
-    return dis[state.pos] <= state.cost;
+    return dis[state.getPos()] <= state.cost;
   }
 
 public:
   vector<Cost> dis;
+  Tree<Edge> shortestPathTree;
 
-  Dijkstra(Graph& graph) : Search<Graph, State>(graph), dis(graph.size(), INF) {}
+  Dijkstra(Graph& graph) : Search<Graph, State>(graph), dis(graph.size(), INF) {
+    if (Restoration) shortestPathTree = Tree<Edge>(graph.size());
+  }
 };
 
 template<typename Graph> inline Dijkstra<Graph> shortestPath(Graph& graph, int from) {
@@ -64,4 +84,10 @@ template<typename Graph> inline typename Graph::EdgeType::CostType shortestPath(
   Dijkstra<Graph> dijkstra(graph);
   dijkstra.solve(from);
   return dijkstra.dis[to];
+}
+
+template<typename Graph> inline Dijkstra<Graph, true> shortestPathTree(Graph& graph, int from) {
+  Dijkstra<Graph, true> dijkstra(graph);
+  dijkstra.solve(from);
+  return dijkstra;
 }

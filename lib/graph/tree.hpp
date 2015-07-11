@@ -4,7 +4,9 @@
 template<typename Edge> class Tree {
 public:
   vector<Edge> parent;
-  
+
+  Tree() {}
+
   Tree(int n) {
     for (int i = 0; i < n; ++i) parent.emplace_back(i, i);
   }

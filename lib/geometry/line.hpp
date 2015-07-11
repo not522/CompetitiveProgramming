@@ -14,12 +14,12 @@ public:
   }
 };
 
-ostream& operator<<(ostream& os, const Line& line) {
+inline ostream& operator<<(ostream& os, const Line& line) {
 	os << line.a << " " << line.b;
 	return os;
 }
 
-istream& operator>>(istream& is, Line& line) {
+inline istream& operator>>(istream& is, Line& line) {
   Point a, b;
   is >> a >> b;
   line = Line(a, b);
