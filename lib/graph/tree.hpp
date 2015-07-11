@@ -4,10 +4,11 @@
 template<typename Edge> class Tree {
 public:
   vector<Edge> parent;
+  vector<vector<int>> children;
 
   Tree() {}
 
-  Tree(int n) {
+  Tree(int n) : children(n) {
     for (int i = 0; i < n; ++i) parent.emplace_back(i, i);
   }
 
@@ -18,5 +19,6 @@ public:
   template<typename... Args> void addEdge(Args... args) {
     Edge edge(args...);
     parent[edge.from] = edge;
+    children[edge.to].emplace_back(edge.from);
   }
 };
