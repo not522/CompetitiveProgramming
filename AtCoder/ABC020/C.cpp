@@ -3,17 +3,13 @@
 #include "graph/shortest_path.hpp"
 #include "binary_search.hpp"
 
-class Wall : public BinarySearch {
-private:
-  typedef AdjacencyList<WeightedEdge<long long>> Graph;
-
-  vector<string> s;
-  int t;
-  
-  bool valid(long long n) {
-    int h = s.size();
-    int w = s.front().size();
-    Graph graph(h * w);
+int main() {
+  int h, w, t;
+  cin >> h >> w >> t;
+  vector<string> s(h);
+  for (auto& i : s) cin >> i;
+  auto f = [&](long long n){
+    AdjacencyList<WeightedEdge<long long>> graph(h * w);
     const int dy[] = {0, -1, 0, 1};
     const int dx[] = {1, 0, -1, 0};
     for (int i = 0; i < h; ++i) {
@@ -35,17 +31,6 @@ private:
       }
     }
     return shortestPath(graph, a, b) <= t;
-  }
-
-public:
-  Wall(const vector<string>& s, long long t) : BinarySearch(1, t), s(s), t(t) {}
-};
-
-int main() {
-  int h, w, t;
-  cin >> h >> w >> t;
-  vector<string> s(h);
-  for (auto& i : s) cin >> i;
-  Wall wall(s, t);
-  cout << wall.solve() << endl;
+  };
+  cout << binarySearch(f, 1, t) << endl;
 }
