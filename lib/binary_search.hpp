@@ -3,20 +3,20 @@
 
 class BinarySearch {
 private:
-  long long lower, upper;
+  long long include, exclude;
 
 protected:
   virtual bool valid(long long n) = 0;
 
 public:
-  BinarySearch(long long lower, long long upper) : lower(lower), upper(upper) {}
+  BinarySearch(long long include, long long exclude) : include(include), exclude(exclude) {}
 
   long long solve() {
-    while (lower + 1 < upper) {
-      long long mid = (lower + upper) / 2;
-      if (valid(mid)) lower = mid;
-      else upper = mid;
+    while (abs(exclude - include) > 1) {
+      long long mid = (include + exclude) / 2;
+      if (valid(mid)) include = mid;
+      else exclude = mid;
     }
-    return lower;
+    return include;
   }
 };
