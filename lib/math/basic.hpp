@@ -10,8 +10,7 @@ template<typename T> inline T lcm(T a, T b) {
 }
 
 template<typename T> inline T floor(T a, T b) {
-  if (a % b < 0) return a - a % b - b;
-  return a - a % b;
+  return a / b * b <= a ? a / b : a / b - 1;
 }
 
 template<typename T> inline T ceil(T a, T b) {
