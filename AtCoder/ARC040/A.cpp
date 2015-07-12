@@ -6,10 +6,8 @@ int main() {
   for (int i = 0; i < n; ++i) {
     string s;
     cin >> s;
-    for (char c : s) {
-      if (c == 'R') ++r;
-      if (c == 'B') ++b;
-    }
+    r += count(s.begin(), s.end(), 'R');
+    b += count(s.begin(), s.end(), 'B');
   }
   if (r > b) cout << "TAKAHASHI" << endl;
   else if (r < b) cout << "AOKI" << endl;
