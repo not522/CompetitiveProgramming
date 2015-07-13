@@ -18,6 +18,10 @@ inline int getMaxDay(int year, int month) {
 struct Day {
   int year, month, day;
 
+  Day() : year(0), month(0), day(0) {}
+
+  Day(int year, int month, int day) : year(year), month(month), day(day) {}
+
   void next() {
     ++day;
     if (getMaxDay(year, month) < day) {
