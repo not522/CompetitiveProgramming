@@ -5,6 +5,10 @@ inline bool isLeapYear(int year) {
   return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
 }
 
+inline int countLeapYear(int year) {
+  return year / 4 - year / 100 + year / 400;
+}
+
 inline int getMaxDay(int year, int month) {
   const int days[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
   if (month == 2) return isLeapYear(year) ? 29 : 28;
@@ -24,5 +28,11 @@ struct Day {
         month = 1;
       }
     }
+  }
+
+  int fairfield() const {
+    int y = year, m = month;
+    if (m <= 2) --y, m += 12;
+    return 365 * y + countLeapYear(y) + (153 * (m + 1) / 5) + day - 428;
   }
 };
