@@ -33,6 +33,14 @@ namespace arithmetic {
       return res /= static_cast<T>(v);
     }
   };
+
+  template<typename T> class Modulus {
+  public:
+    template<typename V> T operator%(const V& v) const {
+      T res(static_cast<const T&>(*this));
+      return res %= static_cast<T>(v);
+    }
+  };
 }
 
 template<typename T> class IndivisibleArithmetic : public arithmetic::Addition<T>, public arithmetic::Subtraction<T>, public arithmetic::Multiplication<T> {};

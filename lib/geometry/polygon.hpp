@@ -6,7 +6,9 @@ public:
   Polygon() {}
 
   Polygon(int n) : vector<Point>(n) {}
-  
+
+  Polygon(initializer_list<Point> p) : vector<Point>(p) {}
+
   vector<Segment> getSides() const {
     vector<Segment> res;
     Point pre = back();
