@@ -5,5 +5,5 @@ int main() {
   a.year = b.year = 2012;
   cin >> a.month >> a.day;
   cin >> b.month >> b.day;
-  cout << b.fairfield() - a.fairfield() << endl;
+  cout << b - a << endl;
 }

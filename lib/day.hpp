@@ -35,4 +35,8 @@ struct Day {
     if (m <= 2) --y, m += 12;
     return 365 * y + countLeapYear(y) + (153 * (m + 1) / 5) + day - 428;
   }
+
+  int operator-(const Day& day) const {
+    return fairfield() - day.fairfield();
+  }
 };
