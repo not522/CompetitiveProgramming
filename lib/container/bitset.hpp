@@ -70,10 +70,10 @@ public:
   }
 
   int count() {
-    return accumulate(val.begin(), val.end(), 0, [](unsigned long long a, unsigned long long b){return __builtin_popcountll(a) + __builtin_popcountll(b);});
+    return accumulate(val.begin(), val.end(), 0, [](int a, unsigned long long b){return a + __builtin_popcountll(b);});
   }
 
   bool parity() {
-    return accumulate(val.begin(), val.end(), 0, [](unsigned long long a, unsigned long long b){return __builtin_parityll(a) ^ __builtin_parityll(b);});
+    return accumulate(val.begin(), val.end(), 0, [](int a, unsigned long long b){return a ^ __builtin_parityll(b);});
   }
 };
