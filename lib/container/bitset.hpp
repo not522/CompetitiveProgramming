@@ -63,7 +63,7 @@ public:
 
   Bitset operator^=(const Bitset& b) {
     if (val.size() < b.val.size()) val.resize(b.val.size());
-    for (int i = 0; i < val.size(); ++i) {
+    for (size_t i = 0; i < val.size(); ++i) {
       if (i < b.val.size()) val[i] ^= b.val[i];
     }
     return *this;
