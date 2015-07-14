@@ -2,38 +2,34 @@
 #include "graph/search.hpp"
 #include "graph/tree.hpp"
 
-namespace dijkstra {
-  template<typename Edge> struct DijkstraState {
-    typedef typename Edge::CostType Cost;
+template<typename Edge> struct DijkstraState {
+  typedef typename Edge::CostType Cost;
 
-    Edge edge;
-    Cost cost;
+  Edge edge;
+  Cost cost;
 
-    DijkstraState(int pos) : edge(pos, pos), cost(0) {}
+  DijkstraState(int pos) : edge(pos, pos), cost(0) {}
 
-    DijkstraState(const Edge& edge, Cost cost) : edge(edge), cost(cost) {}
+  DijkstraState(const Edge& edge, Cost cost) : edge(edge), cost(cost) {}
 
-    DijkstraState next(const Edge& edge) const {
-      return DijkstraState(edge, cost + edge.cost);
-    }
+  DijkstraState next(const Edge& edge) const {
+    return DijkstraState(edge, cost + edge.cost);
+  }
 
-    bool operator<(const DijkstraState& state) const {
-      return cost > state.cost;
-    }
+  bool operator<(const DijkstraState& state) const {
+    return cost > state.cost;
+  }
 
-    int getPos() const {
-      return edge.to;
-    }
-  };
-}
+  int getPos() const {
+    return edge.to;
+  }
+};
 
-template<typename Graph, bool Restoration = false> class Dijkstra : public Search<Graph, dijkstra::DijkstraState<typename Graph::EdgeType>> {
-private:
+template<typename Graph, bool Restoration = false, typename State = DijkstraState<typename Graph::EdgeType>> class Dijkstra : public Search<Graph, State> {
+protected:
   typedef typename Graph::EdgeType Edge;
   typedef typename Edge::CostType Cost;
-  typedef dijkstra::DijkstraState<Edge> State;
 
-protected:
   const Cost INF = numeric_limits<Cost>::max();
 
   priority_queue<State> que;
@@ -69,7 +65,7 @@ public:
   vector<Cost> dis;
   Tree<Edge> shortestPathTree;
 
-  Dijkstra(Graph& graph) : Search<Graph, State>(graph), dis(graph.size(), INF) {
+  Dijkstra(const Graph& graph) : Search<Graph, State>(graph), dis(graph.size(), INF) {
     if (Restoration) shortestPathTree = Tree<Edge>(graph.size());
   }
 };
