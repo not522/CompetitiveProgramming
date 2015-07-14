@@ -4,12 +4,19 @@
 
 namespace dfs {
   template<typename Edge> struct DFSState {
-    int pos, prev;
 
-    DFSState(int pos, int prev = -1) : pos(pos), prev(prev) {}
-  
+    Edge edge;
+
+    DFSState(int pos) : edge(pos, pos) {}
+
+    DFSState(const Edge& edge) : edge(edge) {}
+
     DFSState next(const Edge& edge) const {
-      return DFSState(edge.to, pos);
+      return DFSState(edge);
+    }
+
+    int getPos() {
+      return edge.to;
     }
   };
 }
