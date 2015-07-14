@@ -1,15 +1,11 @@
 #pragma once
-#include "template.hpp"
+#include "game/min_max.hpp"
 
-template<typename T, typename State> class AlphaBeta {
+template<typename T, typename State> class AlphaBeta : public MinMax<T, State> {
 protected:
-  virtual bool isTerminated(const State&) const = 0;
-  virtual T eval(const State&) const = 0;
-  virtual vector<State> next(const State&) const = 0;
-  
   T solve(const State& state, int depth, T alpha, T beta) {
-    if (depth == 0 || isTerminated(state)) return eval(state);
-    for (const State& child : next(state)) {
+    if (depth == 0 || this->isTerminated(state)) return this->eval(state);
+    for (const State& child : this->next(state)) {
       alpha = max(alpha, -solve(child, depth - 1, -beta, -alpha));
       if (alpha >= beta) return alpha;
     }
