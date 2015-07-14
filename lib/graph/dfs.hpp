@@ -2,29 +2,26 @@
 #include "graph/tree.hpp"
 #include "graph/search.hpp"
 
-namespace dfs {
-  template<typename Edge> struct DFSState {
+template<typename Edge> struct DFSState {
 
-    Edge edge;
+  Edge edge;
 
-    DFSState(int pos) : edge(pos, pos) {}
+  DFSState(int pos) : edge(pos, pos) {}
 
-    DFSState(const Edge& edge) : edge(edge) {}
+  DFSState(const Edge& edge) : edge(edge) {}
 
-    DFSState next(const Edge& edge) const {
-      return DFSState(edge);
-    }
+  DFSState next(const Edge& edge) const {
+    return DFSState(edge);
+  }
 
-    int getPos() {
-      return edge.to;
-    }
-  };
-}
+  int getPos() {
+    return edge.to;
+  }
+};
 
-template<typename Graph> class DFS : public Search<Graph, dfs::DFSState<typename Graph::EdgeType>> {
+template<typename Graph, typename State = DFSState<typename Graph::EdgeType>> class DFS : public Search<Graph, State> {
 protected:
   typedef typename Graph::EdgeType Edge;
-  typedef dfs::DFSState<Edge> State;
 
 private:
   stack<State> st;

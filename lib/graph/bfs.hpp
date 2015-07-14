@@ -1,22 +1,19 @@
 #pragma once
 #include "graph/search.hpp"
 
-namespace bfs {
-  template<typename Edge> struct BFSState {
-    int pos, prv;
+template<typename Edge> struct BFSState {
+  int pos, prv;
 
-    BFSState(int pos, int prv = -1) : pos(pos), prv(prv) {}
+  BFSState(int pos, int prv = -1) : pos(pos), prv(prv) {}
   
-    BFSState next(const Edge& edge) const {
-      return BFSState(edge.to, pos);
-    }
-  };
-}
+  BFSState next(const Edge& edge) const {
+    return BFSState(edge.to, pos);
+  }
+};
 
-template<typename Graph> class BFS : public Search<Graph, bfs::BFSState<typename Graph::EdgeType>> {
+template<typename Graph, typename State = BFSState<typename Graph::EdgeType>> class BFS : public Search<Graph, State> {
 protected:
   typedef typename Graph::EdgeType Edge;
-  typedef bfs::BFSState<Edge> State;
 
 private:
   queue<State> que;
