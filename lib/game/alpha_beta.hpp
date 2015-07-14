@@ -17,7 +17,7 @@ protected:
   }
 
 public:
-  T solve(const State& state, int depth) {
+  T solve(const State& state, int depth = numeric_limits<int>::max()) {
     return solve(state, depth, -numeric_limits<T>::min() + 1, numeric_limits<T>::max());
   }
 };

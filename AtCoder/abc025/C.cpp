@@ -75,7 +75,7 @@ int main() {
     }
   }
   Game game(b, c);
-  int res = game.solve(State(), 9);
+  int res = game.solve(State());
   cout << (sum + res) / 2 << endl;
   cout << (sum - res) / 2 << endl;
 }
