@@ -5,10 +5,11 @@ template<typename Edge> class Tree {
 public:
   vector<Edge> parent;
   vector<vector<int>> children;
+  vector<int> depth;
 
   Tree() {}
 
-  Tree(int n) : children(n) {
+  Tree(int n) : children(n), depth(n, -1) {
     for (int i = 0; i < n; ++i) parent.emplace_back(i, i);
   }
 
@@ -19,6 +20,12 @@ public:
   template<typename... Args> void addEdge(Args... args) {
     Edge edge(args...);
     parent[edge.from] = edge;
-    children[edge.to].emplace_back(edge.from);
+    if (edge.from != edge.to) children[edge.to].emplace_back(edge.from);
+  }
+
+  int getDepth(int v) {
+    if (depth[v] != -1) return depth[v];
+    if (parent[v].to == v) return depth[v] = 0;
+    return depth[v] = getDepth(parent[v].to) + 1;
   }
 };

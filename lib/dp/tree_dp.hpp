@@ -3,14 +3,15 @@
 
 template<typename Tree, typename T> class TreeDP {
 private:
-  Tree tree;
   vector<bool> visited;
   vector<T> memo;
 
 protected:
-  TreeDP(const Tree& tree) : tree(tree), visited(tree.size(), false), memo(tree.size()) {}
+  Tree tree;
 
-  virtual T visit(int, vector<T>) = 0;
+  TreeDP(const Tree& tree) : visited(tree.size(), false), memo(tree.size()), tree(tree) {}
+
+  virtual T visit(int, const vector<T>&) = 0;
 
 public:
   T solve(int v) {

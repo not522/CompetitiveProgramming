@@ -1,6 +1,6 @@
 #pragma once
-#include "graph/search.hpp"
 #include "graph/tree.hpp"
+#include "graph/search.hpp"
 
 namespace dfs {
   template<typename Edge> struct DFSState {
@@ -54,7 +54,11 @@ namespace dfs_tree {
     typedef typename DFS<Graph>::State State;
 
     void visit(const State& state) {
-      if (state.prev != -1) tree.addEdge(state.pos, state.prev);
+      Edge edge = state.edge;
+      if (edge.from != -1) {
+        swap(edge.from, edge.to);
+        tree.addEdge(edge);
+      }
     }
 
   public:
