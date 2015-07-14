@@ -39,7 +39,7 @@ public:
 namespace bfs_distance {
   template<typename Graph> class BFSDistance : public BFS<Graph> {
   private:
-    typedef typename BFS<Graph>::State State;
+    typedef BFSState<typename Graph::EdgeType> State;
 
     void visit(const State& state) {
       if (state.prv != -1) dis[state.pos] = dis[state.prv] + 1;
