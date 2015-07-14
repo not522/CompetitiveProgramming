@@ -1,7 +1,7 @@
 #pragma once
 #include "arithmetic.hpp"
 
-struct Time : public arithmetic::Subtraction<Time>{
+struct Time : public arithmetic::Addition<Time>, public arithmetic::Subtraction<Time> {
   int hour, minute, second;
 
   Time() : hour(0), minute(0), second(0) {}
@@ -16,10 +16,7 @@ struct Time : public arithmetic::Subtraction<Time>{
     return toMinutes() * 60 + second;
   }
 
-  Time operator-=(const Time& time) {
-    hour -= time.hour;
-    minute -= time.minute;
-    second -= time.second;
+  void normalize() {
     if (second < 0) {
       --minute;
       second += 60;
@@ -28,6 +25,21 @@ struct Time : public arithmetic::Subtraction<Time>{
       --hour;
       minute += 60;
     }
+  }
+
+  Time operator+=(const Time& time) {
+    hour += time.hour;
+    minute += time.minute;
+    second += time.second;
+    normalize();
+    return *this;
+  }
+
+  Time operator-=(const Time& time) {
+    hour -= time.hour;
+    minute -= time.minute;
+    second -= time.second;
+    normalize();
     return *this;
   }
 };
