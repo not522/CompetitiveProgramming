@@ -22,7 +22,23 @@ struct Day {
 
   Day(int year, int month, int day) : year(year), month(month), day(day) {}
 
-  void next() {
+  int fairfield() const {
+    int y = year, m = month;
+    if (m <= 2) --y, m += 12;
+    return 365 * y + countLeapYear(y) + (153 * (m + 1) / 5) + day - 428;
+  }
+
+  int operator-(const Day& day) const {
+    return fairfield() - day.fairfield();
+  }
+
+  bool operator<(const Day& day) const {
+    if (year != day.year) return year < day.year;
+    if (month != day.month) return month < day.month;
+    return this->day < day.day;
+  }
+
+  Day operator++() {
     ++day;
     if (getMaxDay(year, month) < day) {
       ++month;
@@ -32,15 +48,6 @@ struct Day {
         month = 1;
       }
     }
-  }
-
-  int fairfield() const {
-    int y = year, m = month;
-    if (m <= 2) --y, m += 12;
-    return 365 * y + countLeapYear(y) + (153 * (m + 1) / 5) + day - 428;
-  }
-
-  int operator-(const Day& day) const {
-    return fairfield() - day.fairfield();
+    return *this;
   }
 };
