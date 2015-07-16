@@ -22,13 +22,13 @@ public:
   
   vector<long long> factor(long long n) const {
     vector<long long> res;
-    for (long long i = 2; i <= n / i && n >= (long long) div.size(); ++i) {
+    for (long long i = 2; i <= n / i && n >= (long long)div.size(); ++i) {
       while (n % i == 0) {
         res.emplace_back(i);
         n /= i;
       }
     }
-    if (n >= (long long)div.size()) {
+    if (n >= max((long long)div.size(), 2ll)) {
       res.emplace_back(n);
     } else {
       while (n > 1) {
