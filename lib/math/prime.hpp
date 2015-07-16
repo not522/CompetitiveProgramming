@@ -13,14 +13,14 @@ public:
     }
   }
   
-  bool isPrime(long long n) {
+  bool isPrime(long long n) const {
     if (n <= 1) return false;
     if (n < (long long)div.size()) return div[n] == n;
     for (long long i = 2; i <= n / i; ++i) if (n % i == 0) return false;
     return true;
   }
   
-  vector<long long> factor(long long n) {
+  vector<long long> factor(long long n) const {
     vector<long long> res;
     for (long long i = 2; i <= n / i && n >= (long long) div.size(); ++i) {
       while (n % i == 0) {
@@ -40,7 +40,7 @@ public:
     return res;
   }
   
-  vector<long long> primeFactor(long long n) {
+  vector<long long> primeFactor(long long n) const {
     vector<long long> res;
     for (long long i = 2; i <= n / i && n >= (long long)div.size(); ++i) {
       if (n % i) continue;
@@ -60,7 +60,7 @@ public:
     return res;
   }
 
-  vector<long long> divisor(long long n) {
+  vector<long long> divisor(long long n) const {
     vector<long long> res;
     for (long long i = 1; i <= n / i; ++i) {
       if (n % i == 0) {
