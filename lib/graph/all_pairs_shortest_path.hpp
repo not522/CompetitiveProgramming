@@ -5,11 +5,11 @@ template<typename Graph> class WarshallFloyd {
 private:
   typedef typename Graph::EdgeType::CostType Cost;
 
-  const Cost INF = numeric_limits<Cost>::max() / 2 - 1;
-
   const Graph& graph;
 
 public:
+  const static Cost INF = numeric_limits<Cost>::max() / 2 - 1;
+
   vector<vector<Cost>> dis;
   
   WarshallFloyd(const Graph& graph) : graph(graph), dis(graph.size(), vector<Cost>(graph.size(), INF)) {
