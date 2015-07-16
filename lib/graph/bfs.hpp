@@ -9,6 +9,10 @@ template<typename Edge> struct BFSState {
   BFSState next(const Edge& edge) const {
     return BFSState(edge.to, pos);
   }
+
+  int getPos() {
+    return pos;
+  }
 };
 
 template<typename Graph, typename State = BFSState<typename Graph::EdgeType>> class BFS : public Search<Graph, State> {
