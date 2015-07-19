@@ -3,20 +3,6 @@
 class Subtraction : public MemoizedRecursion<bool, int, int> {
 private:
   set<int> ng;
-  map<pair<int, int>, bool> mem;
-
-protected:
-  bool used(int k, int t) {
-    return mem.count(make_pair(k, t));
-  }
-
-  bool memo(int k, int t) {
-    return mem[make_pair(k, t)];
-  }
-
-  void push(bool b, int k, int t) {
-    mem[make_pair(k, t)] = b;
-  }
 
   bool eval(int k, int t) {
     if (t == 0) return true;

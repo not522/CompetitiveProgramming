@@ -3,21 +3,7 @@
 class Bullion : public MemoizedRecursion<int, int, int, int, int> {
 private:
   vector<pair<int, int>> c;
-  map<array<int, 4>, int> m;
   
-protected:
-  bool used(int l, int b, int r, int t) {
-    return m.count({l, b, r, t});
-  }
-  
-  int memo(int l, int b, int r, int t) {
-    return m[{l, b, r, t}];
-  }
-
-  void push(int v, int l, int b, int r, int t) {
-    m[{l, b, r, t}] = v;
-  }
-
   int eval(int l, int b, int r, int t) {
     int res = 0;
     for (const auto& k : c) {
