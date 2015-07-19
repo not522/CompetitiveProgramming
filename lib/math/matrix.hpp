@@ -1,22 +1,22 @@
 #pragma once
 #include "math/vector.hpp"
 
-template<typename T> class Matrix : public IndivisibleArithmetic<Matrix<T>> {
+template<typename T> class Matrix : public arithmetic::Addition<Matrix<T>>, public arithmetic::Subtraction<Matrix<T>> {
 protected:
   vector<Vector<T>> val;
-  
+
 public:
   Matrix(int n, int m) : val(n, Vector<T>(m)) {}
 
   Vector<T>& operator[](int n) {
     return val[n];
   }
-	
+
 	Matrix operator+=(const Matrix& m) {
     for (int i = 0; i < (int)val.size(); ++i) val[i] += m[i];
 		return *this;
 	}
-	
+
 	Matrix operator-=(const Matrix& m) {
     for (int i = 0; i < (int)val.size(); ++i) val[i] -= m[i];
 		return *this;
@@ -34,7 +34,12 @@ public:
     }
     return *this = res;
   }
-  
+
+  Matrix operator*(const Matrix& m) const {
+    Matrix res = *this;
+    return res *= m;
+  }
+
   Vector<T> operator*(const Vector<T>& v) {
     Vector<T> res(size());
     for (int i = 0; i < size(); ++i) res[i] += val[i] * v;
