@@ -5,40 +5,35 @@ namespace arithmetic {
   template<typename T> class Addition {
   public:
     template<typename V> T operator+(const V& v) const {
-      T res(static_cast<const T&>(*this));
-      return res += static_cast<T>(v);
+      return T(static_cast<const T&>(*this)) += v;
     }
   };
 
   template<typename T> class Subtraction {
   public:
     template<typename V> T operator-(const V& v) const {
-      T res(static_cast<const T&>(*this));
-      return res -= static_cast<T>(v);
+      return T(static_cast<const T&>(*this)) -= v;
     }
   };
 
   template<typename T> class Multiplication {
   public:
     template<typename V> T operator*(const V& v) const {
-      T res(static_cast<const T&>(*this));
-      return res *= static_cast<T>(v);
+      return T(static_cast<const T&>(*this)) *= v;
     }
   };
 
   template<typename T> class Division {
   public:
     template<typename V> T operator/(const V& v) const {
-      T res(static_cast<const T&>(*this));
-      return res /= static_cast<T>(v);
+      return T(static_cast<const T&>(*this)) /= v;
     }
   };
 
   template<typename T> class Modulus {
   public:
     template<typename V> T operator%(const V& v) const {
-      T res(static_cast<const T&>(*this));
-      return res %= static_cast<T>(v);
+      return T(static_cast<const T&>(*this)) %= v;
     }
   };
 }
