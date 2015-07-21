@@ -18,6 +18,8 @@ inline int getMaxDay(int year, int month) {
 struct Day {
   int year, month, day;
 
+  enum {SUN, MON, TUE, WED, THU, FRI, SAT};
+
   Day() : year(0), month(0), day(0) {}
 
   Day(int year, int month, int day) : year(year), month(month), day(day) {}
@@ -49,5 +51,9 @@ struct Day {
       }
     }
     return *this;
+  }
+
+  int weekday() {
+    return fairfield() % 7;
   }
 };
