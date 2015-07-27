@@ -11,7 +11,7 @@ class BigDecimal : public Arithmetic<BigDecimal<IntegerSize, DecimalSize>>, publ
   constexpr static long double EPSILON = pow<long double>(2, -(BitSize - 4) * DecimalSize);
 
   bool sign;
-  long long d[IntegerSize + DecimalSize];
+  array<long long, IntegerSize + DecimalSize> d;
 
  public:
   BigDecimal() {
@@ -91,14 +91,11 @@ class BigDecimal : public Arithmetic<BigDecimal<IntegerSize, DecimalSize>>, publ
     }
     if (d[IntegerSize + DecimalSize - 1] < 0) {
       sign = !sign;
-      for (int i = 0; i < IntegerSize + DecimalSize; ++i) d[i] = -d[i];
+      for (auto& i : d) i = -i;
       normal();
     }
-    if (d[IntegerSize + DecimalSize - 1] >= (1ll << BitSize)) throw "overflow";
-    for (int i = 0; i < IntegerSize + DecimalSize; ++i) if (d[i] != 0) {
-      return *this;
-    }
-    sign = PLUS;
+    if (d.back() >= (1ll << BitSize)) throw "overflow";
+    if (all_of(d.begin(), d.end(), [](long long i){return i == 0;})) sign = PLUS;
     return *this;
   }
 
@@ -115,12 +112,12 @@ class BigDecimal : public Arithmetic<BigDecimal<IntegerSize, DecimalSize>>, publ
   BigDecimal operator<<=(int a) {
     if (a < 0) return *this >>= -a;
     while (a >= BitSize) {
-      if (d[IntegerSize + DecimalSize - 1]) throw "overflow";
+      if (d.back()) throw "overflow";
       for (int i = IntegerSize + DecimalSize; --i > 0; ) d[i] = d[i - 1];
       d[0] = 0;
       a -= BitSize;
     }
-    if (d[IntegerSize + DecimalSize - 1] >= (1ll << (BitSize - a))) throw "overflow";
+    if (d.back() >= (1ll << (BitSize - a))) throw "overflow";
     for (auto& i : d) i <<= a;
     return normal();
   }
@@ -129,7 +126,7 @@ class BigDecimal : public Arithmetic<BigDecimal<IntegerSize, DecimalSize>>, publ
     if (a < 0) return *this <<= -a;
     while (a >= BitSize) {
       for (int i = 0; i < IntegerSize + DecimalSize - 1; ++i) d[i] = d[i + 1];
-      d[IntegerSize + DecimalSize - 1] >>= BitSize;
+      d.back() >>= BitSize;
       a -= BitSize;
     }
     for (int i = 0; i < IntegerSize + DecimalSize - 1; ++i) {
@@ -214,9 +211,7 @@ class BigDecimal : public Arithmetic<BigDecimal<IntegerSize, DecimalSize>>, publ
   }
 
   bool equals(const BigDecimal &a) const {
-    if (sign != a.sign) return false;
-    for (int i = 0; i < IntegerSize + DecimalSize; ++i) if (d[i] != a.d[i]) return false;
-    return true;
+    return sign == a.sign && d == a.d;
   }
 
   int toInt() const {
