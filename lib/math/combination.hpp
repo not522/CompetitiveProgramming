@@ -1,5 +1,5 @@
 #pragma once
-#include "template.hpp"
+#include "math/basic.hpp"
 
 template<typename T> class Combination {
 private:
@@ -20,6 +20,26 @@ public:
     if (n < (int)comb.size()) return comb[n][m];
     T res = 1;
     for (int i = 0; i < min(m, n - m); ++i) res = res * (n - i) / (i + 1);
+    return res;
+  }
+
+  T combination_safety(int n, int m) {
+    if (n < m) return 0;
+    if (n < (int)comb.size()) return comb[n][m];
+    m = min(m, n - m);
+    vector<int> a(m), b(m);
+    iota(a.begin(), a.end(), n - m + 1);
+    iota(b.begin(), b.end(), 1);
+    for (auto i : b) {
+      for (auto& j : a) {
+        auto g = gcd(i, j);
+        i /= g;
+        j /= g;
+        if (i == 1) break;
+      }
+    }
+    T res = 1;
+    for (auto i : a) res = res * i;
     return res;
   }
 
