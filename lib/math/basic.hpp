@@ -24,3 +24,7 @@ template<typename T> inline T round(T a, T b) {
 template<typename T> inline T mod(T a, T b) {
   return a - floor(a, b) * b;
 }
+
+template<typename T> inline T factorial(T n) {
+  return n <= 1 ? 1 : factorial(n - 1) * n;
+}
