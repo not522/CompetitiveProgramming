@@ -7,9 +7,9 @@ private:
   
 public:
   Prime(long long n = 0) {
-    for (long long i = 0; i < n; ++i) div.emplace_back(i);
+    for (long long i = 0; i <= n; ++i) div.emplace_back(i);
     for (long long i = 2; i <= n / i; ++i) if (div[i] == i) {
-      for (long long j = i * i; j < n; j += i) div[j] = i;
+      for (long long j = i * i; j <= n; j += i) div[j] = i;
     }
   }
   
