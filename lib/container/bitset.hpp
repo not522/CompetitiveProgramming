@@ -1,5 +1,6 @@
 #pragma once
 #include "bitwise.hpp"
+#include "bit_operation.hpp"
 
 class Bitset : public Bitwise<Bitset> {
 private:
@@ -70,7 +71,7 @@ public:
   }
 
   int count() {
-    return accumulate(val.begin(), val.end(), 0, [](int a, unsigned long long b){return a + __builtin_popcountll(b);});
+    return accumulate(val.begin(), val.end(), 0, [](int a, unsigned long long b){return a + count_bit(b);});
   }
 
   bool parity() {

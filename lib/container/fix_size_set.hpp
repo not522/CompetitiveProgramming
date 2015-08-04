@@ -1,18 +1,20 @@
 #pragma once
-#include "template.hpp"
+#include "container/bit_iterator.hpp"
 
 class FixSizeSet {
 private:
   struct Iterator {
-    int val, n;
+  private:
+    BitIterator val, n;
 
+  public:
     Iterator(int val, int n) : val(val), n(n) {}
 
     Iterator operator*() {
       return *this;
     }
 
-    bool operator!=(Iterator& itr) {
+    bool operator!=(const Iterator& itr) const {
       return n != itr.n;
     }
 
@@ -26,8 +28,8 @@ private:
       return val;
     }
 
-    bool in(int i) {
-      return val & (1 << i);
+    bool in(int i) const {
+      return val.in(i);
     }
   };
   

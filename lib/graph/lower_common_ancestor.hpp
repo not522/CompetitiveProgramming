@@ -1,5 +1,6 @@
 #pragma once
 #include "graph/tree.hpp"
+#include "bit_operation.hpp"
 
 template<typename Edge> class LowerCommonAncestor {
 private:
@@ -31,9 +32,9 @@ public:
       swap(v1, v2);
       swap(d1, d2);
     }
-    for (int d = d2 - d1; d; d &= d - 1) v2 = calcAncestor(v2, __builtin_ctz(d));
+    for (int d = d2 - d1; d; d &= d - 1) v2 = calcAncestor(v2, least_bit(d));
     if (v1 == v2) return v1;
-    for (int i = 31 - __builtin_clz(d1); i >= 0; --i) {
+    for (int i = most_bit(d1); i >= 0; --i) {
       int a1 = calcAncestor(v1, i);
       int a2 = calcAncestor(v2, i);
       if (a1 != a2) {

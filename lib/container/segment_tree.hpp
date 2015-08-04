@@ -1,5 +1,5 @@
 #pragma once
-#include "template.hpp"
+#include "bit_operation.hpp"
 
 template<typename T> class SegmentTree {
 private:
@@ -20,7 +20,7 @@ protected:
   
 public:
   SegmentTree(int m, T def = numeric_limits<T>::max()) : DEFAULT(def) {
-    n = 1 << (32 - __builtin_clz(m - 1));
+    n = 2 << least_bit(m - 1);
     d.resize(2 * n - 1, DEFAULT);
   }
 

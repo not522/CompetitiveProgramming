@@ -1,4 +1,4 @@
-#include "bit_count.hpp"
+#include "bit_operation.hpp"
 #include "graph/edge.hpp"
 #include "graph/adjacency_list.hpp"
 #include "graph/bfs.hpp"
@@ -9,7 +9,7 @@ int main() {
   cin >> n;
   Graph graph(n);
   for (int i = 0; i < n; ++i) {
-    int c = countBit(i + 1);
+    int c = count_bit(i + 1);
     if (i + c < n) graph.addEdge(i, i + c);
     if (i - c >= 0) graph.addEdge(i, i - c);
   }

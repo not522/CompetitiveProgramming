@@ -1,7 +1,7 @@
-#include "template.hpp"
+#include "bit_operation.hpp"
 
 int main() {
   int n;
   cin >> n;
-  cout << (n == 1 ? 0 : 32 - __builtin_clz(n - 1)) << endl;
+  cout << most_bit(n - 1) + 1 << endl;
 }
