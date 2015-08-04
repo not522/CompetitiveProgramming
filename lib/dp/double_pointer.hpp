@@ -6,21 +6,25 @@ private:
   int n;
 
 protected:
-  virtual bool valid(int, int) = 0;
-  virtual void popFront(int, int) = 0;
-  virtual void pushBack(int, int) = 0;
+  int front, back;
+
+  virtual bool valid(int) = 0;
+  virtual void pop(int) = 0;
+  virtual void push(int) = 0;
   
 public:
   DoublePointer(int n) : n(n) {}
 
   void solve() {
-    int front = 0;
-    for (int i = 0; i < n; ++i) {
-      while (!valid(front, i)) {
-        popFront(front, i);
+    for (front = 0, back = 0; front < n;) {
+      if (back < n && valid(back)) {
+        push(back);
+        ++back;
+      } else {
+        if (front < back) pop(front);
+        else ++back;
         ++front;
       }
-      pushBack(front, i);
     }
   }
 };
