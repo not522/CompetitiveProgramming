@@ -1,11 +1,13 @@
 #pragma once
-#include "template.hpp"
+#include "container/bit_iterator.hpp"
 
 class PowerSet {
 private:
-  struct Iterator {
-    int val;
+  class Iterator {
+  private:
+    BitIterator val;
 
+  public:
     Iterator(int val) : val(val) {}
 
     Iterator operator*() {
@@ -24,11 +26,19 @@ private:
       return val;
     }
 
-    bool in(int i) {
-      return val & (1 << i);
+    bool in(int i) const {
+      return val.in(i);
+    }
+
+    BitIterator::Iterator& begin() {
+      return val.begin();
+    }
+
+    BitIterator::Iterator& end() {
+      return val.end();
     }
   };
-  
+
   Iterator i, n;
 
 public:
