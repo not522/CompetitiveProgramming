@@ -38,9 +38,7 @@ public:
         if (i == 1) break;
       }
     }
-    T res = 1;
-    for (auto i : a) res = res * i;
-    return res;
+    return accumulate(a.begin(), a.end(), T(1), multiplies<T>());
   }
 
   T repetition(int n, int r) {
