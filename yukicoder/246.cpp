@@ -1,13 +1,11 @@
-#include "template.hpp"
+#include "binary_search.hpp"
 
 int main() {
-  int l = 1, h = 1e9 + 1;
-  while (l + 1 < h) {
-    int m = (l + h) / 2;
+  auto f = [](int m){
     cout << "? " << m << endl;
     int res;
     cin >> res;
-    (res == 1 ? l : h) = m;
-  }
-  cout << l << endl;
+    return res;
+  };
+  cout << binarySearch(f, 1, 1e9 + 1) << endl;
 }
