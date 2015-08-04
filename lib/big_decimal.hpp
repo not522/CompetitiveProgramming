@@ -1,3 +1,4 @@
+#pragma once
 #include "arithmetic.hpp"
 #include "ordered.hpp"
 
