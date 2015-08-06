@@ -55,7 +55,7 @@ public:
   }
 
   Real abs() const {
-    return sqrt(norm());
+    return norm().sqrt();
   }
 
   Point conj() const {

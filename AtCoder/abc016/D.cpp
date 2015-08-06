@@ -1,3 +1,4 @@
+#include "geometry/intersect.hpp"
 #include "geometry/polygon.hpp"
 
 int main() {

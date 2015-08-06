@@ -8,26 +8,34 @@ private:
   static long double EPS;
   long double val;
 
+  operator long double() const {
+    return val;
+  }
+
 public:
   Real() {}
 
   Real(long double val) : val(val) {}
 
+  Real operator-() const {
+    return -val;
+  }
+
   template<typename T> Real operator+=(const T& r) {
     val += static_cast<long double>(r);
     return *this;
   }
-  
+
   template<typename T> Real operator-=(const T& r) {
     val -= static_cast<long double>(r);
     return *this;
   }
-  
+
   template<typename T> Real operator*=(const T& r) {
     val *= static_cast<long double>(r);
     return *this;
   }
-  
+
   template<typename T> Real operator/=(const T& r) {
     val /= static_cast<long double>(r);
     return *this;
@@ -36,12 +44,24 @@ public:
   template<typename T> Real operator%=(const T& r) {
     return *this = mod(*this, static_cast<Real>(r));
   }
-  
+
+  template<typename T> Real operator-(const T& v) const {
+    return Real(*this) -= v;
+  }
+
   template<typename T> bool operator<(const T r) const {
     return val < static_cast<long double>(r) - EPS;
   }
 
-  operator long double() const {
+  Real abs() const {
+    return std::abs(val);
+  }
+
+  Real sqrt() const {
+    return std::sqrt(val);
+  }
+
+  long double toLongDouble() const {
     return val;
   }
 };
@@ -49,9 +69,7 @@ public:
 long double Real::EPS = 1e-8;
 
 inline ostream& operator<<(ostream& os, const Real& a) {
-  stringstream ss;
-	ss << fixed << setprecision(15) << (long double)a;
-  os << ss.str();
+  os << fixed << setprecision(15) << a.toLongDouble();
   return os;
 }
 
@@ -60,4 +78,8 @@ inline istream& operator>>(istream& is, Real& a) {
 	is >> n;
 	a = n;
 	return is;
+}
+
+Real floor(const Real& r) {
+  return floor(r.toLongDouble());
 }
