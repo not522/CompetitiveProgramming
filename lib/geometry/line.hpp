@@ -9,6 +9,10 @@ public:
 
   Line (const Point& a, const Point& b) : a(a), b(b) {}
 
+  bool operator==(const Line& line) const {
+    return ((line.vec() / vec()).y == 0) && (((line.a - a) / vec()).y == 0);
+  }
+
   Point vec() const {
     return b - a;
   }

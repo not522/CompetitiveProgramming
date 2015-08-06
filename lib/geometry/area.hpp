@@ -2,7 +2,7 @@
 #include "geometry/polygon.hpp"
 
 inline Real area(const Segment& segment) {
-  return det(segment.a, segment.b) / 2;
+  return (segment.a.x * segment.b.y - segment.a.y * segment.b.x) / 2;
 }
 
 inline Real area(const Polygon& polygon) {
