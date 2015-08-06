@@ -1,6 +1,7 @@
 #pragma once
 #include "arithmetic.hpp"
 #include "ordered.hpp"
+#include "math/basic.hpp"
 
 class Real : public Arithmetic<Real>, public arithmetic::Modulus<Real>, public Ordered<Real> {
 private:
@@ -33,9 +34,7 @@ public:
   }
 
   template<typename T> Real operator%=(const T& r) {
-    long double v = static_cast<long double>(r);
-    val -= floor(val / v) * v;
-    return *this;
+    return *this = mod(*this, static_cast<Real>(r));
   }
   
   template<typename T> bool operator<(const T r) const {

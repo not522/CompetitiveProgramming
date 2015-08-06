@@ -8,7 +8,7 @@ public:
   Line() {}
 
   Line (const Point& a, const Point& b) : a(a), b(b) {}
-  
+
   Point vec() const {
     return b - a;
   }

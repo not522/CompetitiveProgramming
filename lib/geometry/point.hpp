@@ -30,11 +30,23 @@ public:
     return *this;
   }
 
+  Point operator*=(const Real& r) {
+    x *= r;
+    y *= r;
+    return *this;
+  }
+
   Point operator/=(const Point& p) {
     Real nrm = p.norm();
     Real xx = (x * p.x + y * p.y) / nrm;
     y = (y * p.x - x * p.y) / nrm;
     x = xx;
+    return *this;
+  }
+
+  Point operator/=(const Real& r) {
+    x /= r;
+    y /= r;
     return *this;
   }
 
@@ -46,10 +58,6 @@ public:
     return sqrt(norm());
   }
 };
-
-inline Real norm(const Point& point) {
-  return point.norm();
-}
 
 inline ostream& operator<<(ostream& os, const Point& point) {
 	os << point.x << " " << point.y;

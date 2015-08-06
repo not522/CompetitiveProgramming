@@ -18,4 +18,12 @@ public:
     }
     return res;
   }
+
+  Point& operator[](int i) {
+    return vector::operator[](mod(i, (int)size()));
+  }
+
+  const Point& operator[](int i) const {
+    return vector::operator[](mod(i, (int)size()));
+  }
 };
