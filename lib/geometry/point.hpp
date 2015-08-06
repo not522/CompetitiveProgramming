@@ -57,6 +57,10 @@ public:
   Real abs() const {
     return sqrt(norm());
   }
+
+  Point conj() const {
+    return Point(x, -y);
+  }
 };
 
 inline ostream& operator<<(ostream& os, const Point& point) {
