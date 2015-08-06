@@ -1,10 +1,10 @@
 #pragma once
-#include "geometry/basic.hpp"
+#include "geometry/segment.hpp"
 
 enum CCW{LEFT = 1, RIGHT = 2, BACK = 4, FRONT = 8, ON = 16};
 
-int ccw(Point a, Point b, Point c) {
-  Point p = (c - a) / (b - a);
+int ccw(const Segment& segment, const Point& point) {
+  Point p = (point - segment.a) / segment.vec();
   if (p.y > 0) return LEFT;
   if (p.y < 0) return RIGHT;
   if (p.x < 0) return BACK;
