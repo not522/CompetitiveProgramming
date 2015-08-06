@@ -1,4 +1,3 @@
-#include "geometry/ccw.hpp"
 #include "geometry/polygon.hpp"
 
 int main() {
