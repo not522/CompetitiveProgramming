@@ -1,6 +1,6 @@
 #include "geometry/centroid.hpp"
 
-Real solve(const vector<Point> p) {
+Real solve(const vector<Point>& p) {
   Point c = centroid(p);
   auto f = [&](const Real& r, const Point& point){return r + (c - point).abs();};
   return accumulate(p.begin(), p.end(), Real(0), f);
