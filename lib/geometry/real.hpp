@@ -49,6 +49,14 @@ public:
     return Real(*this) -= v;
   }
 
+  template<typename T> Real operator*(const T& v) const {
+    return Real(*this) *= v;
+  }
+
+  template<typename T> Real operator/(const T& v) const {
+    return Real(*this) /= v;
+  }
+
   template<typename T> bool operator<(const T r) const {
     return val < static_cast<long double>(r) - EPS;
   }
