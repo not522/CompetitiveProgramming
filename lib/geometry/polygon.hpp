@@ -19,6 +19,17 @@ public:
     return res;
   }
 
+  vector<array<Point, 3>> getCorners() const {
+    vector<array<Point, 3>> res;
+    Point pre1 = *(end() - 2), pre2 = back();
+    for (const auto& point : *this) {
+      res.emplace_back(array<Point,3>({{pre1, pre2, point}}));
+      pre1 = pre2;
+      pre2 = point;
+    }
+    return res;
+  }
+
   Point& operator[](int i) {
     return vector::operator[](mod(i, (int)size()));
   }
