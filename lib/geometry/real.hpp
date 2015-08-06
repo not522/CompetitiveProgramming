@@ -74,7 +74,7 @@ public:
   }
 };
 
-long double Real::EPS = 1e-8;
+long double Real::EPS = 1e-10;
 
 inline ostream& operator<<(ostream& os, const Real& a) {
   os << fixed << setprecision(15) << a.toLongDouble();

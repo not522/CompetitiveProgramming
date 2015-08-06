@@ -1,5 +1,5 @@
 #pragma once
-#include "geometry/segment.hpp"
+#include "geometry/ccw.hpp"
 
 class Polygon : public vector<Point> {
 public:
@@ -36,5 +36,15 @@ public:
 
   const Point& operator[](int i) const {
     return vector::operator[](mod(i, (int)size()));
+  }
+
+  template<bool strict = false> bool cover(const Point& point) const {
+    bool res = false;
+    for (auto& side : getSides()) {
+      if (ccw(side, point) == ON) return strict ? false : true;
+      if (side.a.y > side.b.y) std::swap(side.a, side.b);
+      if (side.a.y <= point.y && point.y < side.b.y && ((side.b - point) / (side.a - point)).y > 0) res = !res;
+    }
+    return res;
   }
 };
