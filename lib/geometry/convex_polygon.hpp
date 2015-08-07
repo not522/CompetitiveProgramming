@@ -1,5 +1,7 @@
 #pragma once
 #include "geometry/polygon.hpp"
+#include "geometry/intersect.hpp"
+#include "geometry/cross_point.hpp"
 
 template<bool strict = true> class ConvexPolygon : public Polygon {
 public:
@@ -29,6 +31,16 @@ public:
       if ((sides[i].vec() / sides[j].vec()).y >= 0) ++i;
       else ++j;
       res = max(res, (sides[i].a - sides[j].a).abs());
+    }
+    return res;
+  }
+
+  ConvexPolygon cut(const Line& line) {
+    ConvexPolygon res;
+    auto sides = getSides();
+    for (const auto& side : sides) {
+      if (ccw(line, side.a) != RIGHT) res.push_back(side.a);
+      if (intersect<true>(line, side)) res.push_back(crossPoint(line, side));
     }
     return res;
   }

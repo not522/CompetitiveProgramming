@@ -1,3 +1,4 @@
+
 #pragma once
 #include "geometry/ccw.hpp"
 
@@ -7,7 +8,7 @@ template<bool strict = false> inline bool intersect(const Line& line1, const Lin
 }
 
 template<bool strict = false> inline bool intersect(const Line& line, const Segment& segment) {
-  Point p1 = segment.a / line.vec(), p2 = segment.b / line.vec();
+  Point p1 = (segment.a - line.a) / line.vec(), p2 = (segment.b - line.a) / line.vec();
   if (strict) return p1.y * p2.y < 0;
   return p1.y * p2.y <= 0;
 }

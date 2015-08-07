@@ -15,3 +15,9 @@ int ccw(const Point& a, const Point& b, const Point& c) {
 int ccw(const Segment& segment, const Point& point) {
   return ccw(segment.a, segment.b, point);
 }
+
+int ccw(const Line& line, const Point& point) {
+  int res = ccw(line.a, line.b, point);
+  if (res == BACK || res == FRONT) res = ON;
+  return res;
+}

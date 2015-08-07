@@ -12,6 +12,7 @@ public:
   Polygon(const vector<Point>& p) : vector<Point>(p) {}
 
   vector<Segment> getSides() const {
+    if (size() <= 1u) return {};
     vector<Segment> res;
     Point pre = back();
     for (const auto& point : *this) {
@@ -22,6 +23,7 @@ public:
   }
 
   vector<array<Point, 3>> getCorners() const {
+    if (size() <= 2u) return {};
     vector<array<Point, 3>> res;
     Point pre1 = *(end() - 2), pre2 = back();
     for (const auto& point : *this) {
