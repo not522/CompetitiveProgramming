@@ -5,6 +5,8 @@ template<bool strict = true> class ConvexPolygon : public Polygon {
 public:
   ConvexPolygon() {}
 
+  ConvexPolygon(int n) : Polygon(n) {}
+
   ConvexPolygon(vector<Point> points) {
     int flag = ~(strict ? LEFT : LEFT | FRONT);
     sort(points.begin(), points.end());
@@ -15,5 +17,19 @@ public:
       while ((int)size() > r && ccw(*(end() - 2), back(), points[i]) & flag) pop_back();
     }
     pop_back();
+  }
+
+  Real diameter() {
+    auto sides = getSides();
+    int i = min_element(sides.begin(), sides.end()) - sides.begin();
+    int j = max_element(sides.begin(), sides.end()) - sides.begin();
+    sides.insert(sides.end(), sides.begin(), sides.end());
+    Real res = 0;
+    for (int k = 0; k < 2 * size(); ++k) {
+      if ((sides[i].vec() / sides[j].vec()).y >= 0) ++i;
+      else ++j;
+      res = max(res, (sides[i].a - sides[j].a).abs());
+    }
+    return res;
   }
 };

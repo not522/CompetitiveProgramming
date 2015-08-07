@@ -1,7 +1,7 @@
 #pragma once
 #include "geometry/real.hpp"
 
-class Point : public Arithmetic<Point> {
+class Point : public Arithmetic<Point>, public Ordered<Point> {
 public:
   Real x, y;
 
