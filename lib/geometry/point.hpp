@@ -50,6 +50,10 @@ public:
     return *this;
   }
 
+  bool operator<(const Point& p) const {
+    return (x == p.x) ? y < p.y : x < p.x;
+  }
+
   Real norm() const {
     return x * x + y * y;
   }
