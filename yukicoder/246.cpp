@@ -7,5 +7,5 @@ int main() {
     cin >> res;
     return res;
   };
-  cout << binarySearch(f, 1, 1e9 + 1) << endl;
+  cout << "! " << binarySearch(f, 1, 1e9 + 1) << endl;
 }
