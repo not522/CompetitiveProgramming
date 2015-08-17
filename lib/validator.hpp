@@ -70,6 +70,35 @@ public:
     return n;
   }
 
+  long long readLong() {
+    char c = readChar();
+    __int128 n;
+    if (c == '-') {
+      c = readChar();
+      assert('1' <= c && c <= '9');
+      n = -(c - '0');
+    } else {
+      assert('0' <= c && c <= '9');
+      n = c - '0';
+    }
+    if (n == 0) {
+      assert(!isdigit(readChar()));
+      back();
+      return 0;
+    }
+    while (true) {
+      c = readChar();
+      if(!isdigit(c)) {
+        back();
+        break;
+      }
+      if (n > 0) n = n * 10 + c - '0';
+      else n = n * 10 - (c - '0');
+      assert(numeric_limits<long long>::min() <= n && n <= numeric_limits<long long>::max());
+    }
+    return n;
+  }
+
   string readString() {
     string s;
     char c;
@@ -89,6 +118,12 @@ public:
 
 int readInt(int a, int b) {
   int n = validator.readInt();
+  assert(a <= n && n <= b);
+  return n;
+}
+
+long long readLong(long long a, long long b) {
+  auto n = validator.readLong();
   assert(a <= n && n <= b);
   return n;
 }
