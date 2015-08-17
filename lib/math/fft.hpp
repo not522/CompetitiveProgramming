@@ -1,5 +1,5 @@
 #pragma once
-#include "template.hpp"
+#include "bit_operation.hpp"
 
 void fft(vector<complex<long double>> &a, int n, int dir) {
   long double theta = dir * 2 * M_PIl / n;
@@ -23,17 +23,16 @@ void fft(vector<complex<long double>> &a, int n, int dir) {
   }
 }
 
-template<typename Input>
-vector<Input> convolution(const vector<Input> &aa, const vector<Input> &bb){
+template<typename T> vector<T> convolution(const vector<T> &aa, const vector<T> &bb){
   vector<complex<long double>> a(begin(aa), end(aa)), b(begin(bb), end(bb));
-  int n = 1;
-  while(n <= a.size() + b.size()) n <<= 1;
-  a.resize(n); b.resize(n);
-  fft(a, n, +1);
-  fft(b, n, +1);
+  int n = 2 << most_bit(a.size() + b.size());
+  a.resize(n);
+  b.resize(n);
+  fft(a, n, 1);
+  fft(b, n, 1);
   for (int i = 0; i < n; ++i) a[i] *= b[i];
   fft(a, n, -1);
-  vector<Input> res(n);
+  vector<T> res(n);
   for (int i = 0; i < n; ++i) res[i] = round(real(a[i]) / n);
   return res;
 }
