@@ -28,3 +28,19 @@ template<typename T> inline T mod(T a, T b) {
 template<typename T> inline T factorial(T n) {
   return n <= 1 ? 1 : factorial(n - 1) * n;
 }
+
+template<typename T> inline T square(T n) {
+  return n * n;
+}
+
+template<typename T> inline T cube(T n) {
+  return n * n * n;
+}
+
+template<typename T> inline T norm(T x1, T y1, T x2, T y2) {
+  return square(x1 - x2) + square(y1 - y2);
+}
+
+inline long long sqrt(long long n) {
+  return sqrt((long double)n);
+}
