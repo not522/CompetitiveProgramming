@@ -1,5 +1,3 @@
-// TODO refactoring
-
 #include "template.hpp"
 
 int main() {

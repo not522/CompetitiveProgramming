@@ -1,5 +1,3 @@
-// TODO refactoring
-
 #include "string/to_string.hpp"
 
 int main() {
