@@ -14,11 +14,7 @@ protected:
 public:
   DigitDP(string num) : num(num) {}
   
-  DigitDP(T num) {
-    stringstream ss;
-    ss << num;
-    this->num = ss.str();
-  }
+  DigitDP(T num) : num(to_string(num)) {}
   
   T solve() {
     for (char c : num) {
