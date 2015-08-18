@@ -14,7 +14,7 @@ template<typename Weight, typename Value> Value knapsack(Weight maxWeight, const
   return dp1[maxWeight];
 }
 
-template<typename Weight, typename Value = long long> vector<Value> knapsack_counter(Weight maxWeight, const vector<Weight>& weight) {
+template<typename Weight, typename Value = long long> vector<Value> knapsackCount(Weight maxWeight, const vector<Weight>& weight) {
   vector<Value> dp1(maxWeight + Weight(1)), dp2(maxWeight + Weight(1));
   dp1[0] = dp2[0] = 1;
   for (auto& w : weight) {
@@ -27,7 +27,7 @@ template<typename Weight, typename Value = long long> vector<Value> knapsack_cou
   return dp1;
 }
 
-template<typename Weight> vector<bool> knapsack_fill(Weight maxWeight, const vector<Weight>& weight) {
+template<typename Weight> vector<bool> knapsackFill(Weight maxWeight, const vector<Weight>& weight) {
   vector<bool> dp1(maxWeight + Weight(1)), dp2(maxWeight + Weight(1));
   dp1[0] = dp2[0] = true;
   for (auto& w : weight) {
