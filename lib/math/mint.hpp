@@ -7,7 +7,7 @@ private:
   static long long mod;
   static Inverse inverse;
   long long val;
-	
+
 public:
 	Mint() {}
 
@@ -20,33 +20,35 @@ public:
     mod = m;
     inverse = Inverse(m);
   }
-	
+
 	Mint operator+=(const Mint& m) {
 		val += m.val;
 		if (val >= mod) val -= mod;
 		return *this;
 	}
-  
+
 	Mint operator-=(const Mint& m) {
 		val -= m.val;
 		if (val < 0) val += mod;
 		return *this;
 	}
-  
+
 	Mint operator*=(const Mint& m) {
 		val *= m.val;
 		val %= mod;
 		return *this;
 	}
-  
+
 	Mint operator/=(const Mint& m) {
 		val *= inverse(m.val);
 		val %= mod;
 		return *this;
 	}
-	
+
 	Mint operator++() {return val += 1;}
-	
+
+	Mint operator--() {return val -= 1;}
+
 	operator long long() {
 		return val;
 	}
