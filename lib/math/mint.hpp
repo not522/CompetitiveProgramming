@@ -9,7 +9,7 @@ private:
   long long val;
 
 public:
-	Mint() {}
+	Mint() : val(0) {}
 
 	Mint(const long long& val) {
     this->val = val % mod;

@@ -26,7 +26,7 @@ template<typename Weight, typename Value, bool strict = false> Value unboundedKn
   return unboundedKnapsack({maxWeight}, weight, value);
 }
 
-template<typename Weight, typename Value = long long> vector<Value> knapsackCount(Weight maxWeight, const vector<Weight>& weight) {
+template<typename Weight, typename Value = long long> vector<Value> unboundedKnapsackCount(Weight maxWeight, const vector<Weight>& weight) {
   vector<Value> dp(maxWeight + Weight(1));
   dp[0] = 1;
   for (auto& w : weight) {
