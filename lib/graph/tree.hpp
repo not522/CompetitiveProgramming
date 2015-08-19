@@ -28,4 +28,13 @@ public:
     if (parent[v].to == v) return depth[v] = 0;
     return depth[v] = getDepth(parent[v].to) + 1;
   }
+
+  vector<int> getPath(int v) {
+    vector<int> res{v};
+    while (v != parent[v].to) {
+      v = parent[v].to;
+      res.emplace_back(v);
+    }
+    return res;
+  }
 };
