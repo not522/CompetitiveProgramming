@@ -1,19 +1,29 @@
 #pragma once
 #include "template.hpp"
 
-template<typename Weight, typename Value, bool strict = false> Value unboundedKnapsack(Weight maxWeight, const vector<Weight>& weight, const vector<Value>& value) {
-  constexpr Value IMP = numeric_limits<Value>::min();
-  vector<Value> dp(maxWeight + Weight(1));
+template<typename Weight, typename Value, bool strict = false> Value unboundedKnapsack(const vector<Weight>& maxWeight, const vector<Weight>& weight, const vector<Value>& value) {
+  constexpr Value IMP = numeric_limits<Value>::min() + 1;
+  const Weight mx = *max_element(maxWeight.begin(), maxWeight.end());
+  vector<Value> dp(mx + Weight(1));
   if (strict) fill(dp.begin() + 1, dp.end(), IMP);
   for (size_t i = 0; i < weight.size(); ++i) {
-    for (int w = 0; w <= maxWeight; ++w) {
+    for (int w = 0; w <= mx; ++w) {
       if (strict && dp[w] == IMP) continue;
       Weight ww = Weight(w) + weight[i];
       Value vv = dp[w] + value[i];
-      if (ww <= maxWeight && dp[ww] < vv) dp[ww] = vv;
+      if (ww <= mx && dp[ww] < vv) dp[ww] = vv;
     }
   }
-  return dp[maxWeight];
+  Value res = 0;
+  for (const auto& w : maxWeight) {
+    if (dp[w] == IMP) return IMP;
+    res += dp[w];
+  }
+  return res;
+}
+
+template<typename Weight, typename Value, bool strict = false> Value unboundedKnapsack(Weight maxWeight, const vector<Weight>& weight, const vector<Value>& value) {
+  return unboundedKnapsack({maxWeight}, weight, value);
 }
 
 template<typename Weight, typename Value = long long> vector<Value> knapsackCount(Weight maxWeight, const vector<Weight>& weight) {
