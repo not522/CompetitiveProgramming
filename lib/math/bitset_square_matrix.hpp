@@ -1,62 +1,15 @@
 #pragma once
-#include "arithmetic.hpp"
-#include "container/bitset.hpp"
+#include "math/bitset_matrix.hpp"
 
-class BitsetSquareMatrix : public Arithmetic<BitsetSquareMatrix> {
-private:
-  vector<Bitset> val;
-
+class BitsetSquareMatrix : public BitsetMatrix {
 public:
-  BitsetSquareMatrix(int Nb) : val(Nb, Bitset(Nb)) {}
+  BitsetSquareMatrix(int n) : BitsetMatrix(n, n) {}
 
-  Bitset& operator[](int n) {
-    return val[n];
-  }
-	
-	BitsetSquareMatrix operator+=(const BitsetSquareMatrix& m) {
-    for (int i = 0; i < size(); ++i) val[i] ^= const_cast<BitsetSquareMatrix&>(m)[i];
-		return *this;
-	}
-	
-	BitsetSquareMatrix operator-=(const BitsetSquareMatrix& m) {
-    for (int i = 0; i < size(); ++i) val[i] ^= const_cast<BitsetSquareMatrix&>(m)[i];
-		return *this;
-	}
+  BitsetSquareMatrix(const BitsetMatrix& m) : BitsetMatrix(m) {}
 
-  BitsetSquareMatrix operator*=(const BitsetSquareMatrix& _m) {
-    BitsetSquareMatrix m = _m.transpose(), res(size());
-    for (int i = 0; i < size(); ++i) res[i] = *this * m[i];
-    return *this = res.transpose();
-  }
-
-	BitsetSquareMatrix operator/=(const BitsetSquareMatrix& m) {
+  BitsetSquareMatrix operator/=(const BitsetSquareMatrix& m) {
 		return *this *= m.inverse();
 	}
-
-  BitsetSquareMatrix operator*(const BitsetSquareMatrix& m) const {
-    auto res(static_cast<const BitsetSquareMatrix&>(*this));
-    return res *= m;
-  }
-
-  Bitset operator*(const Bitset& v) const {
-    Bitset res(size());
-    for (int i = 0; i < size(); ++i) res[i] = (val[i] & v).parity();
-    return res;
-  }
-
-  BitsetSquareMatrix transpose() const {
-    BitsetSquareMatrix res(size());
-    for (int i = 0; i < size(); ++i) {
-      for (int j = 0; j < size(); ++j) {
-        res[i][j] = const_cast<BitsetSquareMatrix&>(*this)[j][i];
-      }
-    }
-    return res;
-  }
-
-  int size() const {
-    return val.size();
-  }
 
   BitsetSquareMatrix identity() const {
     BitsetSquareMatrix res(size());
