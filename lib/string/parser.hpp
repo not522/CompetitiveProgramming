@@ -24,7 +24,7 @@ private:
       return f(term());
     }
     // TODO check term is valid or not
-    string res = "";
+    string res;
     for (; isdigit(s[p]); ++p) res += s[p];
     return toInteger<T>(res);
   }
