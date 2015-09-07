@@ -52,7 +52,7 @@ public:
   }
 
   long long parse(const string& s) {
-    this->s = s + '@';
+    this->s = s;
     p = 0;
     return expr(0);
   }
