@@ -1,7 +1,7 @@
-#include "math/basic.hpp"
+#include "template.hpp"
 
 int main() {
   long long n;
   cin >> n;
-  cout << gcd(n * (n + 1) / 2, n) << endl;
+  cout << (n % 2 ? n : n / 2) << endl;
 }
