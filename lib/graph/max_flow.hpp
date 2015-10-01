@@ -27,12 +27,12 @@ private:
       }
     }
     
-    int dfs(int v, int sink, int flow) {
+    int dfs(int v, int sink, Capacity flow) {
       if (v == sink) return flow;
       for (int& i = iter[v]; i < int(graph[v].size()); ++i) {
         auto& edge = graph[v][i];
         if (edge.cap == 0 || level[v] >= level[edge.to]) continue;
-        int f = dfs(edge.to, sink, min(flow, edge.cap));
+        Capacity f = dfs(edge.to, sink, min(flow, edge.cap));
         if (f == 0) continue;
         graph.flow(v, i, f);
         return f;
@@ -46,7 +46,7 @@ private:
     Capacity solve(int source, int sink) {
       level = vector<int>(graph.size(), 0);
       iter = vector<int>(graph.size(), 0);
-      int flow = 0, f;
+      Capacity flow = 0, f;
       while (true) {
         bfs(source);
         if (level[sink] < 0) return flow;
