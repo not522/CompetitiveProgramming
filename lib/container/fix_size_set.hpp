@@ -31,6 +31,14 @@ private:
     bool in(int i) const {
       return val.in(i);
     }
+
+    BitIterator::Iterator& begin() {
+      return val.begin();
+    }
+
+    BitIterator::Iterator& end() {
+      return val.end();
+    }
   };
   
   Iterator i, n;
