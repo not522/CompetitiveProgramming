@@ -1,7 +1,7 @@
 #pragma once
 #include "template.hpp"
 
-template<typename T> inline T toInteger(const string&);
+template<typename T = long long> inline T toInteger(const string&);
 
 template<> inline int toInteger<int>(const string& s) {
   return stoi(s);
