@@ -4,7 +4,7 @@
 
 template<int IntegerSize = 6, int DecimalSize = 9>
 class BigDecimal : public Arithmetic<BigDecimal<IntegerSize, DecimalSize>>, public Ordered<BigDecimal<IntegerSize, DecimalSize>> {
- private:
+private:
   const static int BitSize = 31;
   const static bool PLUS = false;
   const static bool MINUS = true;
@@ -14,7 +14,7 @@ class BigDecimal : public Arithmetic<BigDecimal<IntegerSize, DecimalSize>>, publ
   bool sign;
   array<long long, IntegerSize + DecimalSize> d;
 
- public:
+public:
   BigDecimal() {
     *this = BigDecimal(0);
   }
@@ -51,6 +51,7 @@ class BigDecimal : public Arithmetic<BigDecimal<IntegerSize, DecimalSize>>, publ
       }
     }
     if (minus) sign = MINUS;
+    else sign = PLUS;
   }
 
   BigDecimal(double r) {
@@ -90,7 +91,7 @@ class BigDecimal : public Arithmetic<BigDecimal<IntegerSize, DecimalSize>>, publ
       d[i + 1] += d[i] >> BitSize;
       d[i] &= (1ll << BitSize) - 1;
     }
-    if (d[IntegerSize + DecimalSize - 1] < 0) {
+    if (d.back() < 0) {
       sign = !sign;
       for (auto& i : d) i = -i;
       normal();
@@ -139,8 +140,11 @@ class BigDecimal : public Arithmetic<BigDecimal<IntegerSize, DecimalSize>>, publ
   }
 
   BigDecimal operator+=(const BigDecimal &a) {
-    if (sign == a.sign) for (int i = 0; i < IntegerSize + DecimalSize; ++i) d[i] += a.d[i];
-    else for (int i = 0; i < IntegerSize + DecimalSize; ++i) d[i] -= a.d[i];
+    if (sign == a.sign) {
+      for (int i = 0; i < IntegerSize + DecimalSize; ++i) d[i] += a.d[i];
+    } else {
+      for (int i = 0; i < IntegerSize + DecimalSize; ++i) d[i] -= a.d[i];
+    }
     return normal();
   }
 
@@ -160,7 +164,7 @@ class BigDecimal : public Arithmetic<BigDecimal<IntegerSize, DecimalSize>>, publ
 
   BigDecimal operator*=(const unsigned int& a) {
     for (auto& i : d) i *= a;
-    return this->normal();
+    return normal();
   }
 
   BigDecimal operator/=(const BigDecimal &a) {
