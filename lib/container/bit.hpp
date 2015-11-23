@@ -6,6 +6,8 @@ private:
   vector<int> v;
 
 public:
+  BIT() {}
+
   BIT(int n) : v(vector<int>(n + 1, 0)) {}
 
   // [0, i)
