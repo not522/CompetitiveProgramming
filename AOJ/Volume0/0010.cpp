@@ -1,13 +1,11 @@
-#include "geometry/cross_point.hpp"
+#include "geometry/triangle.hpp"
 
 void solve() {
-  Point a, b, c;
-  cin >> a >> b >> c;
-  Line s((a + b) / 2, (a + b) / 2 + (a - b) * Point(0, 1));
-  Line t((a + c) / 2, (a + c) / 2 + (a - c) * Point(0, 1));
-  Point p = crossPoint(s, t);
+  Triangle t;
+  cin >> t;
+  Point p = t.circumcenter();
   Real::precision = 3;
-  cout << fixed << setprecision(3) << p << " " << (a - p).abs() << endl;
+  cout << fixed << setprecision(3) << p << " " << (t.a - p).abs() << endl;
 }
 
 int main() {
