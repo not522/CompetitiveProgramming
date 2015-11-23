@@ -53,7 +53,7 @@ struct Day {
     return *this;
   }
 
-  int weekday() {
+  int dayOfTheWeek() {
     return fairfield() % 7;
   }
 };
