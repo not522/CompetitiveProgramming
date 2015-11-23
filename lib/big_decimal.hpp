@@ -203,8 +203,12 @@ class BigDecimal : public Arithmetic<BigDecimal<IntegerSize, DecimalSize>>, publ
   bool operator<(const BigDecimal &a) const {
     BigDecimal aa = a - EPSILON;
     if (sign == MINUS) {
-      if (aa.sign == MINUS) return -a < -*this;
-      else return true;
+      if (aa.sign == MINUS) {
+        if (a.sign == MINUS) return -a < -*this;
+        else return *this + EPSILON < a + EPSILON;
+      } else {
+        return true;
+      }
     }
     if (aa.sign == MINUS) return false;
     for (int i = IntegerSize + DecimalSize; i-- > 0; ) if (d[i] != aa.d[i]) return d[i] < aa.d[i];
