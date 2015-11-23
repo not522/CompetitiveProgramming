@@ -5,7 +5,6 @@
 
 class Real : public Arithmetic<Real>, public arithmetic::Modulus<Real>, public Ordered<Real> {
 private:
-  static long double EPS;
   long double val;
 
   operator long double() const {
@@ -13,6 +12,9 @@ private:
   }
 
 public:
+  static long double EPS;
+  static int precision;
+
   Real() {}
 
   Real(long double val) : val(val) {}
@@ -75,9 +77,10 @@ public:
 };
 
 long double Real::EPS = 1e-10;
+int Real::precision = 15;
 
 inline ostream& operator<<(ostream& os, const Real& a) {
-  os << fixed << setprecision(15) << a.toLongDouble();
+  os << fixed << setprecision(Real::precision) << a.toLongDouble();
   return os;
 }
 
