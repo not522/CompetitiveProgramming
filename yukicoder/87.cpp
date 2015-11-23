@@ -5,12 +5,12 @@ int solve(long long n) {
   int res = 0;
   for (int i = 0; i < 400; ++i) {
     day.year = i;
-    if (day.weekday() == Day::WED) ++res;
+    if (day.dayOfTheWeek() == Day::WED) ++res;
   }
   res *= n / 400;
   for (int i = 0; i <= n % 400; ++i) {
     day.year = i;
-    if (day.weekday() == Day::WED) ++res;
+    if (day.dayOfTheWeek() == Day::WED) ++res;
   }
   return res;
 }
