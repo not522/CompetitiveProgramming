@@ -22,3 +22,7 @@ template<typename T> void rsort(vector<T>& v) {
 template<typename T> void reverse(vector<T>& v) {
   reverse(v.begin(), v.end());
 }
+
+template<typename T> void unique(vector<T>& v) {
+  v.erase(unique(v.begin(), v.end()), v.end());
+}
