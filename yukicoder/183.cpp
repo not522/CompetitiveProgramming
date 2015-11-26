@@ -25,6 +25,6 @@ int main() {
     cin >> w;
     i = w;
   }
-  auto v = knapsack_fill(Weight(1 << 15), a);
+  auto v = knapsackFill(Weight(1 << 15), a);
   cout << count(v.begin(), v.end(), true) << endl;
 }

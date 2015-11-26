@@ -1,11 +1,11 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 int main() {
   int n;
   cin >> n;
   vector<int> a(2 * n);
-  for (int& i : a) cin >> i;
-  sort(a.begin(), a.end());
+  cin >> a;
+  sort(a);
   deque<int> b(a.begin(), a.end()), c = b, d = b;
   int dry = 0, wet = 0, moist = 0;
   while (b.size() > 1u) {

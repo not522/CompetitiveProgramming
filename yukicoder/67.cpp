@@ -1,10 +1,11 @@
 #include "bisection_method.hpp"
+#include "vector.hpp"
 
 int main() {
   int n;
   cin >> n;
   vector<int> l(n);
-  for (int& i : l) cin >> i;
+  cin >> l;
   long long k;
   cin >> k;
   auto f = [&](double x){

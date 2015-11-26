@@ -1,10 +1,10 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 int main() {
   int n, k;
   cin >> n >> k;
   vector<int> v(n);
-  for (int& i : v) cin >> i;
+  cin >> v;
   auto m = minmax_element(v.begin(), v.end());
   cout << *m.second - *m.first << endl;
 }

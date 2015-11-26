@@ -1,13 +1,11 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 int main() {
   int n, v, sx, sy, gx, gy;
   cin >> n >> v >> sx >> sy >> gx >> gy;
   --sx, --sy, --gx, --gy;
   vector<vector<int>> l(n, vector<int>(n));
-  for (auto& i : l) {
-    for (int& j : i) cin >> j;
-  }
+  cin >> l;
   vector<vector<int>> u(n, vector<int>(n)), w(n, vector<int>(n));
   u[sy][sx] = v;
   queue<pair<int, int>> que;

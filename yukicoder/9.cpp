@@ -1,15 +1,14 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 int main() {
   int n;
   cin >> n;
   vector<int> a(n), b(n);
-  for (int& i : a) cin >> i;
-  for (int& i : b) cin >> i;
+  cin >> a >> b;
   int res = numeric_limits<int>::max();
   for (int i = 0; i < n; ++i) {
     priority_queue<tuple<int, int>, vector<tuple<int, int>>, greater<tuple<int, int>>> que;
-    for (int i = 0; i < n; ++i) que.push(make_tuple(a[i], 0));
+    for (int i : a) que.push(make_tuple(i, 0));
     for (int i = 0; i < n; ++i) {
       auto p = que.top();
       que.pop();

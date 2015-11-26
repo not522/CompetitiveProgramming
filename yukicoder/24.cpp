@@ -17,8 +17,6 @@ int main() {
   }
   for (int i = 0; i < 10; ++i) {
     auto f = [&](Question q){return (find(q.v.begin(), q.v.end(), i) != q.v.end()) == q.res;};
-    if (all_of(q.begin(), q.end(), f)) {
-      cout << i << endl;
-    }
+    if (all_of(q.begin(), q.end(), f)) cout << i << endl;
   }
 }

@@ -1,4 +1,4 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 struct Edge {
   int to, cost, dist;
@@ -13,10 +13,7 @@ int main() {
   cin >> n >> c >> v;
   vector<int> s(v), t(v), y(v), m(v);
   vector<vector<Edge>> edge(n);
-  for (int& i : s) cin >> i;
-  for (int& i : t) cin >> i;
-  for (int& i : y) cin >> i;
-  for (int& i : m) cin >> i;
+  cin >> s >> t >> y >> m;
   for (int i = 0; i < v; ++i) edge[s[i] - 1].emplace_back(Edge(t[i] - 1, y[i], m[i]));
   const int INF = numeric_limits<int>::max() / 2;
   vector<vector<int>> dp(n, vector<int>(c + 1, INF));

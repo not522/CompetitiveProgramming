@@ -34,9 +34,7 @@ private:
 public:
   Game(int n) : mem(n + 1) {
     Prime prime;
-    for (int i = 0; i <= n; ++i) {
-      if (prime.isPrime(i)) primes.emplace_back(i);
-    }
+    for (int i = 0; i <= n; ++i) if (prime.isPrime(i)) primes.emplace_back(i);
   }
 };
 

@@ -1,3 +1,4 @@
+#pragma once
 #include "template.hpp"
 
 template<typename T> class Grundy {

@@ -1,10 +1,11 @@
 #include "bisection_method.hpp"
+#include "vector.hpp"
 
 int main() {
   int n;
   cin >> n;
   vector<int> l(n);
-  for (int& i : l) cin >> i;
+  cin >> l;
   auto f = [&](double x){
     long long sum = 0;
     for (int& i : l) sum += floor(i / x);
@@ -19,7 +20,7 @@ int main() {
       res.emplace_back(d);
     }
   }
-  sort(res.rbegin(), res.rend());
+  rsort(res);
   int q;
   cin >> q;
   for (int i = 0; i < q; ++i) {

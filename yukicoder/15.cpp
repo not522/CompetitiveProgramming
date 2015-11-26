@@ -1,3 +1,4 @@
+#include "vector.hpp"
 #include "container/power_set.hpp"
 #include "string/to_string.hpp"
 
@@ -19,8 +20,7 @@ int main() {
   int n, s;
   cin >> n >> s;
   vector<int> p(n / 2), q(n - n / 2);
-  for (int& i : p) cin >> i;
-  for (int& i : q) cin >> i;
+  cin >> p >> q;
   unordered_map<int, vector<vector<int>>> a;
   for (const auto& i : solve(p)) a[i.first].emplace_back(i.second);
   vector<vector<int>> res;
@@ -32,6 +32,6 @@ int main() {
       res.emplace_back(vv);
     }
   }
-  sort(res.begin(), res.end());
+  sort(res);
   for (const auto& i : res) cout << to_string(i) << endl;
 }

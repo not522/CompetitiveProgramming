@@ -1,4 +1,4 @@
-#include "template.hpp"
+#include "minmax.hpp"
 
 int main() {
   string n;
@@ -8,7 +8,7 @@ int main() {
     for (size_t j = i + 1; j < n.size(); ++j) {
       string m = n;
       swap(m[i], m[j]);
-      res = max(res, m);
+      chmax(res, m);
     }
   }
   cout << res << endl;

@@ -1,11 +1,9 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 int solve(vector<string>& s, int i, int j) {
   int n = s.size();
   if (i == n) {
-    for (int y = 0; y < n; ++y) {
-      for (int x = y + 1; x < n; ++x) s[y][x] = s[x][y] ^ 'o' ^ 'x';
-    }
+    for (int y = 0; y < n; ++y) for (int x = y + 1; x < n; ++x) s[y][x] = s[x][y] ^ 'o' ^ 'x';
     set<int> w;
     for (const auto& i : s) w.insert(count(i.begin(), i.end(), 'x'));
     return distance(w.begin(), w.find(count(s[0].begin(), s[0].end(), 'x'))) + 1;
@@ -24,6 +22,6 @@ int main() {
   int n;
   cin >> n;
   vector<string> s(n);
-  for (auto& i : s) cin >> i;
+  cin >> s;
   cout << solve(s, 0, 0) << endl;
 }

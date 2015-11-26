@@ -1,10 +1,12 @@
+#include "minmax.hpp"
+#include "vector.hpp"
 #include "geometry/intersect.hpp"
 
 int main() {
   int n;
   cin >> n;
   vector<Segment> s(n);
-  for (auto& i : s) cin >> i;
+  cin >> s;
   vector<Point> p(2 * n);
   for (int i = 0; i < n; ++i) {
     p[i] = s[i].a;
@@ -16,10 +18,8 @@ int main() {
       if (a == b) continue;
       Line line(a, b);
       int cnt = 0;
-      for (const auto& k : s) {
-        if (intersect(line, k)) ++cnt;
-      }
-      res = max(res, cnt);
+      for (const auto& k : s) if (intersect(line, k)) ++cnt;
+      chmax(res, cnt);
     }
   }
   cout << res << endl;

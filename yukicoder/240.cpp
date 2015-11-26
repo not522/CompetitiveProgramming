@@ -7,11 +7,7 @@ int main() {
   const int dx[] = {-1, 1, -2, 2, -2, 2, -1, 1};
   for (int i = 0; i < 3; ++i) {
     auto ss = s;
-    for (auto p : s) {
-      for (int k = 0; k < 8; ++k) {
-        ss.insert(make_tuple(get<0>(p) + dy[k], get<1>(p) + dx[k]));
-      }
-    }
+    for (auto p : s) for (int k = 0; k < 8; ++k) ss.insert(make_tuple(get<0>(p) + dy[k], get<1>(p) + dx[k]));
     s = ss;
   }
   int x, y;

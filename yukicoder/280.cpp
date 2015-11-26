@@ -1,9 +1,9 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 int main() {
   int n;
   cin >> n;
   vector<int> z(n);
-  for (int& i : z) cin >> i;
+  cin >> z;
   cout << z.back() << "/" << z[0] << endl;
 }

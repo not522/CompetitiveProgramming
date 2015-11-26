@@ -1,10 +1,9 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 int main() {
-  array<int, 3> h, hh;
+  vector<int> h(3), hh(3);
   string s;
-  cin >> h[0] >> h[1] >> h[2] >> s;
-  hh[0] = hh[1] = hh[2] = 0;
+  cin >> h >> s;
   for (char c : s) {
     if (c == 'G') ++hh[0];
     if (c == 'C') ++hh[1];

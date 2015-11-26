@@ -1,14 +1,13 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 int main() {
-  array<int, 3> l, a;
-  for (int& i : l) cin >> i;
-  for (int& i : a) cin >> i;
-  sort(l.begin(), l.end());
+  vector<int> l(3), a(3);
+  cin >> l >> a;
+  sort(l);
   int res = numeric_limits<int>::max();
-  int sum = 2 * accumulate(l.begin(), l.end(), 0) * accumulate(a.begin(), a.end(), 0);
+  int sum = 2 * accumulate(l) * accumulate(a);
   do {
-    res = min(res, sum - 2 * inner_product(l.begin(), l.end(), a.begin(), 0));
-  } while (next_permutation(l.begin(), l.end()));
+    res = min(res, sum - 2 * inner_product(l, a));
+  } while (next_permutation(l));
   cout << res << endl;
 }

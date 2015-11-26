@@ -16,9 +16,7 @@ int main() {
   for (int i = 0; i < k; ++i) {
     int d;
     cin >> d;
-    for (const auto& edge : graph.getEdges()) {
-      if (now.count(edge.from) && d == edge.cost) next.insert(edge.to);
-    }
+    for (const auto& edge : graph.getEdges()) if (now.count(edge.from) && d == edge.cost) next.insert(edge.to);
     now = next;
     next.clear();
   }

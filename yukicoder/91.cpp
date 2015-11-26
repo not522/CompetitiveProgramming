@@ -1,11 +1,11 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 int main() {
-  array<int, 3> a;
-  for (int& i : a) cin >> i;
+  vector<int> a(3);
+  cin >> a;
   int res = 0;
   while (a[2] >= 0) {
-    sort(a.begin(), a.end());
+    sort(a);
     int r = a[0];
     for (int& i : a) i -= r;
     res += r;

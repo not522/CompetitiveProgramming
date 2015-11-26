@@ -1,12 +1,11 @@
+#include "vector.hpp"
 #include "container/union_find.hpp"
 
 int main() {
   int w, h;
   cin >> w >> h;
   vector<vector<int>> m(h, vector<int>(w));
-  for (auto& i : m) {
-    for (int& j : i) cin >> j;
-  }
+  cin >> m;
   UnionFind uf(w * h);
   bool possible = false;
   for (int i = 0; i < h; ++i) {

@@ -1,3 +1,4 @@
+#include "vector.hpp"
 #include "dp/memoized_recursion.hpp"
 
 class Sushi : public MemoizedRecursion<int> {
@@ -18,7 +19,7 @@ int main() {
   int n;
   cin >> n;
   vector<int> v(n);
-  for (int& i : v) cin >> i;
+  cin >> v;
   Sushi sushi(v);
   cout << sushi.solve(n - 1) << endl;
 }

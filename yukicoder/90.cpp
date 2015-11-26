@@ -1,4 +1,4 @@
-#include "template.hpp"
+#include "minmax.hpp"
 
 int main() {
   int n, m;
@@ -14,10 +14,8 @@ int main() {
   int res = 0;
   do {
     int r = 0;
-    for (int i = 0; i < n; ++i) {
-      for (int j = i + 1; j < n; ++j) r += k[make_tuple(v[i], v[j])];
-    }
-    res = max(res, r);
+    for (int i = 0; i < n; ++i) for (int j = i + 1; j < n; ++j) r += k[make_tuple(v[i], v[j])];
+    chmax(res, r);
   } while (next_permutation(v.begin(), v.end()));
   cout << res << endl;
 }

@@ -1,3 +1,4 @@
+#include "minmax.hpp"
 #include "string/split.hpp"
 
 int main() {
@@ -13,7 +14,7 @@ int main() {
     for (int j = 0; j < d && i + j < s.size() && s[i + j] == 'x'; ++j) {
       ss[i + j] = 'o';
       auto v = split(ss, 'x');
-      res = max(res, max_element(v.begin(), v.end())->size());
+      chmax(res, max_element(v.begin(), v.end())->size());
     }
   }
   cout << res << endl;

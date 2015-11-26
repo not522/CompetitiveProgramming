@@ -1,4 +1,4 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 int solve(vector<int> a, vector<int> b) {
   while (!b.empty() && b.back() <= a.back()) b.pop_back();
@@ -10,12 +10,12 @@ int main() {
   int nw;
   cin >> nw;
   vector<int> w(nw);
-  for (int& i : w) cin >> i;
-  sort(w.rbegin(), w.rend());
+  cin >> w;
+  rsort(w);
   int nb;
   cin >> nb;
   vector<int> b(nb);
-  for (int& i : b) cin >> i;
-  sort(b.rbegin(), b.rend());
+  cin >> b;
+  rsort(b);
   cout << max(solve(w, b), solve(b, w)) << endl;
 }

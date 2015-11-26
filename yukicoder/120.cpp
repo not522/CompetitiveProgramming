@@ -1,4 +1,4 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 void solve() {
   int n;
@@ -11,11 +11,11 @@ void solve() {
   }
   vector<int> v = {0, 0, 0};
   for (auto i : m) v.emplace_back(i.second);
-  sort(v.rbegin(), v.rend());
+  rsort(v);
   int res = 0;
   while (v[2] > 0) {
     for (int i = 0; i < 3; ++i) --v[i];
-    sort(v.rbegin(), v.rend());
+    rsort(v);
     ++res;
   }
   cout << res << endl;

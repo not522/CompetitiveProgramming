@@ -13,9 +13,6 @@ int main() {
     }
   }
   BipartiteMatching match(graph);
-  if (match.solve() != n) {
-    cout << -1 << endl;
-  } else {
-    for (int i = 0; i < n; ++i) cout << match.match[i] - n << endl;
-  }
+  if (match.solve() != n) cout << -1 << endl;
+  else for (int i = 0; i < n; ++i) cout << match.match[i] - n << endl;
 }

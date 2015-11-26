@@ -1,10 +1,10 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 int main() {
   int n, res = 0;
   cin >> n;
   vector<int> a(n);
-  for (int& i : a) cin >> i;
+  cin >> a;
   for (int i = 0; i < n - 2; ++i) {
     auto itr = a.begin() + i;
     if (set<int>(itr, itr + 3).size() != 3u) continue;

@@ -33,9 +33,7 @@ int main() {
   cin >> k >> n;
   Prime prime(n);
   vector<int> p;
-  for (int i = k; i <= n; ++i) {
-    if (prime.isPrime(i)) p.emplace_back(i);
-  }
+  for (int i = k; i <= n; ++i) if (prime.isPrime(i)) p.emplace_back(i);
   auto v = p;
   for (int& i : v) {
     while (i >= 10) {

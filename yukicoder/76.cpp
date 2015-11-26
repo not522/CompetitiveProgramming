@@ -7,9 +7,7 @@ int main() {
     for (int j = 1; j < i; ++j) p[i] -= p[j] * v[i - j + 1];
   }
   p[6] = 1 - accumulate(p.begin(), p.end() - 1, 0.);
-  for (int i = 7; i <= 1000000; ++i) {
-    v.emplace_back(inner_product(p.begin() + 1, p.end(), v.rbegin(), 0.) + 1);
-  }
+  for (int i = 7; i <= 1000000; ++i) v.emplace_back(inner_product(p.begin() + 1, p.end(), v.rbegin(), 0.) + 1);
   int t;
   cin >> t;
   for (int i = 0; i < t; ++i) {
