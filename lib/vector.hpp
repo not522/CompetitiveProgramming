@@ -26,3 +26,7 @@ template<typename T> void reverse(vector<T>& v) {
 template<typename T> void unique(vector<T>& v) {
   v.erase(unique(v.begin(), v.end()), v.end());
 }
+
+template<typename T> bool next_permutation(vector<T>& v) {
+  return next_permutation(v.begin(), v.end());
+}
