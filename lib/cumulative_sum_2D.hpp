@@ -13,6 +13,8 @@ private:
   vector<RangeValue> rangeValue;
 
 public:
+  CumulativeSum2D() {}
+
   CumulativeSum2D(int n, int m) : val(n + 1, vector<Value>(m + 1, Value(0))) {}
   
   template<typename T> CumulativeSum2D(T v) {
