@@ -1,7 +1,8 @@
 #pragma once
+#include "ordered.hpp"
 #include "arithmetic.hpp"
 
-template<typename T> class Vector : public arithmetic::Addition<Vector<T>>, public arithmetic::Subtraction<Vector<T>> {
+template<typename T> class Vector : public arithmetic::Addition<Vector<T>>, public arithmetic::Subtraction<Vector<T>>, public Ordered<Vector<T>> {
 protected:
   vector<T> val;
 
@@ -24,6 +25,12 @@ public:
 
   T operator*(const Vector& v) const {
     return inner_product(val.begin(), val.end(), const_cast<Vector&>(v).begin(), T(0));
+  }
+
+  bool operator<(const Vector& v) const {
+    if (size() != v.size()) return size() < v.size();
+    for (int i = 0; i < size(); ++i) if (val[i] != v.val[i]) return val[i] < v.val[i];
+    return false;
   }
 
   int size() const {

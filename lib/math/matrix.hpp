@@ -1,7 +1,8 @@
 #pragma once
+#include "ordered.hpp"
 #include "math/vector.hpp"
 
-template<typename T> class Matrix : public arithmetic::Addition<Matrix<T>>, public arithmetic::Subtraction<Matrix<T>> {
+template<typename T> class Matrix : public arithmetic::Addition<Matrix<T>>, public arithmetic::Subtraction<Matrix<T>>, public Ordered<Matrix<T>> {
 protected:
   vector<Vector<T>> val;
 
@@ -44,6 +45,12 @@ public:
     Vector<T> res(size());
     for (int i = 0; i < size(); ++i) res[i] += val[i] * v;
     return res;
+  }
+
+  bool operator<(const Matrix& m) const {
+    if (size() != m.size()) return size() < m.size();
+    for (int i = 0; i < size(); ++i) if (val[i] != m.val[i]) return val[i] < m.val[i];
+    return false;
   }
 
   int size() const {
