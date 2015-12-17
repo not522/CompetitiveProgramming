@@ -9,19 +9,17 @@ protected:
 public:
   Matrix(int n, int m) : val(n, Vector<T>(m)) {}
 
-  Vector<T>& operator[](int n) {
-    return val[n];
+  Vector<T>& operator[](int n) {return val[n];}
+
+  Matrix operator+=(const Matrix& m) {
+    for (int i = 0; i < (int)val.size(); ++i) val[i] += m[i];
+    return *this;
   }
 
-	Matrix operator+=(const Matrix& m) {
-    for (int i = 0; i < (int)val.size(); ++i) val[i] += m[i];
-		return *this;
-	}
-
-	Matrix operator-=(const Matrix& m) {
+  Matrix operator-=(const Matrix& m) {
     for (int i = 0; i < (int)val.size(); ++i) val[i] -= m[i];
-		return *this;
-	}
+    return *this;
+  }
 
   Matrix operator*=(const Matrix& _m) {
     Matrix &m = const_cast<Matrix&>(_m);

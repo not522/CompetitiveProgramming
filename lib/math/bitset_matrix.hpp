@@ -11,23 +11,19 @@ public:
 
   BitsetMatrix(int n, int m) : val(n, Bitset(m)) {}
 
-  Bitset& operator[](int n) {
-    return val[n];
+  Bitset& operator[](int n) {return val[n];}
+
+  const Bitset& operator[](int n) const {return val[n];}
+
+  BitsetMatrix operator+=(const BitsetMatrix& m) {
+    for (int i = 0; i < size(); ++i) val[i] ^= m[i];
+    return *this;
   }
 
-  const Bitset& operator[](int n) const {
-    return val[n];
+  BitsetMatrix operator-=(const BitsetMatrix& m) {
+    for (int i = 0; i < size(); ++i) val[i] ^= m[i];
+    return *this;
   }
-
-	BitsetMatrix operator+=(const BitsetMatrix& m) {
-    for (int i = 0; i < size(); ++i) val[i] ^= m[i];
-		return *this;
-	}
-
-	BitsetMatrix operator-=(const BitsetMatrix& m) {
-    for (int i = 0; i < size(); ++i) val[i] ^= m[i];
-		return *this;
-	}
 
   BitsetMatrix operator*=(const BitsetMatrix& _m) {
     BitsetMatrix m = _m.transpose(), res(size());
@@ -56,9 +52,7 @@ public:
     return res;
   }
 
-  int size() const {
-    return val.size();
-  }
+  int size() const {return val.size();}
 
   int rank() const {
     int n = 0, r = 0;
@@ -66,9 +60,7 @@ public:
     for (int i = 0; i < size(); ++i) n = max(n, mat[i].size());
     for (int i = 0; i < n; ++i) {
       int p = r;
-      for (int j = r + 1; j < size(); ++j) {
-        if (abs(mat[j][i]) > abs(mat[p][i])) p = j;
-      }
+      for (int j = r + 1; j < size(); ++j) if (abs(mat[j][i]) > abs(mat[p][i])) p = j;
       if (mat[p][i] == 0) continue;
       swap(mat[r], mat[p]);
       for (int j = r + 1; j < size(); ++j) {

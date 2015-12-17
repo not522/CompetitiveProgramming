@@ -12,37 +12,33 @@ private:
   }
 
 public:
-	Polynomial() {
-    normalize();
-  }
+  Polynomial() {normalize();}
 
-	Polynomial(const vector<T>& val) : val(val) {
-    normalize();
-  }
+  Polynomial(const vector<T>& val) : val(val) {normalize();}
 
   Polynomial(const int n) : val(vector<T>(n)) {}
 
   Polynomial(const int n, const T val) : val(vector<T>(n, val)) {}
 
-	Polynomial operator+=(const Polynomial& p) {
+  Polynomial operator+=(const Polynomial& p) {
     for (int i = 0; i < p.size(); ++i) {
       if (int(val.size()) == i) val.emplace_back(p[i]);
       else val[i] += p[i];
     }
     normalize();
-		return *this;
-	}
+    return *this;
+  }
 
-	Polynomial operator-=(const Polynomial& p) {
+  Polynomial operator-=(const Polynomial& p) {
     for (int i = 0; i < p.size(); ++i) {
       if (int(val.size()) == i) val.emplace_back(-p[i]);
       else val[i] -= p[i];
     }
     normalize();
-		return *this;
-	}
+    return *this;
+  }
 
-	Polynomial operator*=(const Polynomial& p) {
+  Polynomial operator*=(const Polynomial& p) {
     int a = size(), b = p.size();
     if (min(a, b) <= 256) {
       Polynomial res;

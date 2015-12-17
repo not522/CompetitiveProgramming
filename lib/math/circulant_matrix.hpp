@@ -22,7 +22,7 @@ public:
   }
   
   // TODO FFT
-	CirculantMatrix operator/=(CirculantMatrix& m) {
+  CirculantMatrix operator/=(CirculantMatrix& m) {
     int n = this->size();
     SquareMatrix<T> a(n), b(n);
     for (int i = 0; i < n; ++i) {
@@ -34,7 +34,7 @@ public:
     a /= b;
     for (int i = 0; i < n; ++i) (*this)[i] = a[i][0];
     return *this;
-	}
+  }
 
   CirculantMatrix operator/(CirculantMatrix m) {
     CirculantMatrix res = *this;

@@ -19,8 +19,8 @@ public:
 };
 
 inline ostream& operator<<(ostream& os, const Line& line) {
-	os << line.a << " " << line.b;
-	return os;
+  os << line.a << " " << line.b;
+  return os;
 }
 
 inline istream& operator>>(istream& is, Line& line) {

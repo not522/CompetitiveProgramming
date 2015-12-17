@@ -8,23 +8,17 @@ private:
 public:
   PermutationMatrix(int Nb) : val(Nb) {}
 
-  int& operator[](int n) {
-    return val[n];
-  }
-	
+  int& operator[](int n) {return val[n];}
+
   PermutationMatrix operator*=(const PermutationMatrix& m) {
     PermutationMatrix res(size());
     for (int i = 0; i < size(); ++i) res[i] = val[const_cast<PermutationMatrix&>(m)[i]];
     return *this = res;
   }
 
-	PermutationMatrix operator/=(const PermutationMatrix& m) {
-		return *this *= m.inverse();
-	}
+  PermutationMatrix operator/=(const PermutationMatrix& m) {return *this *= m.inverse();}
 
-  int size() const {
-    return val.size();
-  }
+  int size() const {return val.size();}
 
   PermutationMatrix identity() const {
     PermutationMatrix res(size());

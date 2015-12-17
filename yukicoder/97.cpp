@@ -1,14 +1,15 @@
 #include "math/mint.hpp"
 
 unsigned xor128_x = 123456789, xor128_y = 362436069, xor128_z = 521288629, xor128_w = 88675123;
+
 unsigned xor128() {
-	unsigned t = xor128_x ^ (xor128_x << 11);
-	xor128_x = xor128_y; xor128_y = xor128_z; xor128_z = xor128_w;
-	return xor128_w = xor128_w ^ (xor128_w >> 19) ^ (t ^ (t >> 8));
+  unsigned t = xor128_x ^ (xor128_x << 11);
+  xor128_x = xor128_y; xor128_y = xor128_z; xor128_z = xor128_w;
+  return xor128_w = xor128_w ^ (xor128_w >> 19) ^ (t ^ (t >> 8));
 }
+
 void generateA(int N, int A[]) {
-  for(int i = 0; i < N; ++ i)
-  A[i] = xor128() % 100003;
+  for(int i = 0; i < N; ++ i) A[i] = xor128() % 100003;
 }
 
 int main() {

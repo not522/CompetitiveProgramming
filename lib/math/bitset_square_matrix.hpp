@@ -7,9 +7,7 @@ public:
 
   BitsetSquareMatrix(const BitsetMatrix& m) : BitsetMatrix(m) {}
 
-  BitsetSquareMatrix operator/=(const BitsetSquareMatrix& m) {
-		return *this *= m.inverse();
-	}
+  BitsetSquareMatrix operator/=(const BitsetSquareMatrix& m) {return *this *= m.inverse();}
 
   BitsetSquareMatrix identity() const {
     BitsetSquareMatrix res(size());

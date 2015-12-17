@@ -7,9 +7,9 @@ public:
 
   SquareMatrix(const Matrix<T>& m) : Matrix<T>(m) {}
 
-	SquareMatrix operator/=(const SquareMatrix& m) {
-		return *this *= m.inverse();
-	}
+  SquareMatrix operator/=(const SquareMatrix& m) {
+    return *this *= m.inverse();
+  }
 
   SquareMatrix identity() const {
     SquareMatrix res(this->size());

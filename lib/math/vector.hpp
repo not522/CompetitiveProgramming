@@ -12,16 +12,16 @@ public:
   T& operator[](int n) {
     return val[n];
   }
-	
-	Vector operator+=(const Vector& v) {
+
+  Vector operator+=(const Vector& v) {
     for (int i = 0; i < size(); ++i) val[i] += v[i];
-		return *this;
-	}
-	
-	Vector operator-=(const Vector& v) {
+    return *this;
+  }
+
+  Vector operator-=(const Vector& v) {
     for (int i = 0; i < size(); ++i) val[i] -= v[i];
-		return *this;
-	}
+    return *this;
+  }
 
   T operator*(const Vector& v) const {
     return inner_product(val.begin(), val.end(), const_cast<Vector&>(v).begin(), T(0));

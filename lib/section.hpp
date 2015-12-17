@@ -93,8 +93,8 @@ inline ostream& operator<<(ostream& os, const Section& s) {
 }
 
 inline istream& operator>>(istream& is, Section& s) {
-	long long a, b;
-	is >> a >> b;
+  long long a, b;
+  is >> a >> b;
   s = Section(a, b + 1);
-	return is;
+  return is;
 }

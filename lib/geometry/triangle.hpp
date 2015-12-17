@@ -17,8 +17,8 @@ public:
 };
 
 inline ostream& operator<<(ostream& os, const Triangle& triangle) {
-	os << triangle.a << " " << triangle.b << " " << triangle.c;
-	return os;
+  os << triangle.a << " " << triangle.b << " " << triangle.c;
+  return os;
 }
 
 inline istream& operator>>(istream& is, Triangle& triangle) {
