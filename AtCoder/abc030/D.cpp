@@ -1,4 +1,4 @@
-#include "string/to_integer.hpp"
+#include "template.hpp"
 
 int main() {
   int n, a;
@@ -9,7 +9,7 @@ int main() {
   for (int& i : b) cin >> i;
   for (int& i : b) --i;
   if (k.size() < 7u) {
-    for (int i = 0, z = toInteger(k); i < z; ++i) a = b[a];
+    for (int i = 0, z = stoi(k); i < z; ++i) a = b[a];
     cout << a + 1 << endl;
     return 0;
   }
