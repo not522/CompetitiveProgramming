@@ -7,7 +7,7 @@ template <typename T> inline istream& operator>>(istream &s, vector<T> &v) {
 }
 
 template <typename T> inline ostream& operator<<(ostream &s, const vector<T> &v) {
-  for (T &t : v) s << t << endl;
+  for (const T &t : v) s << t << endl;
   return s;
 }
 
