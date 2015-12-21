@@ -2,7 +2,7 @@
 #include "ordered.hpp"
 #include "arithmetic.hpp"
 
-template<typename T> class Vector : public arithmetic::Addition<Vector<T>>, public arithmetic::Subtraction<Vector<T>>, public Ordered<Vector<T>> {
+template<typename T> class Vector : public Addition<Vector<T>>, public Subtraction<Vector<T>>, public Ordered<Vector<T>> {
 protected:
   vector<T> val;
 

@@ -1,7 +1,7 @@
 #pragma once
 #include "arithmetic.hpp"
 
-template<typename T> class MultiSet : public multiset<T>, public arithmetic::Multiplication<MultiSet<T>> {
+template<typename T> class MultiSet : public multiset<T>, public Multiplication<MultiSet<T>> {
 public:
   MultiSet operator*=(const MultiSet& m) {
     MultiSet a = *this, b = m, res;

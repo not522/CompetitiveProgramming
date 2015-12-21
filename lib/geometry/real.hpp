@@ -3,7 +3,7 @@
 #include "ordered.hpp"
 #include "math/basic.hpp"
 
-class Real : public Arithmetic<Real>, public arithmetic::Modulus<Real>, public Ordered<Real> {
+class Real : public Arithmetic<Real>, public Modulus<Real>, public Ordered<Real> {
 private:
   long double val;
 

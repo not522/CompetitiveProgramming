@@ -1,7 +1,7 @@
 #pragma once
 #include "math/matrix.hpp"
 
-template<typename T> class SquareMatrix : public Matrix<T>, public arithmetic::Division<SquareMatrix<T>> {
+template<typename T> class SquareMatrix : public Matrix<T>, public Division<SquareMatrix<T>> {
 public:
   SquareMatrix(int n) : Matrix<T>(n, n) {}
 

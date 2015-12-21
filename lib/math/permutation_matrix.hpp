@@ -1,7 +1,7 @@
 #pragma once
 #include "arithmetic.hpp"
 
-class PermutationMatrix : public arithmetic::Multiplication<PermutationMatrix>, public arithmetic::Division<PermutationMatrix> {
+class PermutationMatrix : public Multiplication<PermutationMatrix>, public Division<PermutationMatrix> {
 private:
   vector<int> val;
 

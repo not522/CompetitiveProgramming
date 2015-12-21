@@ -1,7 +1,7 @@
 #pragma once
 #include "math/bitset_matrix.hpp"
 
-class BitsetSquareMatrix : public BitsetMatrix {
+class BitsetSquareMatrix : public BitsetMatrix, public Division<BitsetSquareMatrix> {
 public:
   BitsetSquareMatrix(int n) : BitsetMatrix(n, n) {}
 

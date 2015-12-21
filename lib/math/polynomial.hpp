@@ -2,7 +2,7 @@
 #include "arithmetic.hpp"
 #include "math/fft.hpp"
 
-template<typename T> class Polynomial : public Arithmetic<Polynomial<T>>, public arithmetic::Modulus<Polynomial<T>> {
+template<typename T> class Polynomial : public Arithmetic<Polynomial<T>>, public Modulus<Polynomial<T>> {
 private:
   vector<T> val;
 

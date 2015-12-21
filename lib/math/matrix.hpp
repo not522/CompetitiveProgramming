@@ -2,7 +2,7 @@
 #include "ordered.hpp"
 #include "math/vector.hpp"
 
-template<typename T> class Matrix : public arithmetic::Addition<Matrix<T>>, public arithmetic::Subtraction<Matrix<T>>, public Ordered<Matrix<T>> {
+template<typename T> class Matrix : public Addition<Matrix<T>>, public Subtraction<Matrix<T>>, public Ordered<Matrix<T>> {
 protected:
   vector<Vector<T>> val;
 

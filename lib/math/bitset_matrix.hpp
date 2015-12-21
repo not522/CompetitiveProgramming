@@ -2,7 +2,7 @@
 #include "arithmetic.hpp"
 #include "container/bitset.hpp"
 
-class BitsetMatrix : public Arithmetic<BitsetMatrix> {
+class BitsetMatrix : public IndivisibleArithmetic<BitsetMatrix> {
 private:
   vector<Bitset> val;
 

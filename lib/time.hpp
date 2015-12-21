@@ -1,7 +1,7 @@
 #pragma once
 #include "arithmetic.hpp"
 
-struct Time : public arithmetic::Addition<Time>, public arithmetic::Subtraction<Time> {
+struct Time : public Addition<Time>, public Subtraction<Time> {
   int hour, minute, second;
 
   Time() : hour(0), minute(0), second(0) {}
