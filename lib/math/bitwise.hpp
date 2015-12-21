@@ -34,6 +34,8 @@ public:
   bool operator>(const Bitwise& b) {
     return val > b.val;
   }
+
+  operator T() const {return val;}
 };
 
 template<typename T> Bitwise<T> abs(const Bitwise<T>& b) {
