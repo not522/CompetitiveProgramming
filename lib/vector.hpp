@@ -27,6 +27,10 @@ template<typename T> void unique(vector<T>& v) {
   v.erase(unique(v.begin(), v.end()), v.end());
 }
 
+template<typename T> void nth_element(vector<T>& v, int n) {
+  nth_element(v.begin(), v.begin() + n, v.end());
+}
+
 template<typename T> bool next_permutation(vector<T>& v) {
   return next_permutation(v.begin(), v.end());
 }

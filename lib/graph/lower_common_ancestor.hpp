@@ -4,12 +4,13 @@
 
 template<typename Edge> class LowerCommonAncestor {
 private:
-  const Tree<Edge> tree;
   vector<int> depth;
   vector<vector<int>> ancestor;
 
 public:
-  LowerCommonAncestor(const Tree<Edge>& tree) : tree(tree), depth(tree.size(), -1), ancestor(tree.size()) {}
+  const Tree<Edge> tree;
+
+  LowerCommonAncestor(const Tree<Edge>& tree) : depth(tree.size(), -1), ancestor(tree.size()), tree(tree) {}
 
   int calcDepth(int v) {
     if (depth[v] != -1) return depth[v];
@@ -21,8 +22,7 @@ public:
     if (depth >= (int)ancestor[v].size()) ancestor[v].resize(depth + 1, -1);
     if (ancestor[v][depth] != -1) return ancestor[v][depth];
     if (depth == 0) return ancestor[v][depth] = tree.parent[v].to;
-    int a = calcAncestor(v, depth - 1);
-    return ancestor[v][depth] = calcAncestor(a, depth - 1);
+    return ancestor[v][depth] = calcAncestor(calcAncestor(v, depth - 1), depth - 1);
   }
 
   int solve(int v1, int v2) {

@@ -6,7 +6,7 @@ private:
   const T DEFAULT;
   int n;
   vector<T> d;
-  
+
   T query(int a, int b, int k, int l, int r) {
     if (r <= a || b <= l) return DEFAULT;
     if (a <= l && r <= b) return d[k];
@@ -17,9 +17,9 @@ private:
 
 protected:
   virtual T function(T l, T r) = 0;
-  
+
 public:
-  SegmentTree(int m, T def = numeric_limits<T>::max()) : DEFAULT(def) , n(2 << least_bit(m - 1)), d(2 * n - 1, DEFAULT) {}
+  SegmentTree(int n, T def = numeric_limits<T>::max()) : DEFAULT(def) , n(max(2 << most_bit(n - 1), 2)), d(2 * this->n - 1, DEFAULT) {}
 
   void update(int k, T a) {
     k += n - 1;
@@ -31,11 +31,17 @@ public:
   }
 
   // [a,b)
-  T query(int a, int b) {
-    return query(a, b, 0, 0, n);
-  }
+  T query(int a, int b) {return query(a, b, 0, 0, n);}
 
-  T getValue(int k) {
-    return d[k + n - 1];
+  T getValue(int k) {return d[k + n - 1];}
+
+  int lower_bound(T t) {
+    if (d[0] < t) return n;
+    int i = 0;
+    while (i < n - 1) {
+      if (d[2 * i + 1] >= t) i = 2 * i + 1;
+      else i = 2 * i + 2;
+    }
+    return i - (n - 1);
   }
 };
