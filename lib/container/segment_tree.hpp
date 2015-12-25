@@ -19,10 +19,7 @@ protected:
   virtual T function(T l, T r) = 0;
   
 public:
-  SegmentTree(int m, T def = numeric_limits<T>::max()) : DEFAULT(def) {
-    n = 2 << least_bit(m - 1);
-    d.resize(2 * n - 1, DEFAULT);
-  }
+  SegmentTree(int m, T def = numeric_limits<T>::max()) : DEFAULT(def) , n(2 << least_bit(m - 1)), d(2 * n - 1, DEFAULT) {}
 
   void update(int k, T a) {
     k += n - 1;
