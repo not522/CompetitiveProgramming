@@ -35,7 +35,7 @@ public:
     }
   }
 
-  void solve(int from) {solve({from});}
+  void solve(int from) {solve(vector<int>({from}));}
 
   bool isReachable(int v) {
     return visited[v];
