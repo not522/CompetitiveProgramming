@@ -45,9 +45,9 @@ public:
     return *this;
   }
 
-  Mint operator++() {return val += 1;}
+  Mint operator++() {return *this += 1;}
 
-  Mint operator--() {return val -= 1;}
+  Mint operator--() {return *this -= 1;}
 
   operator long long() {return val;}
 
