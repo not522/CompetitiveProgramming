@@ -6,13 +6,9 @@ template<typename Edge> struct BFSState {
 
   BFSState(int pos, int prv = -1) : pos(pos), prv(prv) {}
   
-  BFSState next(const Edge& edge) const {
-    return BFSState(edge.to, pos);
-  }
+  BFSState next(const Edge& edge) const {return BFSState(edge.to, pos);}
 
-  int getPos() {
-    return pos;
-  }
+  int getPos() {return pos;}
 };
 
 template<typename Graph, typename State = BFSState<typename Graph::EdgeType>> class BFS : public Search<Graph, State> {
@@ -22,9 +18,7 @@ protected:
 private:
   queue<State> que;
   
-  void push(const State& state) {
-    que.push(state);
-  }
+  void push(const State& state) {que.push(state);}
   
   State next() {
     State now = que.front();
@@ -32,32 +26,26 @@ private:
     return now;
   }
   
-  bool isRunning() {
-    return !que.empty();
-  }
+  bool isRunning() {return !que.empty();}
 
 public:
   BFS(const Graph& graph) : Search<Graph, State>(graph) {}
 };
 
-namespace bfs_distance {
-  template<typename Graph> class BFSDistance : public BFS<Graph> {
-  private:
-    typedef BFSState<typename Graph::EdgeType> State;
+template<typename Graph> class BFSDistance : public BFS<Graph> {
+private:
+  typedef BFSState<typename Graph::EdgeType> State;
 
-    void visit(const State& state) {
-      if (state.prv != -1) dis[state.pos] = dis[state.prv] + 1;
-    }
+  void visit(const State& state) {if (state.prv != -1) dis[state.pos] = dis[state.prv] + 1;}
 
-  public:
-    vector<int> dis;
+public:
+  vector<int> dis;
 
-    BFSDistance(const Graph& graph) : BFS<Graph>(graph), dis(graph.size(), 0) {}
-  };
-}
+  BFSDistance(const Graph& graph) : BFS<Graph>(graph), dis(graph.size(), 0) {}
+};
 
-template<typename Graph> inline bfs_distance::BFSDistance<Graph> bfsDistance(const Graph& graph, int from) {
-  bfs_distance::BFSDistance<Graph> bfs(graph);
+template<typename Graph> inline BFSDistance<Graph> bfsDistance(const Graph& graph, int from) {
+  BFSDistance<Graph> bfs(graph);
   bfs.solve(from);
   return bfs;
 }

@@ -18,8 +18,8 @@ protected:
 public:
   Search(const Graph& graph) : graph(graph), visited(graph.size(), false) {}
 
-  void solve(int from) {
-    push(State(from));
+  void solve(vector<int> from) {
+    for (int i : from) push(State(i));
     while (isRunning()) {
       State now = next();
       int pos = now.getPos();
@@ -34,6 +34,8 @@ public:
       }
     }
   }
+
+  void solve(int from) {solve({from});}
 
   bool isReachable(int v) {
     return visited[v];
