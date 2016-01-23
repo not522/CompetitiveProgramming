@@ -7,4 +7,4 @@ ans
 *.out
 *.ans
 *.diff
-*.txt
+/*.txt
