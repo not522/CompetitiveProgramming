@@ -3,9 +3,6 @@
 int main() {
   int n, m;
   cin >> n >> m;
-  double a = 30 * n + 0.5 * m;
-  double b = 6 * m;
-  if (a < b) swap(a, b);
-  cerr << a << " " << b << endl;
-  cout << fixed << setprecision(15) << min(abs(a - b), abs(360 - a + b)) << endl;
+  int a = (60 * n + m) % 720, b = 12 * m;
+  cout << 0.5 * min(abs(a - b), 720 - abs(a - b)) << endl;
 }
