@@ -29,6 +29,10 @@ template<typename T> void nth_element(vector<T>& v, int n) {nth_element(v.begin(
 
 template<typename T> bool next_permutation(vector<T>& v) {return next_permutation(v.begin(), v.end());}
 
+template<typename T> int find(vector<T>& v, T t) {return find(v.begin(), v.end(), t) - v.begin();}
+
+template<typename T> int in(vector<T>& v, T t) {return find(v, t) != (int)v.size();}
+
 template<typename T> int lower_bound(vector<T>& v, T t) {return lower_bound(v.begin(), v.end(), t) - v.begin();}
 
 template<typename T> int upper_bound(vector<T>& v, T t) {return upper_bound(v.begin(), v.end(), t) - v.begin();}

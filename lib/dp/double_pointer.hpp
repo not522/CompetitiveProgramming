@@ -8,20 +8,20 @@ private:
 protected:
   int front, back;
 
-  virtual bool valid(int) = 0;
-  virtual void pop(int) = 0;
-  virtual void push(int) = 0;
+  virtual bool valid() = 0;
+  virtual void pop() = 0;
+  virtual void push() = 0;
   
 public:
   DoublePointer(int n) : n(n) {}
 
   void solve() {
     for (front = 0, back = 0; front < n;) {
-      if (back < n && valid(back)) {
-        push(back);
+      if (back < n && valid()) {
+        push();
         ++back;
       } else {
-        if (front < back) pop(front);
+        if (front < back) pop();
         else ++back;
         ++front;
       }
