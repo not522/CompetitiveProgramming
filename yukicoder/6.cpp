@@ -6,15 +6,11 @@ private:
   vector<int> v;
   set<int> s;
 
-  bool valid(int back) {
-    return s.count(v[back]) == 0;
-  }
+  bool valid() {return s.count(v[back]) == 0;}
 
-  void pop(int front) {
-    s.erase(v[front]);
-  }
+  void pop() {s.erase(v[front]);}
 
-  void push(int back) {
+  void push() {
     s.insert(v[back]);
     if (mx <= s.size()) {
       mx = s.size();

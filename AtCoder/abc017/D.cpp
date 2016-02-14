@@ -7,16 +7,14 @@ private:
   set<int> s;
   Mint c;
 
-  bool valid(int back) {
-    return s.count(f[back]) == 0;
-  }
+  bool valid() {return s.count(f[back]) == 0;}
 
-  void pop(int front) {
+  void pop() {
     s.erase(f[front]);
     c -= dp[front];
   }
 
-  void push(int back) {
+  void push() {
     dp[back + 1] = c;
     s.insert(f[back]);
     c *= 2;
