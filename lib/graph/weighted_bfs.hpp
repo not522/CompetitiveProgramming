@@ -52,24 +52,26 @@ public:
   WeightedBFS(const Graph& graph) : Search<Graph, State>(graph), now(0) {}
 };
 
-namespace weighted_bfs_distance {
-  template<typename Graph> class WeightedBFSDistance : public WeightedBFS<Graph> {
-  private:
-    typedef WeightedBFSState<typename Graph::EdgeType> State;
+template<typename Graph> class WeightedBFSDistance : public WeightedBFS<Graph> {
+private:
+  typedef WeightedBFSState<typename Graph::EdgeType> State;
 
-    void visit(const State& state) {
-      if (state.edge.from != -1) dis[state.edge.to] = dis[state.edge.from] + state.edge.cost;
-    }
+  void visit(const State& state) {
+    if (state.edge.from != -1) dis[state.edge.to] = dis[state.edge.from] + state.edge.cost;
+  }
 
-  public:
-    vector<int> dis;
+public:
+  vector<int> dis;
 
-    WeightedBFSDistance(const Graph& graph) : WeightedBFS<Graph>(graph), dis(graph.size(), 0) {}
-  };
-}
+  WeightedBFSDistance(const Graph& graph) : WeightedBFS<Graph>(graph), dis(graph.size(), 0) {}
+};
 
-template<typename Graph> inline weighted_bfs_distance::WeightedBFSDistance<Graph> weightedBFSDistance(const Graph& graph, int from) {
-  weighted_bfs_distance::WeightedBFSDistance<Graph> bfs(graph);
+template<typename Graph> inline WeightedBFSDistance<Graph> weightedBFSDistance(const Graph& graph, int from) {
+  WeightedBFSDistance<Graph> bfs(graph);
   bfs.solve(from);
   return bfs;
+}
+
+template<typename Graph> inline typename Graph::EdgeType::CostType weightedBFSDistance(Graph& graph, int from, int to) {
+  return weightedBFSDistance(graph, from).dis[to];
 }

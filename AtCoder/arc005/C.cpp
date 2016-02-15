@@ -1,7 +1,7 @@
 #include "vector.hpp"
 #include "graph/adjacency_list.hpp"
 #include "graph/edge.hpp"
-#include "graph/shortest_path.hpp"
+#include "graph/weighted_bfs.hpp"
 
 int main() {
   int h, w, s = -1, g = -1;
@@ -23,5 +23,5 @@ int main() {
       }
     }
   }
-  cout << (shortestPath(graph, s, g) <= 2 ? "YES" : "NO") << endl;
+  cout << (weightedBFSDistance(graph, s, g) <= 2 ? "YES" : "NO") << endl;
 }

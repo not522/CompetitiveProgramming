@@ -12,17 +12,11 @@ template<typename Edge> struct DijkstraState {
 
   DijkstraState(const Edge& edge, Cost cost) : edge(edge), cost(cost) {}
 
-  DijkstraState next(const Edge& edge) const {
-    return DijkstraState(edge, cost + edge.cost);
-  }
+  DijkstraState next(const Edge& edge) const {return DijkstraState(edge, cost + edge.cost);}
 
-  bool operator<(const DijkstraState& state) const {
-    return cost > state.cost;
-  }
+  bool operator<(const DijkstraState& state) const {return cost > state.cost;}
 
-  int getPos() const {
-    return edge.to;
-  }
+  int getPos() const {return edge.to;}
 };
 
 template<typename Graph, bool Restoration = false, typename State = DijkstraState<typename Graph::EdgeType>> class Dijkstra : public Search<Graph, State> {
@@ -30,7 +24,7 @@ protected:
   typedef typename Graph::EdgeType Edge;
   typedef typename Edge::CostType Cost;
 
-  const Cost INF = numeric_limits<Cost>::max();
+  constexpr static Cost INF = numeric_limits<Cost>::max();
 
   priority_queue<State> que;
 
@@ -45,9 +39,7 @@ protected:
     return now;
   }
 
-  bool isRunning() {
-    return !que.empty();
-  }
+  bool isRunning() {return !que.empty();}
 
   void visit(const State& state) {
     if (Restoration) {
@@ -57,9 +49,7 @@ protected:
     }
   }
 
-  bool canPruning(const State& state) {
-    return dis[state.getPos()] <= state.cost;
-  }
+  bool canPruning(const State& state) {return dis[state.getPos()] <= state.cost;}
 
 public:
   vector<Cost> dis;
@@ -77,9 +67,7 @@ template<typename Graph> inline Dijkstra<Graph> shortestPath(Graph& graph, int f
 }
 
 template<typename Graph> inline typename Graph::EdgeType::CostType shortestPath(Graph& graph, int from, int to) {
-  Dijkstra<Graph> dijkstra(graph);
-  dijkstra.solve(from);
-  return dijkstra.dis[to];
+  return shortestPath(graph, from).dis[to];
 }
 
 template<typename Graph> inline Dijkstra<Graph, true> shortestPathTree(Graph& graph, int from) {
