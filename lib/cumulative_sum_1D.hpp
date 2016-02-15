@@ -1,7 +1,7 @@
 #pragma once
 #include "template.hpp"
 
-template<typename Value, bool rangeAdd = false> class CumulativeSum1D {
+template<typename Value, bool Add = false> class CumulativeSum1D {
 private:
   struct RangeValue {
     int i, j;
@@ -30,7 +30,7 @@ public:
 
   // [i,j)
   Value sum(int i, int j) {
-    if (rangeAdd && !rangeValue.empty()) {
+    if (Add && !rangeValue.empty()) {
       adjacent_difference(val.begin(), val.end(), val.begin());
       adjacent_difference(val.begin(), val.end(), val.begin());
       for (const auto& v : rangeValue) {
