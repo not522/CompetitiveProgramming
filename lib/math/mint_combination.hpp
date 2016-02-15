@@ -28,4 +28,9 @@ public:
     for (int i = 0; i < min(m, n - m); ++i) res = res * (n - i) / (i + 1);
     return res;
   }
+
+  Mint repetition(int n, int m) {
+    if (m == 0) return 1;
+    return combination(n + m - 1, m);
+  }
 };
