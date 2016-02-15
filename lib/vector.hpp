@@ -46,3 +46,5 @@ template<typename T> inline T inner_product(vector<T>& v, vector<T>& u) {return 
 template<typename T, typename Function> inline int count_if(vector<T> v, Function func) {return count_if(v.begin(), v.end(), func);}
 
 template<typename T, typename Function> inline void remove_if(vector<T>& v, Function func) {v.erase(remove_if(v.begin(), v.end(), func), v.end());}
+
+template<typename T, typename Function> inline bool any_of(vector<T> v, Function func) {return any_of(v.begin(), v.end(), func);}
