@@ -16,7 +16,6 @@ template<typename Graph, typename State = BFSState<typename Graph::EdgeType>> cl
 protected:
   typedef typename Graph::EdgeType Edge;
 
-private:
   queue<State> que;
   
   void push(const State& state) {que.push(state);}
@@ -58,6 +57,10 @@ template<typename Graph> inline BFSDistance<Graph> bfsDistance(const Graph& grap
   BFSDistance<Graph> bfs(graph);
   bfs.solve(from);
   return bfs;
+}
+
+template<typename Graph> inline typename Graph::EdgeType::CostType bfsDistance(const Graph& graph, int from, int to) {
+  return bfsDistance(graph, from).dis[to];
 }
 
 template<typename Graph> inline BFSDistance<Graph, true> bfsDistanceTree(const Graph& graph, int from) {

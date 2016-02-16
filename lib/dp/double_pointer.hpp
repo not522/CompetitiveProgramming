@@ -2,16 +2,16 @@
 #include "template.hpp"
 
 class DoublePointer {
-private:
-  int n;
-
 protected:
+  const int n;
+
   int front, back;
 
   virtual bool valid() = 0;
   virtual void pop() = 0;
   virtual void push() = 0;
-  
+  virtual void result() = 0;
+
 public:
   DoublePointer(int n) : n(n) {}
 
@@ -25,6 +25,7 @@ public:
         else ++back;
         ++front;
       }
+      result();
     }
   }
 };
