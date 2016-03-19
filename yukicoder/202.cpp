@@ -18,7 +18,7 @@ int main() {
       }
     }
     if (ok) {
-      c[make_pair(a, b)].emplace_back(make_pair(x, y));
+      c[make_pair(a, b)].emplace_back(x, y);
       ++res;
     }
   }

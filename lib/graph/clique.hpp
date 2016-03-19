@@ -56,7 +56,7 @@ public:
   vector<int> maximum() {
     for (int i = 0; i < graph.size(); ++i) degree.emplace_back(graph.getDegree(i));
     vector<pair<int, int>> v;
-    for (int i = 0; i < graph.size(); ++i) v.emplace_back(make_pair(degree[i], i));
+    for (int i = 0; i < graph.size(); ++i) v.emplace_back(degree[i], i);
     sort(v.begin(), v.end(), greater<pair<int, int>>());
     vector<int> maximumClique, current, remains;
     for (int i = 0; i < graph.size(); ++i) remains.emplace_back(v[i].second);

@@ -19,7 +19,7 @@ int main() {
     e += 4;
     e -= e % 5;
     if (e % 100 == 60) e += 40;
-    d.emplace_back(make_pair(s, e));
+    d.emplace_back(s, e);
   }
   sort(d.begin(), d.end());
   int t = 0;

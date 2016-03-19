@@ -10,7 +10,7 @@ int main() {
     p[i + n].first = a - p[i].first;
     p[i + n].second = b - p[i].second;
   }
-  p.emplace_back(make_pair(a, b));
+  p.emplace_back(a, b);
   remove_if(p, [&](pair<int, int> k){return k.first < k.second || a - k.first < b - k.second || k.first > a || k.second < 0;});
   sort(p, [](pair<int, int> i, pair<int, int> j){return i.first + i.second < j.first + j.second;});
   Combination<Mint> comb(a + b);

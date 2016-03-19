@@ -11,7 +11,7 @@ vector<pair<int, vector<int>>> solve(const vector<int>& p) {
       sum += p[int(i)];
       v.emplace_back(i);
     }
-    res.emplace_back(make_pair(sum, v));
+    res.emplace_back(sum, v);
   }
   return res;
 }

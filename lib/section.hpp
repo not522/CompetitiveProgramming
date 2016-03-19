@@ -15,15 +15,13 @@ public:
 
   Section() {}
 
-  Section(long long a, long long b) {
-    v.emplace_back(make_pair(a, b));
-  }
+  Section(long long a, long long b) {v.emplace_back(a, b);}
 
   Section operator&=(const Section& s) {
     VAL res;
     for (int i = 0, j = 0; i < (int)v.size() && j < (int)s.v.size(); ) {
       if (v[i].first < s.v[j].second && s.v[j].first < v[i].second) {
-        res.emplace_back(make_pair(max(v[i].first, s.v[j].first), min(v[i].second, s.v[j].second)));
+        res.emplace_back(max(v[i].first, s.v[j].first), min(v[i].second, s.v[j].second));
       }
       if (v[i].second < s.v[j].second) ++i;
       else ++j;
@@ -67,9 +65,9 @@ public:
 
   void complement() {
     VAL res;
-    if (v[0].first != MIN) res.emplace_back(make_pair(MIN, v[0].first));
-    for (int i = 0; i < (int)v.size() - 1; ++i) res.emplace_back(make_pair(v[i].second, v[i + 1].first));
-    if (v.back().second != MAX) res.emplace_back(make_pair(v.back().second, MAX));
+    if (v[0].first != MIN) res.emplace_back(MIN, v[0].first);
+    for (int i = 0; i < (int)v.size() - 1; ++i) res.emplace_back(v[i].second, v[i + 1].first);
+    if (v.back().second != MAX) res.emplace_back(v.back().second, MAX);
   }
 
   long long first() const {
