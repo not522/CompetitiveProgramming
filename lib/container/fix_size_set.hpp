@@ -3,7 +3,7 @@
 
 class FixSizeSet {
 private:
-  struct Iterator {
+  struct Iterator : public iterator<input_iterator_tag, int> {
   private:
     BitIterator val, n;
 

@@ -3,7 +3,7 @@
 
 class PowerSet {
 private:
-  class Iterator {
+  class Iterator : public iterator<input_iterator_tag, int> {
   private:
     BitIterator val;
 

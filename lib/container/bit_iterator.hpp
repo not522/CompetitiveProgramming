@@ -1,10 +1,10 @@
 #pragma once
 #include "bit_operation.hpp"
 
-class BitIterator {
+class BitIterator : public iterator<input_iterator_tag, int> {
 public:
 
-  class Iterator {
+  class Iterator : public iterator<input_iterator_tag, int> {
   private:
     int val, bit;
 
