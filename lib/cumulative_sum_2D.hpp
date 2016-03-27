@@ -42,9 +42,9 @@ public:
       int n = val.size() - 1;
       int m = val.front().size() - 1;
       for (int k = 0; k < 2; ++k) {
-        for (int i = 0; i < n; ++i) {
-          for (int j = 0; j < m; ++j) {
-            val[i + 1][j + 1] = val[i + 1][j + 1] - val[i][j + 1] - val[i + 1][j] + val[i][j];
+        for (int i = n - 1; i >= 0; --i) {
+          for (int j = m - 1; j >= 0; --j) {
+            val[i + 1][j + 1] -= val[i][j + 1] + val[i + 1][j] - val[i][j];
           }
         }
       }
