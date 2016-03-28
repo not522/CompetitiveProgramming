@@ -1,5 +1,5 @@
 #pragma once
-#include "graph/graph.hpp"
+#include "template.hpp"
 
 template<typename Edge> class Tree {
 public:
@@ -20,7 +20,7 @@ public:
   template<typename... Args> void addEdge(Args... args) {
     Edge edge(args...);
     parent[edge.from] = edge;
-    if (edge.from != edge.to) children[edge.to].emplace_back(edge.from);
+    children[edge.to].emplace_back(edge.from);
   }
 
   int getDepth(int v) {

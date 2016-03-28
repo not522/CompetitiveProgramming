@@ -44,8 +44,10 @@ protected:
   void visit(const State& state) {
     if (Restoration) {
       auto e = state.edge;
-      swap(e.from, e.to);
-      shortestPathTree.addEdge(e);
+      if (e.from != e.to) {
+        swap(e.from, e.to);
+        shortestPathTree.addEdge(e);
+      }
     }
   }
 

@@ -1,5 +1,4 @@
 #include "graph/edge.hpp"
-#include "graph/tree.hpp"
 #include "dp/tree_dp.hpp"
 
 class Salary : public TreeDP<Tree<Edge>, int> {
