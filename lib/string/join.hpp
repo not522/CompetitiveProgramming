@@ -1,8 +1,8 @@
 #pragma once
-#include "template.hpp"
+#include "string/to_string.hpp"
 
-string join(const vector<string> &v, char delim = ' ') {
+template<typename T> string join(const vector<T> &v, char delim = ' ') {
   string res;
-  for (const auto& s : v) res += delim + s;
+  for (const auto& s : v) res += delim + to_string(s);
   return res.substr(1);
 }
