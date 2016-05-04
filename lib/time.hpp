@@ -6,7 +6,7 @@ struct Time : public Addition<Time>, public Subtraction<Time> {
 
   Time() : hour(0), minute(0), second(0) {}
 
-  Time(int hour, int minute, int second) : hour(hour), minute(minute), second(second) {}
+  Time(int hour, int minute, int second) : hour(hour), minute(minute), second(second) {normalize();}
 
   int toMinutes() const {
     return hour * 60 + minute;
@@ -17,14 +17,24 @@ struct Time : public Addition<Time>, public Subtraction<Time> {
   }
 
   void normalize() {
-    if (second < 0) {
+    while (second < 0) {
       --minute;
       second += 60;
     }
-    if (minute < 0) {
+    while (second >= 60) {
+      ++minute;
+      second -= 60;
+    }
+    while (minute < 0) {
       --hour;
       minute += 60;
     }
+    while (minute >= 60) {
+      ++hour;
+      minute -= 60;
+    }
+    while (hour < 0) hour += 24;
+    while (hour >= 24) hour -= 24;
   }
 
   Time operator+=(const Time& time) {
