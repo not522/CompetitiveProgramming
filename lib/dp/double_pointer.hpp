@@ -10,7 +10,7 @@ protected:
   virtual bool valid() = 0;
   virtual void pop() = 0;
   virtual void push() = 0;
-  virtual void result() = 0;
+  void result() {}
 
 public:
   DoublePointer(int n) : n(n) {}
