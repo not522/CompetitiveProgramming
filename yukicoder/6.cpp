@@ -10,8 +10,9 @@ private:
 
   void pop() {s.erase(v[front]);}
 
-  void push() {
-    s.insert(v[back]);
+  void push() {s.insert(v[back]);}
+
+  void result() {
     if (mx <= s.size()) {
       mx = s.size();
       res = this->front;
