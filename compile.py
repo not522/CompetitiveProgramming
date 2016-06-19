@@ -1,16 +1,19 @@
 import os
 
-for root, dir, files in os.walk('/home/not/git/procon/'):
+path = os.path.abspath(os.path.dirname(__file__))
+library_path = os.getenv('LIBRARY_PATH')
+
+for root, dir, files in os.walk(path):
     if '.git' in root:
         continue
     for file in files:
-        filepath = os.path.join(root, file)
+        file_path = os.path.join(root, file)
         if '.cpp' in file:
-            os.system('g++ -O0 -Wall -Wextra -Wno-char-subscripts -std=c++11 -fsyntax-only -I/home/not/git/procon/lib ' + filepath)
-            os.system('/home/not/git/procon/import.sh ' + filepath)
+            os.system('g++ -O0 -Wall -Wextra -Wno-char-subscripts -std=c++11 -fsyntax-only -I{0} {1}'.format(library_path, file_path))
+            os.system('{0}/import.sh {1}'.format(path, file_path))
         if '.hpp' in file:
             find = False
-            for raw_line in open(filepath):
+            for raw_line in open(file_path):
                 line = raw_line.strip()
                 if line == '#pragma once':
                     find = True
