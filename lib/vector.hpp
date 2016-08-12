@@ -39,6 +39,8 @@ template<typename T> inline int upper_bound(vector<T>& v, T t) {return upper_bou
 
 template<typename T> inline T accumulate(const vector<T>& v) {return accumulate(v.begin(), v.end(), T(0));}
 
+template<typename T> inline void adjacent_difference(vector<T>& v) {adjacent_difference(v.begin(), v.end(), v.begin());}
+
 template<typename T> inline void adjacent_difference(vector<T>& v, vector<T>& u) {adjacent_difference(v.begin(), v.end(), u.begin());}
 
 template<typename T> inline void partial_sum(vector<T>& v, vector<T>& u) {partial_sum(v.begin(), v.end(), u.begin());}
@@ -50,3 +52,5 @@ template<typename T, typename Function> inline int count_if(vector<T> v, Functio
 template<typename T, typename Function> inline void remove_if(vector<T>& v, Function func) {v.erase(remove_if(v.begin(), v.end(), func), v.end());}
 
 template<typename T, typename Function> inline bool any_of(vector<T> v, Function func) {return any_of(v.begin(), v.end(), func);}
+
+template<typename T> inline vector<T> subvector(vector<T>& v, int a, int b) {return vector<T>(v.begin() + a, v.begin() + b);}
