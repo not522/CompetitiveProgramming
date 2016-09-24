@@ -37,7 +37,7 @@ template<typename T> inline int lower_bound(vector<T>& v, T t) {return lower_bou
 
 template<typename T> inline int upper_bound(vector<T>& v, T t) {return upper_bound(v.begin(), v.end(), t) - v.begin();}
 
-template<typename T> inline T accumulate(const vector<T>& v) {return accumulate(v.begin(), v.end(), T(0));}
+template<typename T> inline T accumulate(const vector<T>& v, function<T(T, T)> func = plus<T>()) {return accumulate(v.begin(), v.end(), T(0), func);}
 
 template<typename T> inline void adjacent_difference(vector<T>& v) {adjacent_difference(v.begin(), v.end(), v.begin());}
 
