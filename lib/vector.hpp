@@ -47,7 +47,9 @@ template<typename T> inline void partial_sum(vector<T>& v, vector<T>& u) {partia
 
 template<typename T> inline T inner_product(vector<T>& v, vector<T>& u) {return inner_product(v.begin(), v.end(), u.begin(), T(0));}
 
-template<typename T, typename Function> inline int count_if(vector<T> v, Function func) {return count_if(v.begin(), v.end(), func);}
+template<typename T> inline int count(const vector<T>& v, T t) {return count(v.begin(), v.end(), t);}
+
+template<typename T, typename Function> inline int count_if(const vector<T>& v, Function func) {return count_if(v.begin(), v.end(), func);}
 
 template<typename T, typename Function> inline void remove_if(vector<T>& v, Function func) {v.erase(remove_if(v.begin(), v.end(), func), v.end());}
 
