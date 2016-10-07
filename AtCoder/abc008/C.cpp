@@ -13,5 +13,5 @@ int main() {
     }
     res += (cnt + 1) / 2 / (double)cnt;
   }
-  cout << fixed << setprecision(15) << res << endl;
+  cout << res << endl;
 }

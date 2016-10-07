@@ -11,5 +11,5 @@ int main() {
   double g = -y3 + 2 * y2 - y1;
   double v = (y2 - y1 + g * 1.5) * sqrt(2);
   double h = y1 + g / 2 - v / sqrt(2);
-  cout << fixed << setprecision(15) << "! " << h << " " << v << " " << g << endl;
+  cout << "! " << h << " " << v << " " << g << endl;
 }

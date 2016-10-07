@@ -11,7 +11,6 @@ private:
 
 public:
   static long double EPS;
-  static int precision;
 
   Real() {}
 
@@ -57,10 +56,9 @@ public:
 };
 
 long double Real::EPS = 1e-10;
-int Real::precision = 15;
 
 inline ostream& operator<<(ostream& os, const Real& a) {
-  os << fixed << setprecision(Real::precision) << a.toLongDouble();
+  os << a.toLongDouble();
   return os;
 }
 

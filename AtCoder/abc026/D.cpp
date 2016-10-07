@@ -5,5 +5,5 @@ int main() {
   int a, b, c;
   cin >> a >> b >> c;
   auto f = [&](long double t){return a * t + b * sin(c * t * PI) - 100;};
-  cout << fixed << setprecision(15) << bisectionMethod(f, 0, 1000) << endl;
+  cout << bisectionMethod(f, 0, 1000) << endl;
 }

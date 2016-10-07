@@ -17,5 +17,5 @@ int main() {
       if (uf.equal(i, j)) res = max(res, hypot(x[i] - x[j], y[i] - y[j]) + 2);
     }
   }
-  cout << fixed << setprecision(15) << res << endl;
+  cout << res << endl;
 }

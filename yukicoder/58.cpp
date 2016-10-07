@@ -16,5 +16,5 @@ int main() {
   auto jiro = pow(m1, n) * v;
   double res = 0;
   for (int i = 0; i <= mx; ++i) for (int j = 0; j < i; ++j) res += taro[i] * jiro[j];
-  cout << fixed << setprecision(15) << res << endl;
+  cout << res << endl;
 }

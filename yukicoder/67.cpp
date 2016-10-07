@@ -13,5 +13,5 @@ int main() {
     for (int& i : l) sum += floor(i / x);
     return sum - k + 0.5;
   };
-  cout << fixed << setprecision(15) << bisectionMethod(f, numeric_limits<int>::max(), 0);
+  cout << bisectionMethod(f, numeric_limits<int>::max(), 0);
 }

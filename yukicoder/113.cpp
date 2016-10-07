@@ -12,5 +12,5 @@ int main() {
     case 'S': --y; break;
     }
   }
-  cout << fixed << setprecision(15) << sqrt(y * y + x * x) << endl;
+  cout << sqrt(y * y + x * x) << endl;
 }

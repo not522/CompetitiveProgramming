@@ -8,5 +8,5 @@ int main() {
   partial_sort(r.begin(), r.begin() + k, r.end(), greater<int>());
   double res = 0;
   for (int i = k - 1; i >= 0; --i) res = (res + r[i]) / 2;
-  cout << fixed << setprecision(15) << res << endl;
+  cout << res << endl;
 }

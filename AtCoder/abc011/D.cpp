@@ -19,5 +19,5 @@ int main() {
     if (j < y || (j - y) % 2) continue;
     res += combinationProbability.combination(n, i) * combinationProbability.combination(i, (i + x) / 2) * combinationProbability.combination(j, (j + y) / 2);
   }
-  cout << fixed << setprecision(15) << res << endl;
+  cout << res << endl;
 }

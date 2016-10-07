@@ -9,5 +9,5 @@ int main() {
     cin >> a >> b >> c >> d >> e;
     res = max(res, a + b + c + d + e * 110 / 900);
   }
-  cout << fixed << setprecision(15) << res << endl;
+  cout << res << endl;
 }

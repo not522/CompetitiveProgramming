@@ -16,5 +16,5 @@ int main() {
   double t = 0;
   for (int i = k + 1; i < k + 6; ++i) t += dp1[i] * dp2[i];
   t /= accumulate(dp1.begin() + k + 1, dp1.end(), 0.);
-  cout << fixed << setprecision(15) << dp2[k] + t * (1 - dp1[k]) / dp1[k] << endl;
+  cout << dp2[k] + t * (1 - dp1[k]) / dp1[k] << endl;
 }

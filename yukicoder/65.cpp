@@ -15,5 +15,5 @@ int main() {
   int k;
   cin >> k;
   Dice dice;
-  cout << fixed << setprecision(15) << dice.solve(k) << endl;
+  cout << dice.solve(k) << endl;
 }

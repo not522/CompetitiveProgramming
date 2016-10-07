@@ -19,5 +19,5 @@ int main() {
       if (r > 0) ++c;
     } while (next_permutation(b.begin(), b.end()));
   } while (next_permutation(a.begin(), a.end()));
-  cout << fixed << setprecision(15) << c / pow(factorial(n), 2);
+  cout << c / pow(factorial(n), 2);
 }

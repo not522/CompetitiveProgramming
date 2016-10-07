@@ -13,6 +13,6 @@ int main() {
   for (int i = 0; i < t; ++i) {
     int n;
     cin >> n;
-    cout << fixed << setprecision(15) << v[n] << endl;
+    cout << v[n] << endl;
   }
 }

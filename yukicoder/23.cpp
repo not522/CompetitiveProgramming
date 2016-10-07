@@ -5,5 +5,5 @@ int main() {
   cin >> h >> a >> d;
   map<int, double> dp;
   for (int i = 1; i <= h; ++i) dp[i] = min(dp[i - a] + 1, dp[i - d] + 1.5);
-  cout << fixed << setprecision(15) << dp[h] << endl;
+  cout << dp[h] << endl;
 }

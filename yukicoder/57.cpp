@@ -3,5 +3,5 @@
 int main() {
   int n;
   cin >> n;
-  cout << fixed << setprecision(15) << n * 3.5 << endl;
+  cout << n * 3.5 << endl;
 }
