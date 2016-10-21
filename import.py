@@ -1,7 +1,7 @@
 import argparse
 import os
 
-library_path = os.getenv('LIBRARY_PATH')
+library_path = os.getenv('LIBRARY_PATH').split(':')[-1]
 
 def getHeader(file, headers):
     for raw_line in open(file):
