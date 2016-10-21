@@ -10,6 +10,18 @@ template<typename T> inline T lcm(T a, T b) {
 }
 
 template<typename T> inline T floor(T a, T b) {
+  return a / b * b <= a ? a / b : a / b - 1;
+}
+
+template<> inline float floor(float a, float b) {
+  return floor(a / b) * b <= a ? floor(a / b) : floor(a / b) - 1;
+}
+
+template<> inline double floor(double a, double b) {
+  return floor(a / b) * b <= a ? floor(a / b) : floor(a / b) - 1;
+}
+
+template<> inline long double floor(long double a, long double b) {
   return floor(a / b) * b <= a ? floor(a / b) : floor(a / b) - 1;
 }
 
