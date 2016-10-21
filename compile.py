@@ -10,7 +10,7 @@ for root, dir, files in os.walk(path):
         file_path = os.path.join(root, file)
         if '.cpp' in file:
             os.system('g++ -O0 -Wall -Wextra -Wno-char-subscripts -std=c++11 -fsyntax-only -I{0} {1}'.format(library_path, file_path))
-            os.system('{0}/import.sh {1}'.format(path, file_path))
+            os.system('python {0}/import.py {1} > /dev/null'.format(path, file_path))
         if '.hpp' in file:
             find = False
             for raw_line in open(file_path):
