@@ -56,3 +56,5 @@ template<typename T, typename Function> inline void remove_if(vector<T>& v, Func
 template<typename T, typename Function> inline bool any_of(vector<T> v, Function func) {return any_of(v.begin(), v.end(), func);}
 
 template<typename T> inline vector<T> subvector(vector<T>& v, int a, int b) {return vector<T>(v.begin() + a, v.begin() + b);}
+
+template<typename T> inline int kinds(const vector<T>& v) {return set<T>(v.begin(), v.end()).size();}
