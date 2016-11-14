@@ -1,7 +1,26 @@
 #pragma once
 #include "string/to_integer.hpp"
 
-template<typename T = long long> class Parser {
+template<typename T> struct Digit {
+  T operator() (string& s, int& p) {
+    if (!isdigit(s[p])) throw "empty term";
+    if (s[p] == '0' && p + 1 < (int)s.size() && !isdigit(s[p + 1])) throw "leading zeros";
+    string res;
+    for (; isdigit(s[p]); ++p) res += s[p];
+    return toInteger<T>(res);
+  }
+};
+
+template<typename T> struct LeadingZeros {
+  T operator() (string& s, int& p) {
+    if (!isdigit(s[p])) throw "empty term";
+    string res;
+    for (; isdigit(s[p]); ++p) res += s[p];
+    return toInteger<T>(res);
+  }
+};
+
+template<typename T = long long, typename Lexer = Digit<T>> class Parser {
 private:
   string s;
   int p;
@@ -23,10 +42,8 @@ private:
       ++p;
       return f(term());
     }
-    // TODO check term is valid or not
-    string res;
-    for (; isdigit(s[p]); ++p) res += s[p];
-    return toInteger<T>(res);
+    Lexer lexer;
+    return lexer(s, p);
   }
 
   T expr(size_t level) {
