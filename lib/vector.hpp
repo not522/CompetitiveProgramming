@@ -15,6 +15,10 @@ template<typename T> inline T min(vector<T>& v) {return *min_element(v.begin(), 
 
 template<typename T> inline T max(vector<T>& v) {return *max_element(v.begin(), v.end());}
 
+template<typename T> inline int min_element(vector<T>& v) {return min_element(v.begin(), v.end()) - v.begin();}
+
+template<typename T> inline int max_element(vector<T>& v) {return max_element(v.begin(), v.end()) - v.begin();}
+
 template<typename T> inline void sort(vector<T>& v) {sort(v.begin(), v.end());}
 
 template<typename T, typename Function> inline void sort(vector<T>& v, Function func) {sort(v.begin(), v.end(), func);}
