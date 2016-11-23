@@ -9,9 +9,9 @@ template<typename T> long long inversion_number(const vector<T>& v) {
     vector<int> b(v.begin() + n / 2, v.end());
     int count = f(a) + f(b);
     for (int i = 0, j = 0, k = 0; i < n; ++i) {
-      if (k == b.size()) {
+      if (k == (int)b.size()) {
         v[i] = a[j++];
-      } else if (j == a.size()) {
+      } else if (j == (int)a.size()) {
         v[i] = b[k++];
       } else if (a[j] <= b[k]) {
         v[i] = a[j++];
