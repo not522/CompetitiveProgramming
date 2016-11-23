@@ -1,12 +1,21 @@
 #pragma once
 #include "template.hpp"
 
-template<typename T> inline T gcd(T a, T b) {
-  return __gcd(a, b);
+template<typename T> inline T gcd(T t) {
+  return t;
 }
 
-template<typename T> inline T lcm(T a, T b) {
-  return a / gcd(a, b) * b;
+template<typename T, typename... S> inline T gcd(T t, S... s) {
+  return __gcd(t, gcd(s...));
+}
+
+template<typename T> inline T lcm(T t) {
+  return t;
+}
+
+template<typename T, typename... S> inline T lcm(T t, S... s) {
+  T l = lcm(s...);
+  return t / gcd(t, l) * l;
 }
 
 template<typename T> inline T floor(T a, T b) {
