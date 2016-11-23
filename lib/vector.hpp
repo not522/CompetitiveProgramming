@@ -62,3 +62,5 @@ template<typename T, typename Function> inline bool any_of(vector<T> v, Function
 template<typename T> inline vector<T> subvector(vector<T>& v, int a, int b) {return vector<T>(v.begin() + a, v.begin() + b);}
 
 template<typename T> inline int kinds(const vector<T>& v) {return set<T>(v.begin(), v.end()).size();}
+
+template<typename T> inline void iota(vector<T>& v) {iota(v.begin(), v.end(), T());}
