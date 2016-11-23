@@ -1,26 +1,30 @@
-#include "math/inversion_number.hpp"
+#include "adjacent_loop.hpp"
+#include "vector.hpp"
 
 int main() {
   int a[4][4];
   for (auto& i : a) {
     for (int& j : i) cin >> j;
   }
-  vector<int> v;
-  for (int i = 0; i < 4; ++i) {
-    for (int j = 0; j < 4; ++j) {
-      int k = a[i][i % 2 ? j : 3 - j];
-      if (k) v.emplace_back(k);
+  bool update = true;
+  while (update) {
+    update = false;
+    for (int i = 0; i < 4; ++i) {
+      for (int j = 0; j < 4; ++j) {
+        if (a[i][j]) continue;
+        for (auto k : AdjacentLoop<4>(i, j, 4, 4)) {
+          if (a[k.first][k.second] == 4 * i + j + 1) {
+            swap(a[k.first][k.second], a[i][j]);
+            update = true;
+            break;
+          }
+        }
+      }
     }
   }
-  if (inversion_number(v) % 2) {
-    cout << "No" << endl;
-    return 0;
-  }
   for (int i = 0; i < 4; ++i) {
     for (int j = 0; j < 4; ++j) {
-      if (a[i][j] == 0) continue;
-      int d = a[i][j] - (i * 4 + j + 1);
-      if (d != -4 && d != -1 && d != 0 && d != 1 && d != 4) {
+      if (a[i][j] && a[i][j] != 4 * i + j + 1) {
         cout << "No" << endl;
         return 0;
       }
