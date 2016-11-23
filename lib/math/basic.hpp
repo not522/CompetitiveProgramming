@@ -39,7 +39,7 @@ template<typename T> inline T ceil(T a, T b) {
 }
 
 template<typename T> inline T round(T a, T b) {
-  return floor(a + b / 2);
+  return floor(a + b / 2, b);
 }
 
 template<typename T> inline T mod(T a, T b) {
