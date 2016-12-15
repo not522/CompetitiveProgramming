@@ -64,3 +64,5 @@ template<typename T> inline vector<T> subvector(vector<T>& v, int a, int b) {ret
 template<typename T> inline int kinds(const vector<T>& v) {return set<T>(v.begin(), v.end()).size();}
 
 template<typename T> inline void iota(vector<T>& v) {iota(v.begin(), v.end(), T());}
+
+template<typename T> inline bool is_sorted(const vector<T>& v) {return is_sorted(v.begin(), v.end());}
