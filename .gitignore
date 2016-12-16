@@ -3,8 +3,11 @@ a.exe
 in
 out
 ans
+submit.cpp
 *.in
 *.out
 *.ans
 *.diff
 /*.txt
+*.in.txt
+*.out.txt
