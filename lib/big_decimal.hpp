@@ -313,6 +313,9 @@ public:
 };
 
 template<int IntegerSize, int DecimalSize>
+constexpr long double BigDecimal<IntegerSize, DecimalSize>::EPSILON;
+
+template<int IntegerSize, int DecimalSize>
 BigDecimal<IntegerSize, DecimalSize> pi() {
   const static BigDecimal<IntegerSize, DecimalSize> PI = (atan(BigDecimal<IntegerSize, DecimalSize>(1) / 5) << 4) - (atan(BigDecimal<IntegerSize, DecimalSize>(1) / 239) << 2);
   return PI;
