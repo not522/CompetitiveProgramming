@@ -2,7 +2,7 @@
 #include "graph/search.hpp"
 
 template<typename Edge> struct WeightedBFSState {
-  typedef typename Edge::CostType Cost;
+  using Cost = typename Edge::CostType;
 
   Edge edge;
   Cost cost;
@@ -22,8 +22,8 @@ template<typename Edge> struct WeightedBFSState {
 
 template<typename Graph, typename State = WeightedBFSState<typename Graph::EdgeType>> class WeightedBFS : public Search<Graph, State> {
 protected:
-  typedef typename Graph::EdgeType Edge;
-  typedef typename Edge::CostType Cost;
+  using Edge = typename Graph::EdgeType;
+  using Cost = typename Edge::CostType;
 
 private:
   Cost now;
@@ -54,7 +54,7 @@ public:
 
 template<typename Graph> class WeightedBFSDistance : public WeightedBFS<Graph> {
 private:
-  typedef WeightedBFSState<typename Graph::EdgeType> State;
+  using State = WeightedBFSState<typename Graph::EdgeType>;
 
   void visit(const State& state) {
     if (state.edge.from != -1) dis[state.edge.to] = dis[state.edge.from] + state.edge.cost;

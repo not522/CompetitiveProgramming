@@ -1,6 +1,6 @@
 #include "game/alpha_beta.hpp"
 
-typedef array<array<int, 3>, 3> Board;
+using Board = array<array<int, 3>, 3>;
 
 struct State {
   int turn;

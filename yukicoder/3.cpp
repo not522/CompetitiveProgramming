@@ -4,7 +4,7 @@
 #include "graph/bfs.hpp"
 
 int main() {
-  typedef AdjacencyList<Edge> Graph;
+  using Graph = AdjacencyList<Edge>;
   int n;
   cin >> n;
   Graph graph(n);

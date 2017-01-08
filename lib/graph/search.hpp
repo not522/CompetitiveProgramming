@@ -3,7 +3,7 @@
 
 template<typename Graph, typename State> class Search {
 protected:
-  typedef typename Graph::EdgeType Edge;
+  using Edge = typename Graph::EdgeType;
 
   const Graph graph;
   vector<bool> visited;

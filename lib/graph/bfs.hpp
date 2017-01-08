@@ -14,7 +14,7 @@ template<typename Edge> struct BFSState {
 
 template<typename Graph, typename State = BFSState<typename Graph::EdgeType>> class BFS : public Search<Graph, State> {
 protected:
-  typedef typename Graph::EdgeType Edge;
+  using Edge = typename Graph::EdgeType;
 
   queue<State> que;
   
@@ -34,8 +34,8 @@ public:
 
 template<typename Graph, bool Restoration = false> class BFSDistance : public BFS<Graph> {
 private:
-  typedef typename Graph::EdgeType Edge;
-  typedef BFSState<typename Graph::EdgeType> State;
+  using Edge = typename Graph::EdgeType;
+  using State = BFSState<typename Graph::EdgeType>;
 
   void visit(const State& state) {
     if (state.prv != -1) {

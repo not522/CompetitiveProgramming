@@ -7,7 +7,7 @@ int main() {
   cin >> h >> w;
   vector<string> c(h);
   for (auto& s : c) cin >> s;
-  typedef AdjacencyList<Edge> Graph;
+  using Graph = AdjacencyList<Edge>;
   Graph graph(h * w);
   int sv = -1, gv = -1;
   for (int i = 0; i < h; ++i) {

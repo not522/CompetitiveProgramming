@@ -5,7 +5,7 @@
 #include "math/mint.hpp"
 
 int main() {
-  typedef AdjacencyMatrix<Edge> Graph;
+  using Graph = AdjacencyMatrix<Edge>;
   int n, a, b, m;
   cin >> n >> a >> b >> m;
   --a, --b;

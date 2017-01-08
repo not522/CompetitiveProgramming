@@ -2,20 +2,20 @@
 #include "template.hpp"
 
 struct Edge {
-  typedef int CostType;
+  using CostType = int;
   const static int cost = 1;
   int from, to;
   Edge(int from, int to) : from(from), to(to) {};
 };
 
 template<typename Cost> struct WeightedEdge : public Edge {
-  typedef Cost CostType;
+  using CostType = Cost;
   Cost cost;
   WeightedEdge(int from, int to, Cost cost = 0) : Edge(from, to), cost(cost) {}
 };
 
 template<typename Capacity> struct ResidualEdge : public Edge {
-  typedef Capacity CapacityType;
+  using CapacityType = Capacity;
   Capacity cap;
   int rev;
   ResidualEdge(int from, int to, Capacity cap) : Edge(from, to), cap(cap) {}

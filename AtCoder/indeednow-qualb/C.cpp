@@ -2,7 +2,7 @@
 #include "graph/adjacency_list.hpp"
 #include "graph/shortest_path.hpp"
 
-typedef AdjacencyList<Edge> MyGraph;
+using MyGraph = AdjacencyList<Edge>;
 
 struct LexicalTreeState : public DijkstraState<Edge> {
   LexicalTreeState(const DijkstraState<Edge>& state) : DijkstraState<Edge>(state) {}

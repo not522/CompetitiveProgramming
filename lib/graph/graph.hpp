@@ -3,7 +3,7 @@
 
 template<typename Edge> class Graph {
 public:
-  typedef Edge EdgeType;
+  using EdgeType = Edge;
   virtual int size() const = 0;
   template<typename... Args> void addEdge(Args...) {}
   template<typename... Args> void addUndirectedEdge(Args...) {}

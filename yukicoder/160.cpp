@@ -29,7 +29,7 @@ namespace std {
 }
 
 struct Edge {
-  typedef Cost CostType;
+  using CostType = Cost;
   int from, to;
   Cost cost;
   Edge(int from, int to) : from(from), to(to), cost(0, from) {};

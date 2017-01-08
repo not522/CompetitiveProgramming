@@ -8,7 +8,7 @@ private:
   const static long long MIN = numeric_limits<long long>::min();
   const static long long MAX = numeric_limits<long long>::max();
 
-  typedef vector<pair<long long, long long>> VAL;
+  using VAL = vector<pair<long long, long long>>;
 
 public:
   VAL v;

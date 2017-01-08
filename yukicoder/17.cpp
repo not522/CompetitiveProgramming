@@ -4,7 +4,7 @@
 #include "graph/all_pairs_shortest_path.hpp"
 
 int main() {
-  typedef AdjacencyList<WeightedEdge<int>> Graph;
+  using Graph = AdjacencyList<WeightedEdge<int>>;
   int n;
   cin >> n;
   vector<int> s(n);

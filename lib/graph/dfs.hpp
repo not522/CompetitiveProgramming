@@ -21,7 +21,7 @@ template<typename Edge> struct DFSState {
 
 template<typename Graph, typename State = DFSState<typename Graph::EdgeType>> class DFS : public Search<Graph, State> {
 protected:
-  typedef typename Graph::EdgeType Edge;
+  using Edge = typename Graph::EdgeType;
 
 private:
   stack<State> st;
@@ -47,8 +47,8 @@ public:
 namespace dfs_tree {
   template<typename Graph> class DFSTree : public DFS<Graph> {
   private:
-    typedef typename Graph::EdgeType Edge;
-    typedef typename DFS<Graph>::State State;
+    using Edge = typename Graph::EdgeType;
+    using State = typename DFS<Graph>::State;
 
     void visit(const State& state) {
       Edge edge = state.edge;

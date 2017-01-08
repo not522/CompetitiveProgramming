@@ -3,7 +3,7 @@
 #include "graph/tree.hpp"
 
 template<typename Edge> struct DijkstraState {
-  typedef typename Edge::CostType Cost;
+  using Cost = typename Edge::CostType;
 
   Edge edge;
   Cost cost;
@@ -21,8 +21,8 @@ template<typename Edge> struct DijkstraState {
 
 template<typename Graph, bool Restoration = false, typename State = DijkstraState<typename Graph::EdgeType>> class Dijkstra : public Search<Graph, State> {
 protected:
-  typedef typename Graph::EdgeType Edge;
-  typedef typename Edge::CostType Cost;
+  using Edge = typename Graph::EdgeType;
+  using Cost = typename Edge::CostType;
 
   constexpr static Cost INF = numeric_limits<Cost>::max();
 
