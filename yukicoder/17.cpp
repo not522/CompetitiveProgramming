@@ -17,7 +17,7 @@ int main() {
     cin >> a >> b >> c;
     graph.addUndirectedEdge(a, b, c);
   }
-  auto dis = shortestPath(graph).dis;
+  auto dis = shortestPath(graph);
   int res = numeric_limits<int>::max();
   const int INF = WarshallFloyd<Graph>::INF;
   for (int i = 1; i < n - 1; ++i) {

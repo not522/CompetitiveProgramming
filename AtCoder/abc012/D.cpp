@@ -12,8 +12,8 @@ int main() {
     --a; --b;
     graph.addUndirectedEdge(a, b, t);
   }
-  auto info = shortestPath(graph);
+  auto dis = shortestPath(graph);
   int res = numeric_limits<int>::max();
-  for (const auto& d : info.dis) res = min(res, *max_element(d.begin(), d.end()));
+  for (const auto& d : dis) res = min(res, *max_element(d.begin(), d.end()));
   cout << res << endl;
 }

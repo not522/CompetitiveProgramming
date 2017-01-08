@@ -12,7 +12,7 @@ int main() {
     cin >> a >> b >> c;
     graph.addUndirectedEdge(a - 1, b - 1, c);
   }
-  const auto& dis = shortestPath(graph).dis;
+  const auto& dis = shortestPath(graph);
   for (const auto& edge : graph.getEdges()) {
     if (dis[edge.from][edge.to] < edge.cost) ++res;
   }
