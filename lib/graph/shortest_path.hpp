@@ -62,17 +62,17 @@ public:
   }
 };
 
-template<typename Graph> inline Dijkstra<Graph> shortestPath(Graph& graph, int from) {
+template<typename Graph> Dijkstra<Graph> shortestPath(Graph& graph, int from) {
   Dijkstra<Graph> dijkstra(graph);
   dijkstra.solve(from);
   return dijkstra;
 }
 
-template<typename Graph> inline typename Graph::EdgeType::CostType shortestPath(Graph& graph, int from, int to) {
+template<typename Graph> typename Graph::EdgeType::CostType shortestPath(Graph& graph, int from, int to) {
   return shortestPath(graph, from).dis[to];
 }
 
-template<typename Graph> inline Dijkstra<Graph, true> shortestPathTree(Graph& graph, int from) {
+template<typename Graph> Dijkstra<Graph, true> shortestPathTree(Graph& graph, int from) {
   Dijkstra<Graph, true> dijkstra(graph);
   dijkstra.solve(from);
   return dijkstra;

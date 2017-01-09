@@ -85,12 +85,12 @@ public:
   }
 };
 
-inline ostream& operator<<(ostream& os, const Section& s) {
+ostream& operator<<(ostream& os, const Section& s) {
   for (auto i : s.v) os << i.first << " " << i.second - 1 << endl;
   return os;
 }
 
-inline istream& operator>>(istream& is, Section& s) {
+istream& operator>>(istream& is, Section& s) {
   long long a, b;
   is >> a >> b;
   s = Section(a, b + 1);

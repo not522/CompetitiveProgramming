@@ -67,16 +67,16 @@ public:
   }
 };
 
-inline Point operator*(const Real& real, const Point& point) {return point * real;}
+Point operator*(const Real& real, const Point& point) {return point * real;}
 
-inline Point operator/(const Real& real, const Point& point) {return point / real;}
+Point operator/(const Real& real, const Point& point) {return point / real;}
 
-inline ostream& operator<<(ostream& os, const Point& point) {
+ostream& operator<<(ostream& os, const Point& point) {
   os << point.x << " " << point.y;
   return os;
 }
 
-inline istream& operator>>(istream& is, Point& point) {
+istream& operator>>(istream& is, Point& point) {
   Real x, y;
   is >> x >> y;
   point = Point(x, y);

@@ -1,6 +1,6 @@
 #include "template.hpp"
 
-inline bool isVowel(char c) {
+bool isVowel(char c) {
   return c == 'a' || c == 'i' || c == 'u' || c == 'e' || c == 'o';
 }
 

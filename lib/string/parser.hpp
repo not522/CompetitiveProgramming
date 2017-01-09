@@ -75,7 +75,7 @@ public:
   }
 };
 
-template<typename T = long long> inline T parse(const string& s) {
+template<typename T = long long> T parse(const string& s) {
   Parser<T> parser;
   parser.addUnaryOperator([](T t){return +t;}, '+');
   parser.addUnaryOperator(negate<T>(), '-');

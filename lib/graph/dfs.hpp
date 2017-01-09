@@ -65,7 +65,7 @@ namespace dfs_tree {
   };
 }
 
-template<typename Graph> inline Tree<typename Graph::EdgeType> dfsTree(const Graph& graph, int root) {
+template<typename Graph> Tree<typename Graph::EdgeType> dfsTree(const Graph& graph, int root) {
   dfs_tree::DFSTree<Graph> dfs(graph);
   dfs.solve(root);
   return dfs.tree;

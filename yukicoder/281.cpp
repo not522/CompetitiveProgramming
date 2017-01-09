@@ -3,13 +3,13 @@
 const int INF = numeric_limits<int>::max();
 int d;
 
-inline void magic(int& n, int& res, int t = 1) {
+void magic(int& n, int& res, int t = 1) {
   n -= d * t;
   if (n < 0) n = 0;
   res += t;
 }
 
-inline bool isKadomatsu(int h1, int h2, int h3) {
+bool isKadomatsu(int h1, int h2, int h3) {
   return h1 != h2 && h1 != h3 && h2 != h3 && ((h2 > h1 && h2 > h3) || (h2 < h1 && h2 < h3));
 }
 

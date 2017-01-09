@@ -322,22 +322,22 @@ BigDecimal<IntegerSize, DecimalSize> pi() {
 }
 
 template<int IntegerSize, int DecimalSize>
-inline BigDecimal<IntegerSize, DecimalSize> operator+(const int& a, BigDecimal<IntegerSize, DecimalSize> b) {
+BigDecimal<IntegerSize, DecimalSize> operator+(const int& a, BigDecimal<IntegerSize, DecimalSize> b) {
   return BigDecimal<IntegerSize, DecimalSize>(a) + b;
 }
 
 template<int IntegerSize, int DecimalSize>
-inline BigDecimal<IntegerSize, DecimalSize> operator-(const int& a, BigDecimal<IntegerSize, DecimalSize> b) {
+BigDecimal<IntegerSize, DecimalSize> operator-(const int& a, BigDecimal<IntegerSize, DecimalSize> b) {
   return BigDecimal<IntegerSize, DecimalSize>(a) - b;
 }
 
 template<int IntegerSize, int DecimalSize>
-inline BigDecimal<IntegerSize, DecimalSize> operator*(const int& a, BigDecimal<IntegerSize, DecimalSize> b) {
+BigDecimal<IntegerSize, DecimalSize> operator*(const int& a, BigDecimal<IntegerSize, DecimalSize> b) {
   return BigDecimal<IntegerSize, DecimalSize>(a) * b;
 }
 
 template<int IntegerSize, int DecimalSize>
-inline BigDecimal<IntegerSize, DecimalSize> operator/(const int& a, BigDecimal<IntegerSize, DecimalSize> b) {
+BigDecimal<IntegerSize, DecimalSize> operator/(const int& a, BigDecimal<IntegerSize, DecimalSize> b) {
   return BigDecimal<IntegerSize, DecimalSize>(a) / b;
 }
 

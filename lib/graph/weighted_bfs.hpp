@@ -66,12 +66,12 @@ public:
   WeightedBFSDistance(const Graph& graph) : WeightedBFS<Graph>(graph), dis(graph.size(), 0) {}
 };
 
-template<typename Graph> inline WeightedBFSDistance<Graph> weightedBFSDistance(const Graph& graph, int from) {
+template<typename Graph> WeightedBFSDistance<Graph> weightedBFSDistance(const Graph& graph, int from) {
   WeightedBFSDistance<Graph> bfs(graph);
   bfs.solve(from);
   return bfs;
 }
 
-template<typename Graph> inline typename Graph::EdgeType::CostType weightedBFSDistance(Graph& graph, int from, int to) {
+template<typename Graph> typename Graph::EdgeType::CostType weightedBFSDistance(Graph& graph, int from, int to) {
   return weightedBFSDistance(graph, from).dis[to];
 }

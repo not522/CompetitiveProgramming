@@ -16,12 +16,12 @@ public:
   }
 };
 
-inline ostream& operator<<(ostream& os, const Triangle& triangle) {
+ostream& operator<<(ostream& os, const Triangle& triangle) {
   os << triangle.a << " " << triangle.b << " " << triangle.c;
   return os;
 }
 
-inline istream& operator>>(istream& is, Triangle& triangle) {
+istream& operator>>(istream& is, Triangle& triangle) {
   Point a, b, c;
   is >> a >> b >> c;
   triangle = Triangle(a, b, c);

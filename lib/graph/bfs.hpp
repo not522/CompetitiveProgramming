@@ -53,17 +53,17 @@ public:
   }
 };
 
-template<typename Graph> inline BFSDistance<Graph> bfsDistance(const Graph& graph, int from) {
+template<typename Graph> BFSDistance<Graph> bfsDistance(const Graph& graph, int from) {
   BFSDistance<Graph> bfs(graph);
   bfs.solve(from);
   return bfs;
 }
 
-template<typename Graph> inline typename Graph::EdgeType::CostType bfsDistance(const Graph& graph, int from, int to) {
+template<typename Graph> typename Graph::EdgeType::CostType bfsDistance(const Graph& graph, int from, int to) {
   return bfsDistance(graph, from).dis[to];
 }
 
-template<typename Graph> inline BFSDistance<Graph, true> bfsDistanceTree(const Graph& graph, int from) {
+template<typename Graph> BFSDistance<Graph, true> bfsDistanceTree(const Graph& graph, int from) {
   BFSDistance<Graph, true> bfs(graph);
   bfs.solve(from);
   return bfs;

@@ -1,15 +1,15 @@
 #pragma once
 #include "template.hpp"
 
-inline bool isLeapYear(int year) {
+bool isLeapYear(int year) {
   return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
 }
 
-inline int countLeapYear(int year) {
+int countLeapYear(int year) {
   return year / 4 - year / 100 + year / 400;
 }
 
-inline int getMaxDay(int year, int month) {
+int getMaxDay(int year, int month) {
   const int days[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
   if (month == 2) return isLeapYear(year) ? 29 : 28;
   return days[month];

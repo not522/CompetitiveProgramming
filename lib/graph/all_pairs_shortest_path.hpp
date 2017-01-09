@@ -31,7 +31,7 @@ public:
   }
 };
 
-template<typename Graph> inline vector<vector<typename Graph::EdgeType::CostType>> shortestPath(Graph& graph) {
+template<typename Graph> vector<vector<typename Graph::EdgeType::CostType>> shortestPath(Graph& graph) {
   WarshallFloyd<Graph> warshallFloyd(graph);
   warshallFloyd.solve();
   return warshallFloyd.dis;

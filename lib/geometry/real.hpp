@@ -57,12 +57,12 @@ public:
 
 long double Real::EPS = 1e-10;
 
-inline ostream& operator<<(ostream& os, const Real& a) {
+ostream& operator<<(ostream& os, const Real& a) {
   os << a.toLongDouble();
   return os;
 }
 
-inline istream& operator>>(istream& is, Real& a) {
+istream& operator>>(istream& is, Real& a) {
   long double n;
   is >> n;
   a = n;
