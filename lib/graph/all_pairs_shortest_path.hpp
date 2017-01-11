@@ -17,8 +17,8 @@ public:
   }
 
   void solve() {
-    for (const auto& edge : graph.getEdges()) {
-      dis[edge.from][edge.to] = min(dis[edge.from][edge.to], edge.cost);
+    for (const auto& edge : graph.getAllEdges()) {
+      dis[edge.first][edge.second.to] = min(dis[edge.first][edge.second.to], edge.second.cost);
     }
     for (int k = 0; k < graph.size(); ++k) {
       for (int i = 0; i < graph.size(); ++i) {

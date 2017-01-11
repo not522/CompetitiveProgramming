@@ -7,10 +7,10 @@ private:
   template<typename Capacity> class Dinic {
   private:
     const Capacity INF;
-    
+
     ResidualGraph<ResidualEdge<Capacity>>& graph;
     vector<int> level, iter;
-    
+
     void bfs(int source) {
       fill(level.begin(), level.end(), -1);
       level[source] = 0;
@@ -26,7 +26,7 @@ private:
         }
       }
     }
-    
+
     int dfs(int v, int sink, Capacity flow) {
       if (v == sink) return flow;
       for (int& i = iter[v]; i < int(graph[v].size()); ++i) {
@@ -39,10 +39,10 @@ private:
       }
       return 0;
     }
-    
+
   public:
     Dinic(ResidualGraph<ResidualEdge<Capacity>>& graph) : INF(numeric_limits<Capacity>::max()), graph(graph) {}
-    
+
     Capacity solve(int source, int sink) {
       level = vector<int>(graph.size(), 0);
       iter = vector<int>(graph.size(), 0);

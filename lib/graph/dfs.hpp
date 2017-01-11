@@ -4,19 +4,16 @@
 
 template<typename Edge> struct DFSState {
 
+  int from;
   Edge edge;
 
-  DFSState(int pos) : edge(pos, pos) {}
+  DFSState(const int pos) : from(pos), edge(pos) {}
 
-  DFSState(const Edge& edge) : edge(edge) {}
+  DFSState(const int from, const Edge& edge) : from(from), edge(edge) {}
 
-  DFSState next(const Edge& edge) const {
-    return DFSState(edge);
-  }
+  DFSState next(const int from, const Edge& edge) const {return DFSState(from, edge);}
 
-  int getPos() {
-    return edge.to;
-  }
+  int getPos() {return edge.to;}
 };
 
 template<typename Graph, typename State = DFSState<typename Graph::EdgeType>> class DFS : public Search<Graph, State> {
@@ -26,9 +23,7 @@ protected:
 private:
   stack<State> st;
   
-  void push(const State& state) {
-    st.push(state);
-  }
+  void push(const State& state) {st.push(state);}
   
   State next() {
     State now = st.top();
@@ -36,9 +31,7 @@ private:
     return now;
   }
   
-  bool isRunning() {
-    return !st.empty();
-  }
+  bool isRunning() {return !st.empty();}
 
 public:
   DFS(const Graph& graph) : Search<Graph, State>(graph) {}

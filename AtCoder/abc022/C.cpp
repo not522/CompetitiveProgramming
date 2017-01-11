@@ -16,12 +16,12 @@ int main() {
   LowerCommonAncestor<WeightedEdge<int>> lca(info.shortestPathTree);
   const int INF = numeric_limits<int>::max();
   int res = INF;
-  for (const auto& edge : graph.getEdges()) {
-    if (!info.isReachable(edge.from) || !info.isReachable(edge.to)) continue;
-    if (info.shortestPathTree.parent[edge.from].to == edge.to) continue;
-    if (info.shortestPathTree.parent[edge.to].to == edge.from) continue;
-    if (lca.solve(edge.from, edge.to) != 0) continue;
-    res = min(res, info.dis[edge.from] + info.dis[edge.to] + edge.cost);
+  for (const auto& edge : graph.getAllEdges()) {
+    if (!info.isReachable(edge.first) || !info.isReachable(edge.second.to)) continue;
+    if (info.shortestPathTree.parent[edge.first].to == edge.second.to) continue;
+    if (info.shortestPathTree.parent[edge.second.to].to == edge.first) continue;
+    if (lca.solve(edge.first, edge.second.to) != 0) continue;
+    res = min(res, info.dis[edge.first] + info.dis[edge.second.to] + edge.second.cost);
   }
   cout << (res != INF ? res : -1) << endl;
 }

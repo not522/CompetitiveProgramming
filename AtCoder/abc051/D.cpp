@@ -13,8 +13,8 @@ int main() {
     graph.addUndirectedEdge(a - 1, b - 1, c);
   }
   const auto& dis = shortestPath(graph);
-  for (const auto& edge : graph.getEdges()) {
-    if (dis[edge.from][edge.to] < edge.cost) ++res;
+  for (const auto& edge : graph.getAllEdges()) {
+    if (dis[edge.first][edge.second.to] < edge.second.cost) ++res;
   }
   cout << res / 2 << endl;
 }

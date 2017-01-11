@@ -5,14 +5,15 @@
 template<typename Edge> struct DijkstraState {
   using Cost = typename Edge::CostType;
 
+  int from;
   Edge edge;
   Cost cost;
 
-  DijkstraState(int pos) : edge(pos, pos), cost(0) {}
+  DijkstraState(const int pos) : from(pos), edge(pos), cost(0) {}
 
-  DijkstraState(const Edge& edge, Cost cost) : edge(edge), cost(cost) {}
+  DijkstraState(const int from, const Edge& edge, const Cost cost) : from(from), edge(edge), cost(cost) {}
 
-  DijkstraState next(const Edge& edge) const {return DijkstraState(edge, cost + edge.cost);}
+  DijkstraState next(const int from, const Edge& edge) const {return DijkstraState(from, edge, cost + edge.cost);}
 
   bool operator<(const DijkstraState& state) const {return cost > state.cost;}
 
@@ -29,6 +30,7 @@ protected:
   priority_queue<State> que;
 
   void push(const State& state) {
+    if (dis[state.getPos()] <= state.cost) return;
     que.push(state);
     dis[state.getPos()] = state.cost;
   }
@@ -43,15 +45,14 @@ protected:
 
   void visit(const State& state) {
     if (Restoration) {
-      auto e = state.edge;
-      if (e.from != e.to) {
-        swap(e.from, e.to);
-        shortestPathTree.addEdge(e);
+      int from = state.from, to = state.edge.to;
+      if (from != to) {
+        auto e = state.edge;
+        e.to = from;
+        shortestPathTree.addEdge(to, e);
       }
     }
   }
-
-  bool canPruning(const State& state) {return dis[state.getPos()] <= state.cost;}
 
 public:
   vector<Cost> dis;

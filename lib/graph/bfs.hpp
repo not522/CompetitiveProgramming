@@ -5,9 +5,9 @@
 template<typename Edge> struct BFSState {
   int pos, prv;
 
-  BFSState(int pos, int prv = -1) : pos(pos), prv(prv) {}
+  BFSState(const int pos, const int prv = -1) : pos(pos), prv(prv) {}
   
-  BFSState next(const Edge& edge) const {return BFSState(edge.to, pos);}
+  BFSState next(const int pos, const Edge& edge) const {return BFSState(edge.to, pos);}
 
   int getPos() {return pos;}
 };

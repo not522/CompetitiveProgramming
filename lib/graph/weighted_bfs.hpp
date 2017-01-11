@@ -4,20 +4,17 @@
 template<typename Edge> struct WeightedBFSState {
   using Cost = typename Edge::CostType;
 
+  int from;
   Edge edge;
   Cost cost;
 
-  WeightedBFSState(int pos, int prv = -1) : edge(prv, pos), cost(0) {}
+  WeightedBFSState(const int pos, const int prv = -1) : from(prv), edge(pos), cost(0) {}
 
-  WeightedBFSState(const Edge& edge, Cost cost) : edge(edge), cost(cost) {}
+  WeightedBFSState(const int from, const Edge& edge, const Cost cost) : from(from), edge(edge), cost(cost) {}
 
-  WeightedBFSState next(const Edge& edge) const {
-    return WeightedBFSState(edge, cost + edge.cost);
-  }
+  WeightedBFSState next(const int from, const Edge& edge) const {return WeightedBFSState(from, edge, cost + edge.cost);}
 
-  int getPos() {
-    return edge.to;
-  }
+  int getPos() {return edge.to;}
 };
 
 template<typename Graph, typename State = WeightedBFSState<typename Graph::EdgeType>> class WeightedBFS : public Search<Graph, State> {
@@ -30,7 +27,7 @@ private:
   deque<queue<State>> que;
   
   void push(const State& state) {
-    if (state.cost - now >= que.size()) que.resize(state.cost - now + 1);
+    if (state.cost - now >= (int)que.size()) que.resize(state.cost - now + 1);
     que[state.cost - now].push(state);
   }
   
@@ -57,7 +54,7 @@ private:
   using State = WeightedBFSState<typename Graph::EdgeType>;
 
   void visit(const State& state) {
-    if (state.edge.from != -1) dis[state.edge.to] = dis[state.edge.from] + state.edge.cost;
+    if (state.from != -1) dis[state.edge.to] = dis[state.from] + state.edge.cost;
   }
 
 public:

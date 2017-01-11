@@ -5,20 +5,20 @@
 struct MyState : public DijkstraState<WeightedEdge<long long>> {
   static vector<long long> a, b, c;
 
-  MyState(int pos) : DijkstraState<WeightedEdge<long long>>(pos) {}
+  MyState(const int pos) : DijkstraState<WeightedEdge<long long>>(pos) {}
 
-  MyState(const WeightedEdge<long long>& edge, long long cost) : DijkstraState<WeightedEdge<long long>>(edge, cost) {}
+  MyState(const int from, const WeightedEdge<long long>& edge, long long cost) : DijkstraState<WeightedEdge<long long>>(from, edge, cost) {}
 
-  MyState next(const WeightedEdge<long long>& edge) const {
+  MyState next(const int from, const WeightedEdge<long long>& edge) const {
     long long k = cost;
-    if (k < c[edge.from]) {
-      k = c[edge.from];
+    if (k < c[from]) {
+      k = c[from];
     } else {
-      if ((k - c[edge.from]) % (a[edge.from] + b[edge.from]) >= a[edge.from]) {
-        k += (a[edge.from] + b[edge.from]) - (k - c[edge.from]) % (a[edge.from] + b[edge.from]);
+      if ((k - c[from]) % (a[from] + b[from]) >= a[from]) {
+        k += (a[from] + b[from]) - (k - c[from]) % (a[from] + b[from]);
       }
     }
-    return MyState(edge, k + edge.cost);
+    return MyState(from, edge, k + edge.cost);
   }
 };
 

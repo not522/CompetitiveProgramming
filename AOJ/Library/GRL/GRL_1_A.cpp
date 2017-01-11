@@ -9,7 +9,7 @@ int main() {
   for (int i = 0; i < e; ++i) {
     int s, t, d;
     cin >> s >> t >> d;
-    graph.addEdge(WeightedEdge<int>(s, t, d));
+    graph.addEdge(s, t, d);
   }
   auto info = shortestPath(graph, r);
   for (int i = 0; i < v; ++i) {

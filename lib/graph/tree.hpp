@@ -10,17 +10,21 @@ public:
   Tree() {}
 
   Tree(int n) : children(n), depth(n, -1) {
-    for (int i = 0; i < n; ++i) parent.emplace_back(i, i);
+    for (int i = 0; i < n; ++i) parent.emplace_back(i);
   }
 
   int size() const {
     return parent.size();
   }
   
-  template<typename... Args> void addEdge(Args... args) {
-    Edge edge(args...);
-    parent[edge.from] = edge;
-    children[edge.to].emplace_back(edge.from);
+  template<typename... Args> void addEdge(int from, int to, Args... args) {
+    parent[from] = Edge(to, args...);
+    children[to].emplace_back(from);
+  }
+
+  void addEdge(int from, const Edge& edge) {
+    parent[from] = edge;
+    children[edge.to].emplace_back(from);
   }
 
   int getDepth(int v) {

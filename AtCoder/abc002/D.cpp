@@ -11,7 +11,7 @@ int main() {
     int x, y;
     cin >> x >> y;
     --x; --y;
-    graph.addUndirectedEdge((Edge){x, y});
+    graph.addUndirectedEdge(x, y);
   }
   Clique<AdjacencyMatrix, Edge> clique(graph);
   cout << clique.maximum().size() << endl;

@@ -18,7 +18,7 @@ int main() {
         int ii = i + dy[k];
         int jj = j + dx[k];
         if (v[ii][jj] == '#') continue;
-        graph.addEdge(Edge(i * c + j, ii * c + jj));
+        graph.addEdge(i * c + j, ii * c + jj);
       }
     }
   }

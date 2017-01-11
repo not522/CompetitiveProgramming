@@ -13,7 +13,6 @@ protected:
   virtual bool isRunning() = 0;
 
   virtual void visit(const State&) {}
-  virtual bool canPruning(const State&) {return false;}
 
 public:
   Search(const Graph& graph) : graph(graph), visited(graph.size(), false) {}
@@ -27,9 +26,8 @@ public:
       visited[pos] = true;
       visit(now);
       for (const Edge& edge : graph.getEdges(pos)) {
-        State nextState = now.next(edge);
+        State nextState = now.next(pos, edge);
         if (visited[nextState.getPos()]) continue;
-        if (canPruning(nextState)) continue;
         push(nextState);
       }
     }

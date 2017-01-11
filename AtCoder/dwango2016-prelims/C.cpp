@@ -5,7 +5,7 @@
 
 struct MyEdge : public WeightedEdge<int> {
   int end, endcost;
-  MyEdge(int from, int to, int cost = 0, int end = 0, int endcost = 0) : WeightedEdge<int>(from, to, cost), end(end), endcost(endcost) {}
+  MyEdge(int to, int cost = 0, int end = 0, int endcost = 0) : WeightedEdge<int>(to, cost), end(end), endcost(endcost) {}
 };
 
 struct MyState : public DijkstraState<MyEdge> {
@@ -13,10 +13,10 @@ struct MyState : public DijkstraState<MyEdge> {
 
   MyState(int pos) : DijkstraState<MyEdge>(pos) {}
 
-  MyState(const MyEdge& edge, Cost cost) : DijkstraState<MyEdge>(edge, cost) {}
+  MyState(int from, const MyEdge& edge, Cost cost) : DijkstraState<MyEdge>(from, edge, cost) {}
 
-  MyState next(const MyEdge& edge) const {
-    return MyState(edge, max(cost + edge.cost, edge.endcost + dis[edge.end]));
+  MyState next(int from, const MyEdge& edge) const {
+    return MyState(from, edge, max(cost + edge.cost, edge.endcost + dis[edge.end]));
   }
 };
 
@@ -36,11 +36,11 @@ int main() {
     int sum = accumulate(w[i]);
     int s1 = sum, s2 = sum;
     for (int j = 0; j < l[i] - 1; ++j) {
-      graph[s[i][j + 1]].emplace_back(s[i][j + 1], s[i][j], w[i][j], s[i].back(), s1);
+      graph[s[i][j + 1]].emplace_back(s[i][j], w[i][j], s[i].back(), s1);
       s1 -= w[i][j];
     }
     for (int j = l[i] - 1; j >= 1; --j) {
-      graph[s[i][j - 1]].emplace_back(s[i][j - 1], s[i][j], w[i][j - 1], s[i][0], s2);
+      graph[s[i][j - 1]].emplace_back(s[i][j], w[i][j - 1], s[i][0], s2);
       s2 -= w[i][j - 1];
     }
   }

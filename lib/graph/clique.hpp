@@ -4,7 +4,6 @@
 template<template<typename Edge> class Graph, typename Edge> class Clique {
 private:
   const Graph<Edge> graph;
-  vector<int> degree;
   
 public:
   Clique(const Graph<Edge>& graph) : graph(graph) {}
@@ -41,7 +40,7 @@ public:
     if (maximumClique.size() < (int)current.size()) maximumClique = current;
     int maxSize = maximumClique.size();
     if ((int)current.size() + (int)remains.size() <= maxSize) return;
-    if (degree[remains[maxSize - current.size()]] < maxSize) return;
+    if (graph.getDegree(remains[maxSize - current.size()]) < maxSize) return;
     for (int v : remains) {
       current.emplace_back(v);
       vector<int> next;
@@ -54,9 +53,8 @@ public:
   }
   
   vector<int> maximum() {
-    for (int i = 0; i < graph.size(); ++i) degree.emplace_back(graph.getDegree(i));
     vector<pair<int, int>> v;
-    for (int i = 0; i < graph.size(); ++i) v.emplace_back(degree[i], i);
+    for (int i = 0; i < graph.size(); ++i) v.emplace_back(graph.getDegree(i), i);
     sort(v.begin(), v.end(), greater<pair<int, int>>());
     vector<int> maximumClique, current, remains;
     for (int i = 0; i < graph.size(); ++i) remains.emplace_back(v[i].second);

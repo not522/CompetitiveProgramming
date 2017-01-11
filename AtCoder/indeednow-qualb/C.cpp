@@ -15,7 +15,7 @@ struct LexicalTreeState : public DijkstraState<Edge> {
 class LexicalTree : public Dijkstra<MyGraph, false, LexicalTreeState> {
 private:
   void visit(const LexicalTreeState& state) {
-    if (state.edge.from != state.edge.to) cout << " ";
+    if (state.from != state.edge.to) cout << " ";
     cout << state.edge.to + 1;
   }
 

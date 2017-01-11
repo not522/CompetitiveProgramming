@@ -8,17 +8,17 @@ private:
 
   void visit(const BFSState<Edge>& state) {win[state.pos] = state.prv != -1 ? -win[state.prv] : -1;}
 
-  bool canPruning(const BFSState<Edge>& state) {
-    if (state.prv != -1 && win[state.prv] == -1) return false;
-    return ++cnt[state.pos] < degree[state.pos];
+  void push(const BFSState<Edge>& state) {
+    if (state.prv == -1 || win[state.prv] != -1) {
+      if (++cnt[state.pos] < degree[state.pos]) return;
+    }
+    que.push(state);
   }
 
 public:
   vector<int> win;
 
-  Shiritori(const AdjacencyList<Edge>& graph) : BFS<AdjacencyList<Edge>>(graph), cnt(graph.size()), degree(graph.size()), win(graph.size()) {
-    for (auto& edge : graph.getEdges()) ++degree[edge.to];
-  }
+  Shiritori(const AdjacencyList<Edge>& graph) : BFS<AdjacencyList<Edge>>(graph), cnt(graph.size()), degree(graph.getIndegree()), win(graph.size()) {}
 };
 
 int main() {

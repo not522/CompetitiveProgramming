@@ -13,7 +13,7 @@ int main() {
     for (int j = 0; j < m; ++j) {
       if (a[i] > b[j]) continue;
       if (a[i] + t < b[j]) continue;
-      graph.addEdge(Edge{i, j + n});
+      graph.addEdge(i, j + n);
     }
   }
   BipartiteMatching matching(graph);
