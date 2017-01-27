@@ -8,6 +8,7 @@ submit.cpp
 *.out
 *.ans
 *.diff
-/*.txt
 *.in.txt
 *.out.txt
+*.o
+*.d
