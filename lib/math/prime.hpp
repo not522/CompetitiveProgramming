@@ -71,4 +71,12 @@ public:
     sort(res.begin(), res.end());
     return res;
   }
+
+  vector<long long> primes(long long n) const {
+    vector<long long> res;
+    for (long long i = 2; i <= n; ++i) {
+      if (isPrime(i)) res.emplace_back(i);
+    }
+    return res;
+  }
 };
