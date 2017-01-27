@@ -4,6 +4,7 @@
 class Salary : public TreeDP<Tree<Edge>, int> {
 private:
   int visit(int v, const vector<int>& children) {
+    (void)v;
     if (children.empty()) return 1;
     auto m = minmax_element(children.begin(), children.end());
     return *m.first + *m.second + 1;

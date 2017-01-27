@@ -37,7 +37,7 @@ public:
   }
 
   void maximum(vector<int>& maximumClique, vector<int>& current, vector<int> remains) {
-    if (maximumClique.size() < (int)current.size()) maximumClique = current;
+    if (maximumClique.size() < current.size()) maximumClique = current;
     int maxSize = maximumClique.size();
     if ((int)current.size() + (int)remains.size() <= maxSize) return;
     if (graph.getDegree(remains[maxSize - current.size()]) < maxSize) return;

@@ -27,7 +27,7 @@ public:
     int j = max_element(sides.begin(), sides.end()) - sides.begin();
     sides.insert(sides.end(), sides.begin(), sides.end());
     Real res = 0;
-    for (int k = 0; k < 2 * size(); ++k) {
+    for (uint k = 0; k < 2 * size(); ++k) {
       if ((sides[i].vec() / sides[j].vec()).y >= 0) ++i;
       else ++j;
       res = max(res, (sides[i].a - sides[j].a).abs());

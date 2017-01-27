@@ -9,9 +9,9 @@ protected:
 public:
   Vector(int n) : val(n, 0) {}
 
-  T& operator[](int n) {
-    return val[n];
-  }
+  T& operator[](int n) {return val[n];}
+
+  T operator[](int n) const {return val[n];}
 
   Vector operator+=(const Vector& v) {
     for (int i = 0; i < size(); ++i) val[i] += v[i];
@@ -33,15 +33,9 @@ public:
     return false;
   }
 
-  int size() const {
-    return val.size();
-  }
+  int size() const {return val.size();}
 
-  typename vector<T>::const_iterator begin() const {
-    return val.begin();
-  }
+  typename vector<T>::const_iterator begin() const {return val.begin();}
 
-  typename vector<T>::const_iterator end() const {
-    return val.end();
-  }
+  typename vector<T>::const_iterator end() const {return val.end();}
 };

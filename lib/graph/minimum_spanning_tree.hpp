@@ -4,10 +4,10 @@
 template<typename Edge> struct PrimState : public DijkstraState<Edge> {
   PrimState(int pos) : DijkstraState<Edge>(pos) {}
 
-  PrimState(const Edge& edge, typename DijkstraState<Edge>::Cost cost) : DijkstraState<Edge>(edge, cost) {}
+  PrimState(const int from, const Edge& edge, typename DijkstraState<Edge>::Cost cost) : DijkstraState<Edge>(from, edge, cost) {}
 
-  PrimState next(const Edge& edge) const {
-    return PrimState(edge, edge.cost);
+  PrimState next(const int from, const Edge& edge) const {
+    return PrimState(from, edge, edge.cost);
   }
 };
 

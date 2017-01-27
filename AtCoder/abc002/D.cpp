@@ -1,7 +1,6 @@
 #include "graph/adjacency_matrix.hpp"
 #include "graph/clique.hpp"
-
-struct Edge {int from, to;};
+#include "graph/edge.hpp"
 
 int main() {
   int n, m;

@@ -19,7 +19,7 @@ private:
   }
 
 public:
-  Bullion(int w, int h, const vector<pair<int, int>>& c) : c(c) {}
+  Bullion(const vector<pair<int, int>>& c) : c(c) {}
 };
 
 int main() {
@@ -27,6 +27,6 @@ int main() {
   cin >> w >> h >> n;
   vector<pair<int, int>> c(n);
   for (auto& i : c) cin >> i.first >> i.second;
-  Bullion bullion(w, h, c);
+  Bullion bullion(c);
   cout << bullion.solve(1, 1, w, h) << endl;
 }

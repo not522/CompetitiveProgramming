@@ -5,23 +5,18 @@ template<typename Edge> class ResidualGraph : public AdjacencyList<Edge> {
 public:
   ResidualGraph(int n) : AdjacencyList<Edge>(n) {}
 
-  template<typename... Args> void addEdge(Args... args) {
-    Edge edge(args...);
-    edge.rev = this->graph[edge.to].size();
-    this->graph[edge.from].emplace_back(edge);
-    Edge rev = edge.reverse();
-    rev.rev = this->graph[rev.to].size() - 1;
-    this->graph[rev.from].emplace_back(rev);
+  template<typename... Args> void addEdge(int from, int to, Args... args) {
+    Edge edge(to, args...);
+    Edge rev = edge.reverse(from);
+    edge.rev = this->graph[to].size();
+    rev.rev = this->graph[from].size();
+    this->graph[from].emplace_back(edge);
+    this->graph[to].emplace_back(rev);
   }
 
-  template<typename... Args> void addUndirectedEdge(Args... args) {
-    Edge edge(args...);
-    edge.rev = this->graph[edge.to].size();
-    this->graph[edge.from].emplace_back(edge);
-    Edge rev = edge.reverse();
-    rev.rev = this->graph[rev.to].size() - 1;
-    rev.cap = edge.cap;
-    this->graph[rev.from].emplace_back(rev);
+  template<typename... Args> void addUndirectedEdge(int from, int to, Args... args) {
+    addEdge(from, to, args...);
+    this->graph[to].back().cap = this->graph[from].back().cap;
   }
 
   void flow(int v, int i, typename Edge::CapacityType f) {

@@ -8,9 +8,7 @@ private:
 public:
   AdjacencyMatrix(int n) : graph(n, vector<vector<Edge>>(n, vector<Edge>())) {}
 
-  int size() const {
-    return graph.size();
-  }
+  int size() const {return graph.size();}
 
   template<typename... Args> void addEdge(int from, int to, Args... args) {
     graph[from][to].emplace_back(to, args...);

@@ -2,11 +2,11 @@
 #include "math/square_matrix.hpp"
 
 // store val[i] as val[i + j][j]
-template<typename T> class CirculantMatrix : public Vector<T> {
+template<typename T> class CirculantMatrix : public Vector<T>, public Multiplication<CirculantMatrix<T>>, public Division<CirculantMatrix<T>> {
 public:
   CirculantMatrix(int n) : Vector<T>(n) {}
   
-  CirculantMatrix operator*(CirculantMatrix& m) {
+  CirculantMatrix operator*=(const CirculantMatrix& m) {
     int n = this->size();
     CirculantMatrix res(n);
     for (int i = 0; i < n; ++i) {
@@ -14,15 +14,11 @@ public:
         res[i + j >= n ? i + j - n : i + j] += this->val[i] * m[j];
       }
     }
-    return res;
+    return *this=res;
   }
 
-  CirculantMatrix operator*=(CirculantMatrix& m) {
-    return *this = *this * m;
-  }
-  
   // TODO FFT
-  CirculantMatrix operator/=(CirculantMatrix& m) {
+  CirculantMatrix operator/=(const CirculantMatrix& m) {
     int n = this->size();
     SquareMatrix<T> a(n), b(n);
     for (int i = 0; i < n; ++i) {
@@ -36,14 +32,8 @@ public:
     return *this;
   }
 
-  CirculantMatrix operator/(CirculantMatrix m) {
-    CirculantMatrix res = *this;
-    res /= m;
-    return res;
-  }
-
   // TODO FFT
-  Vector<T> operator*(Vector<T>& v) {
+  Vector<T> operator*(const Vector<T>& v) const {
     int n = this->size();
     Vector<T> res(n);
     for (int i = 0; i < n; ++i) {

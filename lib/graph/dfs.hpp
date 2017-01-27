@@ -3,7 +3,6 @@
 #include "graph/search.hpp"
 
 template<typename Edge> struct DFSState {
-
   int from;
   Edge edge;
 
@@ -19,6 +18,7 @@ template<typename Edge> struct DFSState {
 template<typename Graph, typename State = DFSState<typename Graph::EdgeType>> class DFS : public Search<Graph, State> {
 protected:
   using Edge = typename Graph::EdgeType;
+  using StateType = State;
 
 private:
   stack<State> st;
@@ -41,14 +41,14 @@ namespace dfs_tree {
   template<typename Graph> class DFSTree : public DFS<Graph> {
   private:
     using Edge = typename Graph::EdgeType;
-    using State = typename DFS<Graph>::State;
+    using State = typename DFS<Graph>::StateType;
 
     void visit(const State& state) {
+      int from = state.from, to = state.edge.to;
+      if (from == -1) return;
       Edge edge = state.edge;
-      if (edge.from != -1) {
-        swap(edge.from, edge.to);
-        tree.addEdge(edge);
-      }
+      edge.to = from;
+      tree.addEdge(to, edge);
     }
 
   public:

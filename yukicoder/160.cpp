@@ -1,5 +1,6 @@
 #include "ordered.hpp"
 #include "graph/adjacency_list.hpp"
+#include "graph/edge.hpp"
 #include "graph/shortest_path.hpp"
 #include "string/to_string.hpp"
 
@@ -28,18 +29,10 @@ namespace std {
   }
 }
 
-struct Edge {
-  using CostType = Cost;
-  int from, to;
-  Cost cost;
-  Edge(int from, int to) : from(from), to(to), cost(0, from) {};
-  Edge(int from, int to, int cost) : from(from), to(to), cost(cost, from) {};
-};
-
 int main() {
   int n, m, s, g;
   cin >> n >> m >> s >> g;
-  AdjacencyList<Edge> graph(n);
+  AdjacencyList<WeightedEdge<Cost>> graph(n);
   for (int i = 0; i < m; ++i) {
     int a, b, c;
     cin >> a >> b >> c;
