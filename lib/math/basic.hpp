@@ -1,17 +1,23 @@
 #pragma once
-#include "template.hpp"
+#include "bit_operation.hpp"
 
-template<typename T> T gcd(T t) {
-  return t;
+template<typename T> T gcd(T t) {return t;}
+
+template<typename T, typename... S> T gcd(T a, S... s) {
+  auto b = gcd(s...);
+  if (a == 0 || b == 0) return max(a, b);
+  int fa = least_bit_fast(a);
+  int fb = least_bit_fast(b);
+  a >>= fa;
+  b >>= fb;
+  while (a != b) {
+    auto& c = a > b ? a : b;
+    c >>= least_bit_fast(c = abs(a - b));
+  }
+  return a << min(fa, fb);
 }
 
-template<typename T, typename... S> T gcd(T t, S... s) {
-  return __gcd(t, gcd(s...));
-}
-
-template<typename T> T lcm(T t) {
-  return t;
-}
+template<typename T> T lcm(T t) {return t;}
 
 template<typename T, typename... S> T lcm(T t, S... s) {
   T l = lcm(s...);
