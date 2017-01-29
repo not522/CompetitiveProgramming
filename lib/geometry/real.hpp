@@ -3,7 +3,7 @@
 #include "ordered.hpp"
 #include "math/basic.hpp"
 
-class Real : public Arithmetic<Real>, public Modulus<Real>, public Ordered<Real> {
+class Real : public Arithmetic<Real>, public Ordered<Real> {
 private:
   long double val;
 
@@ -37,8 +37,6 @@ public:
     val /= static_cast<long double>(r);
     return *this;
   }
-
-  template<typename T> Real operator%=(const T& r) {return *this = mod(*this, static_cast<Real>(r));}
 
   template<typename T> Real operator-(const T& v) const {return Real(*this) -= v;}
 

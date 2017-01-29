@@ -1,5 +1,3 @@
-a.out
-a.exe
 in
 out
 ans
@@ -12,3 +10,5 @@ submit.cpp
 *.out.txt
 *.o
 *.d
+*.exe
+*_test

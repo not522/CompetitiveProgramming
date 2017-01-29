@@ -9,7 +9,7 @@ int main() {
     for (const auto& b : p) {
       for (const auto& c : p) {
         Real r = area(Polygon({a, b, c}));
-        if (r != 0 && r % 1 == 0) ++res;
+        if (r != 0 && floor(r) == r) ++res;
       }
     }
   }

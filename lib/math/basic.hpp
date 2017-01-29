@@ -25,23 +25,13 @@ template<typename T, typename... S> T lcm(T t, S... s) {
 }
 
 template<typename T> T floor(T a, T b) {
-  return a / b * b <= a ? a / b : a / b - 1;
-}
-
-template<> float floor(float a, float b) {
-  return floor(a / b) * b <= a ? floor(a / b) : floor(a / b) - 1;
-}
-
-template<> double floor(double a, double b) {
-  return floor(a / b) * b <= a ? floor(a / b) : floor(a / b) - 1;
-}
-
-template<> long double floor(long double a, long double b) {
-  return floor(a / b) * b <= a ? floor(a / b) : floor(a / b) - 1;
+  auto d = div(a, b);
+  return d.quot - (d.rem && (a < 0) != (b < 0) ? 1 : 0);
 }
 
 template<typename T> T ceil(T a, T b) {
-  return floor(a + b - 1, b);
+  auto d = div(a, b);
+  return d.quot + (d.rem && (a > 0) == (b > 0) ? 1 : 0);
 }
 
 template<typename T> T round(T a, T b) {
@@ -49,7 +39,8 @@ template<typename T> T round(T a, T b) {
 }
 
 template<typename T> T mod(T a, T b) {
-  return a - floor(a, b) * b;
+  T c = a % b;
+  return c < 0 ? c + abs(b) : c;
 }
 
 template<typename T> T factorial(T n) {
@@ -66,8 +57,4 @@ template<typename T> T cube(T n) {
 
 template<typename T> T norm(T x1, T y1, T x2, T y2) {
   return square(x1 - x2) + square(y1 - y2);
-}
-
-long long sqrt(long long n) {
-  return sqrt((long double)n);
 }

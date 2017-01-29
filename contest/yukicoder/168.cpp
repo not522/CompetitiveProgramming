@@ -17,7 +17,7 @@ int main() {
   for (const auto& d : dis) {
     uf.unite(get<1>(d), get<2>(d));
     if (uf.equal(0, n - 1)) {
-      cout << ceil(sqrt(get<0>(d) - 1) + 1, 10ll) * 10 << endl;
+      cout << ceil((int64_t)sqrt(get<0>(d) - 1) + 1, (int64_t)10) * 10 << endl;
       return 0;
     }
   }
