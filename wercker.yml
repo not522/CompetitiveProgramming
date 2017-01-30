@@ -1,0 +1,17 @@
+box: debian
+command-timeout: 60
+build:
+  steps:
+    - script:
+        name: install
+        code: |
+          sudo apt-get update
+          sudo apt install make g++ libboost-test-dev -y
+    - script:
+        name: build
+        code: |
+          make
+    - script:
+        name: test
+        code: |
+          make test
