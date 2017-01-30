@@ -6,12 +6,12 @@ build:
         name: install
         code: |
           sudo apt-get update
-          sudo apt install make g++ libboost-test-dev -y
+          sudo apt-get install make g++ libboost-test-dev -y
     - script:
         name: build
         code: |
-          make
+          make -j `grep -c ^processor /proc/cpuinfo 2>/dev/null`
     - script:
         name: test
         code: |
-          make test
+          make -j `grep -c ^processor /proc/cpuinfo 2>/dev/null`
