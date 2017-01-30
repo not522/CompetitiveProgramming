@@ -14,4 +14,4 @@ build:
     - script:
         name: test
         code: |
-          make -j `grep -c ^processor /proc/cpuinfo 2>/dev/null`
+          make test -j `grep -c ^processor /proc/cpuinfo 2>/dev/null`
