@@ -11,21 +11,13 @@ public:
   public:
     Iterator(int val, int bit) : val(val), bit(bit) {}
 
-    Iterator operator*() {
-      return *this;
-    }
+    Iterator operator*() {return *this;}
 
-    bool operator!=(const Iterator& itr) const {
-      return val != itr.val;
-    }
+    bool operator!=(const Iterator& itr) const {return val != itr.val;}
 
-    void operator++() {
-      val = least_bit(bit & (-1 << (val + 1)));
-    }
+    void operator++() {val = least_bit(bit & -(1 << (val + 1)));}
 
-    operator int() {
-      return val;
-    }
+    operator int() {return val;}
   };
   
   Iterator i, n;
@@ -33,27 +25,15 @@ public:
 
   BitIterator(int n) : i(least_bit(n), n), n(-1, n), bit(n) {}
 
-  bool operator!=(const BitIterator& itr) const {
-    return i != itr.i;
-  }
+  bool operator!=(const BitIterator& itr) const {return i != itr.i;}
 
-  void operator++() {
-    *this = BitIterator(bit + 1);
-  }
+  void operator++() {*this = BitIterator(bit + 1);}
 
-  operator int() const {
-    return bit;
-  }
+  operator int() const {return bit;}
 
-  bool in(int i) const {
-    return bit & (1 << i);
-  }
+  bool in(int i) const {return bit & (1 << i);}
 
-  Iterator& begin() {
-    return i;
-  }
+  Iterator& begin() {return i;}
 
-  Iterator& end() {
-    return n;
-  }
+  Iterator& end() {return n;}
 };
