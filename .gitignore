@@ -1,7 +1,6 @@
 in
 out
 ans
-submit.cpp
 *.in
 *.out
 *.ans
