@@ -3,32 +3,32 @@
 
 class Prime {
 private:
-  vector<long long> div;
+  vector<int64_t> div;
   
 public:
-  Prime(long long n = 0) {
-    for (long long i = 0; i <= n; ++i) div.emplace_back(i);
-    for (long long i = 2; i <= n / i; ++i) if (div[i] == i) {
-      for (long long j = i * i; j <= n; j += i) div[j] = i;
+  Prime(int64_t n = 0) {
+    for (int64_t i = 0; i <= n; ++i) div.emplace_back(i);
+    for (int64_t i = 2; i <= n / i; ++i) if (div[i] == i) {
+      for (int64_t j = i * i; j <= n; j += i) div[j] = i;
     }
   }
   
-  bool isPrime(long long n) const {
+  bool isPrime(int64_t n) const {
     if (n <= 1) return false;
-    if (n < (long long)div.size()) return div[n] == n;
-    for (long long i = 2; i <= n / i; ++i) if (n % i == 0) return false;
+    if (n < (int64_t)div.size()) return div[n] == n;
+    for (int64_t i = 2; i <= n / i; ++i) if (n % i == 0) return false;
     return true;
   }
   
-  vector<long long> factor(long long n) const {
-    vector<long long> res;
-    for (long long i = 2; i <= n / i && n >= (long long)div.size(); ++i) {
+  vector<int64_t> factor(int64_t n) const {
+    vector<int64_t> res;
+    for (int64_t i = 2; i <= n / i && n >= (int64_t)div.size(); ++i) {
       while (n % i == 0) {
         res.emplace_back(i);
         n /= i;
       }
     }
-    if (n >= max((long long)div.size(), 2ll)) {
+    if (n >= max((int64_t)div.size(), int64_t(2))) {
       res.emplace_back(n);
     } else {
       while (n > 1) {
@@ -40,18 +40,18 @@ public:
     return res;
   }
   
-  vector<long long> primeFactor(long long n) const {
-    vector<long long> res;
-    for (long long i = 2; i <= n / i && n >= (long long)div.size(); ++i) {
+  vector<int64_t> primeFactor(int64_t n) const {
+    vector<int64_t> res;
+    for (int64_t i = 2; i <= n / i && n >= (int64_t)div.size(); ++i) {
       if (n % i) continue;
       res.emplace_back(i);
       while (n % i == 0) n /= i;
     }
-    if (n >= max((long long)div.size(), 2ll)) {
+    if (n >= max((int64_t)div.size(), int64_t(2))) {
       res.emplace_back(n);
     } else {
       while (n > 1) {
-        long long d = div[n];
+        int64_t d = div[n];
         res.emplace_back(d);
         while (n % d == 0) n /= d;
       }
@@ -60,9 +60,9 @@ public:
     return res;
   }
 
-  vector<long long> divisor(long long n) const {
-    vector<long long> res;
-    for (long long i = 1; i <= n / i; ++i) {
+  vector<int64_t> divisor(int64_t n) const {
+    vector<int64_t> res;
+    for (int64_t i = 1; i <= n / i; ++i) {
       if (n % i == 0) {
         res.emplace_back(i);
         if (i != n / i) res.emplace_back(n / i);
@@ -72,9 +72,9 @@ public:
     return res;
   }
 
-  vector<long long> primes(long long n) const {
-    vector<long long> res;
-    for (long long i = 2; i <= n; ++i) {
+  vector<int64_t> primes(int64_t n) const {
+    vector<int64_t> res;
+    for (int64_t i = 2; i <= n; ++i) {
       if (isPrime(i)) res.emplace_back(i);
     }
     return res;

@@ -14,7 +14,7 @@ int main() {
   int p = a[0];
   while (!s.empty()) {
     int next = -1, lcm = numeric_limits<int>::max();
-    for (auto d : prime.divisor(p)) if (!v[d].empty() && chmax(lcm, p * *(v[d].begin()) / d)) next = *(v[d].begin());
+    for (auto d : prime.divisor(p)) if (!v[d].empty() && chmax(lcm, p * *(v[d].begin()) / (int)d)) next = *(v[d].begin());
     cout << p << " ";
     p = next;
     s.erase(s.find(p));

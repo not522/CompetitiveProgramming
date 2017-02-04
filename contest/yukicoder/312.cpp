@@ -6,5 +6,5 @@ int main() {
   cin >> n;
   Prime prime;
   auto d = prime.divisor(n);
-  cout << d[lower_bound(d, 3ll)] << endl;
+  cout << d[lower_bound(d, int64_t(3))] << endl;
 }

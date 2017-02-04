@@ -7,8 +7,8 @@ int main() {
   cin >> n >> k;
   Prime prime;
   Mint res = 0;
-  for (long long i : prime.divisor(k)) {
-    auto f = [&](const vector<long long>& v){
+  for (int64_t i : prime.divisor(k)) {
+    auto f = [&](const vector<int64_t>& v){
       Mint p = accumulate(v.begin(), v.end(), Mint(1), std::multiplies<Mint>());
       return n / i / p * (n / i / p + 1) / 2 * p;
     };
