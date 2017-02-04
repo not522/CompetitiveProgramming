@@ -20,7 +20,7 @@ template<typename T> struct LeadingZeros {
   }
 };
 
-template<typename T = long long, typename Lexer = Digit<T>> class Parser {
+template<typename T = int64_t, typename Lexer = Digit<T>> class Parser {
 private:
   string s;
   int p;
@@ -68,14 +68,14 @@ public:
     brackets[begin] = end;
   }
 
-  long long parse(const string& s) {
+  int64_t parse(const string& s) {
     this->s = s;
     p = 0;
     return expr(0);
   }
 };
 
-template<typename T = long long> T parse(const string& s) {
+template<typename T = int64_t> T parse(const string& s) {
   Parser<T> parser;
   parser.addUnaryOperator([](T t){return +t;}, '+');
   parser.addUnaryOperator(negate<T>(), '-');

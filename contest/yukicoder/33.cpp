@@ -9,7 +9,7 @@ int main() {
     cin >> y;
     x[mod(y, d)].emplace_back(floor(y, d));
   }
-  long long res = 0;
+  int64_t res = 0;
   for (auto& i : x) {
     sort(i.second.begin(), i.second.end());
     int p = numeric_limits<int>::min();

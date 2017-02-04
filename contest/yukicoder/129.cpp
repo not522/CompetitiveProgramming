@@ -2,7 +2,7 @@
 #include "math/mint.hpp"
 
 int main() {
-  long long n, m;
+  int64_t n, m;
   cin >> n >> m;
   n /= 1000;
   n %= m;

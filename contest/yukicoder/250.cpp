@@ -3,9 +3,9 @@
 int main() {
   int q;
   cin >> q;
-  Combination<long long> comb;
+  Combination<int64_t> comb;
   for (int i = 0; i < q; ++i) {
-    long long d, x, t;
+    int64_t d, x, t;
     cin >> d >> x >> t;
     if (t == 0) {
       cout << "ZETUBOU" << endl;
@@ -19,7 +19,7 @@ int main() {
       cout << "ZETUBOU" << endl;
       continue;
     }
-    long long s = comb.combination(d + x - 1, x);
+    int64_t s = comb.combination(d + x - 1, x);
     cout << (s <= t ? "AC" : "ZETUBOU") << endl;
   }
 }

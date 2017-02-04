@@ -1,7 +1,7 @@
 #include "math/prime.hpp"
 
 int main() {
-  long long x;
+  int64_t x;
   cin >> x;
   Prime prime;
   auto d = prime.primeFactor(x);

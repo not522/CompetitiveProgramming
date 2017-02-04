@@ -5,7 +5,7 @@ int main() {
   cin >> n;
   Mint res = 0;
   for (int i = 0; i < n; ++i) {
-    long long c, d;
+    int64_t c, d;
     cin >> c >> d;
     res += Mint((c + 1) / 2) * d;
   }

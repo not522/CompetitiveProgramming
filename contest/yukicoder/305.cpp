@@ -1,6 +1,6 @@
 #include "vector.hpp"
 
-int get(long long i) {
+int get(int64_t i) {
   cout << setw(10) << setfill('0') << i << endl;
   int x;
   string s;

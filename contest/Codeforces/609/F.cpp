@@ -1,12 +1,12 @@
 #include "vector.hpp"
 #include "container/segment_tree.hpp"
 
-class Frogs : public SegmentTree<long long> {
+class Frogs : public SegmentTree<int64_t> {
 private:
-  long long function(long long l, long long r) {return max(l, r);}
+  int64_t function(int64_t l, int64_t r) {return max(l, r);}
 
 public:
-  Frogs(int n) : SegmentTree<long long>(n) {}
+  Frogs(int n) : SegmentTree<int64_t>(n) {}
 };
 
 int main() {
@@ -40,7 +40,7 @@ int main() {
       }
     }
   }
-  vector<pair<int, long long>> res(n);
+  vector<pair<int, int64_t>> res(n);
   for (int i = 0; i < n; ++i) res[get<2>(a[i])] = make_pair(c[i], frogs.getValue(i) - get<0>(a[i]));
   for (int i = 0; i < n; ++i) cout << res[i].first << " " << res[i].second << endl;
 }

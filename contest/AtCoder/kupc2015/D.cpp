@@ -3,9 +3,9 @@
 int main() {
   int n;
   cin >> n;
-  vector<long long> a(n), b(n);
+  vector<int64_t> a(n), b(n);
   cin >> a >> b;
-  long long t = 0, mx = 0, res = 0;
+  int64_t t = 0, mx = 0, res = 0;
   int pos = 0;
   for (int i = 0; i < n; ++i) {
     mx = max(mx, b[pos]);

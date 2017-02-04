@@ -25,7 +25,7 @@ int main() {
     graph.addUndirectedEdge(u[i], v[i], w[i]);
   }
   auto tree = minimumSpanningTree(graph);
-  long long sum = 0;
+  int64_t sum = 0;
   for (int i = 0; i < n; ++i) sum += tree.parent[i].cost;
   auto tpq = PathMaximumQuery(tree);
   for (int i = 0; i < m; ++i) {

@@ -22,12 +22,12 @@ int main() {
   const int MOD = 100003;
   Mint::setMod(MOD);
   for (int i = 0; i < q; ++i) {
-    long long k;
+    int64_t k;
     cin >> k;
     if (k == 0) {
       cout << 0 << endl;
     } else if (n < 1000) {
-      long long res = 0;
+      int64_t res = 0;
       for (int j : a) res = max(res, j * k % MOD);
       cout << res << endl;
     } else {

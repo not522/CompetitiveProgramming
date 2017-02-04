@@ -1,9 +1,9 @@
 #include "vector.hpp"
 
 int main() {
-  long long n, k, m, r;
+  int64_t n, k, m, r;
   cin >> n >> k >> m >> r;
-  vector<long long> s(n - 1);
+  vector<int64_t> s(n - 1);
   cin >> s;
   s.emplace_back(0);
   rsort(s);
@@ -11,6 +11,6 @@ int main() {
     cout << 0 << endl;
     return 0;
   }
-  long long res = k * r - accumulate(s.begin(), s.begin() + k - 1, 0ll);
+  int64_t res = k * r - accumulate(s.begin(), s.begin() + k - 1, 0ll);
   cout << (res <= m ? res : -1) << endl;
 }

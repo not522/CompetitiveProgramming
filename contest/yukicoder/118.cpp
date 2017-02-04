@@ -3,7 +3,7 @@
 int main() {
   int n;
   cin >> n;
-  long long s[100] = {};
+  int64_t s[100] = {};
   for (int i = 0; i < n; ++i) {
     int a;
     cin >> a;

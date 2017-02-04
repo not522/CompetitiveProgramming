@@ -8,7 +8,7 @@ int main() {
     if (isdigit(c)) c = ' ';
   }
   stringstream ss(s);
-  long long res = 0;
+  int64_t res = 0;
   while (ss >> s) res += s.size() * (s.size() + 1) / 2;
   cout << res << endl;
 }

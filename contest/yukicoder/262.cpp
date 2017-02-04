@@ -1,7 +1,7 @@
 #include "bit_operation.hpp"
 
 int main() {
-  using var = unsigned long long;
+  using var = uint64_t;
   pair<var, int> dp[64][64][64];
   for (int i = 0; i < 64; ++i) {
     for (int j = 0; j < 64; ++j) {

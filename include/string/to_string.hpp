@@ -17,13 +17,7 @@ template<> string to_string<int>(const int& v) {
   return ss.str();
 }
 
-template<> string to_string<long>(const long& v) {
-  stringstream ss;
-  ss << v;
-  return ss.str();
-}
-
-template<> string to_string<long long>(const long long& v) {
+template<> string to_string<int64_t>(const int64_t& v) {
   stringstream ss;
   ss << v;
   return ss.str();
@@ -35,13 +29,7 @@ template<> string to_string<unsigned int>(const unsigned int& v) {
   return ss.str();
 }
 
-template<> string to_string<unsigned long>(const unsigned long& v) {
-  stringstream ss;
-  ss << v;
-  return ss.str();
-}
-
-template<> string to_string<unsigned long long>(const unsigned long long& v) {
+template<> string to_string<unsigned int64_t>(const unsigned int64_t& v) {
   stringstream ss;
   ss << v;
   return ss.str();

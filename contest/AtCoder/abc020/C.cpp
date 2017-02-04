@@ -8,8 +8,8 @@ int main() {
   cin >> h >> w >> t;
   vector<string> s(h);
   for (auto& i : s) cin >> i;
-  auto f = [&](long long n){
-    AdjacencyList<WeightedEdge<long long>> graph(h * w);
+  auto f = [&](int64_t n){
+    AdjacencyList<WeightedEdge<int64_t>> graph(h * w);
     const int dy[] = {0, -1, 0, 1};
     const int dx[] = {1, 0, -1, 0};
     for (int i = 0; i < h; ++i) {

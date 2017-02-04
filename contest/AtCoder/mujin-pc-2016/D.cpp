@@ -17,7 +17,7 @@ int main() {
     int l, r;
     cin >> l >> r; --l;
     if ((r - l) % 2 || s[l] == ')' || s[r - 1] == '(') {cout << "No" << endl; continue;}
-    int k = binarySearch([&](long long i){return sum1.sum(l, i) <= sum2.sum(i, r);}, l, r) + 1;
+    int k = binarySearch([&](int64_t i){return sum1.sum(l, i) <= sum2.sum(i, r);}, l, r) + 1;
     cout << ((rmq1.query(l, k) >= sum1.sum(0, l) && rmq2.query(k, r) >= sum2.sum(r, n)) ? "Yes" : "No") << endl;
   }
 }

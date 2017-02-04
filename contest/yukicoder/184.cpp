@@ -5,7 +5,7 @@ int main() {
   cin >> n;
   BitsetMatrix m(n);
   for (int i = 0; i < n; ++i) {
-    long long a;
+    int64_t a;
     cin >> a;
     for (int j = 0; a; ++j, a /= 2) m[i][j] = a % 2;
   }

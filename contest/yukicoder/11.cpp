@@ -1,7 +1,7 @@
 #include "template.hpp"
 
 int main() {
-  long long w, h, n;
+  int64_t w, h, n;
   cin >> w >> h >> n;
   set<int> a, b;
   for (int i = 0; i < n; ++i) {

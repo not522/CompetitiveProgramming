@@ -6,12 +6,12 @@ int main() {
   cin >> n >> m >> k >> s;
   vector<int> a(n), b(n);
   cin >> a >> b;
-  vector<pair<int, long long>> c(m);
+  vector<pair<int, int64_t>> c(m);
   for (auto& i : c) cin >> i.first >> i.second;
   auto f = [&](int n){
     int ma = *min_element(a.begin(), a.begin() + n);
     int mb = *min_element(b.begin(), b.begin() + n);
-    vector<long long> cost(m);
+    vector<int64_t> cost(m);
     for (int i = 0; i < m; ++i) cost[i] = (c[i].first == 1 ? ma : mb) * c[i].second;
     nth_element(cost, k);
     cost.resize(k);
@@ -25,7 +25,7 @@ int main() {
   cout << d << endl;
   int ma = min_element(a.begin(), a.begin() + d) - a.begin();
   int mb = min_element(b.begin(), b.begin() + d) - b.begin();
-  vector<pair<long long, int>> cost(m);
+  vector<pair<int64_t, int>> cost(m);
   for (int i = 0; i < m; ++i) cost[i] = make_pair((c[i].first == 1 ? a[ma] : b[mb]) * c[i].second, i);
   nth_element(cost, k);
   cost.resize(k);

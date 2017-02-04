@@ -7,7 +7,7 @@ int main() {
   vector<int> l(n);
   cin >> l;
   auto f = [&](double x){
-    long long sum = 0;
+    int64_t sum = 0;
     for (int& i : l) sum += floor(i / x);
     return sum - 500000 + 0.5;
   };

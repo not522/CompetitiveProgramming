@@ -1,7 +1,7 @@
 #include "template.hpp"
 
 int main() {
-  long long n;
+  int64_t n;
   cin >> n;
   cout << n / 25 << endl;
 }

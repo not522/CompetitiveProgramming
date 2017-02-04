@@ -21,7 +21,7 @@ bool isSeparator(char c) {
 
 int readInt(int a, int b) {
   char c = getchar();
-  long long n;
+  int64_t n;
   if (c == '-') {
     c = getchar();
     assert('1' <= c && c <= '9');
@@ -48,7 +48,7 @@ int readInt(int a, int b) {
   return n;
 }
 
-long long readLong(long long a, long long b) {
+int64_t readLong(int64_t a, int64_t b) {
   char c = getchar();
   __int128 n;
   if (c == '-') {
@@ -70,7 +70,7 @@ long long readLong(long long a, long long b) {
     if (!isdigit(c)) break;
     if (n > 0) n = n * 10 + c - '0';
     else n = n * 10 - (c - '0');
-    assert(numeric_limits<long long>::min() <= n && n <= numeric_limits<long long>::max());
+    assert(numeric_limits<int64_t>::min() <= n && n <= numeric_limits<int64_t>::max());
   }
   ungetc(c, stdin);
   assert(a <= n && n <= b);

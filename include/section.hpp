@@ -5,17 +5,17 @@
 
 class Section : public Bitwise<Section> {
 private:
-  const static long long MIN = numeric_limits<long long>::min();
-  const static long long MAX = numeric_limits<long long>::max();
+  const static int64_t MIN = numeric_limits<int64_t>::min();
+  const static int64_t MAX = numeric_limits<int64_t>::max();
 
-  using VAL = vector<pair<long long, long long>>;
+  using VAL = vector<pair<int64_t, int64_t>>;
 
 public:
   VAL v;
 
   Section() {}
 
-  Section(long long a, long long b) {v.emplace_back(a, b);}
+  Section(int64_t a, int64_t b) {v.emplace_back(a, b);}
 
   Section operator&=(const Section& s) {
     VAL res;
@@ -55,11 +55,11 @@ public:
     return *this = a &= b;
   }
 
-  pair<long long, long long>& operator[](int i) {
+  pair<int64_t, int64_t>& operator[](int i) {
     return v[i];
   }
 
-  const pair<long long, long long>& operator[](int i) const {
+  const pair<int64_t, int64_t>& operator[](int i) const {
     return v[i];
   }
 
@@ -70,16 +70,16 @@ public:
     if (v.back().second != MAX) res.emplace_back(v.back().second, MAX);
   }
 
-  long long first() const {
+  int64_t first() const {
     return v[0].first;
   }
 
-  long long second() const {
+  int64_t second() const {
     return v[0].second;
   }
 
-  long long size() const {
-    long long res = 0;
+  int64_t size() const {
+    int64_t res = 0;
     for (const auto& i : v) res += i.second - i.first - 1;
     return res;
   }
@@ -91,7 +91,7 @@ ostream& operator<<(ostream& os, const Section& s) {
 }
 
 istream& operator>>(istream& is, Section& s) {
-  long long a, b;
+  int64_t a, b;
   is >> a >> b;
   s = Section(a, b + 1);
   return is;

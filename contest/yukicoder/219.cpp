@@ -8,6 +8,6 @@ int main() {
     cin >> a >> b;
     double res = log10(a) * b;
     int xy = pow(10, fmod(res, 1)) * 10;
-    cout << xy / 10 << " " << xy % 10 << " " << (long long)floor(res) << endl;
+    cout << xy / 10 << " " << xy % 10 << " " << (int64_t)floor(res) << endl;
   }
 }

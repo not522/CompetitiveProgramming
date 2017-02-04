@@ -1,9 +1,9 @@
 #include "template.hpp"
 
 int main() {
-  long long n;
+  int64_t n;
   cin >> n;
-  long long i, k;
+  int64_t i, k;
   for (i = 0, k = 1; k <= n; ++i) {
     if (i % 2) k *= 2;
     else k = 2 * k + 1;

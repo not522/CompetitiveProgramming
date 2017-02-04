@@ -12,7 +12,7 @@ private:
   constexpr static long double EPSILON = pow<long double>(2, -(BitSize - 4) * DecimalSize);
 
   bool sign;
-  array<long long, IntegerSize + DecimalSize> d;
+  array<int64_t, IntegerSize + DecimalSize> d;
 
 public:
   BigDecimal() {
@@ -26,7 +26,7 @@ public:
     normal();
   }
 
-  BigDecimal(long long n) {
+  BigDecimal(int64_t n) {
     sign = PLUS;
     for (auto& i : d) i = 0;
     d[DecimalSize] = n;
@@ -97,7 +97,7 @@ public:
       normal();
     }
     if (d.back() >= (1ll << BitSize)) throw "overflow";
-    if (all_of(d.begin(), d.end(), [](long long i){return i == 0;})) sign = PLUS;
+    if (all_of(d.begin(), d.end(), [](int64_t i){return i == 0;})) sign = PLUS;
     return *this;
   }
 
@@ -230,8 +230,8 @@ public:
     return res;
   }
 
-  long long toLongLong() const {
-    long long res = 0;
+  int64_t toLongLong() const {
+    int64_t res = 0;
     for (int i = 0; i < IntegerSize; ++i) res += d[DecimalSize + i] << BitSize * i;
     if (sign == MINUS) return -res;
     return res;

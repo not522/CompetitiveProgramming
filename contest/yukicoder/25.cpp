@@ -1,7 +1,7 @@
 #include "math/basic.hpp"
 
 int main() {
-  long long n, m;
+  int64_t n, m;
   cin >> n >> m;
   auto g = gcd(n, m);
   n /= g;

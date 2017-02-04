@@ -9,7 +9,7 @@ int main() {
   int t;
   cin >> t;
   for (int i = 0; i < t; ++i) {
-    long long m;
+    int64_t m;
     cin >> m;
     Mint res = 0;
     for (int j = 0; j <= m / 111111; ++j) res += v[j];

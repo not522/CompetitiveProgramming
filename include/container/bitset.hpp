@@ -13,14 +13,14 @@ private:
   }
 
 public:
-  vector<unsigned long long> val;
+  vector<unsigned int64_t> val;
 
   class reference {
   private:
     friend class Bitset;
-    vector<unsigned long long>::iterator val;
+    vector<unsigned int64_t>::iterator val;
     int pos;
-    reference(vector<unsigned long long>::iterator val, int pos) : val(val), pos(pos) {}
+    reference(vector<unsigned int64_t>::iterator val, int pos) : val(val), pos(pos) {}
 
   public:
     reference operator=(const reference& r) {
@@ -79,11 +79,11 @@ public:
   }
 
   int count() {
-    return accumulate(val.begin(), val.end(), 0, [](int a, unsigned long long b){return a + count_bit(b);});
+    return accumulate(val.begin(), val.end(), 0, [](int a, uint64_t b){return a + count_bit(b);});
   }
 
   bool parity() {
-    return accumulate(val.begin(), val.end(), 0, [](int a, unsigned long long b){return a ^ __builtin_parityll(b);});
+    return accumulate(val.begin(), val.end(), 0, [](int a, uint64_t b){return a ^ __builtin_parityll(b);});
   }
 
   int size() const {

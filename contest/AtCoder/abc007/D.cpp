@@ -1,6 +1,6 @@
 #include "dp/digit_dp.hpp"
 
-class PermittedNumber : public DigitDP<long long, array<long long, 2>> {
+class PermittedNumber : public DigitDP<int64_t, array<int64_t, 2>> {
 protected:
   void step(int n) {
     curr[0] = prev[0] * 8;
@@ -10,19 +10,19 @@ protected:
     else curr[1] = 0;
   }
 
-  long long result() {return curr[0] + curr[1];}
+  int64_t result() {return curr[0] + curr[1];}
 
 public:
-  PermittedNumber(long long num) : DigitDP<long long, array<long long, 2>>(num) {curr = {0, 1};}
+  PermittedNumber(int64_t num) : DigitDP<int64_t, array<int64_t, 2>>(num) {curr = {0, 1};}
 };
 
-long long solve(long long n) {
+int64_t solve(int64_t n) {
   PermittedNumber permittedNumber(n);
   return permittedNumber.solve();
 }
 
 int main() {
-  long long a, b;
+  int64_t a, b;
   cin >> a >> b;
   cout << (b - a + 1) - (solve(b) - solve(a - 1)) << endl;
 }

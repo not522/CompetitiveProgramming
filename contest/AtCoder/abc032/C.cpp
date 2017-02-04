@@ -4,9 +4,9 @@
 
 class Row : public DoublePointer {
 private:
-  vector<long long> s;
+  vector<int64_t> s;
   int k;
-  long long product;
+  int64_t product;
   
   bool valid() {return product <= k;}
 
@@ -20,15 +20,15 @@ private:
 public:
   int res;
 
-  Row(const vector<long long>& s, int k) : DoublePointer(s.size()), s(s), k(k), product(1), res(0) {}
+  Row(const vector<int64_t>& s, int k) : DoublePointer(s.size()), s(s), k(k), product(1), res(0) {}
 };
 
 int main() {
   int n, k;
   cin >> n >> k;
-  vector<long long> s(n);
+  vector<int64_t> s(n);
   cin >> s;
-  if (in(s, 0ll)) {
+  if (in(s, int64_t(0))) {
     cout << n << endl;
     return 0;
   }

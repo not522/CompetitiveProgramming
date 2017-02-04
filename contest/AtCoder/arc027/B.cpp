@@ -8,7 +8,7 @@ int main() {
   for (int i = 0; i < n; ++i) {
     if (isalpha(s1[i]) && isalpha(s2[i])) uf.unite(s1[i], s2[i]);
   }
-  long long res = 1;
+  int64_t res = 1;
   for (char c = 'A'; c <= 'Z'; ++c) {
     if (s1.find(c) == string::npos && s2.find(c) == string::npos) continue;
     if (uf.find(c) != c) continue;

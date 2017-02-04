@@ -1,10 +1,10 @@
 #include "template.hpp"
 
 int main() {
-  long long n;
+  int64_t n;
   cin >> n;
-  vector<long long> res;
-  for (long long m = n; n - m < 200 && m > 0; --m) {
+  vector<int64_t> res;
+  for (int64_t m = n; n - m < 200 && m > 0; --m) {
     string s = to_string(m);
     auto f = [](int n, char c){return n + c - '0';};
     if (m + accumulate(s.begin(), s.end(), 0, f) == n) res.emplace_back(m);

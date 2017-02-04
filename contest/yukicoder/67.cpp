@@ -6,10 +6,10 @@ int main() {
   cin >> n;
   vector<int> l(n);
   cin >> l;
-  long long k;
+  int64_t k;
   cin >> k;
   auto f = [&](double x){
-    long long sum = 0;
+    int64_t sum = 0;
     for (int& i : l) sum += floor(i / x);
     return sum - k + 0.5;
   };

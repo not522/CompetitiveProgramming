@@ -1,11 +1,11 @@
 #include "template.hpp"
 
 int main() {
-  long long a;
+  int64_t a;
   cin >> a;
-  for (long long i = 10; ; ++i) {
-    long long t = 1, s = 0;
-    for (long long j = i; j; j /= 10) {
+  for (int64_t i = 10; ; ++i) {
+    int64_t t = 1, s = 0;
+    for (int64_t j = i; j; j /= 10) {
       s += j % 10 * t;
       t *= i;
     }

@@ -12,7 +12,7 @@ int main() {
     ++v[a], ++u[b];
     s.insert(make_pair(a, b));
   }
-  long long res = 0;
+  int64_t res = 0;
   for (auto p : s) {
     if (v[p.first] + u[p.second] - 1 == k) ++res;
     if (v[p.first] + u[p.second] == k) --res;

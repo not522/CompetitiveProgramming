@@ -1,11 +1,11 @@
 #include "vector.hpp"
 
 int main() {
-  long long n, a, b;
+  int64_t n, a, b;
   cin >> n >> a >> b;
-  vector<long long> s(n);
+  vector<int64_t> s(n);
   cin >> s;
-  long long sum = accumulate(s), mn = min(s), mx = max(s);
+  int64_t sum = accumulate(s), mn = min(s), mx = max(s);
   if (mn == mx && s[0] != a) {
     cout << -1 << endl;
     return 0;

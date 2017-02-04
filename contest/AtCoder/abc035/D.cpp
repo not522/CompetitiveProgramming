@@ -9,7 +9,7 @@ int main() {
   cin >> n >> m >> t;
   vector<int> a(n);
   cin >> a;
-  AdjacencyList<WeightedEdge<long long>> graph1(n), graph2(n);
+  AdjacencyList<WeightedEdge<int64_t>> graph1(n), graph2(n);
   for (int i = 0; i < m; ++i) {
     int a, b, c;
     cin >> a >> b >> c;
@@ -18,7 +18,7 @@ int main() {
   }
   auto dijkstra1 = shortestPath(graph1, 0);
   auto dijkstra2 = shortestPath(graph2, 0);
-  long long res = 0;
+  int64_t res = 0;
   for (int i = 0; i < n; ++i) {
     if (!dijkstra1.isReachable(i) || !dijkstra2.isReachable(i)) continue;
     chmax(res, a[i] * (t - dijkstra1.dis[i] - dijkstra2.dis[i]));
