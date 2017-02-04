@@ -3,7 +3,7 @@
 int main() {
   int n;
   cin >> n;
-  CumulativeSum1D<int, true> sum(1000001);
+  CumulativeSum1D<int> sum(1000001);
   for (int i = 0; i < n; ++i) {
     int a, b;
     cin >> a >> b;
