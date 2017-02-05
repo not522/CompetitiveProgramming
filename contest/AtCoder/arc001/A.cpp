@@ -1,11 +1,10 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 int main() {
   int n;
   string s;
   cin >> n >> s;
-  array<int, 4> a = {0, 0, 0, 0};
+  vector<int> a(4);
   for (char c : s) ++a[c - '1'];
-  auto m = minmax_element(a.begin(), a.end());
-  cout << *m.second << " " << *m.first << endl;
+  cout << max(a) << " " << min(a) << endl;
 }

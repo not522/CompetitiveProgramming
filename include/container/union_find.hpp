@@ -19,4 +19,11 @@ public:
   }
   int size() {return n;}
   int size(int x) {return -a[find(x)];}
+  bool isRoot(int x) {return find(x) == x;}
+  vector<vector<int>> groups() {
+    vector<vector<int>> r(a.size()), res;
+    for (uint i = 0; i < a.size(); ++i) r[find(i)].emplace_back(i);
+    for (auto&& i : r) if (!i.empty()) res.emplace_back(move(i));
+    return res;
+  }
 };

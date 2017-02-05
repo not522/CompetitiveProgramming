@@ -34,27 +34,19 @@ template<typename T> T ceil(T a, T b) {
   return d.quot + (d.rem && (a > 0) == (b > 0) ? 1 : 0);
 }
 
-template<typename T> T round(T a, T b) {
-  return floor(a + b / 2, b);
-}
+template<typename T> T round(T a, T b) {return floor(a + b / 2, b);}
 
 template<typename T> T mod(T a, T b) {
   T c = a % b;
   return c < 0 ? c + abs(b) : c;
 }
 
-template<typename T> T factorial(T n) {
-  return n <= 1 ? 1 : factorial(n - 1) * n;
-}
+template<typename T> T factorial(T n) {return n <= 1 ? 1 : factorial(n - 1) * n;}
 
-template<typename T> T square(T n) {
-  return n * n;
-}
+template<typename T> T square(T n) {return n * n;}
 
-template<typename T> T cube(T n) {
-  return n * n * n;
-}
+template<typename T> T cube(T n) {return n * n * n;}
 
-template<typename T> T norm(T x1, T y1, T x2, T y2) {
-  return square(x1 - x2) + square(y1 - y2);
-}
+template<typename T> T norm(T x1, T y1, T x2, T y2) {return square(x1 - x2) + square(y1 - y2);}
+
+template<typename T> bool isSquare(T n) {return square(T(sqrt(n))) == n;}
