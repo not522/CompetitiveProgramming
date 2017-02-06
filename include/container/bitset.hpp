@@ -24,7 +24,7 @@ public:
 
   public:
     reference operator=(const reference& r) {
-      if ((bool)r) *val |= 1ull << pos;
+      if (static_cast<bool>(r)) *val |= 1ull << pos;
       else *val &= ~(1ull << pos);
       return *this;
     }
@@ -45,12 +45,12 @@ public:
   Bitset(int n) : val(arraySize(n), 0) {}
 
   reference operator[](int n) {
-    if (arraySize(n) >= (int)val.size()) resize(n);
+    if (arraySize(n) >= int(val.size())) resize(n);
     return reference(val.begin() + n / 64, n % 64);
   }
 
   bool operator[](int n) const {
-    if (arraySize(n) >= (int)val.size()) return false;
+    if (arraySize(n) >= int(val.size())) return false;
     return val[n / 64] >> n % 64 & 1;
   }
 

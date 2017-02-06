@@ -35,11 +35,11 @@ public:
   }
 
   Point& operator[](int i) {
-    return vector::operator[](mod(i, (int)size()));
+    return vector::operator[](mod(i, int(size())));
   }
 
   const Point& operator[](int i) const {
-    return vector::operator[](mod(i, (int)size()));
+    return vector::operator[](mod(i, int(size())));
   }
 
   template<bool strict = false> bool cover(const Point& point) const {

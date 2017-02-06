@@ -9,7 +9,7 @@ int main() {
   }
   while (true) {
     if (s[t].empty()) {
-      cout << (char)(t + 'A') << endl;
+      cout << char(t + 'A') << endl;
       return 0;
     }
     int p = s[t].back() - 'a';

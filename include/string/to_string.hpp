@@ -4,7 +4,7 @@
 template<typename T> string to_string(const T& v) {
   string str;
   for (const auto& i : const_cast<T&>(v)) str += ' ' + to_string(i);
-  return str.substr(min(1, (int)str.size()));
+  return str.substr(min(1, int(str.size())));
 }
 
 template<> string to_string<string>(const string& v) {return v;}

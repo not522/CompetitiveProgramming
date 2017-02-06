@@ -11,7 +11,7 @@ int main() {
     for (int j : c) {
       if (i % j == 0) ++cnt;
     }
-    res += (cnt + 1) / 2 / (double)cnt;
+    res += (cnt + 1) / 2. / cnt;
   }
   cout << res << endl;
 }

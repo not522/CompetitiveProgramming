@@ -4,5 +4,5 @@ int main() {
   Mint::setMod(10);
   Mint a, b;
   cin >> a >> b;
-  cout << min((int)(a - b), (int)(b - a)) << endl;
+  cout << min(static_cast<int>(a - b), static_cast<int>(b - a)) << endl;
 }

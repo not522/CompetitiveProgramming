@@ -15,20 +15,20 @@ public:
   
   bool isPrime(int64_t n) const {
     if (n <= 1) return false;
-    if (n < (int64_t)div.size()) return div[n] == n;
+    if (n < int64_t(div.size())) return div[n] == n;
     for (int64_t i = 2; i <= n / i; ++i) if (n % i == 0) return false;
     return true;
   }
   
   vector<int64_t> factor(int64_t n) const {
     vector<int64_t> res;
-    for (int64_t i = 2; i <= n / i && n >= (int64_t)div.size(); ++i) {
+    for (int64_t i = 2; i <= n / i && n >= int64_t(div.size()); ++i) {
       while (n % i == 0) {
         res.emplace_back(i);
         n /= i;
       }
     }
-    if (n >= max((int64_t)div.size(), int64_t(2))) {
+    if (n >= max(int(div.size()), 2)) {
       res.emplace_back(n);
     } else {
       while (n > 1) {
@@ -42,12 +42,12 @@ public:
   
   vector<int64_t> primeFactor(int64_t n) const {
     vector<int64_t> res;
-    for (int64_t i = 2; i <= n / i && n >= (int64_t)div.size(); ++i) {
+    for (int64_t i = 2; i <= n / i && n >= int64_t(div.size()); ++i) {
       if (n % i) continue;
       res.emplace_back(i);
       while (n % i == 0) n /= i;
     }
-    if (n >= max((int64_t)div.size(), int64_t(2))) {
+    if (n >= max(int(div.size()), 2)) {
       res.emplace_back(n);
     } else {
       while (n > 1) {

@@ -33,7 +33,7 @@ int main() {
     }
     return res;
   };
-  for (int i = 0; i < (int)p.size(); ++i) {
+  for (int i = 0; i < int(p.size()); ++i) {
     dp[i] += f(0, 0, p[i].first, p[i].second);
     for (int j = 0; j < i; ++j) dp[i] -= dp[j] * f(p[j].first, p[j].second, p[i].first, p[i].second);
   }

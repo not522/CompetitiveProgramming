@@ -23,7 +23,7 @@ int main() {
       }
       --cnt1[s[i] - 'a'];
       --cnt2[j];
-      cout << (char)(j + 'a');
+      cout << char(j + 'a');
       break;
     }
   }

@@ -15,7 +15,7 @@ int main() {
   vector<long double> res;
   for (const int& i : l) {
     for (int j = 1; ; ++j) {
-      long double d = (long double)i / j;
+      long double d = static_cast<long double>(i) / j;
       if (d < mx - 1e-9) break;
       res.emplace_back(d);
     }

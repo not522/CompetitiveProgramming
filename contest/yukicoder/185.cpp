@@ -9,5 +9,5 @@ int main() {
     cin >> x >> y;
     v[i] = y - x;
   }
-  cout << (count(v.begin(), v.end(), v[0]) == (int)v.size() && v[0] > 0 ? v[0] : -1) << endl;
+  cout << (count(v.begin(), v.end(), v[0]) == int(v.size()) && v[0] > 0 ? v[0] : -1) << endl;
 }

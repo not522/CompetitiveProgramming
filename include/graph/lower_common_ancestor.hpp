@@ -19,7 +19,7 @@ public:
   }
 
   int calcAncestor(int v, int depth) {
-    if (depth >= (int)ancestor[v].size()) ancestor[v].resize(depth + 1, -1);
+    if (depth >= int(ancestor[v].size())) ancestor[v].resize(depth + 1, -1);
     if (ancestor[v][depth] != -1) return ancestor[v][depth];
     if (depth == 0) return ancestor[v][depth] = tree.parent[v].to;
     return ancestor[v][depth] = calcAncestor(calcAncestor(v, depth - 1), depth - 1);

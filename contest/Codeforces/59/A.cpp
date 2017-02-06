@@ -8,6 +8,6 @@ int main() {
     if (isupper(c)) ++u;
     else ++l;
   }
-  for (char c : s) cout << (char)(u > l ? toupper(c) : tolower(c));
+  for (char c : s) cout << char(u > l ? toupper(c) : tolower(c));
   cout << endl;
 }

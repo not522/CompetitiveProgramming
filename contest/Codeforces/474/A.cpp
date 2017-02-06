@@ -4,7 +4,7 @@ int main() {
   unordered_map<char, char> right, left;
   string key[]{"qwertyuiop", "asdfghjkl;", "zxcvbnm,./"};
   for (auto& s : key) {
-    for (int i = 0; i < (int)s.size() - 1; ++i) {
+    for (int i = 0; i < int(s.size()) - 1; ++i) {
       right[s[i]] = s[i + 1];
       left[s[i + 1]] = s[i];
     }

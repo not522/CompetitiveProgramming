@@ -8,5 +8,5 @@ int main() {
     if (c == 'F') continue;
     res += 'E' - c;
   }
-  cout << (double)res / n << endl;
+  cout << double(res) / n << endl;
 }

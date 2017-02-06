@@ -4,5 +4,5 @@
 int main() {
   Point p;
   cin >> p;
-  cout << (int)floor(p.abs() * 2 + 1).toLongDouble() << endl;
+  cout << int(floor(p.abs() * 2 + 1).toLongDouble()) << endl;
 }

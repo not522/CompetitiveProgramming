@@ -7,14 +7,14 @@ int l[10];
 bool solve(int a) {
   if (a > k) {
     vector<set<string>> t(k);
-    for (int i = 0; i < (int)v.size(); ++i) {
+    for (uint i = 0; i < v.size(); ++i) {
       int x = 0;
       for (char c : v[i]) {
-        if ((int)w[i].size() < x + l[c - '1']) return false;
+        if (int(w[i].size()) < x + l[c - '1']) return false;
         t[c - '1'].insert(w[i].substr(x, l[c - '1']));
         x += l[c - '1'];
       }
-      if (x != (int)w[i].size()) return false;
+      if (x != int(w[i].size())) return false;
     }
     if (any_of(t.begin(), t.end(), [](set<string> s){return s.size() != 1u;})) return false;
     for (auto s : t) cout << *s.begin() << endl;

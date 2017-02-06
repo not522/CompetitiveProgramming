@@ -2,7 +2,7 @@
 #include "template.hpp"
 
 template<typename Function> long double goldenSectionSearch(Function function, long double lower, long double upper) {
-  constexpr long double r = (sqrt((long double)5) - 1) / 2;
+  constexpr long double r = (sqrt(5.l) - 1) / 2;
   long double middle1 = upper - r * (upper - lower);
   long double middle2 = lower + r * (upper - lower);
   for (int i = 0; i < 200; ++i) {

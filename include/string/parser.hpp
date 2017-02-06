@@ -4,7 +4,7 @@
 template<typename T> struct Digit {
   T operator() (string& s, int& p) {
     if (!isdigit(s[p])) throw "empty term";
-    if (s[p] == '0' && p + 1 < (int)s.size() && !isdigit(s[p + 1])) throw "leading zeros";
+    if (s[p] == '0' && p + 1 < int(s.size()) && !isdigit(s[p + 1])) throw "leading zeros";
     string res;
     for (; isdigit(s[p]); ++p) res += s[p];
     return toInteger<T>(res);

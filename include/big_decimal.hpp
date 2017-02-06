@@ -42,7 +42,7 @@ public:
     }
     BigDecimal t = 1;
     bool decimal = false;
-    for (int i = 0; i < (int)str.size(); ++i) {
+    for (uint i = 0; i < str.size(); ++i) {
       if (str[i] == '.') {
         decimal = true;
       } else {
@@ -169,7 +169,7 @@ public:
 
   BigDecimal operator/=(const BigDecimal &a) {
     if (a == 0) throw "divide by zero";
-    BigDecimal rev = (double)1 / a.toDouble();
+    BigDecimal rev = 1. / a.toDouble();
     for (int i = 0; i < 7; ++i) rev = (rev << 1) - a * rev * rev;
     rev.sign = a.sign;
     return *this *= rev;

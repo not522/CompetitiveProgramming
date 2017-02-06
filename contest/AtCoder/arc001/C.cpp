@@ -15,7 +15,7 @@ int main() {
   for (auto b : q.solve()) {
     bool ok = true;
     for (int i = 0; i < 8; ++i) {
-      if (u[i] == (int)string::npos) continue;
+      if (u[i] == int(string::npos)) continue;
       if (u[i] != b[i]) ok = false;
     }
     if (ok) {

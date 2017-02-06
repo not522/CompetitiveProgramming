@@ -17,7 +17,7 @@ public:
 
   double combination(int n, int m) {
     if (n < m) return 0;
-    if (n < (int)comb.size()) return comb[n][m];
+    if (n < int(comb.size())) return comb[n][m];
     double res = 1;
     int t = n;
     for (int i = 0; i < min(m, n - m); ++i) {

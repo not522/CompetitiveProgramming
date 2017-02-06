@@ -8,8 +8,8 @@ protected:
   vector<bool> use;
   vector<T> mem;
 
-  bool used(int v) {
-    if (v >= (int)use.size()) {
+  bool used(uint v) {
+    if (v >= use.size()) {
       use.resize(v + 1, false);
       mem.resize(v + 1);
     }

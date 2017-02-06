@@ -16,17 +16,17 @@ int main() {
   int res = 0;
   for (auto s : s1) {
     bool f = true;
-    for (int i = 0; i < (int)s.size(); ++i) {
+    for (int i = 0; i < int(s.size()); ++i) {
       if (s[i] == 'R') {
         if (0 <= i - kr && s[i - kr] == 'R') f = false;
-        if (i + kr < (int)s.size()&& s[i + kr] == 'R') f = false;
+        if (i + kr < int(s.size()) && s[i + kr] == 'R') f = false;
       }
       if (s[i] == 'B') {
         if (0 <= i - kb && s[i - kb] == 'B') f = false;
-        if (i + kb < (int)s.size()&& s[i + kb] == 'B') f = false;
+        if (i + kb < int(s.size()) && s[i + kb] == 'B') f = false;
       }
     }
-    if (f) res = max(res, (int)s.size());
+    if (f) res = max(res, int(s.size()));
   }
   cout << res << endl;
 }

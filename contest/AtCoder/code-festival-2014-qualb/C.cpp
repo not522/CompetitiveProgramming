@@ -18,5 +18,5 @@ int main() {
     a += max(0, v - m[1][c]);
     b += max(0, v - m[0][c]);
   }
-  cout << (a <= (int)s[0].size() / 2 && b <= (int)s[0].size() / 2 ? "YES" : "NO") << endl;
+  cout << (a <= int(s[0].size()) / 2 && b <= int(s[0].size()) / 2 ? "YES" : "NO") << endl;
 }

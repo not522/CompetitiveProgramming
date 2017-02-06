@@ -58,7 +58,7 @@ int64_t Mint::mod = 1000000007;
 Inverse Mint::inverse(1000000007);
 
 ostream& operator<<(ostream& os, Mint a) {
-  os << (int64_t)a;
+  os << int64_t(a);
   return os;
 }
 

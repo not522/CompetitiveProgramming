@@ -12,7 +12,7 @@ public:
 
   T partial_permutation(int n, int m) {
     if (n < m) return 0;
-    if (n < (int)factorial.size()) return factorial[n] / factorial[n - m];
+    if (n < int(factorial.size())) return factorial[n] / factorial[n - m];
     T res = 1;
     for (int i = n; i > n - m; --i) res *= i;
     return res;
@@ -20,7 +20,7 @@ public:
 
   T combination(int n, int m) {
     if (n < m) return 0;
-    if (n < (int)factorial.size()) return factorial[n] / factorial[m] / factorial[n - m];
+    if (n < int(factorial.size())) return factorial[n] / factorial[m] / factorial[n - m];
     T res = 1;
     for (int i = 0; i < min(m, n - m); ++i) res = res * (n - i) / (i + 1);
     return res;

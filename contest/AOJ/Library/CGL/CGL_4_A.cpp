@@ -11,6 +11,6 @@ int main() {
   rotate(convexPolygon.begin(), itr, convexPolygon.end());
   cout << convexPolygon.size() << endl;
   for (const auto& point : convexPolygon) {
-    cout << (int)point.x.toLongDouble() << " " << (int)point.y.toLongDouble() << endl;
+    cout << int(point.x.toLongDouble()) << " " << int(point.y.toLongDouble()) << endl;
   }
 }

@@ -1,6 +1,6 @@
 CC = g++
-FLAGS = -Wall -Wextra -Werror -std=gnu++14 -I../include
-SRCS = $(shell find * -name "*.cpp")
+FLAGS = -Wall -Wextra -Werror -Wold-style-cast -std=gnu++14 -I../include
+SRCS = $(shell find * -name "*.cpp" | sort)
 OBJS = $(patsubst %.cpp,%.o,$(SRCS))
 DEPS = $(patsubst %.cpp,%.d,$(SRCS))
 

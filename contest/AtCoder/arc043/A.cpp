@@ -10,6 +10,6 @@ int main() {
     cout << -1 << endl;
     return 0;
   }
-  double p = (double)b / (mx - mn);
+  double p = double(b) / (mx - mn);
   cout << p << " " << a - sum * p / n << endl;
 }

@@ -7,7 +7,7 @@ int main() {
     int t;
     string s;
     cin >> t >> s;
-    int k = min((int)s.size(), t * 12 / 1000);
+    int k = min(int(s.size()), t * 12 / 1000);
     ok += k;
     miss += s.size() - k;
   }

@@ -12,12 +12,12 @@ public:
   Vector<T>& operator[](int n) {return val[n];}
 
   Matrix operator+=(const Matrix& m) {
-    for (int i = 0; i < (int)val.size(); ++i) val[i] += m[i];
+    for (uint i = 0; i < val.size(); ++i) val[i] += m[i];
     return *this;
   }
 
   Matrix operator-=(const Matrix& m) {
-    for (int i = 0; i < (int)val.size(); ++i) val[i] -= m[i];
+    for (uint i = 0; i < val.size(); ++i) val[i] -= m[i];
     return *this;
   }
 

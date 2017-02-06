@@ -9,5 +9,5 @@ int main() {
     cin >> p;
     s.insert(p);
   }
-  cout << ((int)s.size() == k + 2 ? "YES" : "NO") << endl;
+  cout << (int(s.size()) == k + 2 ? "YES" : "NO") << endl;
 }

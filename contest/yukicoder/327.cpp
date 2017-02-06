@@ -7,7 +7,7 @@ int main() {
   string s;
   do {
     --n;
-    s = (char)('A' + n % 26) + s;
+    s = char('A' + n % 26) + s;
     n /= 26;
   } while (n);
   cout << s << endl;

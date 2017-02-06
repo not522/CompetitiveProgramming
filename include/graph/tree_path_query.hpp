@@ -17,7 +17,7 @@ public:
   TreePathQuery(const Tree<Edge>& tree, const T def = numeric_limits<T>::max()) : DEFAULT(def), mem(tree.size()), lca(tree) {}
 
   T calc(int v, int depth) {
-    if (depth >= (int)mem[v].size()) mem[v].resize(depth + 1, -1);
+    if (depth >= int(mem[v].size())) mem[v].resize(depth + 1, -1);
     if (depth == -1) return DEFAULT;
     if (mem[v][depth] != -1) return mem[v][depth];
     if (depth == 0) return mem[v][depth] = init(v);

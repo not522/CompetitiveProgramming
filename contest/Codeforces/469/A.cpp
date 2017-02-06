@@ -10,5 +10,5 @@ int main() {
   for (int& i : b) cin >> i;
   set<int> s(a.begin(), a.end());
   s.insert(b.begin(), b.end());
-  cout << (n == (int)s.size() ? "I become the guy." : "Oh, my keyboard!") << endl;
+  cout << (n == int(s.size()) ? "I become the guy." : "Oh, my keyboard!") << endl;
 }

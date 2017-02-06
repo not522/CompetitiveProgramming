@@ -34,7 +34,7 @@ int main() {
   int bitmask = (1 << w) - 1;
   for (auto bit : PowerSet(w)) {
     if (ng[0] & bit) continue;
-    int cnt = count_bit((int)bit);
+    int cnt = count_bit(int(bit));
     auto p = t;
     p[0] ^= (bit << 1 & bitmask) ^ bit ^ (bit >> 1);
     p[1] ^= bit;

@@ -12,7 +12,7 @@ int main() {
   }
   Vector<double> v(mx + 1);
   v[0] = 1;
-  auto taro = (Matrix<double>)pow(m1, n - k) * (Matrix<double>)pow(m2, k) * v;
+  auto taro = static_cast<Matrix<double>>(pow(m1, n - k)) * static_cast<Matrix<double>>(pow(m2, k)) * v;
   auto jiro = pow(m1, n) * v;
   double res = 0;
   for (int i = 0; i <= mx; ++i) for (int j = 0; j < i; ++j) res += taro[i] * jiro[j];

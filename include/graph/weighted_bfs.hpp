@@ -27,7 +27,7 @@ private:
   deque<queue<State>> que;
   
   void push(const State& state) {
-    if (state.cost - now >= (int)que.size()) que.resize(state.cost - now + 1);
+    if (state.cost - now >= int(que.size())) que.resize(state.cost - now + 1);
     que[state.cost - now].push(state);
   }
   

@@ -9,5 +9,5 @@ int main() {
     cin >> a >> b;
     sum += a * b;
   }
-  cout << (int)(sum * 1.05) << endl;
+  cout << int(sum * 1.05) << endl;
 }

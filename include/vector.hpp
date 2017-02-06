@@ -35,7 +35,7 @@ template<typename T> bool next_permutation(vector<T>& v) {return next_permutatio
 
 template<typename T> int find(vector<T>& v, T t) {return find(v.begin(), v.end(), t) - v.begin();}
 
-template<typename T> int in(vector<T> v, T t) {return find(v, t) != (int)v.size();}
+template<typename T> int in(vector<T> v, T t) {return find(v, t) != int(v.size());}
 
 template<typename T> int lower_bound(vector<T>& v, T t) {return lower_bound(v.begin(), v.end(), t) - v.begin();}
 
