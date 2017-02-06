@@ -1,6 +1,7 @@
 in
 out
 ans
+out.txt
 *.in
 *.out
 *.ans
