@@ -21,7 +21,11 @@ def getHeader(file, headers):
 
 parser = argparse.ArgumentParser(description='include local library')
 parser.add_argument('file', help='source file')
+parser.add_argument("-p", help="print out for standard output", action="store_true")
 args = parser.parse_args()
 
 headers = []
-pyperclip.copy(getHeader(args.file, headers))
+if args.p:
+    print(getHeader(args.file, headers))
+else:
+    pyperclip.copy(getHeader(args.file, headers))
