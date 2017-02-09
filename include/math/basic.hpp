@@ -50,3 +50,5 @@ template<typename T> T cube(T n) {return n * n * n;}
 template<typename T> T norm(T x1, T y1, T x2, T y2) {return square(x1 - x2) + square(y1 - y2);}
 
 template<typename T> bool isSquare(T n) {return square(T(sqrt(n))) == n;}
+
+template<typename T> T clamp(T v, T l, T u) {return v < l ? l : v > u ? u : v;}
