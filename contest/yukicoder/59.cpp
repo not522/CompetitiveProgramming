@@ -3,7 +3,7 @@
 int main() {
   int n, k;
   cin >> n >> k;
-  BIT bit(1000001);
+  BIT<int> bit(1000001);
   int res = 0;
   for (int i = 0; i < n; ++i) {
     int w;
