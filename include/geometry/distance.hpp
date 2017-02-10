@@ -1,4 +1,5 @@
 #pragma once
+#include "geometry/circle.hpp"
 #include "geometry/intersect.hpp"
 
 Real distance(const Segment& segment, const Point& point) {
@@ -11,4 +12,8 @@ Real distance(const Segment& segment, const Point& point) {
 Real distance(const Segment& segment1, const Segment& segment2) {
   if (intersect(segment1, segment2)) return 0;
   return min(min(distance(segment1, segment2.a), distance(segment1, segment2.b)), min(distance(segment2, segment1.a), distance(segment2, segment1.b)));
+}
+
+Real distance(const Circle& circle1, const Circle& circle2) {
+  return max((circle1.c - circle2.c).abs() - circle1.r - circle2.r, Real(0));
 }

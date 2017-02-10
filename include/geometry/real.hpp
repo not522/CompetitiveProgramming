@@ -7,8 +7,6 @@ class Real : public Arithmetic<Real>, public Ordered<Real> {
 private:
   long double val;
 
-  operator long double() const {return val;}
-
 public:
   static long double EPS;
 
@@ -50,13 +48,13 @@ public:
 
   Real sqrt() const {return std::sqrt(val);}
 
-  long double toLongDouble() const {return val;}
+  operator long double() const {return val;}
 };
 
 long double Real::EPS = 1e-10;
 
 ostream& operator<<(ostream& os, const Real& a) {
-  os << a.toLongDouble();
+  os << a;
   return os;
 }
 
@@ -68,5 +66,5 @@ istream& operator>>(istream& is, Real& a) {
 }
 
 Real floor(const Real& r) {
-  return floor(r.toLongDouble());
+  return floor(r);
 }

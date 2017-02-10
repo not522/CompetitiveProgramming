@@ -57,7 +57,11 @@ template<typename T, typename Function> int count_if(const vector<T>& v, Functio
 
 template<typename T, typename Function> void remove_if(vector<T>& v, Function func) {v.erase(remove_if(v.begin(), v.end(), func), v.end());}
 
+template<typename T, typename Function> bool all_of(vector<T> v, Function func) {return all_of(v.begin(), v.end(), func);}
+
 template<typename T, typename Function> bool any_of(vector<T> v, Function func) {return any_of(v.begin(), v.end(), func);}
+
+template<typename T, typename Function> bool none_of(vector<T> v, Function func) {return none_of(v.begin(), v.end(), func);}
 
 template<typename T> vector<T> subvector(vector<T>& v, int a, int b) {return vector<T>(v.begin() + a, v.begin() + b);}
 
