@@ -13,10 +13,9 @@ private:
   vector<RangeValue> rangeValue;
 
 public:
-  CumulativeSum1D(int n) : val(n + 2, Value(0)) {}
+  CumulativeSum1D(int n) : val(n + 2) {}
 
-  template<typename T> CumulativeSum1D(T v) {
-    val.resize(v.size() + 2, Value(0));
+  template<typename T> CumulativeSum1D(T v) : val(v.size() + 2) {
     partial_sum(v.begin(), v.end(), val.begin() + 1);
   }
 
