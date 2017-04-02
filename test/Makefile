@@ -7,7 +7,7 @@ DEPS = $(patsubst %.cpp,%_test.d,$(SRCS))
 all: $(EXES)
 
 %_test: %.cpp
-	$(CC) $< $(FLAGS) -O2 -MMD -MP -lboost_unit_test_framework -o $@
+	$(CC) $< $(FLAGS) -O2 -MMD -MP -Wl,-rpath /usr/local/lib -lboost_unit_test_framework -o $@
 	mv $@ $@.exe
 	./$@.exe
 	mv $@.exe $@
