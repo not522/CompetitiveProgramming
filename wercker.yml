@@ -17,6 +17,7 @@ build:
           cd boost_1_63_0
           ./bootstrap.sh --with-libraries=test
           ./b2 install -d0 -j `grep -c ^processor /proc/cpuinfo 2>/dev/null`
+          cd .. && rm -r boost_1_63_0 boost_1_63_0.tar.gz
     - script:
         name: build
         code: |
