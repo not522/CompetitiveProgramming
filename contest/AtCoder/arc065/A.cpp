@@ -4,7 +4,7 @@ int main() {
   string s;
   cin >> s;
   reverse(s.begin(), s.end());
-  for (uint i = 0; i < s.size();) {
+  for (unsigned i = 0; i < s.size();) {
     if (s.substr(i, 7) == "remaerd") {
       i += 7;
     } else if (s.substr(i, 5) == "maerd") {

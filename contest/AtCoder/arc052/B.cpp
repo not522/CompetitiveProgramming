@@ -10,8 +10,8 @@ int main() {
     cin >> x >> r >> h;
     for (int j = 0; j < h; ++j) {
       double a = (h - j) / h, b = (h - j - 1) / h;
-      double va = square(r * a) * M_PIl * h * a / 3;
-      double vb = square(r * b) * M_PIl * h * b / 3;
+      double va = square(r * a) * pi() * h * a / 3;
+      double vb = square(r * b) * pi() * h * b / 3;
       sum.add(x + j, va - vb);
     }
   }

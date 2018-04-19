@@ -5,7 +5,7 @@ int solve(int w, const vector<vector<int>>& v) {
   vector<int> u;
   for (int i : v[w]) u.emplace_back(solve(i, v));
   sort(u);
-  for (uint i = 0; i < u.size(); ++i) u[i] += u.size() - i;
+  for (unsigned i = 0; i < u.size(); ++i) u[i] += u.size() - i;
   return max(u);
 }
 

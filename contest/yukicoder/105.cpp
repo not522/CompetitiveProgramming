@@ -1,4 +1,4 @@
-#include "template.hpp"
+#include "math/basic.hpp"
 
 int main() {
   int t;
@@ -8,7 +8,7 @@ int main() {
       long double x, y;
       cin >> x >> y;
       if (0.5 + 1e-12 < x && x <= 1 + 1e-12&& y >= 0 - 1e-12) {
-        cout << atan2(y, x) / M_PIl * 180 << endl;
+        cout << atan2(y, x) / pi() * 180 << endl;
       }
     }
   }

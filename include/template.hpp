@@ -1,5 +1,18 @@
 #pragma once
-#include <bits/stdc++.h>
+#include <algorithm>
+#include <array>
+#include <bitset>
+#include <complex>
+#include <functional>
+#include <iomanip>
+#include <iostream>
+#include <map>
+#include <numeric>
+#include <set>
+#include <stack>
+#include <unordered_map>
+#include <unordered_set>
+#include <queue>
 
 using namespace std;
 

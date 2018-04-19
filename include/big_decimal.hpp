@@ -5,11 +5,11 @@
 template<int IntegerSize = 6, int DecimalSize = 9>
 class BigDecimal : public Arithmetic<BigDecimal<IntegerSize, DecimalSize>>, public Ordered<BigDecimal<IntegerSize, DecimalSize>> {
 private:
-  const static int BitSize = 31;
-  const static bool PLUS = false;
-  const static bool MINUS = true;
+  constexpr static int BitSize = 31;
+  constexpr static bool PLUS = false;
+  constexpr static bool MINUS = true;
 
-  constexpr static long double EPSILON = pow<long double>(2, -(BitSize - 4) * DecimalSize);
+  const static long double EPSILON;
 
   bool sign;
   array<int64_t, IntegerSize + DecimalSize> d;
@@ -42,7 +42,7 @@ public:
     }
     BigDecimal t = 1;
     bool decimal = false;
-    for (uint i = 0; i < str.size(); ++i) {
+    for (unsigned i = 0; i < str.size(); ++i) {
       if (str[i] == '.') {
         decimal = true;
       } else {
@@ -313,7 +313,7 @@ public:
 };
 
 template<int IntegerSize, int DecimalSize>
-constexpr long double BigDecimal<IntegerSize, DecimalSize>::EPSILON;
+const long double BigDecimal<IntegerSize, DecimalSize>::EPSILON = pow<long double>(2, -(BitSize - 4) * DecimalSize);
 
 template<int IntegerSize, int DecimalSize>
 BigDecimal<IntegerSize, DecimalSize> pi() {

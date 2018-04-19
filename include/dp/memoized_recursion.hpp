@@ -8,7 +8,7 @@ protected:
   vector<bool> use;
   vector<T> mem;
 
-  bool used(uint v) {
+  bool used(unsigned v) {
     if (v >= use.size()) {
       use.resize(v + 1, false);
       mem.resize(v + 1);

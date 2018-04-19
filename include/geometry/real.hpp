@@ -54,7 +54,7 @@ public:
 long double Real::EPS = 1e-10;
 
 ostream& operator<<(ostream& os, const Real& a) {
-  os << a;
+  os << static_cast<long double>(a);
   return os;
 }
 
@@ -66,5 +66,5 @@ istream& operator>>(istream& is, Real& a) {
 }
 
 Real floor(const Real& r) {
-  return floor(r);
+  return floor(static_cast<long double>(r));
 }

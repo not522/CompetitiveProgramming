@@ -40,17 +40,17 @@ public:
   Iterator& end() {return n;}
 };
 
-template<> const array<int, 2> AdjacentLoop<2>::dy{0, 1};
-template<> const array<int, 2> AdjacentLoop<2>::dx{1, 0};
+template<> const array<int, 2> AdjacentLoop<2>::dy = {{0, 1}};
+template<> const array<int, 2> AdjacentLoop<2>::dx = {{1, 0}};
 
-template<> const array<int, 4> AdjacentLoop<4>::dy{0, -1, 0, 1};
-template<> const array<int, 4> AdjacentLoop<4>::dx{1, 0, -1, 0};
+template<> const array<int, 4> AdjacentLoop<4>::dy = {{0, -1, 0, 1}};
+template<> const array<int, 4> AdjacentLoop<4>::dx = {{1, 0, -1, 0}};
 
-template<> const array<int, 5> AdjacentLoop<5>::dy{0, -1, 0, 1, 0};
-template<> const array<int, 5> AdjacentLoop<5>::dx{1, 0, -1, 0, 0};
+template<> const array<int, 5> AdjacentLoop<5>::dy = {{0, -1, 0, 1, 0}};
+template<> const array<int, 5> AdjacentLoop<5>::dx = {{1, 0, -1, 0, 0}};
 
-template<> const array<int, 8> AdjacentLoop<8>::dy{-1, -1, -1, 0, 0, 1, 1, 1};
-template<> const array<int, 8> AdjacentLoop<8>::dx{-1, 0, 1, -1, 1, -1, 0, 1};
+template<> const array<int, 8> AdjacentLoop<8>::dy = {{-1, -1, -1, 0, 0, 1, 1, 1}};
+template<> const array<int, 8> AdjacentLoop<8>::dx = {{-1, 0, 1, -1, 1, -1, 0, 1}};
 
-template<> const array<int, 9> AdjacentLoop<9>::dy{-1, -1, -1, 0, 0, 0, 1, 1, 1};
-template<> const array<int, 9> AdjacentLoop<9>::dx{-1, 0, 1, -1, 0, 1, -1, 0, 1};
+template<> const array<int, 9> AdjacentLoop<9>::dy = {{-1, -1, -1, 0, 0, 0, 1, 1, 1}};
+template<> const array<int, 9> AdjacentLoop<9>::dx = {{-1, 0, 1, -1, 0, 1, -1, 0, 1}};

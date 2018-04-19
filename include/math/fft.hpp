@@ -1,8 +1,9 @@
 #pragma once
 #include "bit_operation.hpp"
+#include "math/basic.hpp"
 
 void fft(vector<complex<long double>> &a, int n, int dir) {
-  long double theta = dir * 2 * M_PIl / n;
+  long double theta = dir * 2 * pi() / n;
   for (int m = n; m > 1; m /= 2) {
     int mh = m / 2;
     for (int i = 0; i < mh; i++) {

@@ -26,7 +26,7 @@ BOOST_AUTO_TEST_CASE(HAND) {
   auto groups = uf.groups();
   vector<vector<int>> g{{0, 1, 2}, {3}, {4}, {5}, {6}, {7}, {8}, {9}};
   BOOST_CHECK_EQUAL(groups.size(), g.size());
-  for (uint i = 0; i < groups.size(); ++i) {
+  for (unsigned i = 0; i < groups.size(); ++i) {
     BOOST_CHECK_EQUAL_COLLECTIONS(groups[i].begin(), groups[i].end(), g[i].begin(), g[i].end());
   }
 }

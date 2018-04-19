@@ -4,7 +4,7 @@ int main() {
   int c;
   cin >> c;
   vector<array<int, 3>> b(c);
-  array<int, 3> a{0};
+  array<int, 3> a{{0}};
   for (auto& i : b) {
     for (auto& j : i) cin >> j;
     sort(i.begin(), i.end());

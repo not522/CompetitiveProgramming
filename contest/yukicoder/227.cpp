@@ -1,7 +1,7 @@
 #include "template.hpp"
 
 int main() {
-  array<int, 13> c{0};
+  array<int, 13> c{{0}};
   for (int i = 0; i < 5; ++i) {
     int a;
     cin >> a;

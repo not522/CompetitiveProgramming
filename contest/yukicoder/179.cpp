@@ -1,8 +1,8 @@
 #include "vector.hpp"
 
 bool solve(vector<string> s, int y, int x) {
-  for (uint i = 0; i < s.size(); ++i) {
-    for (uint j = 0; j < s[0].size(); ++j) {
+  for (unsigned i = 0; i < s.size(); ++i) {
+    for (unsigned j = 0; j < s[0].size(); ++j) {
       if (s[i][j] == '#') {
         s[i][j] = '.';
         if (i + y >= s.size()) return false;
@@ -16,7 +16,7 @@ bool solve(vector<string> s, int y, int x) {
 }
 
 bool solve(vector<string>& s) {
-  for (uint i = 0; i < s.size(); ++i) for (uint j = 0; j < s[0].size(); ++j) if (solve(s, i, j)) return true;
+  for (unsigned i = 0; i < s.size(); ++i) for (unsigned j = 0; j < s[0].size(); ++j) if (solve(s, i, j)) return true;
   return false;
 }
 

@@ -13,7 +13,7 @@ protected:
   int64_t result() {return curr[0] + curr[1];}
 
 public:
-  PermittedNumber(int64_t num) : DigitDP<int64_t, array<int64_t, 2>>(num) {curr = {0, 1};}
+  PermittedNumber(int64_t num) : DigitDP<int64_t, array<int64_t, 2>>(num) {curr = {{0, 1}};}
 };
 
 int64_t solve(int64_t n) {

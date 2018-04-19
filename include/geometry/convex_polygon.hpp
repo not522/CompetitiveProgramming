@@ -12,7 +12,7 @@ public:
   ConvexPolygon(vector<Point> points) {
     int flag = ~(strict ? LEFT : LEFT | FRONT);
     sort(points.begin(), points.end());
-    for (uint i = 0; i < points.size(); emplace_back(points[i++])) {
+    for (unsigned i = 0; i < points.size(); emplace_back(points[i++])) {
       while (size() > 1u && ccw(*(end() - 2), back(), points[i]) & flag) pop_back();
     }
     for (int i = points.size() - 2, r = size(); i >= 0; emplace_back(points[i--])) {
@@ -27,7 +27,7 @@ public:
     int j = max_element(sides.begin(), sides.end()) - sides.begin();
     sides.insert(sides.end(), sides.begin(), sides.end());
     Real res = 0;
-    for (uint k = 0; k < 2 * size(); ++k) {
+    for (unsigned k = 0; k < 2 * size(); ++k) {
       if ((sides[i].vec() / sides[j].vec()).y >= 0) ++i;
       else ++j;
       res = max(res, (sides[i].a - sides[j].a).abs());

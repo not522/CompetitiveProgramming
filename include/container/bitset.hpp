@@ -13,14 +13,14 @@ private:
   }
 
 public:
-  vector<unsigned int64_t> val;
+  vector<uint64_t> val;
 
   class reference {
   private:
     friend class Bitset;
-    vector<unsigned int64_t>::iterator val;
+    vector<uint64_t>::iterator val;
     int pos;
-    reference(vector<unsigned int64_t>::iterator val, int pos) : val(val), pos(pos) {}
+    reference(vector<uint64_t>::iterator val, int pos) : val(val), pos(pos) {}
 
   public:
     reference operator=(const reference& r) {

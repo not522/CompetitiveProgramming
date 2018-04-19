@@ -7,7 +7,7 @@ int l[10];
 bool solve(int a) {
   if (a > k) {
     vector<set<string>> t(k);
-    for (uint i = 0; i < v.size(); ++i) {
+    for (unsigned i = 0; i < v.size(); ++i) {
       int x = 0;
       for (char c : v[i]) {
         if (int(w[i].size()) < x + l[c - '1']) return false;

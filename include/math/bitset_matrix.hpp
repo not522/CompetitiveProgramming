@@ -60,7 +60,7 @@ public:
     for (int i = 0; i < size(); ++i) n = max(n, mat[i].size());
     for (int i = 0; i < n; ++i) {
       int p = r;
-      for (int j = r + 1; j < size(); ++j) if (abs(mat[j][i]) > abs(mat[p][i])) p = j;
+      for (int j = r + 1; j < size(); ++j) if (mat[j][i] > mat[p][i]) p = j;
       if (mat[p][i] == 0) continue;
       swap(mat[r], mat[p]);
       for (int j = r + 1; j < size(); ++j) {

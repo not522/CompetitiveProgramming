@@ -24,7 +24,7 @@ struct Cost : public Ordered<Cost> {
 };
 
 namespace std {
-  template<> constexpr Cost numeric_limits<Cost>::max() {
+  template<> constexpr Cost numeric_limits<Cost>::max() noexcept {
     return Cost(numeric_limits<int>::max(), numeric_limits<int>::max());
   }
 }

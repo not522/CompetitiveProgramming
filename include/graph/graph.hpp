@@ -5,8 +5,14 @@ template<typename Edge> class Graph {
 public:
   using EdgeType = Edge;
   virtual int size() const = 0;
-  template<typename... Args> void addEdge(int from, int to, Args...) {}
-  template<typename... Args> void addUndirectedEdge(int from, int to, Args...) {}
+  template<typename... Args> void addEdge(int from, int to, Args...) {
+    (void)from;
+    (void)to;
+  }
+  template<typename... Args> void addUndirectedEdge(int from, int to, Args...) {
+    (void)from;
+    (void)to;
+  }
 
   vector<pair<int, Edge>> getAllEdges() const {
     vector<pair<int, Edge>> res;

@@ -19,7 +19,7 @@ public:
 
   Section operator&=(const Section& s) {
     VAL res;
-    for (uint i = 0, j = 0; i < v.size() && j < s.v.size(); ) {
+    for (unsigned i = 0, j = 0; i < v.size() && j < s.v.size(); ) {
       if (v[i].first < s.v[j].second && s.v[j].first < v[i].second) {
         res.emplace_back(max(v[i].first, s.v[j].first), min(v[i].second, s.v[j].second));
       }
@@ -34,7 +34,7 @@ public:
     v.insert(v.end(), s.v.begin(), s.v.end());
     sort(v);
     int p = 0;
-    for (uint i = 1; i < v.size(); ++i) {
+    for (unsigned i = 1; i < v.size(); ++i) {
       if (v[p].second >= v[i].first) {
         chmax(v[p].second, v[i].second);
         v[i] = make_pair(MAX, MAX);
@@ -66,7 +66,7 @@ public:
   void complement() {
     VAL res;
     if (v[0].first != MIN) res.emplace_back(MIN, v[0].first);
-    for (uint i = 0; i + 1 < v.size(); ++i) res.emplace_back(v[i].second, v[i + 1].first);
+    for (unsigned i = 0; i + 1 < v.size(); ++i) res.emplace_back(v[i].second, v[i + 1].first);
     if (v.back().second != MAX) res.emplace_back(v.back().second, MAX);
   }
 

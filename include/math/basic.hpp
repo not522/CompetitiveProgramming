@@ -1,6 +1,8 @@
 #pragma once
 #include "bit_operation.hpp"
 
+template<typename T = double> constexpr T pi() {return acos(T(-1));}
+
 template<typename T> T gcd(T t) {return t;}
 
 template<typename T, typename... S> T gcd(T a, S... s) {
@@ -12,7 +14,8 @@ template<typename T, typename... S> T gcd(T a, S... s) {
   b >>= fb;
   while (a != b) {
     auto& c = a > b ? a : b;
-    c >>= least_bit_fast(c = abs(a - b));
+    c = abs(a - b);
+    c >>= least_bit_fast(c);
   }
   return a << min(fa, fb);
 }
