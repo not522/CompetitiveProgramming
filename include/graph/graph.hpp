@@ -25,8 +25,11 @@ public:
   }
 
   virtual vector<Edge> getEdges(int from) const = 0;
-  virtual vector<Edge> getEdges(int from, int to) const = 0;
-  virtual int getDegree(int v) const = 0;
+  virtual Edge getEdge(int from, int to) const = 0;
+
+  int getDegree(int v) const {
+    return getEdges(v).size();
+  }
 
   vector<int> getIndegree() const {
     vector<int> degree(size());

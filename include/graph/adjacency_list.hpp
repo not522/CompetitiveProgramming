@@ -25,16 +25,12 @@ public:
     return graph[from];
   }
 
-  vector<Edge> getEdges(int from, int to) const {
-    vector<Edge> res;
+  Edge getEdge(int from, int to) const {
+    Edge res;
     for (const auto& edge : graph[from]) {
-      if (edge.to == to) res.emplace_back(edge);
+      if (edge.to == to) res = edge;
     }
     return res;
-  }
-
-  int getDegree(int v) const {
-    return graph[v].size();
   }
 
   vector<Edge>& operator[](int v) {

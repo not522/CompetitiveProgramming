@@ -21,7 +21,7 @@ public:
       current.emplace_back(v);
       vector<int> next;
       for (int vv : remains) {
-        if (!graph.getEdges(v, vv).empty()) next.emplace_back(vv);
+        if (!graph.getEdge(v, vv).isNone()) next.emplace_back(vv);
       }
       maximal(cliques, current, next);
       current.pop_back();
@@ -45,7 +45,7 @@ public:
       current.emplace_back(v);
       vector<int> next;
       for (int vv : remains) {
-        if (!graph.getEdges(v, vv).empty()) next.emplace_back(vv);
+        if (!graph.getEdge(v, vv).isNone()) next.emplace_back(vv);
       }
       maximum(maximumClique, current, next);
       current.pop_back();

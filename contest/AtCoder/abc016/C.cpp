@@ -15,7 +15,7 @@ int main() {
   for (int i = 0; i < n; ++i) {
     int c = 0;
     for (int j = 0; j < n; ++j) {
-      if (i != j && graph.getEdges(i, j).empty() && mat[i][j]) ++c;
+      if (i != j && graph.getEdge(i, j).isNone() && mat[i][j]) ++c;
     }
     cout << c << endl;
   }

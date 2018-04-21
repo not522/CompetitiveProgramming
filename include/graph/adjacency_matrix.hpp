@@ -3,15 +3,15 @@
 
 template<typename Edge> class AdjacencyMatrix : public Graph<Edge> {
 private:
-  vector<vector<vector<Edge>>> graph;
+  vector<vector<Edge>> graph;
 
 public:
-  AdjacencyMatrix(int n) : graph(n, vector<vector<Edge>>(n, vector<Edge>())) {}
+  AdjacencyMatrix(int n) : graph(n, vector<Edge>(n)) {}
 
   int size() const {return graph.size();}
 
   template<typename... Args> void addEdge(int from, int to, Args... args) {
-    graph[from][to].emplace_back(to, args...);
+    graph[from][to] = Edge(to, args...);
   }
 
   template<typename... Args> void addUndirectedEdge(int from, int to, Args... args) {
@@ -22,18 +22,12 @@ public:
   vector<Edge> getEdges(int from) const {
     vector<Edge> res;
     for (const auto& edge : graph[from]) {
-      res.insert(res.end(), edge.begin(), edge.end());
+      if (!edge.isNone()) res.emplace_back(edge);
     }
     return res;
   }
 
-  vector<Edge> getEdges(int from, int to) const {
+  Edge getEdge(int from, int to) const {
     return graph[from][to];
-  }
-
-  int getDegree(int v) const {
-    int res = 0;
-    for (const auto& edges : graph[v]) res += edges.size();
-    return res;
   }
 };

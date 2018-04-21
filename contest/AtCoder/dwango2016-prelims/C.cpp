@@ -5,7 +5,7 @@
 
 struct MyEdge : public WeightedEdge<int> {
   int end, endcost;
-  MyEdge(int to, int cost = 0, int end = 0, int endcost = 0) : WeightedEdge<int>(to, cost), end(end), endcost(endcost) {}
+  MyEdge(int to = -1, int cost = 0, int end = 0, int endcost = 0) : WeightedEdge<int>(to, cost), end(end), endcost(endcost) {}
 };
 
 struct MyState : public DijkstraState<MyEdge> {
