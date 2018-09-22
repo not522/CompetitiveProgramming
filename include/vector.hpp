@@ -1,16 +1,6 @@
 #pragma once
 #include "template.hpp"
 
-template<typename T> istream& operator>>(istream &s, vector<T> &v) {
-  for (T &t : v) s >> t;
-  return s;
-}
-
-template<typename T> ostream& operator<<(ostream &s, const vector<T> &v) {
-  for (const T &t : v) s << t << endl;
-  return s;
-}
-
 template<typename T> T min(vector<T>& v) {return *min_element(v.begin(), v.end());}
 
 template<typename T> T max(vector<T>& v) {return *max_element(v.begin(), v.end());}

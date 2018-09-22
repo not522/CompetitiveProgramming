@@ -23,3 +23,13 @@ struct Initializer {
     cout << fixed << setprecision(15);
   }
 } initializer;
+
+template<typename T> istream& operator>>(istream &s, vector<T> &v) {
+  for (T &t : v) s >> t;
+  return s;
+}
+
+template<typename T> ostream& operator<<(ostream &s, const vector<T> &v) {
+  for (const T &t : v) s << t << endl;
+  return s;
+}
