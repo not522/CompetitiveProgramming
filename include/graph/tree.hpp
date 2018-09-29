@@ -3,6 +3,8 @@
 
 template<typename Edge> class Tree {
 public:
+  using EdgeType = Edge;
+
   vector<Edge> parent;
   vector<vector<int>> children;
   vector<int> depth;
@@ -25,6 +27,17 @@ public:
   void addEdge(int from, const Edge& edge) {
     parent[from] = edge;
     children[edge.to].emplace_back(from);
+  }
+
+  vector<Edge> getEdges(int from) const {
+    vector<Edge> res;
+    for (int v : children[from]) {
+      auto e = parent[v];
+      e.to = v;
+      res.emplace_back(e);
+    }
+    if (from != parent[from].to) res.emplace_back(parent[from]);
+    return res;
   }
 
   int getDepth(int v) {
