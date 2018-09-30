@@ -1,5 +1,5 @@
 #pragma once
-#include "template.hpp"
+#include "graph/edge.hpp"
 
 template<typename Edge> class Graph {
 public:
@@ -14,8 +14,8 @@ public:
     (void)to;
   }
 
-  vector<pair<int, Edge>> getAllEdges() const {
-    vector<pair<int, Edge>> res;
+  vector<FullEdge<Edge>> getAllEdges() const {
+    vector<FullEdge<Edge>> res;
     for (int i = 0; i < size(); ++i) {
       for (const auto& edge : getEdges(i)) {
         res.emplace_back(i, edge);
@@ -26,6 +26,7 @@ public:
 
   virtual vector<Edge> getEdges(int from) const = 0;
   virtual Edge getEdge(int from, int to) const = 0;
+  virtual bool hasEdge(int from, int to) const = 0;
 
   int getDegree(int v) const {
     return getEdges(v).size();
@@ -33,7 +34,22 @@ public:
 
   vector<int> getIndegree() const {
     vector<int> degree(size());
-    for (const auto& edge : getAllEdges()) ++degree[edge.second.to];
+    for (const auto& edge : getAllEdges()) ++degree[edge.to];
     return degree;
   }
 };
+
+template<typename Graph> Graph readGraph(int n, int m, bool undirected = true, bool one_origin = true) {
+  Graph graph(n);
+  for (int i = 0; i < m; ++i) {
+    FullEdge<typename Graph::EdgeType> edge;
+    cin >> edge;
+    if (one_origin) {
+      --edge.from;
+      --edge.to;
+    }
+    if (undirected) graph.addUndirectedEdge(edge);
+    else graph.addEdge(edge);
+  }
+  return graph;
+}

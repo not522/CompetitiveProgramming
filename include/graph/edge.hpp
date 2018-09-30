@@ -1,6 +1,14 @@
 #pragma once
 #include "template.hpp"
 
+template<typename Edge> struct FullEdge : public Edge {
+  int from;
+
+  FullEdge() = default;
+
+  FullEdge(const int from, const Edge& edge) : Edge(edge), from(from) {}
+};
+
 struct Edge {
   using CostType = int;
   const static int cost = 1;
@@ -9,11 +17,31 @@ struct Edge {
   bool isNone() const {return to == -1;}
 };
 
+istream& operator>>(istream& s, FullEdge<Edge>& edge) {
+  s >> edge.from >> edge.to;
+  return s;
+}
+
+ostream& operator<<(ostream& s, const FullEdge<Edge>& edge) {
+  s << '(' << edge.from << ',' << edge.to << ')';
+  return s;
+}
+
 template<typename Cost> struct WeightedEdge : public Edge {
   using CostType = Cost;
   Cost cost;
   WeightedEdge(int to = -1, Cost cost = 0) : Edge(to), cost(cost) {}
 };
+
+template<typename Cost> istream& operator>>(istream& s, FullEdge<WeightedEdge<Cost>>& edge) {
+  s >> edge.from >> edge.to >> edge.cost;
+  return s;
+}
+
+template<typename Cost> ostream& operator<<(ostream& s, const FullEdge<WeightedEdge<Cost>>& edge) {
+  s << '(' << edge.from << ',' << edge.to << ',' << edge.cost << ')';
+  return s;
+}
 
 template<typename Capacity> struct ResidualEdge : public Edge {
   using CapacityType = Capacity;

@@ -16,11 +16,19 @@
 
 using namespace std;
 
+struct BoolName : numpunct<char> {
+  string t, f;
+  BoolName (string t = "Yes", string f = "No") : t(t), f(f) {}
+  string do_truename() const {return t;}
+  string do_falsename() const {return f;}
+};
+
 struct Initializer {
   Initializer() {
     cin.tie(0);
     ios::sync_with_stdio(0);
-    cout << fixed << setprecision(15);
+    cout << fixed << setprecision(15) << boolalpha;
+    cout.imbue(locale(cout.getloc(), new BoolName));
   }
 } initializer;
 

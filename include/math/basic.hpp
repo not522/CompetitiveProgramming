@@ -3,9 +3,10 @@
 
 template<typename T = double> constexpr T pi() {return acos(T(-1));}
 
-template<typename T> T gcd(T t) {return t;}
+template<typename T> T gcd(T t) {return abs(t);}
 
 template<typename T, typename... S> T gcd(T a, S... s) {
+  a = abs(a);
   auto b = gcd(s...);
   if (a == 0 || b == 0) return max(a, b);
   int fa = least_bit_fast(a);
@@ -20,11 +21,23 @@ template<typename T, typename... S> T gcd(T a, S... s) {
   return a << min(fa, fb);
 }
 
-template<typename T> T lcm(T t) {return t;}
+template<typename T> T gcd(const vector<T>& v) {
+  T g = abs(v[0]);
+  for (int i = 1; i < int(v.size()); ++i) g = gcd(g, v[i]);
+  return g;
+}
+
+template<typename T> T lcm(T t) {return abs(t);}
 
 template<typename T, typename... S> T lcm(T t, S... s) {
   T l = lcm(s...);
-  return t / gcd(t, l) * l;
+  return abs(t) / gcd(t, l) * l;
+}
+
+template<typename T> T lcm(const vector<T>& v) {
+  T l = abs(v[0]);
+  for (int i = 1; i < int(v.size()); ++i) l = lcm(l, v[i]);
+  return l;
 }
 
 template<typename T> T floor(T a, T b) {

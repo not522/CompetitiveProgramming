@@ -1,5 +1,5 @@
 #pragma once
-#include "template.hpp"
+#include "minmax.hpp"
 
 template<typename Graph> class WarshallFloyd {
 private:
@@ -17,14 +17,12 @@ public:
   }
 
   void solve() {
-    for (const auto& edge : graph.getAllEdges()) {
-      dis[edge.first][edge.second.to] = min(dis[edge.first][edge.second.to], edge.second.cost);
-    }
+    for (const auto& edge : graph.getAllEdges()) chmin(dis[edge.from][edge.to], edge.cost);
     for (int k = 0; k < graph.size(); ++k) {
       for (int i = 0; i < graph.size(); ++i) {
         for (int j = 0; j < graph.size(); ++j) {
           if (dis[i][k] == INF || dis[k][j] == INF) continue;
-          dis[i][j] = min(dis[i][j], dis[i][k] + dis[k][j]);
+          chmin(dis[i][j], dis[i][k] + dis[k][j]);
         }
       }
     }
