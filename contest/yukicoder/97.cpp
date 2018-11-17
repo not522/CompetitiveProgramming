@@ -32,7 +32,7 @@ int main() {
       cout << res << endl;
     } else {
       for (Mint i = MOD - 1; ; --i) {
-        if (s.count(i / k)) {
+        if (s.count(int64_t(i / k))) {
           cout << i << endl;
           break;
         }

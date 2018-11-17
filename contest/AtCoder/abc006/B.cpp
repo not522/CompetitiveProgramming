@@ -1,5 +1,4 @@
-#include "math/mint.hpp"
-#include "math/square_matrix.hpp"
+#include "math/mint_square_matrix.hpp"
 #include "math/pow.hpp"
 
 int main() {

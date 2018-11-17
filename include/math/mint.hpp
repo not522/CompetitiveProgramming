@@ -21,6 +21,8 @@ public:
     inverse = Inverse(m);
   }
 
+  Mint operator-() const { return Mint(val ? mod - val : 0); }
+
   Mint operator+=(const Mint& m) {
     val += m.val;
     if (val >= mod) val -= mod;
@@ -49,7 +51,13 @@ public:
 
   Mint operator--() {return *this -= 1;}
 
-  operator int64_t() {return val;}
+  template<typename T> Mint operator-(const T& m) { return Arithmetic<Mint>::operator-(m); }
+
+  explicit operator char() const { return val; }
+
+  explicit operator int() const { return val; }
+
+  explicit operator int64_t() const { return val; }
 
   Mint identity() const {return 1;}
 };
@@ -68,3 +76,13 @@ istream& operator>>(istream& is, Mint& a) {
   a = n;
   return is;
 }
+
+Mint operator+(const int& n, const Mint& m) { return m + n; }
+Mint operator-(const int& n, const Mint& m) { return -m + n; }
+Mint operator*(const int& n, const Mint& m) { return m * n; }
+Mint operator/(const int& n, const Mint& m) { return Mint(n) / m; }
+
+Mint operator+(const int64_t& n, const Mint& m) { return m + n; }
+Mint operator-(const int64_t& n, const Mint& m) { return -m + n; }
+Mint operator*(const int64_t& n, const Mint& m) { return m * n; }
+Mint operator/(const int64_t& n, const Mint& m) { return Mint(n) / m; }

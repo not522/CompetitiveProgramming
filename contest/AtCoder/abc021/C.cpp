@@ -2,7 +2,7 @@
 #include "graph/adjacency_matrix.hpp"
 #include "graph/shortest_path.hpp"
 #include "graph/count_walk.hpp"
-#include "math/mint.hpp"
+#include "math/mint_square_matrix.hpp"
 
 int main() {
   using Graph = AdjacencyMatrix<Edge>;
