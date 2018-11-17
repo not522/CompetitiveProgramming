@@ -59,6 +59,12 @@ template<typename T> T mod(T a, T b) {
 
 template<typename T> T factorial(T n) {return n <= 1 ? 1 : factorial(n - 1) * n;}
 
+template<typename T> vector<T> factorial_vector(int n) {
+  vector<T> v(n + 1, 1);
+  for (int i = 1; i <= n; ++i) v[i] = v[i - 1] * i;
+  return v;
+}
+
 template<typename T> T square(T n) {return n * n;}
 
 template<typename T> T cube(T n) {return n * n * n;}
