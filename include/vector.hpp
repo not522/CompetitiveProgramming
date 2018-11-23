@@ -1,9 +1,9 @@
 #pragma once
 #include "template.hpp"
 
-template<typename T> T min(vector<T>& v) {return *min_element(v.begin(), v.end());}
+template<typename T> T min(const vector<T>& v) {return *min_element(v.begin(), v.end());}
 
-template<typename T> T max(vector<T>& v) {return *max_element(v.begin(), v.end());}
+template<typename T> T max(const vector<T>& v) {return *max_element(v.begin(), v.end());}
 
 template<typename T> int min_element(vector<T>& v) {return min_element(v.begin(), v.end()) - v.begin();}
 
@@ -56,6 +56,12 @@ template<typename T, typename Function> bool none_of(vector<T> v, Function func)
 template<typename T> vector<T> subvector(vector<T>& v, int a, int b) {return vector<T>(v.begin() + a, v.begin() + b);}
 
 template<typename T> int kinds(const vector<T>& v) {return set<T>(v.begin(), v.end()).size();}
+
+template<typename T> map<T, int> count_kinds(const vector<T>& v) {
+  map<T, int> res;
+  for (const auto& i : v) ++res[i];
+  return res;
+}
 
 template<typename T> void iota(vector<T>& v, T t = 0) {iota(v.begin(), v.end(), t);}
 

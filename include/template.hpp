@@ -41,3 +41,7 @@ template<typename T> ostream& operator<<(ostream &s, const vector<T> &v) {
   for (const T &t : v) s << t << endl;
   return s;
 }
+
+void set_bool_name(string t, string f) {
+  cout.imbue(locale(cout.getloc(), new BoolName(t, f)));
+}
