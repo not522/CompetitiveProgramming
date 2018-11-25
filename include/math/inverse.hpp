@@ -19,6 +19,11 @@ public:
       swap(a -= t * b, b);
       swap(x -= t * y, y);
     }
-    return (x %= mod) < 0 ? x + mod : x;
+    return x < 0 ? x + mod : x;
   }
 };
+
+int64_t inverse(int64_t n, int64_t mod) {
+  Inverse inv(mod, 0);
+  return inv(n);
+}
