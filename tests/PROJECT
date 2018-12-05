@@ -1,0 +1,5 @@
+use_plugin('rime_plus')
+use_plugin('wikify')
+use_plugin('htmlify_full')
+
+project(library_dir='common', required_rime_plus_version='1.0.0')
