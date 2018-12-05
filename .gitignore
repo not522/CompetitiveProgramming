@@ -12,3 +12,5 @@ out.txt
 *.d
 *.exe
 *_test
+rime-out
+summary.html
