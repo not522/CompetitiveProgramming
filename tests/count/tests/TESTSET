@@ -1,0 +1,2 @@
+auto_generator(src='generator.cc', dependency=['testlib.h', 'generator.hpp'])
+auto_validator(src='validator.cc', dependency=['testlib.h'])
