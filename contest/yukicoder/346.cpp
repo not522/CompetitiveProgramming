@@ -6,7 +6,7 @@ int main() {
   vector<int64_t> c(s.size());
   reverse(s.begin(), s.end());
   for (unsigned i = 0; i < s.size(); ++i) c[i] = (s[i] == 'w' ? 1 : 0);
-  partial_sum(c, c);
+  c = partial_sum(c);
   reverse(s.begin(),s.end());
   reverse(c);
   int64_t res = 0;

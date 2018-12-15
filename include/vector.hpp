@@ -37,7 +37,11 @@ template<typename T> void adjacent_difference(vector<T>& v) {adjacent_difference
 
 template<typename T> void adjacent_difference(vector<T>& v, vector<T>& u) {adjacent_difference(v.begin(), v.end(), u.begin());}
 
-template<typename T> void partial_sum(vector<T>& v, vector<T>& u) {partial_sum(v.begin(), v.end(), u.begin());}
+template<typename T> vector<T> partial_sum(const vector<T>& v) {
+  vector<T> u(v.size());
+  partial_sum(v.begin(), v.end(), u.begin());
+  return u;
+}
 
 template<typename T> T inner_product(vector<T>& v, vector<T>& u) {return inner_product(v.begin(), v.end(), u.begin(), T(0));}
 

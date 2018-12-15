@@ -3,9 +3,9 @@
 int main() {
   int l, n;
   cin >> l >> n;
-  vector<int> w(n), v(n);
+  vector<int> w(n);
   cin >> w;
   sort(w);
-  partial_sum(w, v);
+  auto v = partial_sum(w);
   cout << upper_bound(v, l) << endl;
 }
