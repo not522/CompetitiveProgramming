@@ -1,0 +1,1 @@
+auto_solution(src='main.cc', flags=['-I../../../../include/', '-std=c++17'])

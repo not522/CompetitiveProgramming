@@ -1,8 +1,6 @@
 #include "generator.hpp"
 #include "constraints.hpp"
 
-using namespace std;
-
 void gen_random(stringstream& ss) {
   int n = rnd.next(MIN_N, MAX_N);
   ss << n << endl;
