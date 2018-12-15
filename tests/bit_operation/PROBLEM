@@ -1,0 +1,6 @@
+problem(
+    time_limit=1.0,
+    wiki_name="bit_operation",
+    assignees=['not'],
+    need_custom_judge=False
+)
