@@ -7,7 +7,7 @@ int main() {
   cin >> a;
   int res = numeric_limits<int>::max();
   for (int i = -100; i <= 100; ++i) {
-    res = min(res, accumulate<int>(a, [&](int x, int y){return x + (i - y) * (i - y);}));
+    res = min(res, accumulate(a, 0, [&](int x, int y){return x + (i - y) * (i - y);}));
   }
   cout << res << endl;
 }
