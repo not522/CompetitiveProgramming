@@ -1,4 +1,3 @@
-#include "minmax.hpp"
 #include "math/prime.hpp"
 
 int main() {

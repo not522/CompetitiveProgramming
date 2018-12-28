@@ -45,3 +45,9 @@ template<typename T> ostream& operator<<(ostream &s, const vector<T> &v) {
 void set_bool_name(string t, string f) {
   cout.imbue(locale(cout.getloc(), new BoolName(t, f)));
 }
+
+template<typename T> bool chmin(T& a, T b) {return a > b ? a = b, true : false;}
+
+template<typename T> bool chmax(T& a, T b) {return a < b ? a = b, true : false;}
+
+template<typename T> void sort(vector<T>& v) {sort(v.begin(), v.end());}

@@ -1,6 +1,5 @@
 #pragma once
 #include "bitwise.hpp"
-#include "minmax.hpp"
 #include "vector.hpp"
 
 class Section : public Bitwise<Section> {

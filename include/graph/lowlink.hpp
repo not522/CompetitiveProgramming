@@ -1,5 +1,4 @@
 #pragma once
-#include "minmax.hpp"
 #include "graph/edge.hpp"
 
 template<typename Graph> class LowLink {

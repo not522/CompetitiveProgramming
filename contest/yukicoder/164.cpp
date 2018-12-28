@@ -1,4 +1,3 @@
-#include "minmax.hpp"
 #include "string/to_integer.hpp"
 
 int main() {

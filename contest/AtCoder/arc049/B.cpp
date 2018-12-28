@@ -1,5 +1,4 @@
 #include "bisection_method.hpp"
-#include "minmax.hpp"
 
 int main() {
   int n;

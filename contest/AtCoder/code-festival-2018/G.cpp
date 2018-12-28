@@ -1,4 +1,4 @@
-#include "minmax.hpp"
+#include "template.hpp"
 
 vector<int> solve(const vector<int>& c) {
   int n = c.size();

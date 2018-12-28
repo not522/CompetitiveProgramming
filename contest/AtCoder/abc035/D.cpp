@@ -1,4 +1,3 @@
-#include "minmax.hpp"
 #include "vector.hpp"
 #include "graph/adjacency_list.hpp"
 #include "graph/edge.hpp"

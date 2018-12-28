@@ -1,4 +1,4 @@
-#include "minmax.hpp"
+#include "template.hpp"
 
 int tax(int x, int p) {
   return x * (100 + p) / 100;

@@ -1,5 +1,4 @@
 #include "count.hpp"
-#include "minmax.hpp"
 
 int main() {
   int n;

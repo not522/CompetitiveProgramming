@@ -1,5 +1,4 @@
 #include "cumulative_sum_1D.hpp"
-#include "minmax.hpp"
 #include "vector.hpp"
 
 int main() {

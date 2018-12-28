@@ -1,5 +1,4 @@
 #include "day.hpp"
-#include "minmax.hpp"
 
 int main() {
   vector<bool> h(366);

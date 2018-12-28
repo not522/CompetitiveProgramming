@@ -1,5 +1,4 @@
 #include "binary_search.hpp"
-#include "minmax.hpp"
 #include "vector.hpp"
 
 int n;

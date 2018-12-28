@@ -1,5 +1,4 @@
 #include "bit_operation.hpp"
-#include "minmax.hpp"
 
 int main() {
   string s;

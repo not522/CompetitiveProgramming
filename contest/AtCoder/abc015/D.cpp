@@ -1,4 +1,4 @@
-#include "minmax.hpp"
+#include "template.hpp"
 
 int main() {
   int w, n, k;

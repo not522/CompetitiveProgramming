@@ -1,4 +1,3 @@
-#include "minmax.hpp"
 #include "vector.hpp"
 #include "math/basic.hpp"
 

@@ -1,5 +1,4 @@
 #include "cumulative_sum_2D.hpp"
-#include "minmax.hpp"
 #include "vector.hpp"
 
 int64_t solve(const vector<vector<int64_t>>& b) {

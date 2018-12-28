@@ -1,4 +1,3 @@
-#include "minmax.hpp"
 #include "vector.hpp"
 #include "dp/double_pointer.hpp"
 

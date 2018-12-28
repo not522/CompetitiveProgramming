@@ -1,4 +1,4 @@
-#include "minmax.hpp"
+#include "template.hpp"
 
 int main() {
   int64_t n, r = numeric_limits<int64_t>::max();

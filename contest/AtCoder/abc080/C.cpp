@@ -1,4 +1,3 @@
-#include "minmax.hpp"
 #include "container/power_set.hpp"
 
 int main() {

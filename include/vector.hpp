@@ -9,8 +9,6 @@ template<typename T> int min_element(vector<T>& v) {return min_element(v.begin()
 
 template<typename T> int max_element(vector<T>& v) {return max_element(v.begin(), v.end()) - v.begin();}
 
-template<typename T> void sort(vector<T>& v) {sort(v.begin(), v.end());}
-
 template<typename T, typename Function> void sort(vector<T>& v, Function func) {sort(v.begin(), v.end(), func);}
 
 template<typename T> void rsort(vector<T>& v) {sort(v.rbegin(), v.rend());}

@@ -1,5 +1,5 @@
 #pragma once
-#include "minmax.hpp"
+#include "template.hpp"
 
 template<typename Graph> class WarshallFloyd {
 private:
