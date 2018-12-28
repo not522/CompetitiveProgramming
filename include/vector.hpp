@@ -65,8 +65,8 @@ template<typename T> vector<T> subvector(vector<T>& v, int a, int b) {return vec
 
 template<typename T> int kinds(const T& v) {return set<typename T::value_type>(v.begin(), v.end()).size();}
 
-template<typename T> map<T, int> count_kinds(const vector<T>& v) {
-  map<T, int> res;
+template<typename T> map<typename T::value_type, int> count_kinds(const T& v) {
+  map<typename T::value_type, int> res;
   for (const auto& i : v) ++res[i];
   return res;
 }

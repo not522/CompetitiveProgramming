@@ -1,9 +1,9 @@
-#include "count.hpp"
+#include "vector.hpp"
 
 int main() {
   string s;
   cin >> s;
-  auto c = count(s);
+  auto c = count_kinds(s);
   int even = 0, odd = 0;
   for (auto i : c) {
     even += i.second / 2;

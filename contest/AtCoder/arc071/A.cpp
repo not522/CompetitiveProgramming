@@ -1,4 +1,4 @@
-#include "count.hpp"
+#include "vector.hpp"
 
 int main() {
   int n;
@@ -7,7 +7,7 @@ int main() {
   cin >> s;
   vector<int> cnt(26, numeric_limits<int>::max());
   for (auto& i : s) {
-    auto c = count(i);
+    auto c = count_kinds(i);
     for (int i = 0; i < 26; ++i) chmin(cnt[i], c[i + 'a']);
   }
   for (int i = 0; i < 26; ++i) cout << string(cnt[i], i + 'a');

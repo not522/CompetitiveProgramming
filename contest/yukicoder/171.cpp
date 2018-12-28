@@ -1,11 +1,11 @@
-#include "count.hpp"
+#include "vector.hpp"
 #include "math/combination.hpp"
 #include "math/mint.hpp"
 
 int main() {
   string s;
   cin >> s;
-  auto m = count(s);
+  auto m = count_kinds(s);
   Mint::setMod(573);
   Combination<Mint> comb;
   int n = s.size();
