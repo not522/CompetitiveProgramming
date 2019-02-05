@@ -49,7 +49,7 @@ template<typename T> vector<T> partial_sum(const vector<T>& v) {
 
 template<typename T> T inner_product(vector<T>& v, vector<T>& u) {return inner_product(v.begin(), v.end(), u.begin(), T(0));}
 
-template<typename T> int count(const vector<T>& v, T t) {return count(v.begin(), v.end(), t);}
+template<typename T> int count(const T& v, typename T::value_type t) {return count(v.begin(), v.end(), t);}
 
 template<typename T, typename Function> int count_if(const vector<T>& v, Function func) {return count_if(v.begin(), v.end(), func);}
 

@@ -15,6 +15,8 @@ private:
 public:
   CumulativeSum1D(int n) : val(n + 2) {}
 
+  CumulativeSum1D(size_t n) : val(n + 2) {}
+
   template<typename T> CumulativeSum1D(T v) : val(v.size() + 2) {
     partial_sum(v.begin(), v.end(), val.begin() + 1);
   }
@@ -45,5 +47,11 @@ public:
 
   Value value(int i) {
     return sum(i, i + 1);
+  }
+
+  Value max() {
+    auto res = numeric_limits<Value>::min();
+    for (int i = 0; i < int(val.size()) - 2; ++i) chmax(res, value(i));
+    return res;
   }
 };

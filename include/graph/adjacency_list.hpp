@@ -57,6 +57,10 @@ public:
   vector<Edge>& operator[](int v) {
     return graph[v];
   }
+
+  const vector<Edge>& operator[](int v) const {
+    return graph[v];
+  }
 };
 
 template<typename Edge> istream& operator>>(istream& s, AdjacencyList<Edge>& graph) {

@@ -1,7 +1,7 @@
 #pragma once
 #include "template.hpp"
 
-template<class Value, bool rangeAdd = false> class CumulativeSum2D {
+template<class Value> class CumulativeSum2D {
 private:
   struct RangeValue {
     int i, j, y, x;
@@ -38,7 +38,7 @@ public:
 
   // [(i,j), (y,x))
   Value sum(int i, int j, int y, int x) {
-    if (rangeAdd && !rangeValue.empty()) {
+    if (!rangeValue.empty()) {
       int n = val.size() - 1;
       int m = val.front().size() - 1;
       for (int k = 0; k < 2; ++k) {

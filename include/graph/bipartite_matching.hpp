@@ -1,5 +1,4 @@
 #pragma once
-#include "graph/edge.hpp"
 #include "graph/adjacency_list.hpp"
 
 class BipartiteMatching {
@@ -35,3 +34,8 @@ public:
     return res;
   }
 };
+
+int bipartite_matching(const AdjacencyList<Edge>& graph) {
+  BipartiteMatching bm(graph);
+  return bm.solve();
+}
