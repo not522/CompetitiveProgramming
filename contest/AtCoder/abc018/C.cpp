@@ -5,7 +5,7 @@ int main() {
   cin >> r >> c >> k;
   vector<string> s(r);
   for (auto& i : s) cin >> i;
-  CumulativeSum2D<int, true> sum(r, c);
+  CumulativeSum2D<int> sum(r, c);
   vector<string> t = s;
   for (int i = 0; i < r; ++i) {
     for (int j = 0; j < c; ++j) {

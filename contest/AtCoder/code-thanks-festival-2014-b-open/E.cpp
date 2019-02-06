@@ -6,7 +6,7 @@ int main() {
   int r, c, rs, cs, rg, cg, n;
   cin >> r >> c >> rs >> cs >> rg >> cg >> n;
   --rs, --cs, --rg, --cg;
-  CumulativeSum2D<int, true> sum(r, c);
+  CumulativeSum2D<int> sum(r, c);
   for (int i = 0; i < n; ++i) {
     int r, c, h, w;
     cin >> r >> c >> h >> w;

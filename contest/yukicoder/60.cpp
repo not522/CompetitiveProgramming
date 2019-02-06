@@ -5,7 +5,7 @@ int main() {
   cin >> n >> k;
   vector<int> x(n), y(n), hp(n);
   for (int i = 0; i < n; ++i) cin >> x[i] >> y[i] >> hp[i];
-  CumulativeSum2D<int, true> sum(1501, 1501);
+  CumulativeSum2D<int> sum(1501, 1501);
   for (int i = 0; i < k; ++i) {
     int ax, ay, w, h, d;
     cin >> ax >> ay >> w >> h >> d;

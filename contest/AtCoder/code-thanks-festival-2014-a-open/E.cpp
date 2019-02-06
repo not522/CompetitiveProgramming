@@ -6,7 +6,7 @@ int main() {
   cin >> r >> c >> m >> n;
   vector<int> ra(n), rb(n), ca(n), cb(n), res;
   for (int i = 0; i < n; ++i) cin >> ra[i] >> rb[i] >> ca[i] >> cb[i];
-  CumulativeSum2D<int, true> sum(r, c), sum0(r, c), sum1(r, c);
+  CumulativeSum2D<int> sum(r, c), sum0(r, c), sum1(r, c);
   for (int i = 0; i < n; ++i) sum.add(ra[i] - 1, ca[i] - 1, rb[i], cb[i], 1);
   for (int i = 0; i < r; ++i) for (int j = 0; j < c; ++j) {
     if (sum.value(i, j) % 4 == 0) sum0.add(i, j, 1);
