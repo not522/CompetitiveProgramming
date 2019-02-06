@@ -15,6 +15,8 @@ struct Edge {
   int to;
   Edge(int to = -1) : to(to) {}
   bool isNone() const {return to == -1;}
+
+  operator int() const {return to;}
 };
 
 istream& operator>>(istream& s, FullEdge<Edge>& edge) {
