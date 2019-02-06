@@ -2,6 +2,7 @@
 #include <algorithm>
 #include <array>
 #include <bitset>
+#include <cassert>
 #include <complex>
 #include <functional>
 #include <iomanip>
