@@ -4,8 +4,8 @@ all:
 	$(MAKE)	-C ./contest
 
 test:
-	$(MAKE)	-C ./test
+	$(MAKE)	-C ./tests
 
 clean:
 	$(MAKE)	clean -C ./contest
-	$(MAKE)	clean -C ./test
+	$(MAKE)	clean -C ./tests

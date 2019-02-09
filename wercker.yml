@@ -9,5 +9,4 @@ build:
     - script:
         name: test
         code: |
-          cd tests
-          rime test -kq
+          make test
