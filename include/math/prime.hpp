@@ -4,7 +4,7 @@
 class Prime {
 private:
   vector<int64_t> div;
-  
+
 public:
   Prime(int64_t n = 0) {
     for (int64_t i = 0; i <= n; ++i) div.emplace_back(i);
@@ -12,14 +12,14 @@ public:
       for (int64_t j = i * i; j <= n; j += i) div[j] = i;
     }
   }
-  
+
   bool isPrime(int64_t n) const {
     if (n <= 1) return false;
     if (n < int64_t(div.size())) return div[n] == n;
     for (int64_t i = 2; i <= n / i; ++i) if (n % i == 0) return false;
     return true;
   }
-  
+
   vector<int64_t> factor(int64_t n) const {
     vector<int64_t> res;
     for (int64_t i = 2; i <= n / i && n >= int64_t(div.size()); ++i) {
@@ -39,7 +39,7 @@ public:
     sort(res.begin(), res.end());
     return res;
   }
-  
+
   vector<int64_t> primeFactor(int64_t n) const {
     vector<int64_t> res;
     for (int64_t i = 2; i <= n / i && n >= int64_t(div.size()); ++i) {
@@ -80,3 +80,14 @@ public:
     return res;
   }
 };
+
+vector<int64_t> prime_factor(int64_t n) {
+  vector<int64_t> res;
+  for (int64_t i = 2; i <= n / i; ++i) {
+    if (n % i) continue;
+    res.emplace_back(i);
+    while (n % i == 0) n /= i;
+  }
+  if (n >= 2) res.emplace_back(n);
+  return res;
+}
