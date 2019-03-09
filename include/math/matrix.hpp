@@ -1,6 +1,6 @@
 #pragma once
 #include "ordered.hpp"
-#include "math/vector.hpp"
+#include "vector.hpp"
 
 template<typename T> class Matrix : public Addition<Matrix<T>>, public Subtraction<Matrix<T>>, public Ordered<Matrix<T>> {
 protected:
@@ -26,7 +26,7 @@ public:
     Matrix res(size(), m[0].size());
     for (int i = 0; i < size(); ++i) {
       for (int j = 0; j < m.size(); ++j) {
-        for (int k = 0; k < m[0].size(); ++k) {
+        for (size_t k = 0; k < m[0].size(); ++k) {
           res[i][k] += val[i][j] * m[j][k]; 
         }
       }

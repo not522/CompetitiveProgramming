@@ -11,7 +11,7 @@ public:
     CirculantMatrix res(n);
     for (int i = 0; i < n; ++i) {
       for (int j = 0; j < n; ++j) {
-        res[i + j >= n ? i + j - n : i + j] += this->val[i] * m[j];
+        res[i + j >= n ? i + j - n : i + j] += (*this)[i] * m[j];
       }
     }
     return *this=res;

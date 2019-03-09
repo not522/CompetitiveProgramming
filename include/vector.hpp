@@ -1,11 +1,37 @@
 #pragma once
+#include "arithmetic.hpp"
 #include "container.hpp"
+#include "ordered.hpp"
 
-template<typename T> class Vector : public Container<vector<T>> {
+template<typename T> class Vector : public Container<vector<T>>, public Addition<Vector<T>>, public Subtraction<Vector<T>>, public Ordered<Vector<T>> {
 public:
   Vector(int n) : Container<vector<T>>(n) {}
 
   Vector(int n, istream& cin) : Container<vector<T>>(n, cin) {}
+
+  Vector operator+=(const Vector& v) {
+    for (size_t i = 0; i < this->size(); ++i) (*this)[i] += v[i];
+    return *this;
+  }
+
+  Vector operator-=(const Vector& v) {
+    for (size_t i = 0; i < this->size(); ++i) (*this)[i] -= v[i];
+    return *this;
+  }
+
+  T operator*(const Vector& v) const {
+    return inner_product(this->begin(), this->end(), const_cast<Vector&>(v).begin(), T(0));
+  }
+
+  bool operator<(const Vector& v) const {
+    if (this->size() != v.size()) return this->size() < v.size();
+    for (size_t i = 0; i < this->size(); ++i) {
+      if ((*this)[i] != v[i]) {
+        return (*this)[i] < v[i];
+      }
+    }
+    return false;
+  }
 };
 
 template<typename T> T min(const vector<T>& v) {return *min_element(v.begin(), v.end());}
