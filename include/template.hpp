@@ -40,40 +40,35 @@
 #include <unordered_set>
 #include <queue>
 
-using namespace std;
+using std::cerr;
+using std::cin;
+using std::cout;
+using std::endl;
+using std::greater;
+using std::max;
+using std::min;
+using std::setprecision;
 
-struct BoolName : numpunct<char> {
-  string t, f;
-  BoolName (string t = "Yes", string f = "No") : t(t), f(f) {}
-  string do_truename() const {return t;}
-  string do_falsename() const {return f;}
+struct BoolName : std::numpunct<char> {
+  std::string t, f;
+  BoolName (std::string t = "Yes", std::string f = "No") : t(t), f(f) {}
+  std::string do_truename() const {return t;}
+  std::string do_falsename() const {return f;}
 };
 
 struct Initializer {
   Initializer() {
     cin.tie(0);
-    ios::sync_with_stdio(0);
-    cout << fixed << setprecision(15) << boolalpha;
-    cout.imbue(locale(cout.getloc(), new BoolName));
+    std::ios::sync_with_stdio(0);
+    cout << std::fixed << setprecision(15) << std::boolalpha;
+    cout.imbue(std::locale(cout.getloc(), new BoolName));
   }
 } initializer;
 
-template<typename T> istream& operator>>(istream &s, vector<T> &v) {
-  for (T &t : v) s >> t;
-  return s;
-}
-
-template<typename T> ostream& operator<<(ostream &s, const vector<T> &v) {
-  for (const T &t : v) s << t << endl;
-  return s;
-}
-
-void set_bool_name(string t, string f) {
-  cout.imbue(locale(cout.getloc(), new BoolName(t, f)));
+void set_bool_name(std::string t, std::string f) {
+  cout.imbue(std::locale(cout.getloc(), new BoolName(t, f)));
 }
 
 template<typename T> bool chmin(T& a, T b) {return a > b ? a = b, true : false;}
 
 template<typename T> bool chmax(T& a, T b) {return a < b ? a = b, true : false;}
-
-template<typename T> void sort(vector<T>& v) {sort(v.begin(), v.end());}

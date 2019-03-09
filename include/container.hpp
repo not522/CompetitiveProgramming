@@ -10,10 +10,12 @@ public:
 
   Container(int n) : T(n) {}
 
+  Container(int n, T t) : T(n) {}
+
   template<typename Itr> Container(Itr first, Itr last) : T(first, last) {}
 
-  Container(int n, istream& cin) {
-    vector<S> v;
+  Container(int n, std::istream& cin) {
+    std::vector<S> v;
     for (int i = 0; i < n; ++i) {
       S a;
       cin >> a;

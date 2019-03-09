@@ -28,12 +28,6 @@ template<typename T> T gcd(const Vector<T>& v) {
   return g;
 }
 
-template<typename T> T gcd(const vector<T>& v) {
-  T g = abs(v[0]);
-  for (int i = 1; i < int(v.size()); ++i) g = gcd(g, v[i]);
-  return g;
-}
-
 template<typename T> T lcm(T t) {return abs(t);}
 
 template<typename T, typename... S> T lcm(T t, S... s) {
@@ -41,7 +35,7 @@ template<typename T, typename... S> T lcm(T t, S... s) {
   return abs(t) / gcd(t, l) * l;
 }
 
-template<typename T> T lcm(const vector<T>& v) {
+template<typename T> T lcm(const Vector<T>& v) {
   T l = abs(v[0]);
   for (int i = 1; i < int(v.size()); ++i) l = lcm(l, v[i]);
   return l;
@@ -66,8 +60,8 @@ template<typename T> T mod(T a, T b) {
 
 template<typename T> T factorial(T n) {return n <= 1 ? 1 : factorial(n - 1) * n;}
 
-template<typename T> vector<T> factorial_vector(int n) {
-  vector<T> v(n + 1, 1);
+template<typename T> Vector<T> factorial_vector(int n) {
+  Vector<T> v(n + 1, 1);
   for (int i = 1; i <= n; ++i) v[i] = v[i - 1] * i;
   return v;
 }

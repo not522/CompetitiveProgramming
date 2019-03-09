@@ -71,12 +71,12 @@ Point operator*(const Real& real, const Point& point) {return point * real;}
 
 Point operator/(const Real& real, const Point& point) {return point / real;}
 
-ostream& operator<<(ostream& os, const Point& point) {
+std::ostream& operator<<(std::ostream& os, const Point& point) {
   os << point.x << " " << point.y;
   return os;
 }
 
-istream& operator>>(istream& is, Point& point) {
+std::istream& operator>>(std::istream& is, Point& point) {
   Real x, y;
   is >> x >> y;
   point = Point(x, y);

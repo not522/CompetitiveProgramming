@@ -53,12 +53,12 @@ public:
 
 long double Real::EPS = 1e-10;
 
-ostream& operator<<(ostream& os, const Real& a) {
+std::ostream& operator<<(std::ostream& os, const Real& a) {
   os << static_cast<long double>(a);
   return os;
 }
 
-istream& operator>>(istream& is, Real& a) {
+std::istream& operator>>(std::istream& is, Real& a) {
   long double n;
   is >> n;
   a = n;

@@ -13,7 +13,7 @@ public:
 
   SquareMatrix identity() const {
     SquareMatrix res(this->size());
-    for (int i = 0; i < this->size(); ++i) res[i][i] = 1;
+    for (unsigned i = 0; i < this->size(); ++i) res[i][i] = 1;
     return res;
   }
 

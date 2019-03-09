@@ -1,13 +1,14 @@
 #pragma once
 #include "bit_operation.hpp"
+#include "vector.hpp"
 #include "math/basic.hpp"
 
-void fft(vector<complex<long double>> &a, int n, int dir) {
+void fft(Vector<std::complex<long double>> &a, int n, int dir) {
   long double theta = dir * 2 * pi() / n;
   for (int m = n; m > 1; m /= 2) {
     int mh = m / 2;
     for (int i = 0; i < mh; i++) {
-      auto w = exp(i * theta * complex<long double>(0, 1));
+      auto w = exp(i * theta * std::complex<long double>(0, 1));
       for (int j = i; j < n; j += m) {
         int k = j + mh;
         auto x = a[j] - a[k];
@@ -24,8 +25,8 @@ void fft(vector<complex<long double>> &a, int n, int dir) {
   }
 }
 
-template<typename T> vector<T> convolution(const vector<T> &aa, const vector<T> &bb){
-  vector<complex<long double>> a(begin(aa), end(aa)), b(begin(bb), end(bb));
+template<typename T> Vector<T> convolution(const Vector<T> &aa, const Vector<T> &bb){
+  Vector<std::complex<long double>> a(begin(aa), end(aa)), b(begin(bb), end(bb));
   int n = 2 << most_bit(a.size() + b.size());
   a.resize(n);
   b.resize(n);
@@ -33,7 +34,7 @@ template<typename T> vector<T> convolution(const vector<T> &aa, const vector<T> 
   fft(b, n, 1);
   for (int i = 0; i < n; ++i) a[i] *= b[i];
   fft(a, n, -1);
-  vector<T> res(n);
+  Vector<T> res(n);
   for (int i = 0; i < n; ++i) res[i] = round(real(a[i]) / n);
   return res;
 }

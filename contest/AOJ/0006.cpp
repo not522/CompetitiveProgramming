@@ -1,8 +1,7 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  string str;
-  cin >> str;
-  reverse(str.begin(), str.end());
+  String str(cin);
+  str.reverse();
   cout << str << endl;
 }

@@ -1,9 +1,9 @@
 #pragma once
-#include "template.hpp"
+#include "vector.hpp"
 
 class Prime {
 private:
-  vector<int64_t> div;
+  Vector<int64_t> div;
 
 public:
   Prime(int64_t n = 0) {
@@ -20,8 +20,8 @@ public:
     return true;
   }
 
-  vector<int64_t> factor(int64_t n) const {
-    vector<int64_t> res;
+  Vector<int64_t> factor(int64_t n) const {
+    Vector<int64_t> res;
     for (int64_t i = 2; i <= n / i && n >= int64_t(div.size()); ++i) {
       while (n % i == 0) {
         res.emplace_back(i);
@@ -40,8 +40,8 @@ public:
     return res;
   }
 
-  vector<int64_t> primeFactor(int64_t n) const {
-    vector<int64_t> res;
+  Vector<int64_t> primeFactor(int64_t n) const {
+    Vector<int64_t> res;
     for (int64_t i = 2; i <= n / i && n >= int64_t(div.size()); ++i) {
       if (n % i) continue;
       res.emplace_back(i);
@@ -60,8 +60,8 @@ public:
     return res;
   }
 
-  vector<int64_t> divisor(int64_t n) const {
-    vector<int64_t> res;
+  Vector<int64_t> divisor(int64_t n) const {
+    Vector<int64_t> res;
     for (int64_t i = 1; i <= n / i; ++i) {
       if (n % i == 0) {
         res.emplace_back(i);
@@ -72,8 +72,8 @@ public:
     return res;
   }
 
-  vector<int64_t> primes(int64_t n) const {
-    vector<int64_t> res;
+  Vector<int64_t> primes(int64_t n) const {
+    Vector<int64_t> res;
     for (int64_t i = 2; i <= n; ++i) {
       if (isPrime(i)) res.emplace_back(i);
     }
@@ -81,8 +81,8 @@ public:
   }
 };
 
-vector<int64_t> prime_factor(int64_t n) {
-  vector<int64_t> res;
+Vector<int64_t> prime_factor(int64_t n) {
+  Vector<int64_t> res;
   for (int64_t i = 2; i <= n / i; ++i) {
     if (n % i) continue;
     res.emplace_back(i);
