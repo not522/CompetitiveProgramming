@@ -1,5 +1,12 @@
 #pragma once
-#include "template.hpp"
+#include "container.hpp"
+
+template<typename T> class Vector : public Container<vector<T>> {
+public:
+  Vector(int n) : Container<vector<T>>(n) {}
+
+  Vector(int n, istream& cin) : Container<vector<T>>(n, cin) {}
+};
 
 template<typename T> T min(const vector<T>& v) {return *min_element(v.begin(), v.end());}
 

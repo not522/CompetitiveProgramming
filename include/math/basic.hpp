@@ -1,5 +1,6 @@
 #pragma once
 #include "bit_operation.hpp"
+#include "vector.hpp"
 
 template<typename T = double> constexpr T pi() {return acos(T(-1));}
 
@@ -19,6 +20,12 @@ template<typename T, typename... S> T gcd(T a, S... s) {
     c >>= least_bit_fast(c);
   }
   return a << min(fa, fb);
+}
+
+template<typename T> T gcd(const Vector<T>& v) {
+  T g = abs(v[0]);
+  for (int i = 1; i < int(v.size()); ++i) g = gcd(g, v[i]);
+  return g;
 }
 
 template<typename T> T gcd(const vector<T>& v) {
