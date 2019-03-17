@@ -1,14 +1,20 @@
-#include "geometry/area.hpp"
-#include "string/split.hpp"
+#include "geometry/polygon.hpp"
+#include "string.hpp"
 
 int main() {
-  string line;
-  while (cin >> line) {
-    auto v = split(line, ',');
+  set_bool_name("YES", "NO");
+  for (String line; cin >> line;) {
+    auto v = line.split(',').transform(cast<String, long double>());
     Polygon polygon(4);
-    for (int i = 0; i < 4; ++i) polygon[i] = Point(stold(v[2 * i]), stold(v[2 * i + 1]));
-    if (area(polygon) < 0) reverse(polygon.begin(), polygon.end());
-    auto corners = polygon.getCorners();
-    cout << (all_of(corners.begin(), corners.end(), [](array<Point, 3> corner){return ccw(Segment(corner[0], corner[1]), corner[2]) != RIGHT;}) ? "YES" : "NO") << endl;
+    for (int i = 0; i < 4; ++i) {
+      polygon[i] = Point(v[2 * i], v[2 * i + 1]);
+    }
+    if (polygon.area() < 0) {
+      polygon = polygon.reverse();
+    }
+    auto is_convex = [](Vector<Point> &corner) {
+      return ccw(Segment(corner[0], corner[1]), corner[2]) != RIGHT;
+    };
+    cout << polygon.getCorners().all_of(is_convex) << endl;
   }
 }

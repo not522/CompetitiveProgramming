@@ -1,15 +1,18 @@
 #pragma once
+#include "vector.hpp"
 #include "geometry/ccw.hpp"
 
-class Polygon : public vector<Point> {
+class Polygon : public Vector<Point> {
 public:
   Polygon() {}
 
-  Polygon(int n) : vector<Point>(n) {}
+  Polygon(int n) : Vector<Point>(n) {}
 
-  Polygon(const initializer_list<Point>& p) : vector<Point>(p) {}
+  Polygon(int n, std::istream& cin) : Vector<Point>(n, cin) {}
 
-  Polygon(const vector<Point>& p) : vector<Point>(p) {}
+  Polygon(const std::initializer_list<Point>& p) : Vector<Point>(p) {}
+
+  Polygon(const Vector<Point>& p) : Vector<Point>(p) {}
 
   vector<Segment> getSides() const {
     if (size() <= 1u) return {};
@@ -22,12 +25,12 @@ public:
     return res;
   }
 
-  vector<array<Point, 3>> getCorners() const {
+  Vector<Vector<Point>> getCorners() const {
     if (size() <= 2u) return {};
-    vector<array<Point, 3>> res;
+    Vector<Vector<Point>> res;
     Point pre1 = *(end() - 2), pre2 = back();
     for (const auto& point : *this) {
-      res.emplace_back(array<Point,3>({{pre1, pre2, point}}));
+      res.emplace_back(Vector<Point>({pre1, pre2, point}));
       pre1 = pre2;
       pre2 = point;
     }
@@ -50,5 +53,11 @@ public:
       if (side.a.y <= point.y && point.y < side.b.y && ((side.b - point) / (side.a - point)).y > 0) res = !res;
     }
     return res;
+  }
+
+  Real area() const {
+    auto side = this->getSides();
+    auto f = [](const Real& r, const Segment& segment){return r + segment.area();};
+    return accumulate(side.begin(), side.end(), Real(0), f);
   }
 };

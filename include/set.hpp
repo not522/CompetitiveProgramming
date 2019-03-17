@@ -1,6 +1,8 @@
 #pragma once
 #include "container.hpp"
 
+#include <set>
+
 template<typename T> class Set : public Container<set<T>> {
 public:
   Set() : Container<set<T>>() {}

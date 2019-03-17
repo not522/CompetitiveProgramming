@@ -1,8 +1,7 @@
 #include "string.hpp"
 
 int main() {
-  int a, b;
-  while (cin >> a >> b) {
+  for (int a, b; cin >> a >> b;) {
     cout << String(a + b).size() << endl;
   }
 }

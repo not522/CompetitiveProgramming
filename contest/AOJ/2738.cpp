@@ -1,17 +1,18 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
+  set_bool_name("YES", "NO");
   int n, a = 0;
   cin >> n;
   for (int i = 0; i < n; ++i) {
-    string s;
-    cin >> s;
-    if (s == "A") {
+    if (String(cin) == "A") {
       ++a;
     } else {
       --a;
-      if (a < 0) break;
+      if (a < 0) {
+        break;
+      }
     }
   }
-  cout << (a == 0 ? "YES" : "NO") << endl;
+  cout << (a == 0) << endl;
 }

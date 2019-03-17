@@ -10,4 +10,8 @@ public:
   bool operator<(const Segment& segment) const {
     return a == segment.a ? b < segment.b : a < segment.a;
   }
+
+  Real area() const {
+    return (this->a.x * this->b.y - this->a.y * this->b.x) / 2;
+  }
 };

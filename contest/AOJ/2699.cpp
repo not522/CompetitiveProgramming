@@ -1,12 +1,8 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 int main() {
-  while (true) {
-    int d, e;
-    cin >> d >> e;
-    if (d == 0 && e == 0) break;
-    double res = numeric_limits<double>::max();
-    for (int i = 0; i <= d; ++i) chmin(res, abs(hypot(i, d - i) - e));
-    cout << res << endl;
+  for (int d, e; cin >> d >> e, d != 0 || e != 0;) {
+    auto f = [&](double a) { return abs(hypot(a, d - a) - e); };
+    cout << iota<double>(d + 1).transform(f).min() << endl;
   }
 }

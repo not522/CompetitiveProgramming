@@ -1,15 +1,9 @@
 #include "vector.hpp"
 
 int main() {
-  while (true) {
-    int m, nmin, nmax, r = 0, res = -1;
-    cin >> m >> nmin >> nmax;
-    if (m == 0 && nmin == 0 && nmax == 0) break;
-    vector<int> p(m);
-    cin >> p;
-    for (int i = nmax; i >= nmin; --i) {
-      if (chmax(r, p[i - 1] - p[i])) res = i;
-    }
-    cout << res << endl;
+  for (int m, nmin, nmax; cin >> m >> nmin >> nmax, m != 0;) {
+    Vector<int> p(m, cin);
+    p = p.adjacent_difference().subvector(nmin, nmax + 1).reverse();
+    cout << nmax - p.argmin() << endl;
   }
 }

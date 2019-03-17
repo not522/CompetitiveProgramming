@@ -1,13 +1,10 @@
 #include "geometry/polygon.hpp"
 
 int main() {
-  string s;
-  while (getline(cin, s)) {
-    stringstream ss(s);
-    Polygon pol(3);
-    Point p;
-    for (auto& i : pol) ss >> i;
-    ss >> p;
-    cout << (pol.cover(p) ? "YES" : "NO") << endl;
+  set_bool_name("YES", "NO");
+  Polygon pol(3);
+  Point p;
+  while (pol = Polygon(3, cin), cin >> p) {
+    cout << pol.cover(p) << endl;
   }
 }

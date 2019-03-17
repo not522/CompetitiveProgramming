@@ -10,9 +10,11 @@ public:
 
   Container(int n) : T(n) {}
 
-  Container(int n, T t) : T(n) {}
+  Container(int n, S s) : T(n, s) {}
 
   template<typename Itr> Container(Itr first, Itr last) : T(first, last) {}
+
+  Container(const std::initializer_list<S>& v) : T(v) {}
 
   Container(int n, std::istream& cin) {
     std::vector<S> v;

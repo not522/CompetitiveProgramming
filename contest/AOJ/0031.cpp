@@ -1,11 +1,12 @@
-#include "string/to_string.hpp"
+#include "container/bitset64.hpp"
+#include "vector.hpp"
 
 int main() {
-  int n;
-  while (cin >> n) {
-    int t = 1;
-    vector<int> res;
-    for (; n; n /= 2, t *= 2) if (n % 2) res.emplace_back(t);
-    cout << to_string(res) << endl;
+  for (int n; cin >> n;) {
+    Vector<int> res;
+    for (auto i : Bitset64(n)) {
+      res.emplace_back(1 << i);
+    }
+    res.output(' ');
   }
 }

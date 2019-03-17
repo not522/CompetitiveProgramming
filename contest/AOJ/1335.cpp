@@ -1,15 +1,16 @@
-#include "container/fix_size_set.hpp"
+#include "vector.hpp"
 
 int main() {
-  while (true) {
-    int n, k, s, res = 0;
-    cin >> n >> k >> s;
-    if (n == 0 && k == 0 && s == 0) break;
-    for (auto iter : FixSizeSet(n, k)) {
-      int sum = 0;
-      for (auto i : iter) sum += i + 1;
-      if (sum == s) ++res;
+  for (int n, k, s; cin >> n >> k >> s, n != 0 || k != 0 || s != 0;) {
+    Vector<Vector<int>> dp(k + 1, Vector<int>(s + 1));
+    dp[0][0] = 1;
+    for (int i = 1; i <= n; ++i) {
+      for (int j = k - 1; j >= 0; --j) {
+        for (int a = 0; a + i <= s; ++a) {
+          dp[j + 1][a + i] += dp[j][a];
+        }
+      }
     }
-    cout << res << endl;
+    cout << dp[k][s] << endl;
   }
 }

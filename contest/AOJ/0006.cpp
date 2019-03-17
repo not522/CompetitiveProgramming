@@ -2,6 +2,5 @@
 
 int main() {
   String str(cin);
-  str.reverse();
-  cout << str << endl;
+  cout << str.reverse() << endl;
 }

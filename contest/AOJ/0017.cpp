@@ -1,16 +1,19 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  string str;
-  while (getline(cin, str)) {
-    for (int i = 0; i < 26; ++i) {
-      for (char& c : str) {
-        if (isalpha(c)) {
-          if (c != 'z') ++c;
-          else c = 'a';
-        }
+  auto f = [](char c) -> char {
+    if (isalpha(c)) {
+      if (c != 'z') {
+        return c + 1;
       }
-      if (str.find("that") != string::npos || str.find("this") != string::npos || str.find("the") != string::npos) {
+      return 'a';
+    }
+    return c;
+  };
+  for (String str; getline(cin, str);) {
+    for (int i = 0; i < 26; ++i) {
+      str = str.transform(f);
+      if (str.in("that") || str.in("this") || str.in("the")) {
         cout << str << endl;
       }
     }

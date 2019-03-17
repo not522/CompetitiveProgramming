@@ -7,6 +7,6 @@ int main() {
     Triangle t;
     cin >> t;
     Point p = t.circumcenter();
-    cout << setprecision(3) << p << " " << (t.a - p).abs() << endl;
+    cout << std::setprecision(3) << p << " " << (t.a - p).abs() << endl;
   }
 }

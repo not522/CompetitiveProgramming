@@ -1,12 +1,7 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 int main() {
-  array<int, 5> a;
-  for (int& i : a) cin >> i;
-  sort(a.begin(), a.end(), greater<int>());
-  for (int i = 0; i < int(a.size()); ++i) {
-    cout << a[i];
-    if (i != int(a.size()) - 1) cout << " ";
-    else cout << endl;
-  }
+  Vector<int> a(5, cin);
+  a.rsort();
+  a.output(' ');
 }

@@ -1,8 +1,7 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  string str;
+  String str;
   getline(cin, str);
-  for (char c : str) cout << char(toupper(c));
-  cout << endl;
+  cout << str.toupper() << endl;
 }

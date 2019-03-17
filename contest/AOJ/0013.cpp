@@ -1,14 +1,12 @@
-#include "template.hpp"
+#include "stack.hpp"
 
 int main() {
-  int n;
-  stack<int> s;
-  while (cin >> n) {
+  Stack<int> s;
+  for (int n; cin >> n;) {
     if (n) {
       s.push(n);
     } else {
       cout << s.top() << endl;
-      s.pop();
     }
   }
 }

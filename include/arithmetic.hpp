@@ -6,6 +6,10 @@ public:
   template<typename V> T operator+(const V& v) const {
     return T(static_cast<const T&>(*this)) += v;
   }
+
+  T operator++() {
+    return static_cast<T&>(*this) += 1;
+  }
 };
 
 template<typename T> class Subtraction {

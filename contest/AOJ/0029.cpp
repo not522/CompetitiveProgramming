@@ -1,16 +1,18 @@
-#include "template.hpp"
+#include "map.hpp"
+#include "string.hpp"
 
 int main() {
-  string s;
   int mx1 = 0, mx2 = 0;
-  map<string, int> m;
-  while (cin >> s) ++m[s];
-  for (auto i : m) mx1 = max(mx1, i.second);
-  for (auto i : m) mx2 = max(mx2, int(i.first.size()));
-  for (auto i : m) {
-    if (i.second == mx1) cout << i.first << " ";
+  String amx1, amx2;
+  Map<String, int> m;
+  for (String s; cin >> s;) {
+    ++m[s];
+    if (chmax(mx1, m[s])) {
+      amx1 = s;
+    }
+    if (chmax(mx2, int(s.size()))) {
+      amx2 = s;
+    }
   }
-  for (auto i : m) {
-    if (int(i.first.size()) == mx2) cout << i.first << endl;
-  }
+  cout << amx1 << " " << amx2 << endl;
 }

@@ -48,10 +48,12 @@ public:
 
   Real sqrt() const {return std::sqrt(val);}
 
+  Real floor() const {return std::floor(val);}
+
   operator long double() const {return val;}
 };
 
-long double Real::EPS = 1e-10;
+long double Real::EPS = 1e-8;
 
 std::ostream& operator<<(std::ostream& os, const Real& a) {
   os << static_cast<long double>(a);
@@ -63,8 +65,4 @@ std::istream& operator>>(std::istream& is, Real& a) {
   is >> n;
   a = n;
   return is;
-}
-
-Real floor(const Real& r) {
-  return floor(static_cast<long double>(r));
 }

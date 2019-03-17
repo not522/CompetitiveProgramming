@@ -1,13 +1,12 @@
 #include "geometry/intersect.hpp"
 
-void solve() {
-  Line p, q;
-  cin >> p >> q;
-  cout << (intersect<true>(p, q) ? "NO" : "YES") << endl;
-}
-
 int main() {
+  set_bool_name("NO", "YES");
   int t;
   cin >> t;
-  for (int i = 0; i < t; ++i) solve();
+  for (int i = 0; i < t; ++i) {
+    Line p, q;
+    cin >> p >> q;
+    cout << intersect<true>(p, q) << endl;
+  }
 }
