@@ -1,6 +1,8 @@
 #pragma once
 #include "template.hpp"
 
+#include <vector>
+
 template<typename T> class Container : public T {
 private:
   using S = typename T::value_type;

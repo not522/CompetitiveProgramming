@@ -3,8 +3,6 @@
 #include "container.hpp"
 #include "ordered.hpp"
 
-#include <vector>
-
 template<typename T> class Vector : public Container<std::vector<T>>, public Arithmetic<Vector<T>>, public Modulus<Vector<T>>, public Ordered<Vector<T>> {
 public:
   Vector() = default;

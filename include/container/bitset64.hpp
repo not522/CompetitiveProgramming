@@ -16,7 +16,7 @@ public:
 
     bool operator!=(const Iterator& itr) const {return val != itr.val;}
 
-    void operator++() {val = least_bit(bit & (-2 << val));}
+    void operator++() {val = least_bit(bit & -(2 << val));}
   };
 
   uint64_t n;
