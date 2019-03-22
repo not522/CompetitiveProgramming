@@ -8,7 +8,7 @@ public:
 
   Polygon(int n) : Vector<Point>(n) {}
 
-  Polygon(int n, std::istream& cin) : Vector<Point>(n, cin) {}
+  Polygon(int n, Input& in) : Vector<Point>(n, in) {}
 
   Polygon(const std::initializer_list<Point>& p) : Vector<Point>(p) {}
 

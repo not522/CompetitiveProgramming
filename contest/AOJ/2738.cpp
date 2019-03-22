@@ -2,10 +2,9 @@
 
 int main() {
   set_bool_name("YES", "NO");
-  int n, a = 0;
-  cin >> n;
+  int n(in), a = 0;
   for (int i = 0; i < n; ++i) {
-    if (String(cin) == "A") {
+    if (String(in) == "A") {
       ++a;
     } else {
       --a;

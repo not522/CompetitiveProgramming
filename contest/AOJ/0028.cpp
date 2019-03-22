@@ -3,7 +3,7 @@
 int main() {
   int mx = 0;
   Map<int, int> m;
-  for (int n; cin >> n;) {
+  for (int n; n = in, !in.eof;) {
     ++m[n];
     chmax(mx, m[n]);
   }

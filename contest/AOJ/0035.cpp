@@ -3,14 +3,14 @@
 
 int main() {
   set_bool_name("YES", "NO");
-  for (String line; cin >> line;) {
+  for (String line; line = in, !in.eof;) {
     auto v = line.split(',').transform(cast<String, long double>());
     Polygon polygon(4);
     for (int i = 0; i < 4; ++i) {
       polygon[i] = Point(v[2 * i], v[2 * i + 1]);
     }
     if (polygon.area() < 0) {
-      polygon = polygon.reverse();
+      polygon.reverse();
     }
     auto is_convex = [](Vector<Point> &corner) {
       return ccw(Segment(corner[0], corner[1]), corner[2]) != RIGHT;

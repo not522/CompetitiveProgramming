@@ -1,7 +1,6 @@
 #include "string.hpp"
 
 int main() {
-  String str;
-  getline(cin, str);
+  String str = String::getline();
   cout << str.toupper() << endl;
 }

@@ -5,7 +5,7 @@ int main() {
   int mx1 = 0, mx2 = 0;
   String amx1, amx2;
   Map<String, int> m;
-  for (String s; cin >> s;) {
+  for (String s; s = in, !in.eof;) {
     ++m[s];
     if (chmax(mx1, m[s])) {
       amx1 = s;

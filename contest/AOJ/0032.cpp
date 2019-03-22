@@ -2,7 +2,7 @@
 
 int main() {
   int res1 = 0, res2 = 0;
-  for (String line; cin >> line;) {
+  for (String line; line = in, !in.eof;) {
     auto v = line.split(',');
     int a = v[0];
     int b = v[1];

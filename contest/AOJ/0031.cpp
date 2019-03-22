@@ -2,7 +2,7 @@
 #include "vector.hpp"
 
 int main() {
-  for (int n; cin >> n;) {
+  for (int n; n = in, !in.eof;) {
     Vector<int> res;
     for (auto i : Bitset64(n)) {
       res.emplace_back(1 << i);

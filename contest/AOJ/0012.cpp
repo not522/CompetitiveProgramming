@@ -4,7 +4,7 @@ int main() {
   set_bool_name("YES", "NO");
   Polygon pol(3);
   Point p;
-  while (pol = Polygon(3, cin), cin >> p) {
+  while (pol = Polygon(3, in), p = in, !in.eof) {
     cout << pol.cover(p) << endl;
   }
 }

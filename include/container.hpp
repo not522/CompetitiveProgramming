@@ -18,13 +18,8 @@ public:
 
   Container(const std::initializer_list<S>& v) : T(v) {}
 
-  Container(int n, std::istream& cin) {
-    std::vector<S> v;
-    for (int i = 0; i < n; ++i) {
-      S a;
-      cin >> a;
-      v.emplace_back(a);
-    }
+  Container(int n, Input& in) {
+    std::vector<S> v(n, in);
     *this = Container<T>(v.begin(), v.end());
   }
 

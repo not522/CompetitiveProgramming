@@ -2,11 +2,9 @@
 
 int main() {
   set_bool_name("NO", "YES");
-  int t;
-  cin >> t;
+  int t(in);
   for (int i = 0; i < t; ++i) {
-    Line p, q;
-    cin >> p >> q;
+    Line p(in), q(in);
     cout << intersect<true>(p, q) << endl;
   }
 }

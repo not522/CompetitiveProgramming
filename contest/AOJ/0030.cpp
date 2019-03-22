@@ -10,7 +10,7 @@ int main() {
       }
     }
   }
-  for (int n, s; cin >> n >> s, n != 0 || s != 0;) {
+  for (int n, s; n = in, s = in, n != 0 || s != 0;) {
     cout << dp[n][s] << endl;
   }
 }

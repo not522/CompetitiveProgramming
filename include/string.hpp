@@ -13,14 +13,20 @@ public:
 
   String(const std::string& s) : std::string(s) {}
 
-  String(std::istream& cin) {
-    cin >> *this;
+  String(Input& in) {
+    (void)in;
+    std::cin >> *this;
   }
 
-  String reverse() const {
-    auto s = *this;
-    std::reverse(s.begin(), s.end());
-    return s;
+  static String getline() {
+    String v;
+    std::getline(std::cin, v);
+    return v;
+  }
+
+  String reverse() {
+    std::reverse(this->begin(), this->end());
+    return *this;
   }
 
   Vector<String> split(char delim = ' ') const {

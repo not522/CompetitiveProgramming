@@ -59,10 +59,3 @@ std::ostream& operator<<(std::ostream& os, const Real& a) {
   os << static_cast<long double>(a);
   return os;
 }
-
-std::istream& operator>>(std::istream& is, Real& a) {
-  long double n;
-  is >> n;
-  a = n;
-  return is;
-}

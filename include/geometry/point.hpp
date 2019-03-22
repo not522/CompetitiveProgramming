@@ -11,6 +11,8 @@ public:
 
   Point(const Real& x, const Real& y) : x(x), y(y) {}
 
+  Point(Input& in) : x(in), y(in) {}
+
   Point operator+=(const Point& p) {
     x += p.x;
     y += p.y;
@@ -74,11 +76,4 @@ Point operator/(const Real& real, const Point& point) {return point / real;}
 std::ostream& operator<<(std::ostream& os, const Point& point) {
   os << point.x << " " << point.y;
   return os;
-}
-
-std::istream& operator>>(std::istream& is, Point& point) {
-  Real x, y;
-  is >> x >> y;
-  point = Point(x, y);
-  return is;
 }

@@ -7,7 +7,9 @@ public:
 
   Line() {}
 
-  Line (const Point& a, const Point& b) : a(a), b(b) {}
+  Line(const Point& a, const Point& b) : a(a), b(b) {}
+
+  Line(Input& in) : a(in), b(in) {}
 
   bool operator==(const Line& line) const {
     return ((line.vec() / vec()).y == 0) && (((line.a - a) / vec()).y == 0);
@@ -21,11 +23,4 @@ public:
 std::ostream& operator<<(std::ostream& os, const Line& line) {
   os << line.a << " " << line.b;
   return os;
-}
-
-std::istream& operator>>(std::istream& is, Line& line) {
-  Point a, b;
-  is >> a >> b;
-  line = Line(a, b);
-  return is;
 }

@@ -17,7 +17,7 @@ public:
 
   Vector(const std::initializer_list<T>& v) : Container<std::vector<T>>(v) {}
 
-  Vector(int n, std::istream& cin) : Container<std::vector<T>>(n, cin) {}
+  Vector(int n, Input& in) : Container<std::vector<T>>(n, in) {}
 
   Vector operator+=(const Vector& v) {
     for (unsigned i = 0; i < this->size(); ++i) (*this)[i] += v[i];
@@ -83,12 +83,14 @@ public:
     }
   }
 
-  void sort() {
+  Vector<T> sort() {
     std::sort(this->begin(), this->end());
+    return *this;
   }
 
-  void rsort() {
+  Vector<T> rsort() {
     std::sort(this->rbegin(), this->rend());
+    return *this;
   }
 
   Vector<T> subvector(int a) const {
@@ -111,10 +113,9 @@ public:
     return res;
   }
 
-  Vector<T> reverse() const {
-    Vector<T> res = *this;
-    std::reverse(res.begin(), res.end());
-    return res;
+  Vector<T> reverse() {
+    std::reverse(this->begin(), this->end());
+    return *this;
   }
 
   template<typename Function> bool all_of(Function func) {

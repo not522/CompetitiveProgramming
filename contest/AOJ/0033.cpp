@@ -2,13 +2,12 @@
 
 int main() {
   set_bool_name("YES", "NO");
-  int t;
-  cin >> t;
+  int t(in);
   for (int i = 0; i < t; ++i) {
-    int a = 0, b = 0, c;
+    int a = 0, b = 0;
     bool f = true;
     for (int i = 0; i < 10; ++i) {
-      cin >> c;
+      int c(in);
       if (c < a) {
         f = false;
       } else if (c < b) {

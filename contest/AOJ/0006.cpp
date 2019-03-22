@@ -1,6 +1,3 @@
 #include "string.hpp"
 
-int main() {
-  String str(cin);
-  cout << str.reverse() << endl;
-}
+int main() { cout << String(in).reverse() << endl; }

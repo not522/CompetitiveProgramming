@@ -1,7 +1,7 @@
 #include "vector.hpp"
 
 int main() {
-  for (int n, k, s; cin >> n >> k >> s, n != 0 || k != 0 || s != 0;) {
+  for (int n, k, s; n = in, k = in, s = in, n != 0 || k != 0 || s != 0;) {
     Vector<Vector<int>> dp(k + 1, Vector<int>(s + 1));
     dp[0][0] = 1;
     for (int i = 1; i <= n; ++i) {
