@@ -14,7 +14,6 @@ using std::abs;
 using std::cerr;
 using std::cout;
 using std::endl;
-using std::hypot;
 using std::max;
 using std::min;
 using std::numeric_limits;
