@@ -75,12 +75,13 @@ public:
     cout << end;
   }
 
-  void partial_sort(int k, bool reverse = false) {
+  Vector<T> partial_sort(int k, bool reverse = false) {
     if (!reverse) {
       std::partial_sort(this->begin(), this->begin() + k, this->end());
     } else {
       std::partial_sort(this->begin(), this->begin() + k, this->end(), std::greater<T>());
     }
+    return *this;
   }
 
   Vector<T> sort() {

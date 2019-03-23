@@ -14,13 +14,14 @@ public:
   String(const std::string& s) : std::string(s) {}
 
   String(Input& in) {
-    (void)in;
     std::cin >> *this;
+    in.eof = std::cin.eof();
   }
 
   static String getline() {
     String v;
     std::getline(std::cin, v);
+    in.eof = std::cin.eof();
     return v;
   }
 
@@ -52,7 +53,7 @@ public:
     return res;
   }
 
-  bool in(const String& s) const {
+  bool has(const String& s) const {
     return this->find(s) != std::string::npos;
   }
 
