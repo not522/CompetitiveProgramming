@@ -1,12 +1,9 @@
 #include "geometry/intersect.hpp"
 
 int main() {
-  int q;
-  cin >> q;
+  set_bool_name("1", "0");
+  int q(in);
   for (int i = 0; i < q; ++i) {
-    Segment segment1, segment2;
-    cin >> segment1 >> segment2;
-    if (intersect(segment1, segment2)) cout << 1 << endl;
-    else cout << 0 << endl;
+    cout << intersect(Segment(in), Segment(in)) << endl;
   }
 }

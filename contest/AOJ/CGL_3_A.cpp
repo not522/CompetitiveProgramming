@@ -1,9 +1,5 @@
-#include "geometry/area.hpp"
+#include "geometry/polygon.hpp"
 
 int main() {
-  int n;
-  cin >> n;
-  Polygon polygon(n);
-  for (auto& p : polygon) cin >> p;
-  cout << setprecision(1) << area(polygon) << endl;
+  cout << std::setprecision(1) << Polygon(int(in), in).area() << endl;
 }

@@ -2,8 +2,7 @@
 #include "math/pow.hpp"
 
 int main() {
-  Mint m;
-  int n;
-  cin >> m >> n;
+  Mint m(in);
+  int n(in);
   cout << pow(m, n) << endl;
 }

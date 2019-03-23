@@ -19,7 +19,10 @@ public:
   Container(const std::initializer_list<S>& v) : T(v) {}
 
   Container(int n, Input& in) {
-    std::vector<S> v(n, in);
+    std::vector<S> v(n);
+    for (auto& i : v) {
+      i = in;
+    }
     *this = Container<T>(v.begin(), v.end());
   }
 

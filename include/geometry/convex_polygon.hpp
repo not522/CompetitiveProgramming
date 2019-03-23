@@ -9,9 +9,9 @@ public:
 
   ConvexPolygon(int n) : Polygon(n) {}
 
-  ConvexPolygon(vector<Point> points) {
+  ConvexPolygon(Vector<Point> points) {
     int flag = ~(strict ? LEFT : LEFT | FRONT);
-    sort(points.begin(), points.end());
+    points.sort();
     for (unsigned i = 0; i < points.size(); emplace_back(points[i++])) {
       while (size() > 1u && ccw(*(end() - 2), back(), points[i]) & flag) pop_back();
     }
@@ -30,7 +30,7 @@ public:
     for (unsigned k = 0; k < 2 * size(); ++k) {
       if ((sides[i].vec() / sides[j].vec()).y >= 0) ++i;
       else ++j;
-      res = max(res, (sides[i].a - sides[j].a).abs());
+      chmax(res, (sides[i].a - sides[j].a).abs());
     }
     return res;
   }

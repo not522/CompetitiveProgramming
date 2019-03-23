@@ -1,3 +1,3 @@
 #include "math/basic.hpp"
 
-int main() { cout << factorial(static_cast<int64_t>(in)) << endl; }
+int main() { cout << factorial(int64_t(in)) << endl; }

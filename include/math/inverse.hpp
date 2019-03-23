@@ -1,10 +1,10 @@
 #pragma once
-#include "template.hpp"
+#include "vector.hpp"
 
 class Inverse {
 private:
   int64_t mod;
-  vector<int64_t> inv;
+  Vector<int64_t> inv;
   
 public:
   Inverse() {}

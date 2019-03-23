@@ -1,13 +1,13 @@
 #pragma once
-#include "template.hpp"
+#include "vector.hpp"
 
 template<typename Edge> class Tree {
 public:
   using EdgeType = Edge;
 
-  vector<Edge> parent;
-  vector<vector<int>> children;
-  vector<int> depth;
+  Vector<Edge> parent;
+  Vector<Vector<int>> children;
+  Vector<int> depth;
 
   Tree() {}
 
@@ -29,8 +29,8 @@ public:
     children[edge.to].emplace_back(from);
   }
 
-  vector<Edge> getEdges(int from) const {
-    vector<Edge> res;
+  Vector<Edge> getEdges(int from) const {
+    Vector<Edge> res;
     for (int v : children[from]) {
       auto e = parent[v];
       e.to = v;
@@ -46,8 +46,8 @@ public:
     return depth[v] = getDepth(parent[v].to) + 1;
   }
 
-  vector<int> getPath(int v) {
-    vector<int> res{v};
+  Vector<int> getPath(int v) {
+    Vector<int> res{v};
     while (v != parent[v].to) {
       v = parent[v].to;
       res.emplace_back(v);

@@ -1,10 +1,10 @@
 #pragma once
-#include "template.hpp"
+#include "vector.hpp"
 
 class UnionFind {
 private:
   int n;
-  vector<int> a;
+  Vector<int> a;
 public:
   UnionFind(int n) : n(n), a(n, -1) {}
   int find(int x) {return a[x] < 0 ? x : (a[x] = find(a[x]));}
@@ -20,8 +20,8 @@ public:
   int size() {return n;}
   int size(int x) {return -a[find(x)];}
   bool isRoot(int x) {return find(x) == x;}
-  vector<vector<int>> groups() {
-    vector<vector<int>> r(a.size()), res;
+  Vector<Vector<int>> groups() {
+    Vector<Vector<int>> r(a.size()), res;
     for (unsigned i = 0; i < a.size(); ++i) r[find(i)].emplace_back(i);
     for (auto&& i : r) if (!i.empty()) res.emplace_back(move(i));
     return res;

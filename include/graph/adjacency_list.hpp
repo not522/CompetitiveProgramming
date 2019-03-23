@@ -3,7 +3,7 @@
 
 template<typename Edge> class AdjacencyList : public Graph<Edge> {
 protected:
-  vector<vector<Edge>> graph;
+  Vector<Vector<Edge>> graph;
 
 public:
   using EdgeType = Edge;
@@ -11,6 +11,10 @@ public:
   AdjacencyList() = default;
 
   AdjacencyList(int n) : graph(n) {}
+
+  AdjacencyList(Input &in, int n, int m, bool undirected = true, bool one_origin = true) {
+    *this = readGraph<AdjacencyList<Edge>>(in, n, m, undirected, one_origin);
+  }
 
   int size() const {
     return graph.size();
@@ -35,7 +39,7 @@ public:
     graph[edge.from].emplace_back(edge);
   }
 
-  vector<Edge> getEdges(int from) const {
+  Vector<Edge> getEdges(int from) const {
     return graph[from];
   }
 
@@ -54,18 +58,11 @@ public:
     return false;
   }
 
-  vector<Edge>& operator[](int v) {
+  Vector<Edge>& operator[](int v) {
     return graph[v];
   }
 
-  const vector<Edge>& operator[](int v) const {
+  const Vector<Edge>& operator[](int v) const {
     return graph[v];
   }
 };
-
-template<typename Edge> istream& operator>>(istream& s, AdjacencyList<Edge>& graph) {
-  int n, m;
-  cin >> n >> m;
-  graph = readGraph<AdjacencyList<Edge>>(n, m);
-  return s;
-}

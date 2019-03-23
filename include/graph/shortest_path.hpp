@@ -1,6 +1,7 @@
 #pragma once
 #include "graph/search.hpp"
 #include "graph/tree.hpp"
+#include "priority_queue.hpp"
 
 template<typename Edge> struct DijkstraState {
   using Cost = typename Edge::CostType;
@@ -27,7 +28,7 @@ protected:
 
   constexpr static Cost INF = numeric_limits<Cost>::max();
 
-  priority_queue<State> que;
+  PriorityQueue<State> que;
 
   void push(const State& state) {
     if (dis[state.getPos()] <= state.cost) return;
@@ -37,7 +38,6 @@ protected:
 
   State next() {
     State now = que.top();
-    que.pop();
     return now;
   }
 
@@ -55,7 +55,7 @@ protected:
   }
 
 public:
-  vector<Cost> dis;
+  Vector<Cost> dis;
   Tree<Edge> shortestPathTree;
 
   Dijkstra(const Graph& graph) : Search<Graph, State>(graph), dis(graph.size(), INF) {

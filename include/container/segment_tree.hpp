@@ -1,11 +1,12 @@
 #pragma once
 #include "bit_operation.hpp"
+#include "vector.hpp"
 
 template<typename T> class SegmentTree {
 private:
   const T DEFAULT;
   int n;
-  vector<T> d;
+  Vector<T> d;
 
   T query(int a, int b, int k, int l, int r) {
     if (r <= a || b <= l) return DEFAULT;

@@ -53,7 +53,7 @@ public:
   operator long double() const {return val;}
 };
 
-long double Real::EPS = 1e-8;
+long double Real::EPS = 1e-10;
 
 std::ostream& operator<<(std::ostream& os, const Real& a) {
   os << static_cast<long double>(a);

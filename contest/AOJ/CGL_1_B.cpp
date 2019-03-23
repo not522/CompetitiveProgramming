@@ -1,14 +1,9 @@
 #include "geometry/projection.hpp"
 
 int main() {
-  Line line;
-  cin >> line;
-  int q;
-  cin >> q;
+  Line line(in);
+  int q(in);
   for (int i = 0; i < q; ++i) {
-    Point p, r;
-    cin >> p;
-    r = reflection(line, p);
-    cout << r << endl;
+    cout << reflection(line, Point(in)) << endl;
   }
 }

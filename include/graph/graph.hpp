@@ -1,9 +1,11 @@
 #pragma once
 #include "graph/edge.hpp"
+#include "vector.hpp"
 
 template<typename Edge> class Graph {
 public:
   using EdgeType = Edge;
+
   virtual int size() const = 0;
   template<typename... Args> void addEdge(int from, int to, Args...) {
     (void)from;
@@ -14,8 +16,8 @@ public:
     (void)to;
   }
 
-  vector<FullEdge<Edge>> getAllEdges() const {
-    vector<FullEdge<Edge>> res;
+  Vector<FullEdge<Edge>> getAllEdges() const {
+    Vector<FullEdge<Edge>> res;
     for (int i = 0; i < size(); ++i) {
       for (const auto& edge : getEdges(i)) {
         res.emplace_back(i, edge);
@@ -24,7 +26,7 @@ public:
     return res;
   }
 
-  virtual vector<Edge> getEdges(int from) const = 0;
+  virtual Vector<Edge> getEdges(int from) const = 0;
   virtual Edge getEdge(int from, int to) const = 0;
   virtual bool hasEdge(int from, int to) const = 0;
 
@@ -32,18 +34,17 @@ public:
     return getEdges(v).size();
   }
 
-  vector<int> getIndegree() const {
-    vector<int> degree(size());
+  Vector<int> getIndegree() const {
+    Vector<int> degree(size());
     for (const auto& edge : getAllEdges()) ++degree[edge.to];
     return degree;
   }
 };
 
-template<typename Graph> Graph readGraph(int n, int m, bool undirected = true, bool one_origin = true) {
+template<typename Graph> Graph readGraph(Input &in, int n, int m, bool undirected = true, bool one_origin = true) {
   Graph graph(n);
   for (int i = 0; i < m; ++i) {
-    FullEdge<typename Graph::EdgeType> edge;
-    cin >> edge;
+    FullEdge<typename Graph::EdgeType> edge(in);
     if (one_origin) {
       --edge.from;
       --edge.to;

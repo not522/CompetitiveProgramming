@@ -16,6 +16,11 @@ public:
     if (this->val < 0) this->val += mod;
   }
 
+  Mint(Input &in) : val(in) {
+    this->val = this->val % mod;
+    if (this->val < 0) this->val += mod;
+  }
+
   static void setMod(const int64_t& m) {
     mod = m;
     inverse = Inverse(m);
@@ -65,16 +70,9 @@ public:
 int64_t Mint::mod = 1000000007;
 Inverse Mint::inverse(1000000007);
 
-ostream& operator<<(ostream& os, Mint a) {
+std::ostream& operator<<(std::ostream& os, Mint a) {
   os << int64_t(a);
   return os;
-}
-
-istream& operator>>(istream& is, Mint& a) {
-  int64_t n;
-  is >> n;
-  a = n;
-  return is;
 }
 
 Mint operator+(const int& n, const Mint& m) { return m + n; }

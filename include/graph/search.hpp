@@ -1,12 +1,12 @@
 #pragma once
-#include "template.hpp"
+#include "vector.hpp"
 
 template<typename Graph, typename State> class Search {
 protected:
   using Edge = typename Graph::EdgeType;
 
   const Graph graph;
-  vector<bool> visited;
+  Vector<bool> visited;
 
   virtual void push(const State&) = 0;
   virtual State next() = 0;
@@ -17,7 +17,7 @@ protected:
 public:
   Search(const Graph& graph) : graph(graph), visited(graph.size(), false) {}
 
-  void solve(vector<int> from) {
+  void solve(Vector<int> from) {
     for (int i : from) push(State(i));
     while (isRunning()) {
       State now = next();
@@ -33,7 +33,7 @@ public:
     }
   }
 
-  void solve(int from) {solve(vector<int>({from}));}
+  void solve(int from) { solve(Vector<int>({from})); }
 
-  bool isReachable(int v) {return visited[v];}
+  bool isReachable(int v) { return visited[v]; }
 };
