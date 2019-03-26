@@ -1,6 +1,7 @@
 #pragma once
 #include "template.hpp"
 
+#include <algorithm>
 #include <vector>
 
 template<typename T> class Container : public T {
@@ -26,7 +27,33 @@ public:
     *this = Container<T>(v.begin(), v.end());
   }
 
-  bool in(const S& a) const {
+  S max() const {
+    return *max_element(this->begin(), this->end());
+  }
+
+  template<typename Function> auto max(Function func) const {
+    std::vector<std::pair<decltype(func(S())), S>> res;
+    for (const auto &i : *this) {
+      res.emplace_back(func(i), i);
+    }
+    return max_element(res.begin(), res.end())->second;
+  }
+
+  S min() const {
+    return *min_element(this->begin(), this->end());
+  }
+
+  int argmax() const {
+    return max_element(this->begin(), this->end()) - this->begin();
+  }
+
+  int argmin() const {
+    return min_element(this->begin(), this->end()) - this->begin();
+  }
+
+  bool contains(const S& a) const {
     return find(this->begin(), this->end(), a) != this->end();
   }
+
+  int size() const { return T::size(); }
 };

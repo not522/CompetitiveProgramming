@@ -4,8 +4,8 @@
 class BipartiteMatching {
 private:
   AdjacencyList<Edge> graph;
-  vector<bool> used;
-  
+  Vector<bool> used;
+
   bool dfs(int v) {
     used[v] = true;
     for (const Edge& u : graph[v]) {
@@ -20,7 +20,7 @@ private:
   }
   
 public:
-  vector<int> match;
+  Vector<int> match;
 
   BipartiteMatching(const AdjacencyList<Edge>& graph) : graph(graph), used(graph.size()), match(graph.size(), -1) {}
   
@@ -35,7 +35,7 @@ public:
   }
 };
 
-int bipartite_matching(const AdjacencyList<Edge>& graph) {
+int bipartiteMatching(const AdjacencyList<Edge>& graph) {
   BipartiteMatching bm(graph);
   return bm.solve();
 }

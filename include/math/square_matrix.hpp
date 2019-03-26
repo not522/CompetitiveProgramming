@@ -1,7 +1,7 @@
 #pragma once
 #include "math/matrix.hpp"
 
-template<typename T> class SquareMatrix : public Matrix<T>, public Division<SquareMatrix<T>> {
+template<typename T> class SquareMatrix : public Matrix<T> {
 public:
   SquareMatrix(int n) : Matrix<T>(n, n) {}
 
@@ -11,9 +11,14 @@ public:
     return *this *= m.inverse();
   }
 
+  SquareMatrix operator/(const SquareMatrix& m) const {
+    auto res = *this;
+    return res /= m;
+  }
+
   SquareMatrix identity() const {
     SquareMatrix res(this->size());
-    for (unsigned i = 0; i < this->size(); ++i) res[i][i] = 1;
+    for (int i = 0; i < this->size(); ++i) res[i][i] = 1;
     return res;
   }
 

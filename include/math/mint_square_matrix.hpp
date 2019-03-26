@@ -11,8 +11,8 @@ template<> SquareMatrix<Mint> SquareMatrix<Mint>::inverse() const {
     for (int j = i + 1; j < n; ++j) {
       if (int64_t(mat[j][i]) > int64_t(mat[p][i])) p = j;
     }
-    swap(mat[i], mat[p]);
-    swap(inv[i], inv[p]);
+    mat[i].swap(mat[p]);
+    inv[i].swap(inv[p]);
     for (int j = i + 1; j < n; ++j) mat[i][j] /= mat[i][i];
     for (int j = 0; j < n; ++j) inv[i][j] /= mat[i][i];
     mat[i][i] = 1;

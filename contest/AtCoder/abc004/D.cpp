@@ -1,14 +1,14 @@
 #include "graph/min_cost_flow.hpp"
 
 int main() {
-  array<int, 3> n;
-  for (int& i : n) cin >> i;
-  int id = 0;
-  int source = id++, sink = id++;
-  array<int, 3> v;
-  array<int, 2000> box;
-  for (int& i : v) i = id++;
-  for (int& i : box) i = id++;
+  Vector<int> n(3, in), v(3), box(2000);
+  int id = 0, source = id++, sink = id++;
+  for (int &i : v) {
+    i = id++;
+  }
+  for (int &i : box) {
+    i = id++;
+  }
   ResidualGraph<WeightedResidualEdge<int, int>> graph(id);
   for (int i = 0; i < 3; ++i) {
     graph.addEdge(source, v[i], n[i], 0);
@@ -19,6 +19,5 @@ int main() {
   for (int i = 0; i < 2000; ++i) {
     graph.addEdge(box[i], sink, 1, 0);
   }
-  MinCostFlow<int, int> mcf(graph);
-  cout << mcf.solve(source, sink, accumulate(n.begin(), n.end(), 0)) << endl;
+  cout << minCostFlow(graph, source, sink, n.accumulate()) << endl;
 }

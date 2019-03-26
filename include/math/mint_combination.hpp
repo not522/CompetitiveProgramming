@@ -4,7 +4,7 @@
 
 template<> class Combination<Mint> {
 private:
-  vector<Mint> factorial, inverse;
+  Vector<Mint> factorial, inverse;
 
 public:
   Combination(int n = 0) : factorial(n + 1, 1), inverse(n + 1) {

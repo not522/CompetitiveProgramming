@@ -1,7 +1,6 @@
-#include "geometry/area.hpp"
+#include "geometry/segment.hpp"
 
 int main() {
-  Point a, b, c;
-  cin >> a >> b >> c;
-  cout << area(Segment(b - a, c - a)).abs() << endl;
+  Point a(in), b(in), c(in);
+  cout << (Segment(b - a, c - a)).area().abs() << endl;
 }

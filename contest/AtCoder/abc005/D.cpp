@@ -1,12 +1,10 @@
 #include "cumulative_sum_2D.hpp"
 
 int main() {
-  int n;
-  cin >> n;
-  vector<vector<int>> d(n, vector<int>(n));
-  for (auto& i : d) for (int& j : i) cin >> j;
+  int n(in);
+  auto d = Vector<int>::makeVector(in, n, n);
   CumulativeSum2D<int> cumulativeSum2D(d);
-  vector<int> res(n * n + 1, 0);
+  Vector<int> res(n * n + 1, 0);
   for (int i = 0; i < n; ++i) {
     for (int j = 0; j < n; ++j) {
       for (int k = i + 1; k <= n; ++k) {
@@ -17,12 +15,11 @@ int main() {
       }
     }
   }
-  for (int i = 0; i < n * n; ++i) res[i + 1] = max(res[i], res[i + 1]);
-  int q;
-  cin >> q;
+  for (int i = 0; i < n * n; ++i) {
+    chmax(res[i + 1], res[i]);
+  }
+  int q(in);
   for (int i = 0; i < q; ++i) {
-    int p;
-    cin >> p;
-    cout << res[p] << endl;
+    cout << res[int(in)] << endl;
   }
 }

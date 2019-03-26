@@ -1,14 +1,11 @@
 #pragma once
 #include "license.hpp"
 
-#include <algorithm>
 #include <cassert>
-#include <complex>
 #include <functional>
 #include <iomanip>
 #include <iostream>
 #include <limits>
-#include <numeric>
 
 using std::abs;
 using std::cerr;
@@ -63,6 +60,24 @@ struct Input {
   operator long long() {
     long long v;
     this->eof = (std::scanf("%lld", &v) != 1);
+    return v;
+  }
+
+  operator unsigned int() {
+    unsigned int v;
+    this->eof = (std::scanf("%u", &v) != 1);
+    return v;
+  }
+
+  operator unsigned long() {
+    unsigned long v;
+    this->eof = (std::scanf("%lu", &v) != 1);
+    return v;
+  }
+
+  operator unsigned long long() {
+    unsigned long long v;
+    this->eof = (std::scanf("%llu", &v) != 1);
     return v;
   }
 

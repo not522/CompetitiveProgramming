@@ -1,5 +1,5 @@
 #pragma once
-#include "template.hpp"
+#include "vector.hpp"
 
 template<class Value> class CumulativeSum2D {
 private:
@@ -9,13 +9,13 @@ private:
     RangeValue(int i, int j, int y, int x, Value v) : i(i), j(j), y(y), x(x), v(v) {}
   };
 
-  vector<vector<Value>> val;
-  vector<RangeValue> rangeValue;
+  Vector<Vector<Value>> val;
+  Vector<RangeValue> rangeValue;
 
 public:
   CumulativeSum2D() {}
 
-  CumulativeSum2D(int n, int m) : val(n + 1, vector<Value>(m + 1, Value(0))) {}
+  CumulativeSum2D(int n, int m) : val(n + 1, Vector<Value>(m + 1, Value(0))) {}
   
   template<typename T> CumulativeSum2D(T v) {
     int n = v.size();

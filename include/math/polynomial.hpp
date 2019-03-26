@@ -5,7 +5,7 @@
 template<typename T> class Polynomial : public Vector<T> {
 private:
   void normalize() {
-    while (this->size() > 1u && this->back() == 0) this->pop_back();
+    while (this->size() > 1 && this->back() == 0) this->pop_back();
     if (this->empty()) this->emplace_back(0);
   }
 
@@ -55,9 +55,9 @@ public:
     for (int i = m; i < b; ++i) b1[i - m] = p[i];
     auto z0 = a0 * b0, z2 = a1 * b1, z1 = z0 + z2 - (a1 - a0) * (b1 - b0);
     *this = Vector<T>(a + b);
-    for (unsigned i = 0; i < z0.size(); ++i) (*this)[i] += z0[i]; 
-    for (unsigned i = 0; i < z1.size(); ++i) (*this)[i + m] += z1[i]; 
-    for (unsigned i = 0; i < z2.size(); ++i) (*this)[i + 2 * m] += z2[i]; 
+    for (int i = 0; i < z0.size(); ++i) (*this)[i] += z0[i]; 
+    for (int i = 0; i < z1.size(); ++i) (*this)[i + m] += z1[i]; 
+    for (int i = 0; i < z2.size(); ++i) (*this)[i + 2 * m] += z2[i]; 
     normalize();
     return *this;
   }

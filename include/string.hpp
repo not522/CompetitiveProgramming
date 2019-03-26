@@ -7,7 +7,13 @@ class String : public std::string {
 public:
   String() : std::string() {}
 
+  String(char c) : std::string(1, c) {}
+
   String(int n) : std::string(std::to_string(n)) {}
+
+  String(long n) : std::string(std::to_string(n)) {}
+
+  String(long long n) : std::string(std::to_string(n)) {}
 
   String(const char *s) : std::string(s) {}
 
@@ -53,11 +59,24 @@ public:
     return res;
   }
 
-  bool has(const String& s) const {
+  bool contains(const String& s) const {
+    cerr << s << endl;
     return this->find(s) != std::string::npos;
   }
 
-  operator int() const {return std::stoi(*this);}
+  String erase(char c) {
+    String res;
+    for (char i : *this) {
+      if (i != c) {
+        res += i;
+      }
+    }
+    return *this = res;
+  }
 
-  operator long double() const {return std::stold(*this);}
+  int size() const { return std::string::size(); }
+
+  operator int() const { return std::stoi(*this); }
+
+  operator long double() const { return std::stold(*this); }
 };

@@ -1,24 +1,26 @@
-#include "graph/edge.hpp"
+#include "adjacent_loop.hpp"
 #include "graph/adjacency_list.hpp"
 #include "graph/bfs.hpp"
+#include "string.hpp"
 
 int main() {
-  int r, c, sy, sx, gy, gx;
-  cin >> r >> c >> sy >> sx >> gy >> gx;
-  --sy; --sx; --gy; --gx;
-  vector<string> v(r);
-  for (string& s : v) cin >> s;
+  int r(in), c(in), sy(in), sx(in), gy(in), gx(in);
+  --sy;
+  --sx;
+  --gy;
+  --gx;
+  Vector<String> v(r, in);
   AdjacencyList<Edge> graph(r * c);
-  const int dy[] = {0, -1, 0, 1};
-  const int dx[] = {1, 0, -1, 0};
   for (int i = 1; i < r - 1; ++i) {
     for (int j = 1; j < c - 1; ++j) {
-      if (v[i][j] == '#') continue;
-      for (int k = 0; k < 4; ++k) {
-        int ii = i + dy[k];
-        int jj = j + dx[k];
-        if (v[ii][jj] == '#') continue;
-        graph.addEdge(i * c + j, ii * c + jj);
+      if (v[i][j] == '#') {
+        continue;
+      }
+      for (auto k : AdjacentLoop<4>(i, j, r, c)) {
+        int ii = k.get<0>(), jj = k.get<1>();
+        if (v[ii][jj] != '#') {
+          graph.addEdge(i * c + j, ii * c + jj);
+        }
       }
     }
   }

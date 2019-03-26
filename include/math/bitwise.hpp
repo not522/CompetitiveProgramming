@@ -5,7 +5,7 @@ template<typename T> class Bitwise : public Arithmetic<Bitwise<T>> {
 public:
   T val;
 
-  Bitwise() {}
+  Bitwise() : val(0) {}
 
   Bitwise(T val) : val(val) {}
 

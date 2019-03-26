@@ -13,7 +13,7 @@ int main() {
   for (String str; str = String::getline(), !in.eof;) {
     for (int i = 0; i < 26; ++i) {
       str = str.transform(f);
-      if (str.has("that") || str.has("this") || str.has("the")) {
+      if (str.contains("that") || str.contains("this") || str.contains("the")) {
         cout << str << endl;
       }
     }

@@ -1,4 +1,6 @@
 #pragma once
+#include <complex>
+
 #include "bit_operation.hpp"
 #include "vector.hpp"
 #include "math/basic.hpp"

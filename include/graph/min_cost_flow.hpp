@@ -1,13 +1,14 @@
 #pragma once
-#include "graph/edge.hpp"
 #include "graph/residual_graph.hpp"
+#include "priority_queue.hpp"
+#include "tuple.hpp"
 
 template<typename Capacity, typename Cost> class MinCostFlow {
 private:
   const Cost INF;
 
   ResidualGraph<WeightedResidualEdge<Capacity, Cost>> graph;
-  vector<int> h, dist, prevv, preve;
+  Vector<int> h, dist, prevv, preve;
   
 public:
   MinCostFlow(const ResidualGraph<WeightedResidualEdge<Capacity, Cost>>& graph) : INF(numeric_limits<Cost>::max()), graph(graph), h(graph.size(), 0), dist(graph.size(), 0), prevv(graph.size(), 0), preve(graph.size(), 0) {}
@@ -15,22 +16,21 @@ public:
   Cost solve(int s, int t, Capacity f) {
     int res = 0;
     while (f > 0) {
-      priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> que;
+      PriorityQueue<Tuple<int, int>, false> que;
       fill(dist.begin(), dist.end(), INF);
       dist[0] = 0;
-      que.push(make_pair(0, s));
+      que.emplace(0, s);
       while (!que.empty()) {
         auto p = que.top();
-        que.pop();
-        int v = p.second;
-        if (dist[v] < p.first) continue;
+        int v = p.get<1>();
+        if (dist[v] < p.get<0>()) continue;
         for (int i = 0; i < int(graph[v].size()); ++i) {
           const auto& e = graph[v][i];
           if (e.cap > 0 && dist[e.to] > dist[v] + e.cost + h[v] - h[e.to]) {
             dist[e.to] = dist[v] + e.cost + h[v] - h[e.to];
             prevv[e.to] = v;
             preve[e.to] = i;
-            que.push(make_pair(dist[e.to], e.to));
+            que.emplace(dist[e.to], e.to);
           }
         }
       }
@@ -45,3 +45,8 @@ public:
     return res;
   }
 };
+
+template<typename Capacity, typename Cost> Cost minCostFlow(const ResidualGraph<WeightedResidualEdge<Capacity, Cost>>& graph, int s, int t, int f) {
+  MinCostFlow<Capacity, Cost> mcf(graph);
+  return mcf.solve(s, t, f);
+}

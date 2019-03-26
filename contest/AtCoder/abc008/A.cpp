@@ -1,7 +1,6 @@
 #include "template.hpp"
 
 int main() {
-  int s, t;
-  cin >> s >> t;
+  int s(in), t(in);
   cout << t - s + 1 << endl;
 }

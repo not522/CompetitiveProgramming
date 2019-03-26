@@ -1,5 +1,4 @@
 #pragma once
-#include "graph/edge.hpp"
 #include "graph/residual_graph.hpp"
 #include "queue.hpp"
 

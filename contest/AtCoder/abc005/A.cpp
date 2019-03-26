@@ -1,7 +1,6 @@
 #include "template.hpp"
 
 int main() {
-  int x, y;
-  cin >> x >> y;
+  int x(in), y(in);
   cout << y / x << endl;
 }

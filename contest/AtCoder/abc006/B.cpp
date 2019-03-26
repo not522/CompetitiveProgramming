@@ -7,7 +7,6 @@ int main() {
   m[0][0] = m[0][1] = m[0][2] = m[1][0] = m[2][1] = 1;
   Vector<Mint> v(3);
   v[0] = 1;
-  int n;
-  cin >> n;
+  int n(in);
   cout << (pow(m, n - 3) * v)[0] << endl;
 }

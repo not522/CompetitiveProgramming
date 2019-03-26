@@ -1,4 +1,6 @@
 #pragma once
+#include <cmath>
+
 #include "bit_operation.hpp"
 #include "vector.hpp"
 
@@ -51,6 +53,8 @@ template<typename T> T ceil(T a, T b) {
   return d.quot + (d.rem && (a > 0) == (b > 0) ? 1 : 0);
 }
 
+template<typename T> T round(T a) {return std::round(a); }
+
 template<typename T> T round(T a, T b) {return floor(a + b / 2, b);}
 
 template<typename T> T mod(T a, T b) {
@@ -75,3 +79,5 @@ template<typename T> T norm(T x1, T y1, T x2, T y2) {return square(x1 - x2) + sq
 template<typename T> bool isSquare(T n) {return square(T(sqrt(n))) == n;}
 
 template<typename T> T clamp(T v, T l, T u) {return v < l ? l : v > u ? u : v;}
+
+template<typename T> T hypot(T a, T b) { return std::hypot(a, b); }

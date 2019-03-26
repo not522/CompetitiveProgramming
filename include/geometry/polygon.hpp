@@ -14,9 +14,9 @@ public:
 
   Polygon(const Vector<Point>& p) : Vector<Point>(p) {}
 
-  vector<Segment> getSides() const {
-    if (size() <= 1u) return {};
-    vector<Segment> res;
+  Vector<Segment> getSides() const {
+    if (size() <= 1) return {};
+    Vector<Segment> res;
     Point pre = back();
     for (const auto& point : *this) {
       res.emplace_back(pre, point);
@@ -26,7 +26,7 @@ public:
   }
 
   Vector<Vector<Point>> getCorners() const {
-    if (size() <= 2u) return {};
+    if (size() <= 2) return {};
     Vector<Vector<Point>> res;
     Point pre1 = *(end() - 2), pre2 = back();
     for (const auto& point : *this) {
@@ -58,6 +58,6 @@ public:
   Real area() const {
     auto side = this->getSides();
     auto f = [](const Real& r, const Segment& segment){return r + segment.area();};
-    return accumulate(side.begin(), side.end(), Real(0), f);
+    return side.accumulate(0, f);
   }
 };

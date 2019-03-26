@@ -1,7 +1,3 @@
 #include "template.hpp"
 
-int main() {
-  int n;
-  cin >> n;
-  cout << (n + 1) / 2 << endl;
-}
+int main() { cout << (int(in) + 1) / 2 << endl; }

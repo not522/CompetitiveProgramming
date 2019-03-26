@@ -2,26 +2,36 @@
 #include "ordered.hpp"
 #include "vector.hpp"
 
-template<typename T> class Matrix : public std::vector<Vector<T>>, public Addition<Matrix<T>>, public Subtraction<Matrix<T>>, public Ordered<Matrix<T>> {
+template<typename T> class Matrix : public Vector<Vector<T>> {
 public:
-  Matrix(int n, int m) : std::vector<Vector<T>>(n, Vector<T>(m)) {}
+  Matrix(int n, int m) : Vector<Vector<T>>(n, Vector<T>(m)) {}
 
   Matrix operator+=(const Matrix& m) {
-    for (unsigned i = 0; i < this->size(); ++i) (*this)[i] += m[i];
+    for (int i = 0; i < this->size(); ++i) (*this)[i] += m[i];
     return *this;
   }
 
+  Matrix operator+(const Matrix& m) {
+    auto res = *this;
+    return res += m;
+  }
+
   Matrix operator-=(const Matrix& m) {
-    for (unsigned i = 0; i < this->size(); ++i) (*this)[i] -= m[i];
+    for (int i = 0; i < this->size(); ++i) (*this)[i] -= m[i];
     return *this;
+  }
+
+  Matrix operator-(const Matrix& m) {
+    auto res = *this;
+    return res -= m;
   }
 
   Matrix operator*=(const Matrix& _m) {
     Matrix &m = const_cast<Matrix&>(_m);
     Matrix res(this->size(), m[0].size());
-    for (unsigned i = 0; i < this->size(); ++i) {
-      for (unsigned j = 0; j < m.size(); ++j) {
-        for (unsigned k = 0; k < m[0].size(); ++k) {
+    for (int i = 0; i < this->size(); ++i) {
+      for (int j = 0; j < m.size(); ++j) {
+        for (int k = 0; k < m[0].size(); ++k) {
           res[i][k] += (*this)[i][j] * m[j][k]; 
         }
       }
@@ -36,13 +46,7 @@ public:
 
   Vector<T> operator*(const Vector<T>& v) {
     Vector<T> res(this->size());
-    for (unsigned i = 0; i < this->size(); ++i) res[i] += (*this)[i].inner_product(v);
+    for (int i = 0; i < this->size(); ++i) res[i] += (*this)[i].inner_product(v);
     return res;
-  }
-
-  bool operator<(const Matrix& m) const {
-    if (this->size() != m.size()) return this->size() < m.size();
-    for (unsigned i = 0; i < this->size(); ++i) if ((*this)[i] != m[i]) return (*this)[i] < m[i];
-    return false;
   }
 };

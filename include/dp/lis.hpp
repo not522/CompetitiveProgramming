@@ -1,11 +1,11 @@
 #pragma once
-#include "template.hpp"
+#include "vector.hpp"
 
 template<typename V, typename T> class LIS {
 private:
   const V a;
   const T INF;
-  vector<int> res;
+  Vector<int> res;
 
 public:
   LIS(const V& a) : a(a), INF(numeric_limits<T>::max()), res(a.size(), INF) {}

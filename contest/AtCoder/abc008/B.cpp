@@ -1,13 +1,11 @@
-#include "template.hpp"
+#include "map.hpp"
+#include "string.hpp"
 
 int main() {
-  int n;
-  cin >> n;
-  map<string, int> m;
+  int n(in);
+  Map<String, int> m;
   for (int i = 0; i < n; ++i) {
-    string s;
-    cin >> s;
-    ++m[s];
+    ++m[String(in)];
   }
-  cout << max_element(m.begin(), m.end(), [](pair<string, int> a, pair<string, int> b){return a.second < b.second;})->first << endl;
+  cout << m.max([](auto a) { return a.second; }).first << endl;
 }

@@ -1,9 +1,10 @@
 #pragma once
-#include "template.hpp"
+#include "tuple.hpp"
+#include "vector.hpp"
 
 template<int N> class AdjacentLoop {
 private:
-  const static array<int, N> dy, dx;
+  const static Vector<int> dy, dx;
 
   struct Iterator {
     const int y, x, h, w;
@@ -17,7 +18,7 @@ private:
       }
     }
 
-    pair<int, int> operator*() {return make_pair(y + dy[val], x + dx[val]);}
+    Tuple<int, int> operator*() {return makeTuple(y + dy[val], x + dx[val]);}
 
     bool operator!=(Iterator& itr) {return val < itr.val;}
 
@@ -40,17 +41,17 @@ public:
   Iterator& end() {return n;}
 };
 
-template<> const array<int, 2> AdjacentLoop<2>::dy = {{0, 1}};
-template<> const array<int, 2> AdjacentLoop<2>::dx = {{1, 0}};
+template<> const Vector<int> AdjacentLoop<2>::dy = {{0, 1}};
+template<> const Vector<int> AdjacentLoop<2>::dx = {{1, 0}};
 
-template<> const array<int, 4> AdjacentLoop<4>::dy = {{0, -1, 0, 1}};
-template<> const array<int, 4> AdjacentLoop<4>::dx = {{1, 0, -1, 0}};
+template<> const Vector<int> AdjacentLoop<4>::dy = {{0, -1, 0, 1}};
+template<> const Vector<int> AdjacentLoop<4>::dx = {{1, 0, -1, 0}};
 
-template<> const array<int, 5> AdjacentLoop<5>::dy = {{0, -1, 0, 1, 0}};
-template<> const array<int, 5> AdjacentLoop<5>::dx = {{1, 0, -1, 0, 0}};
+template<> const Vector<int> AdjacentLoop<5>::dy = {{0, -1, 0, 1, 0}};
+template<> const Vector<int> AdjacentLoop<5>::dx = {{1, 0, -1, 0, 0}};
 
-template<> const array<int, 8> AdjacentLoop<8>::dy = {{-1, -1, -1, 0, 0, 1, 1, 1}};
-template<> const array<int, 8> AdjacentLoop<8>::dx = {{-1, 0, 1, -1, 1, -1, 0, 1}};
+template<> const Vector<int> AdjacentLoop<8>::dy = {{-1, -1, -1, 0, 0, 1, 1, 1}};
+template<> const Vector<int> AdjacentLoop<8>::dx = {{-1, 0, 1, -1, 1, -1, 0, 1}};
 
-template<> const array<int, 9> AdjacentLoop<9>::dy = {{-1, -1, -1, 0, 0, 0, 1, 1, 1}};
-template<> const array<int, 9> AdjacentLoop<9>::dx = {{-1, 0, 1, -1, 0, 1, -1, 0, 1}};
+template<> const Vector<int> AdjacentLoop<9>::dy = {{-1, -1, -1, 0, 0, 0, 1, 1, 1}};
+template<> const Vector<int> AdjacentLoop<9>::dx = {{-1, 0, 1, -1, 0, 1, -1, 0, 1}};

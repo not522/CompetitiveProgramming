@@ -1,12 +1,14 @@
 #pragma once
-#include "template.hpp"
+#include "map.hpp"
+#include "tuple.hpp"
+#include "vector.hpp"
 
 template<typename... Args> class MemoizedRecursion {};
 
 template<typename T> class MemoizedRecursion<T> {
 protected:
-  vector<bool> use;
-  vector<T> mem;
+  Vector<bool> use;
+  Vector<T> mem;
 
   bool used(unsigned v) {
     if (v >= use.size()) {
@@ -38,18 +40,18 @@ public:
 
 template<typename T, typename... Args> class MemoizedRecursion<T, Args...> {
 protected:
-  map<tuple<Args...>, T> mem;
+  Map<Tuple<Args...>, T> mem;
 
   bool used(Args... args) {
-    return mem.count(tie(args...));
+    return mem.count(makeTuple(args...));
   }
 
   T memo(Args... args) {
-    return mem[tie(args...)];
+    return mem[makeTuple(args...)];
   }
 
   void push(T t, Args... args) {
-    mem[tie(args...)] = t;
+    mem[makeTuple(args...)] = t;
   }
 
   virtual T eval(Args... args) = 0;

@@ -1,11 +1,13 @@
 #pragma once
+#include "container.hpp"
+
 #include <queue>
 
-template<typename T> class Queue : public std::queue<T> {
+template<typename T> class Queue : public Container<std::queue<T>> {
 public:
-  Queue() : std::queue<T>() {}
+  Queue() : Container<std::queue<T>>() {}
 
-  Queue(const std::initializer_list<T>& s) : std::queue<T>(s) {}
+  Queue(const std::initializer_list<T>& s) : Container<std::queue<T>>(s) {}
 
   T front() {
     T res = std::queue<T>::front();

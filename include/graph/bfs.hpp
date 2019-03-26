@@ -1,6 +1,8 @@
 #pragma once
 #include "graph/search.hpp"
 #include "graph/tree.hpp"
+#include "queue.hpp"
+#include "vector.hpp"
 
 template<typename Edge> struct BFSState {
   int pos, prv;
@@ -16,17 +18,13 @@ template<typename Graph, typename State = BFSState<typename Graph::EdgeType>> cl
 protected:
   using Edge = typename Graph::EdgeType;
 
-  queue<State> que;
+  Queue<State> que;
   
-  void push(const State& state) {que.push(state);}
+  void push(const State& state) { que.push(state); }
   
-  State next() {
-    State now = que.front();
-    que.pop();
-    return now;
-  }
+  State next() { return que.front(); }
   
-  bool isRunning() {return !que.empty();}
+  bool isRunning() { return !que.empty(); }
 
 public:
   BFS(const Graph& graph) : Search<Graph, State>(graph) {}
@@ -45,7 +43,7 @@ private:
   }
 
 public:
-  vector<int> dis;
+  Vector<int> dis;
   Tree<Edge> shortestPathTree;
 
   BFSDistance(const Graph& graph) : BFS<Graph>(graph), dis(graph.size(), 0) {

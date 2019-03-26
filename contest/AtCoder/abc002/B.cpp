@@ -1,15 +1,11 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  string s;
-  cin >> s;
-  for (char c : s) {
-    if (c == 'a') continue;
-    if (c == 'i') continue;
-    if (c == 'u') continue;
-    if (c == 'e') continue;
-    if (c == 'o') continue;
-    cout << c;
-  }
-  cout << endl;
+  String s(in);
+  s.erase('a');
+  s.erase('i');
+  s.erase('u');
+  s.erase('e');
+  s.erase('o');
+  cout << s << endl;
 }

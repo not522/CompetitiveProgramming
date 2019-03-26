@@ -1,17 +1,15 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  string s, t;
-  cin >> s >> t;
-  string atcoder = "atcoder";
-  for (int i = 0; i < int(s.size()); ++i) {
-    bool ok = (s[i] == t[i]);
-    if (s[i] == '@' && atcoder.find(t[i]) != string::npos) ok = true;
-    if (t[i] == '@' && atcoder.find(s[i]) != string::npos) ok = true;
-    if (!ok) {
-      cout << "You will lose" << endl;
+  set_bool_name("You can win", "You will lose");
+  String s(in), t(in);
+  String atcoder = "atcoder";
+  for (int i = 0; i < s.size(); ++i) {
+    if ((s[i] != t[i]) && (s[i] != '@' || !atcoder.contains(t[i])) &&
+        (t[i] != '@' || !atcoder.contains(s[i]))) {
+      cout << false << endl;
       return 0;
     }
   }
-  cout << "You can win" << endl;
+  cout << true << endl;
 }

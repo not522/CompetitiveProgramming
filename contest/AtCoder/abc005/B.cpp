@@ -1,9 +1,6 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 int main() {
-  int n;
-  cin >> n;
-  vector<int> v(n);
-  for (int& i : v) cin >> i;
-  cout << *min_element(v.begin(), v.end()) << endl;
+  int n(in);
+  cout << Vector<int>(n, in).min() << endl;
 }

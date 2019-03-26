@@ -7,6 +7,6 @@ int main() {
     for (auto i : Bitset64(n)) {
       res.emplace_back(1 << i);
     }
-    res.output(' ');
+    res.output(" ");
   }
 }

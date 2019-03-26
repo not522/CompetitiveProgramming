@@ -1,9 +1,9 @@
 #pragma once
-#include "template.hpp"
+#include "string.hpp"
 
 template<typename T, typename State> class DigitDP {
 protected:
-  string num;
+  String num;
   State curr;
   State prev;
 
@@ -11,9 +11,9 @@ protected:
   virtual T result() = 0;
 
 public:
-  DigitDP(string num) : num(num) {}
+  DigitDP(String num) : num(num) {}
   
-  template<typename S> DigitDP(S num) : num(to_string(num)) {}
+  template<typename S> DigitDP(S num) : num(num) {}
   
   T solve() {
     for (char c : num) {

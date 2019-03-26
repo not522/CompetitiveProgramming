@@ -1,8 +1,6 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  string s;
-  cin >> s;
-  if (s == "a") cout << -1 << endl;
-  else cout << "a" << endl;
+  set_bool_name("-1", "a");
+  cout << (String(in) == "a") << endl;
 }

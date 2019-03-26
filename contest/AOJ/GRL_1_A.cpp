@@ -1,5 +1,4 @@
 #include "graph/adjacency_list.hpp"
-#include "graph/edge.hpp"
 #include "graph/shortest_path.hpp"
 
 int main() {
