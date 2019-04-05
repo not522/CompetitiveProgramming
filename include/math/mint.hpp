@@ -64,7 +64,7 @@ public:
 
   explicit operator int64_t() const { return val; }
 
-  Mint identity() const {return 1;}
+  static Mint identity() { return 1; }
 };
 
 int64_t Mint::mod = 1000000007;

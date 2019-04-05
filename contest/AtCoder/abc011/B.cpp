@@ -1,9 +1,8 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  string s;
-  cin >> s;
-  for (char& c : s) c = tolower(c);
+  String s(in);
+  s.tolower();
   s[0] = toupper(s[0]);
   cout << s << endl;
 }

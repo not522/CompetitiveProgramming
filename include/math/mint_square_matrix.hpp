@@ -4,8 +4,7 @@
 
 template<> SquareMatrix<Mint> SquareMatrix<Mint>::inverse() const {
   int n = this->size();
-  SquareMatrix mat = *this;
-  SquareMatrix inv = identity();
+  auto mat = *this, inv = identity(n);
   for (int i = 0; i < n; ++i) {
     int p = i;
     for (int j = i + 1; j < n; ++j) {

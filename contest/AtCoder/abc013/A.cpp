@@ -1,7 +1,3 @@
 #include "template.hpp"
 
-int main() {
-  char x;
-  cin >> x;
-  cout << x - 'A' + 1 << endl;
-}
+int main() { cout << char(in) - 'A' + 1 << endl; }

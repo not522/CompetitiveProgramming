@@ -1,6 +1,7 @@
 #pragma once
 #include "graph/tree.hpp"
 #include "graph/search.hpp"
+#include "stack.hpp"
 
 template<typename Edge> struct DFSState {
   int from;
@@ -21,13 +22,12 @@ protected:
   using StateType = State;
 
 private:
-  stack<State> st;
+  Stack<State> st;
   
   void push(const State& state) {st.push(state);}
   
   State next() {
     State now = st.top();
-    st.pop();
     return now;
   }
   

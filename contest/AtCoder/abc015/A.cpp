@@ -1,7 +1,6 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  string a, b;
-  cin >> a >> b;
+  String a(in), b(in);
   cout << (a.size() > b.size() ? a : b) << endl;
 }

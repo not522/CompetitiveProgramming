@@ -1,9 +1,9 @@
-#include "template.hpp"
+#include "math/basic.hpp"
+#include "vector.hpp"
 
 int main() {
-  int n;
-  cin >> n;
-  vector<int> a(n);
-  for (int& i : a) cin >> i;
-  cout << ceil(double(accumulate(a.begin(), a.end(), 0)) / count_if(a.begin(), a.end(), [](int i){return i != 0;})) << endl;
+  int n(in);
+  Vector<int> a(n, in);
+  cout << ceil(a.accumulate(), a.count_if([](int i) { return i != 0; }))
+       << endl;
 }

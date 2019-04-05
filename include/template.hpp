@@ -13,7 +13,6 @@ using std::cout;
 using std::endl;
 using std::max;
 using std::min;
-using std::numeric_limits;
 using std::swap;
 
 struct BoolName : std::numpunct<char> {
@@ -104,4 +103,20 @@ template<typename T> bool chmax(T& a, T b) {return a < b ? a = b, true : false;}
 
 template<typename T, typename S> std::function<S(T)> cast() {
   return [](const T& t) { return static_cast<S>(t); };
+}
+
+class ZeroPadding {
+public:
+  ZeroPadding(int n) : n(n) {}
+
+  int n;
+};
+
+std::ostream& operator<<(std::ostream& os, const ZeroPadding& z) {
+  os << std::setw(z.n) << std::setfill('0');
+  return os;
+}
+
+template<typename T> constexpr T inf() {
+  return std::numeric_limits<T>::max() / 2 - 1;
 }

@@ -1,5 +1,5 @@
 #pragma once
-#include "template.hpp"
+#include "vector.hpp"
 
 template<typename Value> class CumulativeSum1D {
 private:
@@ -9,8 +9,8 @@ private:
     RangeValue(int i, int j, Value v) : i(i), j(j), v(v) {}
   };
 
-  vector<Value> val;
-  vector<RangeValue> rangeValue;
+  Vector<Value> val;
+  Vector<RangeValue> rangeValue;
 
 public:
   CumulativeSum1D(int n) : val(n + 2) {}
@@ -50,7 +50,7 @@ public:
   }
 
   Value max() {
-    auto res = numeric_limits<Value>::min();
+    auto res = std::numeric_limits<Value>::min();
     for (int i = 0; i < int(val.size()) - 2; ++i) chmax(res, value(i));
     return res;
   }

@@ -1,17 +1,12 @@
-#include "math/pow.hpp"
 #include "math/permutation_matrix.hpp"
+#include "math/pow.hpp"
 
 int main() {
-  int n, m , d;
-  cin >> n >> m >> d;
-  PermutationMatrix mat(n);
-  mat = mat.identity();
+  int n(in), m(in), d(in);
+  auto mat = PermutationMatrix::identity(n);
   for (int i = 0; i < m; ++i) {
-    int a;
-    cin >> a;
+    int a(in);
     swap(mat[a - 1], mat[a]);
   }
-  mat = pow(mat, d);
-  mat = mat.inverse();
-  for (int i = 0; i < n; ++i) cout << mat[i] + 1 << endl;
+  (pow(mat, d).inverse() + 1).output();
 }

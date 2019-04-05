@@ -121,8 +121,16 @@ public:
     return *this;
   }
 
-  template<typename Function> bool all_of(Function func) {
+  template<typename Function> bool all_of(Function func) const {
     return std::all_of(this->begin(), this->end(), func);
+  }
+
+  template<typename Function> bool any_of(Function func) const {
+    return std::any_of(this->begin(), this->end(), func);
+  }
+
+  template<typename Function> int count_if(Function func) const {
+    return std::count_if(this->begin(), this->end(), func);
   }
 
   Vector<T> adjacent_difference() const {
@@ -177,4 +185,11 @@ template<typename T> Vector<T> iota(int n, T m = 0) {
   Vector<T> v(n);
   std::iota(v.begin(), v.end(), m);
   return v;
+}
+
+template<typename T, typename S> void read(Vector<T> &t, Vector<S> &s) {
+  for (int i = 0; i < t.size(); ++i) {
+    t[i] = T(in);
+    s[i] = S(in);
+  }
 }

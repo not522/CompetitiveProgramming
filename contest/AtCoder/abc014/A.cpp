@@ -1,7 +1,6 @@
 #include "template.hpp"
 
 int main() {
-  int a, b;
-  cin >> a >> b;
+  int a(in), b(in);
   cout << (a % b ? b - a % b : 0) << endl;
 }

@@ -9,7 +9,7 @@ int main() {
     mat[0][i] = c[i];
   }
   for (int i = 0; i < k - 1; ++i) {
-    mat[i + 1][i] = numeric_limits<unsigned int>::max();
+    mat[i + 1][i] = std::numeric_limits<unsigned int>::max();
   }
   Vector<Bitwise<unsigned int>> vec(k);
   for (int i = 0; i < k; ++i) {

@@ -4,14 +4,13 @@
 template<typename V, typename T> class LIS {
 private:
   const V a;
-  const T INF;
   Vector<int> res;
 
 public:
-  LIS(const V& a) : a(a), INF(numeric_limits<T>::max()), res(a.size(), INF) {}
+  LIS(const V& a) : a(a), res(a.size(), inf<T>()) {}
   
   T solve() {
     for (auto i : a) *lower_bound(res.begin(), res.end(), i) = i;
-    return lower_bound(res.begin(), res.end(), INF) - res.begin();
+    return lower_bound(res.begin(), res.end(), inf<T>()) - res.begin();
   }
 };

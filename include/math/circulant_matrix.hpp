@@ -54,8 +54,8 @@ public:
     return res;
   }
 
-  CirculantMatrix identity() const {
-    CirculantMatrix res(this->size());
+  static CirculantMatrix identity(int n) {
+    CirculantMatrix res(n);
     res[0] = 1;
     return res;
   }

@@ -26,8 +26,6 @@ protected:
   using Edge = typename Graph::EdgeType;
   using Cost = typename Edge::CostType;
 
-  constexpr static Cost INF = numeric_limits<Cost>::max();
-
   PriorityQueue<State> que;
 
   void push(const State& state) {
@@ -58,7 +56,7 @@ public:
   Vector<Cost> dis;
   Tree<Edge> shortestPathTree;
 
-  Dijkstra(const Graph& graph) : Search<Graph, State>(graph), dis(graph.size(), INF) {
+  Dijkstra(const Graph& graph) : Search<Graph, State>(graph), dis(graph.size(), inf<Cost>()) {
     if (Restoration) shortestPathTree = Tree<Edge>(graph.size());
   }
 };

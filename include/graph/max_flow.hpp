@@ -4,8 +4,6 @@
 
 template<typename Capacity> class MaxFlow {
 private:
-  const Capacity INF;
-
   ResidualGraph<ResidualEdge<Capacity>>& graph;
   Vector<int> level, iter;
 
@@ -38,7 +36,7 @@ private:
   }
 
 public:
-  MaxFlow(ResidualGraph<ResidualEdge<Capacity>>& graph) : INF(numeric_limits<Capacity>::max()), graph(graph) {}
+  MaxFlow(ResidualGraph<ResidualEdge<Capacity>>& graph) : graph(graph) {}
 
   Capacity solve(int source, int sink) {
     level = Vector<int>(graph.size(), 0);
@@ -48,7 +46,7 @@ public:
       bfs(source);
       if (level[sink] < 0) return flow;
       fill(iter.begin(), iter.end(), 0);
-      while ((f = dfs(source, sink, INF)) > 0) {
+      while ((f = dfs(source, sink, inf<Capacity>())) > 0) {
         flow += f;
       }
     }

@@ -43,6 +43,14 @@ public:
     return *min_element(this->begin(), this->end());
   }
 
+  template<typename Function> auto min(Function func) const {
+    std::vector<std::pair<decltype(func(S())), S>> res;
+    for (const auto &i : *this) {
+      res.emplace_back(func(i), i);
+    }
+    return min_element(res.begin(), res.end())->second;
+  }
+
   int argmax() const {
     return max_element(this->begin(), this->end()) - this->begin();
   }

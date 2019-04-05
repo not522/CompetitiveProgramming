@@ -1,14 +1,14 @@
 #include "vector.hpp"
 
-bool solve(const vector<vector<int>>& t, int i, int x) {
-  if (i == 0) return x == 0;
-  return any_of(t[i - 1], [&](int j){return solve(t, i - 1, x ^ j);});
+bool solve(const Vector<Vector<int>> &t, int i, int x) {
+  if (i == 0) {
+    return x == 0;
+  }
+  return t[i - 1].any_of([&](int j) { return solve(t, i - 1, x ^ j); });
 }
 
 int main() {
-  int n, k;
-  cin >> n >> k;
-  vector<vector<int>> t(n, vector<int>(k));
-  cin >> t;
-  cout << (solve(t, n, 0) ? "Found" : "Nothing") << endl;
+  set_bool_name("Found", "Nothing");
+  int n(in), k(in);
+  cout << solve(Vector<int>::makeVector(in, n, k), n, 0) << endl;
 }

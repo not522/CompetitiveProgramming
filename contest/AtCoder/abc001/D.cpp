@@ -3,8 +3,7 @@
 #include "vector.hpp"
 
 void output(int s, int e) {
-  cout << std::setw(4) << std::setfill('0') << s << "-" << std::setw(4)
-       << std::setfill('0') << e << endl;
+  cout << ZeroPadding(4) << s << "-" << ZeroPadding(4) << e << endl;
 }
 
 int main() {

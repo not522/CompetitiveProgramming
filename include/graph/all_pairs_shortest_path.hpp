@@ -1,5 +1,5 @@
 #pragma once
-#include "template.hpp"
+#include "vector.hpp"
 
 template<typename Graph> class WarshallFloyd {
 private:
@@ -8,11 +8,9 @@ private:
   const Graph& graph;
 
 public:
-  const static Cost INF = numeric_limits<Cost>::max() / 2 - 1;
+  Vector<Vector<Cost>> dis;
 
-  vector<vector<Cost>> dis;
-
-  WarshallFloyd(const Graph& graph) : graph(graph), dis(graph.size(), vector<Cost>(graph.size(), INF)) {
+  WarshallFloyd(const Graph& graph) : graph(graph), dis(graph.size(), Vector<Cost>(graph.size(), inf<Cost>())) {
     for (int i = 0; i < graph.size(); ++i) dis[i][i] = 0;
   }
 
@@ -21,7 +19,7 @@ public:
     for (int k = 0; k < graph.size(); ++k) {
       for (int i = 0; i < graph.size(); ++i) {
         for (int j = 0; j < graph.size(); ++j) {
-          if (dis[i][k] == INF || dis[k][j] == INF) continue;
+          if (dis[i][k] == inf<Cost>() || dis[k][j] == inf<Cost>()) continue;
           chmin(dis[i][j], dis[i][k] + dis[k][j]);
         }
       }
@@ -29,7 +27,7 @@ public:
   }
 };
 
-template<typename Graph> vector<vector<typename Graph::EdgeType::CostType>> shortestPath(Graph& graph) {
+template<typename Graph> auto shortestPath(Graph& graph) {
   WarshallFloyd<Graph> warshallFloyd(graph);
   warshallFloyd.solve();
   return warshallFloyd.dis;

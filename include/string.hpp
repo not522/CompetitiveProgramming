@@ -45,12 +45,18 @@ public:
     return res;
   }
 
-  String toupper() const {
-    auto s = *this;
-    for (auto &c : s) {
+  String toupper() {
+    for (auto &c : *this) {
       c = std::toupper(c);
     }
-    return s;
+    return *this;
+  }
+
+  String tolower() {
+    for (auto &c : *this) {
+      c = std::tolower(c);
+    }
+    return *this;
   }
 
   template<typename Function> String transform(Function func) const {

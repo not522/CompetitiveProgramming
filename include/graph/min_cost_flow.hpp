@@ -5,19 +5,17 @@
 
 template<typename Capacity, typename Cost> class MinCostFlow {
 private:
-  const Cost INF;
-
   ResidualGraph<WeightedResidualEdge<Capacity, Cost>> graph;
   Vector<int> h, dist, prevv, preve;
   
 public:
-  MinCostFlow(const ResidualGraph<WeightedResidualEdge<Capacity, Cost>>& graph) : INF(numeric_limits<Cost>::max()), graph(graph), h(graph.size(), 0), dist(graph.size(), 0), prevv(graph.size(), 0), preve(graph.size(), 0) {}
+  MinCostFlow(const ResidualGraph<WeightedResidualEdge<Capacity, Cost>>& graph) : graph(graph), h(graph.size(), 0), dist(graph.size(), 0), prevv(graph.size(), 0), preve(graph.size(), 0) {}
   
   Cost solve(int s, int t, Capacity f) {
     int res = 0;
     while (f > 0) {
       PriorityQueue<Tuple<int, int>, false> que;
-      fill(dist.begin(), dist.end(), INF);
+      fill(dist.begin(), dist.end(), inf<Cost>());
       dist[0] = 0;
       que.emplace(0, s);
       while (!que.empty()) {
@@ -34,7 +32,7 @@ public:
           }
         }
       }
-      if (dist[t] == INF) return -1;
+      if (dist[t] == inf<Cost>()) return -1;
       for (int i = 0; i < int(graph.size()); ++i) h[i] += dist[i];
       Capacity d = f;
       for (int i = t; i != s; i = prevv[i]) d = min(d, graph[prevv[i]][preve[i]].cap);

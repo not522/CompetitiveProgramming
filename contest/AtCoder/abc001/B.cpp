@@ -13,5 +13,5 @@ int main() {
   } else if (70000 < m) {
     vv = 89;
   }
-  cout << std::setw(2) << std::setfill('0') << vv << endl;
+  cout << ZeroPadding(2) << vv << endl;
 }

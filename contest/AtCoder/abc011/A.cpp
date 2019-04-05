@@ -2,7 +2,6 @@
 
 int main() {
   Mint::setMod(12);
-  Mint n;
-  cin >> n;
-  cout << static_cast<int>(n) + 1 << endl;
+  Mint n(in);
+  cout << int(n) + 1 << endl;
 }

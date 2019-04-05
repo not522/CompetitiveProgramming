@@ -12,7 +12,7 @@ int main() {
     if (polygon.area() < 0) {
       polygon.reverse();
     }
-    auto is_convex = [](Vector<Point> &corner) {
+    auto is_convex = [](const Vector<Point> &corner) {
       return ccw(Segment(corner[0], corner[1]), corner[2]) != RIGHT;
     };
     cout << polygon.getCorners().all_of(is_convex) << endl;

@@ -3,9 +3,11 @@
 
 #include <set>
 
-template<typename T> class Set : public Container<set<T>> {
+template<typename T> class Set : public Container<std::set<T>> {
 public:
-  Set() : Container<set<T>>() {}
+  Set() : Container<std::set<T>>() {}
+
+  Set(const std::initializer_list<T>& s) : Container<std::set<T>>(s) {}
 
   template<typename S> Set<T> operator&=(const S& a) {
     Set<T> r;

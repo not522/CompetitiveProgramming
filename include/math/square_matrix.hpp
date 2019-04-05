@@ -12,20 +12,18 @@ public:
   }
 
   SquareMatrix operator/(const SquareMatrix& m) const {
-    auto res = *this;
-    return res /= m;
+    return SquareMatrix(*this) /= m;
   }
 
-  SquareMatrix identity() const {
-    SquareMatrix res(this->size());
-    for (int i = 0; i < this->size(); ++i) res[i][i] = 1;
+  static SquareMatrix identity(int n) {
+    SquareMatrix res(n);
+    for (int i = 0; i < n; ++i) res[i][i] = 1;
     return res;
   }
 
   SquareMatrix inverse() const {
     int n = this->size();
-    SquareMatrix mat = *this;
-    SquareMatrix inv = identity();
+    auto mat = *this, inv = identity(n);
     for (int i = 0; i < n; ++i) {
       int p = i;
       for (int j = i + 1; j < n; ++j) {

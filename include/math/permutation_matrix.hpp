@@ -1,34 +1,35 @@
 #pragma once
-#include "arithmetic.hpp"
+#include "vector.hpp"
 
-class PermutationMatrix : public Multiplication<PermutationMatrix>, public Division<PermutationMatrix> {
-private:
-  vector<int> val;
-
+class PermutationMatrix : public Vector<int> {
 public:
-  PermutationMatrix(int Nb) : val(Nb) {}
+  PermutationMatrix(int Nb) : Vector<int>(Nb) {}
 
-  int& operator[](int n) {return val[n];}
+  PermutationMatrix(const Vector<int> &v) : Vector<int>(v) {}
 
   PermutationMatrix operator*=(const PermutationMatrix& m) {
     PermutationMatrix res(size());
-    for (int i = 0; i < size(); ++i) res[i] = val[const_cast<PermutationMatrix&>(m)[i]];
+    for (int i = 0; i < size(); ++i) res[i] = (*this)[const_cast<PermutationMatrix&>(m)[i]];
     return *this = res;
+  }
+
+  PermutationMatrix operator*(const PermutationMatrix& m) const {
+    return PermutationMatrix(*this) *= m;
   }
 
   PermutationMatrix operator/=(const PermutationMatrix& m) {return *this *= m.inverse();}
 
-  int size() const {return val.size();}
+  PermutationMatrix operator/(const PermutationMatrix& m) const {
+    return PermutationMatrix(*this) /= m;
+  }
 
-  PermutationMatrix identity() const {
-    PermutationMatrix res(size());
-    for (int i = 0; i < size(); ++i) res[i] = i;
-    return res;
+  static PermutationMatrix identity(int n) {
+    return iota<int>(n);
   }
 
   PermutationMatrix inverse() const {
     PermutationMatrix inv(size());
-    for (int i = 0; i < size(); ++i) inv[val[i]] = i;
+    for (int i = 0; i < size(); ++i) inv[(*this)[i]] = i;
     return inv;
   }
 };
