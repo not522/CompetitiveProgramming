@@ -1,11 +1,11 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  string s;
-  cin >> s;
+  String s(in);
   s += ".";
+  cerr << s << endl;
   int p = 0;
-  for (int i = 0; i < int(s.size()); ++i) {
+  for (int i = 0; i < s.size(); ++i) {
     if (s[p] != s[i]) {
       cout << s[p] << i - p;
       p = i;

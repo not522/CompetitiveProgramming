@@ -1,8 +1,7 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 int main() {
-  array<int, 3> a;
-  for (int& i : a) cin >> i;
+  Vector<int> a(3, in);
   nth_element(a.begin(), a.begin() + 1, a.end());
   cout << a[1] << endl;
 }

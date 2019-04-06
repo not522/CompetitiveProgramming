@@ -26,4 +26,6 @@ public:
   Iterator begin() { return Iterator(n); }
 
   Iterator end() { return Iterator(-1, n); }
+
+  bool contains(int a) { return n & (1ull << a); }
 };

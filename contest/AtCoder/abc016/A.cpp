@@ -1,7 +1,7 @@
 #include "template.hpp"
 
 int main() {
-  int m, d;
-  cin >> m >> d;
-  cout << (m % d ? "NO" : "YES") << endl;
+  set_bool_name("YES", "NO");
+  int m(in), d(in);
+  cout << (m % d == 0) << endl;
 }

@@ -1,9 +1,8 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 int main() {
-  array<int, 3> a;
-  for (int& i : a) cin >> i;
+  Vector<int> a(3, in);
   for (int i : a) {
-    cout << count_if(a.begin(), a.end(), [i](int n){return i <= n;}) << endl;
+    cout << a.count_if([i](int n) { return i <= n; }) << endl;
   }
 }

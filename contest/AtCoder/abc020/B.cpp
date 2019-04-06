@@ -1,10 +1,6 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  string a, b;
-  cin >> a >> b;
-  stringstream ss(a + b);
-  int n;
-  ss >> n;
-  cout << n * 2 << endl;
+  String a(in), b(in);
+  cout << 2 * int(a + b) << endl;
 }

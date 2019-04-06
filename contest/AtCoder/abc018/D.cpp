@@ -1,21 +1,20 @@
 #include "container/fix_size_set.hpp"
 
 int main() {
-  int n, m, p, q, r;
-  cin >> n >> m >> p >> q >> r;
-  vector<int> x(r), y(r), z(r);
-  for (int i = 0; i < r; ++i) {
-    cin >> x[i] >> y[i] >> z[i];
-    --x[i], --y[i];
-  }
+  int n(in), m(in), p(in), q(in), r(in);
+  Vector<int> x(r), y(r), z(r);
+  read(x, y, z);
+  x -= 1;
+  y -= 1;
   int res = 0;
-  for (auto s : FixSizeSet(n, p)) {
-    vector<int> v(m, 0);
+  for (auto s : fixSizeSet(n, p)) {
+    Vector<int> v(m);
     for (int i = 0; i < r; ++i) {
-      if (s.in(x[i])) v[y[i]] += z[i];
+      if (s.contains(x[i])) {
+        v[y[i]] += z[i];
+      }
     }
-    nth_element(v.begin(), v.begin() + q, v.end(), greater<int>());
-    res = max(res, accumulate(v.begin(), v.begin() + q, 0));
+    chmax(res, v.nth_element(q, true).subvector(q).accumulate());
   }
   cout << res << endl;
 }

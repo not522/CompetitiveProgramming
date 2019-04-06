@@ -24,6 +24,14 @@ public:
     in.eof = std::cin.eof();
   }
 
+  String operator+=(const String &s) {
+    return *this = *this + s;
+  }
+
+  String operator+(const String &s) const {
+    return static_cast<std::string>(*this) += s;
+  }
+
   static String getline() {
     String v;
     std::getline(std::cin, v);

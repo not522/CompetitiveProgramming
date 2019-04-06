@@ -1,12 +1,10 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  string s;
-  int n;
-  cin >> s >> n;
+  String s(in);
+  int n(in);
   for (int i = 0; i < n; ++i) {
-    int l, r;
-    cin >> l >> r;
+    int l(in), r(in);
     reverse(s.begin() + l - 1, s.begin() + r);
   }
   cout << s << endl;

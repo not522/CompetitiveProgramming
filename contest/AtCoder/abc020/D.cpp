@@ -1,18 +1,21 @@
 #include "math/mint.hpp"
 #include "math/prime.hpp"
-#include "math/inclusion_exclusion_principle.hpp"
+#include "unordered_map.hpp"
 
 int main() {
-  int n, k;
-  cin >> n >> k;
+  int64_t n(in), k(in);
   Prime prime;
   Mint res = 0;
-  for (int64_t i : prime.divisor(k)) {
-    auto f = [&](const vector<int64_t>& v){
-      Mint p = accumulate(v.begin(), v.end(), Mint(1), std::multiplies<Mint>());
-      return n / i / p * (n / i / p + 1) / 2 * p;
-    };
-    res += inclusionExclusionPrinciple(prime.primeFactor(k / i), f, Mint(0)) * k;
+  UnorderedMap<int64_t, Mint> m;
+  for (auto d : prime.divisor(k).reverse()) {
+    auto s = n / d * (n / d + 1) / 2 * Mint(d);
+    for (auto i : m) {
+      if (i.first % d == 0) {
+        s -= i.second;
+      }
+    }
+    m[d] = s;
+    res += s * k / d;
   }
   cout << res << endl;
 }

@@ -38,8 +38,22 @@ public:
     return *this;
   }
 
+  Vector operator-=(const T& v) {
+    for (auto& i : *this) {
+      i -= v;
+    }
+    return *this;
+  }
+
   Vector operator*=(const Vector& v) {
     for (int i = 0; i < this->size(); ++i) (*this)[i] *= v[i];
+    return *this;
+  }
+
+  Vector operator*=(const T& v) {
+    for (auto& i : *this) {
+      i *= v;
+    }
     return *this;
   }
 
@@ -48,8 +62,22 @@ public:
     return *this;
   }
 
+  Vector operator/=(const T& v) {
+    for (auto& i : *this) {
+      i /= v;
+    }
+    return *this;
+  }
+
   Vector operator%=(const Vector& v) {
     for (int i = 0; i < this->size(); ++i) (*this)[i] %= v[i];
+    return *this;
+  }
+
+  Vector operator%=(const T& v) {
+    for (auto& i : *this) {
+      i %= v;
+    }
     return *this;
   }
 
@@ -93,6 +121,15 @@ public:
 
   Vector<T> rsort() {
     std::sort(this->rbegin(), this->rend());
+    return *this;
+  }
+
+  Vector<T> nth_element(int n, bool reverse = false) {
+    if (!reverse) {
+      std::nth_element(this->begin(), this->begin() + n, this->end());
+    } else {
+      std::nth_element(this->begin(), this->begin() + n, this->end(), std::greater<T>());
+    }
     return *this;
   }
 
@@ -191,5 +228,13 @@ template<typename T, typename S> void read(Vector<T> &t, Vector<S> &s) {
   for (int i = 0; i < t.size(); ++i) {
     t[i] = T(in);
     s[i] = S(in);
+  }
+}
+
+template<typename T, typename S, typename U> void read(Vector<T> &t, Vector<S> &s, Vector<U> &u) {
+  for (int i = 0; i < t.size(); ++i) {
+    t[i] = T(in);
+    s[i] = S(in);
+    u[i] = U(in);
   }
 }

@@ -1,13 +1,10 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 int main() {
-  int n;
-  cin >> n;
-  vector<int> a(n);
-  for (int& i : a) {
-    cin >> i;
+  int n(in);
+  Vector<int> a(n, in);
+  for (int &i : a) {
     i /= (i & -i);
   }
-  sort(a.begin(), a.end());
-  cout << unique(a.begin(), a.end()) - a.begin() << endl;
+  cout << a.sort().unique().size() << endl;
 }

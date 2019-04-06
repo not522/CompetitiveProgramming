@@ -1,7 +1,6 @@
 #include "template.hpp"
 
 int main() {
-  int n;
-  cin >> n;
-  cout << (n == 1 ? "ABC" : "chokudai") << endl;
+  set_bool_name("ABC", "chokudai");
+  cout << (int(in) == 1) << endl;
 }
