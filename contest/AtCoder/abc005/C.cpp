@@ -1,7 +1,7 @@
 #include "graph/bipartite_matching.hpp"
 
 int main() {
-  set_bool_name("yes", "no");
+  setBoolName("yes", "no");
   int t(in), n(in);
   Vector<int> a(n, in);
   int m(in);

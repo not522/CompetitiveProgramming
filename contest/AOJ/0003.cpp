@@ -1,7 +1,7 @@
 #include "vector.hpp"
 
 int main() {
-  set_bool_name("YES", "NO");
+  setBoolName("YES", "NO");
   int n(in);
   for (int i = 0; i < n; ++i) {
     Vector<int> a(3, in);

@@ -1,7 +1,7 @@
 #include "string.hpp"
 
 int main() {
-  set_bool_name("YES", "NO");
+  setBoolName("YES", "NO");
   int n(in), a = 0;
   for (int i = 0; i < n; ++i) {
     if (String(in) == "A") {

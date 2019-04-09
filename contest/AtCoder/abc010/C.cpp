@@ -1,7 +1,7 @@
 #include "geometry/point.hpp"
 
 int main() {
-  set_bool_name("YES", "NO");
+  setBoolName("YES", "NO");
   Point a(in), b(in);
   Real t(in), v(in);
   int n(in);

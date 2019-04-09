@@ -8,7 +8,7 @@ bool solve(const Vector<Vector<int>> &t, int i, int x) {
 }
 
 int main() {
-  set_bool_name("Found", "Nothing");
+  setBoolName("Found", "Nothing");
   int n(in), k(in);
   cout << solve(Vector<int>::makeVector(in, n, k), n, 0) << endl;
 }

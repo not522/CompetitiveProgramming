@@ -1,7 +1,7 @@
 #include "string.hpp"
 
 int main() {
-  set_bool_name("You can win", "You will lose");
+  setBoolName("You can win", "You will lose");
   String s(in), t(in);
   String atcoder = "atcoder";
   for (int i = 0; i < s.size(); ++i) {

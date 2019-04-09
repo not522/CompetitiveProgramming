@@ -7,7 +7,6 @@
 #include <iostream>
 #include <limits>
 
-using std::abs;
 using std::cerr;
 using std::cout;
 using std::endl;
@@ -17,19 +16,19 @@ using std::swap;
 
 struct BoolName : std::numpunct<char> {
   std::string t, f;
-  BoolName (std::string t, std::string f) : t(t), f(f) {}
-  std::string do_truename() const {return t;}
-  std::string do_falsename() const {return f;}
+  BoolName(std::string t, std::string f) : t(t), f(f) {}
+  std::string do_truename() const { return t; }
+  std::string do_falsename() const { return f; }
 };
 
-void set_bool_name(std::string t, std::string f) {
+void setBoolName(std::string t, std::string f) {
   cout.imbue(std::locale(cout.getloc(), new BoolName(t, f)));
 }
 
 struct Initializer {
   Initializer() {
     cout << std::fixed << std::setprecision(15) << std::boolalpha;
-    set_bool_name("Yes", "No");
+    setBoolName("Yes", "No");
   }
 } initializer;
 
@@ -92,17 +91,21 @@ struct Input {
     return v;
   }
 
-  void ignore() const {
-    getchar();
-  }
+  void ignore() const { getchar(); }
 } in;
 
-template<typename T> bool chmin(T& a, T b) {return a > b ? a = b, true : false;}
+template <typename T> T abs(T a) { return a >= 0 ? a : -a; }
 
-template<typename T> bool chmax(T& a, T b) {return a < b ? a = b, true : false;}
+template <typename T> bool chmin(T &a, T b) {
+  return a > b ? a = b, true : false;
+}
 
-template<typename T, typename S> std::function<S(T)> cast() {
-  return [](const T& t) { return static_cast<S>(t); };
+template <typename T> bool chmax(T &a, T b) {
+  return a < b ? a = b, true : false;
+}
+
+template <typename T, typename S> std::function<S(T)> cast() {
+  return [](const T &t) { return static_cast<S>(t); };
 }
 
 class ZeroPadding {
@@ -112,11 +115,11 @@ public:
   int n;
 };
 
-std::ostream& operator<<(std::ostream& os, const ZeroPadding& z) {
+std::ostream &operator<<(std::ostream &os, const ZeroPadding &z) {
   os << std::setw(z.n) << std::setfill('0');
   return os;
 }
 
-template<typename T> constexpr T inf() {
+template <typename T> constexpr T inf() {
   return std::numeric_limits<T>::max() / 2 - 1;
 }

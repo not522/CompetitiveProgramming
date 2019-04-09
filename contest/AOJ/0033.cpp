@@ -1,7 +1,7 @@
 #include "template.hpp"
 
 int main() {
-  set_bool_name("YES", "NO");
+  setBoolName("YES", "NO");
   int t(in);
   for (int i = 0; i < t; ++i) {
     int a = 0, b = 0;

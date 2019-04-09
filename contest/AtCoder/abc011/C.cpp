@@ -25,7 +25,7 @@ public:
 };
 
 int main() {
-  set_bool_name("YES", "NO");
+  setBoolName("YES", "NO");
   int n(in), ng1(in), ng2(in), ng3(in);
   SubtractionDP subtraction(ng1, ng2, ng3);
   cout << subtraction.solve(0, n) << endl;

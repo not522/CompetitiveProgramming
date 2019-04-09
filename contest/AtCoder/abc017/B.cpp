@@ -1,7 +1,7 @@
 #include "string.hpp"
 
 int main() {
-  set_bool_name("YES", "NO");
+  setBoolName("YES", "NO");
   String x(in);
   while (!x.empty()) {
     if (x.size() >= 2 && x.substr(x.size() - 2) == "ch") {

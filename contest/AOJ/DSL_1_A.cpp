@@ -1,7 +1,7 @@
 #include "container/union_find.hpp"
 
 int main() {
-  set_bool_name("1", "0");
+  setBoolName("1", "0");
   int n(in), q(in);
   UnionFind uf(n);
   for (int i = 0; i < q; ++i) {

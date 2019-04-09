@@ -1,6 +1,6 @@
 #include "template.hpp"
 
 int main() {
-  set_bool_name("ABC", "chokudai");
+  setBoolName("ABC", "chokudai");
   cout << (int(in) == 1) << endl;
 }

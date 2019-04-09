@@ -2,7 +2,7 @@
 #include "string.hpp"
 
 int main() {
-  set_bool_name("YES", "NO");
+  setBoolName("YES", "NO");
   for (String line; line = in, !in.eof;) {
     auto v = line.split(',').transform(cast<String, long double>());
     Polygon polygon(4);
