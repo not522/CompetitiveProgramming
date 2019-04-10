@@ -49,6 +49,6 @@ args = parser.parse_args()
 
 headers = []
 if args.p:
-    print(getHeader(args.file, headers))
+    print(getHeader(args.file, headers), end='')
 else:
     pyperclip.copy(getHeader(args.file, headers))
