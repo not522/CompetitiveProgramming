@@ -22,7 +22,12 @@ public:
   Vector(int n, Input& in) : Container<std::vector<T>>(n, in) {}
 
   Vector operator+=(const Vector& v) {
-    for (int i = 0; i < this->size(); ++i) (*this)[i] += v[i];
+    if (this->size() < v.size()) {
+      this->resize(v.size());
+    }
+    for (int i = 0; i < v.size(); ++i) {
+      (*this)[i] += v[i];
+    }
     return *this;
   }
 
@@ -34,7 +39,12 @@ public:
   }
 
   Vector operator-=(const Vector& v) {
-    for (int i = 0; i < this->size(); ++i) (*this)[i] -= v[i];
+    if (this->size() < v.size()) {
+      this->resize(v.size());
+    }
+    for (int i = 0; i < v.size(); ++i) {
+      (*this)[i] -= v[i];
+    }
     return *this;
   }
 
@@ -156,14 +166,6 @@ public:
   Vector<T> reverse() {
     std::reverse(this->begin(), this->end());
     return *this;
-  }
-
-  template<typename Function> bool all_of(Function func) const {
-    return std::all_of(this->begin(), this->end(), func);
-  }
-
-  template<typename Function> bool any_of(Function func) const {
-    return std::any_of(this->begin(), this->end(), func);
   }
 
   template<typename Function> int count_if(Function func) const {

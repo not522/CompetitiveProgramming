@@ -1,5 +1,5 @@
 #pragma once
-#include "container.hpp"
+#include "template.hpp"
 
 #include <queue>
 
@@ -10,9 +10,9 @@ public:
   }
 };
 
-template<typename T, bool less = true> class PriorityQueue : public Container<std::priority_queue<T, std::vector<T>, Comp<T, less>>> {
+template<typename T, bool less = true> class PriorityQueue : public std::priority_queue<T, std::vector<T>, Comp<T, less>> {
 private:
-  using Queue = Container<std::priority_queue<T, std::vector<T>, Comp<T, less>>>;
+  using Queue = std::priority_queue<T, std::vector<T>, Comp<T, less>>;
 
 public:
   PriorityQueue() : Queue() {}

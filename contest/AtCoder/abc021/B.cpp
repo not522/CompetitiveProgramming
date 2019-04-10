@@ -1,13 +1,12 @@
-#include "template.hpp"
+#include "set.hpp"
 
 int main() {
-  int n, a, b, k;
-  cin >> n >> a >> b >> k;
-  set<int> s = {a, b};
+  setBoolName("YES", "NO");
+  int n(in), a(in), b(in), k(in);
+  (void)n;
+  Set<int> s{a, b};
   for (int i = 0; i < k; ++i) {
-    int p;
-    cin >> p;
-    s.insert(p);
+    s.emplace(in);
   }
-  cout << (int(s.size()) == k + 2 ? "YES" : "NO") << endl;
+  cout << (s.size() == k + 2) << endl;
 }

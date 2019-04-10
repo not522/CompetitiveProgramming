@@ -27,5 +27,7 @@ public:
 
   Iterator end() { return Iterator(-1, n); }
 
-  bool contains(int a) { return n & (1ull << a); }
+  bool contains(int a) const { return n & (1ull << a); }
+
+  operator int64_t() const { return n; }
 };

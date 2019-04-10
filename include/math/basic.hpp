@@ -1,8 +1,8 @@
 #pragma once
-#include <cmath>
-
 #include "bit_operation.hpp"
 #include "vector.hpp"
+
+#include <cmath>
 
 template<typename T = double> constexpr T pi() {return acos(T(-1));}
 

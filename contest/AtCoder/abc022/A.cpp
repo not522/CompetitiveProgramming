@@ -1,13 +1,12 @@
 #include "template.hpp"
 
 int main() {
-  int n, s, t, w = 0, res = 0;
-  cin >> n >> s >> t;
+  int n(in), s(in), t(in), w = 0, res = 0;
   for (int i = 0; i < n; ++i) {
-    int a;
-    cin >> a;
-    w += a;
-    if (s <= w && w <= t) ++res;
+    w += int(in);
+    if (s <= w && w <= t) {
+      ++res;
+    }
   }
   cout << res << endl;
 }

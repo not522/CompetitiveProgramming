@@ -1,10 +1,8 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 int main() {
-  int n, t;
-  cin >> n >> t;
-  vector<int> a(n);
-  for (int& i : a) cin >> i;
+  int n(in), t(in);
+  Vector<int> a(n, in);
   int res = 0, p = a[0];
   for (int i : a) {
     res += i + t - max(p, i);

@@ -3,6 +3,9 @@
 #include "vector.hpp"
 
 Vector<Bitset64> fixSizeSet(int n, int k) {
+  if (k == 0) {
+    return Vector<Bitset64>{0};
+  }
   Vector<Bitset64> res;
   auto mx = 1ull << n, full = (1ull << k) - 1;
   for (uint64_t comb = (1ull << k) - 1; comb < mx;) {

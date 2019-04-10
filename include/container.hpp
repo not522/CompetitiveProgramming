@@ -7,6 +7,7 @@
 template<typename T> class Container : public T {
 private:
   using S = typename T::value_type;
+  using Itr = typename T::iterator;
 
 public:
   Container() : T() {}
@@ -64,4 +65,24 @@ public:
   }
 
   int size() const { return T::size(); }
+
+  std::pair<Itr, Itr> equal_range(const S &a) {
+    return std::equal_range(this->begin(), this->end(), a);
+  }
+
+  template<typename Function> bool all_of(Function func) const {
+    return std::all_of(this->begin(), this->end(), func);
+  }
+
+  template<typename Function> bool any_of(Function func) const {
+    return std::any_of(this->begin(), this->end(), func);
+  }
+
+  template<typename Function> bool none_of(Function func) const {
+    return std::none_of(this->begin(), this->end(), func);
+  }
+
+  int count(const S &s) const {
+    return std::count(this->begin(), this->end(), s);
+  }
 };
