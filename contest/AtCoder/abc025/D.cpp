@@ -40,6 +40,9 @@ int main() {
   for (int i = 1; i <= 25; ++i) {
     bool unset = x.none_of([&](const Vector<int> &v) { return v.contains(i); });
     for (auto bit : fixSizeSet(n, k)) {
+      if (dp[bit] == 0) {
+        continue;
+      }
       auto used = makeUsed(x, bit, i);
       for (int a = 0; a < 5; ++a) {
         for (int b = 0; b < 5; ++b) {

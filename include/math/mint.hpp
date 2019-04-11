@@ -52,6 +52,10 @@ public:
     return *this;
   }
 
+  bool operator==(const Mint &m) const {
+    return val == m.val;
+  }
+
   Mint operator++() {return *this += 1;}
 
   Mint operator--() {return *this -= 1;}
