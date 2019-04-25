@@ -1,33 +1,34 @@
-#include "vector.hpp"
 #include "dp/double_pointer.hpp"
+#include "vector.hpp"
 
 class Row : public DoublePointer {
 private:
-  vector<int64_t> s;
+  Vector<int64_t> s;
   int k;
   int64_t product;
-  
-  bool valid() {return product <= k;}
 
-  void pop() {product /= s[front];}
+  bool valid() { return product <= k; }
+
+  void pop() { product /= s[front]; }
 
   void push() {
     product *= s[back];
-    if (product <= k) chmax(res, back - front + 1);
+    if (product <= k) {
+      chmax(res, back - front + 1);
+    }
   }
 
 public:
   int res;
 
-  Row(const vector<int64_t>& s, int k) : DoublePointer(s.size()), s(s), k(k), product(1), res(0) {}
+  Row(const Vector<int64_t> &s, int k)
+      : DoublePointer(s.size()), s(s), k(k), product(1), res(0) {}
 };
 
 int main() {
-  int n, k;
-  cin >> n >> k;
-  vector<int64_t> s(n);
-  cin >> s;
-  if (in(s, int64_t(0))) {
+  int n(in), k(in);
+  Vector<int64_t> s(n, in);
+  if (s.contains(0)) {
     cout << n << endl;
     return 0;
   }

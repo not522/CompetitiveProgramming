@@ -21,11 +21,15 @@ public:
 
   T top() {
     T res = Queue::top();
-    this->pop();
+    Queue::pop();
     return res;
   }
 
   T peek() const {
     return Queue::top();
+  }
+
+  void pop() const {
+    assert(false);
   }
 };

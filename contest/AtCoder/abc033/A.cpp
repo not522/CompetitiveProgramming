@@ -1,7 +1,6 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  string s;
-  cin >> s;
-  cout << (set<char>(s.begin(), s.end()).size() == 1u ? "SAME" : "DIFFERENT") << endl;
+  setBoolName("SAME", "DIFFERENT");
+  cout << (String(in).kinds() == 1) << endl;
 }

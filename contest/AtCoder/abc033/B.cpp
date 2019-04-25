@@ -1,12 +1,12 @@
+#include "string.hpp"
 #include "vector.hpp"
 
 int main() {
-  int n;
-  cin >> n;
-  vector<string> s(n);
-  vector<int> p(n);
-  for (int i = 0; i < n; ++i) cin >> s[i] >> p[i];
-  int sum = accumulate(p);
+  int n(in);
+  Vector<String> s(n);
+  Vector<int> p(n);
+  read(s, p);
+  int sum = p.accumulate();
   for (int i = 0; i < n; ++i) {
     if (sum < p[i] * 2) {
       cout << s[i] << endl;

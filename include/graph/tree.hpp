@@ -12,7 +12,18 @@ public:
   Tree() {}
 
   Tree(int n) : children(n), depth(n, -1) {
-    for (int i = 0; i < n; ++i) parent.emplace_back(i);
+    for (int i = 0; i < n; ++i) {
+      parent.emplace_back(i);
+    }
+  }
+
+  Tree(int n, Input in) : children(n), depth(n, -1) {
+    for (int i = 0; i < n; ++i) {
+      parent.emplace_back(i);
+    }
+    for (int i = 1; i < n; ++i) {
+      this->addEdge(i, int(in) - 1);
+    }
   }
 
   int size() const {

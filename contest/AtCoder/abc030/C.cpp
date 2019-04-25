@@ -1,28 +1,24 @@
-#include "template.hpp"
+#include "priority_queue.hpp"
+#include "vector.hpp"
 
 int main() {
-  int n, m, x[2];
-  cin >> n >> m >> x[0] >> x[1];
-  priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> que;
+  int n(in), m(in);
+  Vector<int> x(2, in);
+  PriorityQueue<Tuple<int, int>, false> que;
   for (int i = 0; i < n; ++i) {
-    int a;
-    cin >> a;
-    que.push(make_pair(a, 0));
+    que.emplace(int(in), 0);
   }
   for (int i = 0; i < m; ++i) {
-    int b;
-    cin >> b;
-    que.push(make_pair(b, 1));
+    que.emplace(int(in), 1);
   }
   int c = 0, t = 0, res = 0;
   while (!que.empty()) {
     auto now = que.top();
-    que.pop();
-    if (now.second != c) continue;
-    if (now.first < t) continue;
-    t = now.first + x[c];
-    c = 1 - c;
-    ++res;
+    if (now.get<0>() >= t && now.get<1>() == c) {
+      t = now.get<0>() + x[c];
+      c = 1 - c;
+      ++res;
+    }
   }
   cout << res / 2 << endl;
 }

@@ -1,8 +1,8 @@
+#include "string.hpp"
 #include "vector.hpp"
-#include "string/split.hpp"
 
 int main() {
-  string s;
-  cin >> s;
-  cout << count_if(split(s, '+'), [](string s){return !in(split(s, '*'), string("0"));}) << endl;
+  String s(in);
+  auto f = [](const String &s) { return !s.split('*').contains("0"); };
+  cout << s.split('+').count_if(f) << endl;
 }

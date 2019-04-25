@@ -1,16 +1,13 @@
-#include "template.hpp"
+#include "string.hpp"
 
-int n;
-
-void solve(int i, string s) {
+void solve(int i, int n, String s) {
   if (i == n) {
     cout << s << endl;
     return;
   }
-  for (char c = 'a'; c <= 'c'; ++c) solve(i + 1, s + c);
+  for (char c = 'a'; c <= 'c'; ++c) {
+    solve(i + 1, n, s + c);
+  }
 }
 
-int main() {
-  cin >> n;
-  solve(0, "");
-}
+int main() { solve(0, int(in), ""); }

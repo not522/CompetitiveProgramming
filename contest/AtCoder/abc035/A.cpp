@@ -1,7 +1,7 @@
 #include "template.hpp"
 
 int main() {
-  int w, h;
-  cin >> w >> h;
-  cout << (w * 3 == h * 4 ? "4:3" : "16:9") << endl;
+  setBoolName("4:3", "16:9");
+  int w(in), h(in);
+  cout << (w * 3 == h * 4) << endl;
 }

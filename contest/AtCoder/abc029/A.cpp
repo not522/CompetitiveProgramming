@@ -1,7 +1,3 @@
-#include "template.hpp"
+#include "string.hpp"
 
-int main() {
-  string s;
-  cin >> s;
-  cout << s << "s" << endl;
-}
+int main() { cout << String(in) << "s" << endl; }

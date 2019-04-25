@@ -1,9 +1,12 @@
 #include "template.hpp"
 
 int main() {
-  int a, b, c, d;
-  cin >> a >> b >> c >> d;
-  if (a * d < b * c) cout << "TAKAHASHI" << endl;
-  if (a * d > b * c) cout << "AOKI" << endl;
-  if (a * d == b * c) cout << "DRAW" << endl;
+  int a(in), b(in), c(in), d(in);
+  if (a * d < b * c) {
+    cout << "TAKAHASHI" << endl;
+  } else if (a * d > b * c) {
+    cout << "AOKI" << endl;
+  } else {
+    cout << "DRAW" << endl;
+  }
 }

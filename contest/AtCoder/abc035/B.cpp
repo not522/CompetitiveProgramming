@@ -1,17 +1,17 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  string s;
-  int t;
-  cin >> s >> t;
-  int c = count(s.begin(), s.end(), '?');
-  int y = 0, x = 0;
+  String s(in);
+  int t(in), c = s.count('?'), y = 0, x = 0;
   for (char c : s) {
-    switch(c) {
-    case 'L': --x; break;
-    case 'R': ++x; break;
-    case 'U': ++y; break;
-    case 'D': --y; break;
+    if (c == 'L') {
+      --x;
+    } else if (c == 'R') {
+      ++x;
+    } else if (c == 'U') {
+      ++y;
+    } else if (c == 'D') {
+      --y;
     }
   }
   int d = abs(y) + abs(x);

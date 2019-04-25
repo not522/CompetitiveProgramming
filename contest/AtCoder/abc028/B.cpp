@@ -1,7 +1,8 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  string s;
-  cin >> s;
-  for (char c = 'A'; c <= 'F'; ++c) cout << count(s.begin(), s.end(), c) << (c != 'F' ? ' ' : '\n');
+  String s(in);
+  for (char c = 'A'; c <= 'F'; ++c) {
+    cout << s.count(c) << (c != 'F' ? ' ' : '\n');
+  }
 }

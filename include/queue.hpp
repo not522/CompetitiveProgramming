@@ -11,11 +11,15 @@ public:
 
   T front() {
     T res = std::queue<T>::front();
-    this->pop();
+    std::queue<T>::pop();
     return res;
   }
 
   T peek() const {
     return std::queue<T>::top();
+  }
+
+  void pop() const {
+    assert(false);
   }
 };

@@ -1,5 +1,5 @@
 #pragma once
-#include "template.hpp"
+#include "tuple.hpp"
 
 #include <algorithm>
 #include <vector>
@@ -42,6 +42,11 @@ public:
 
   S min() const {
     return *min_element(this->begin(), this->end());
+  }
+
+  Tuple<S, S> minmax() const {
+    auto itrs = minmax_element(this->begin(), this->end());
+    return Tuple<S, S>(*itrs.first, *itrs.second);
   }
 
   template<typename Function> auto min(Function func) const {

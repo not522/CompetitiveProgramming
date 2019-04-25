@@ -12,11 +12,15 @@ public:
 
   T top() {
     T res = std::stack<T, std::vector<T>>::top();
-    this->pop();
+    std::stack<T, std::vector<T>>::pop();
     return res;
   }
 
   T peek() const {
     return std::stack<T, std::vector<T>>::top();
+  }
+
+  void pop() const {
+    assert(false);
   }
 };

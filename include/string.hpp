@@ -1,6 +1,7 @@
 #pragma once
 #include "vector.hpp"
 
+#include <set>
 #include <string>
 
 class String : public std::string {
@@ -29,6 +30,14 @@ public:
   }
 
   String operator+(const String &s) const {
+    return static_cast<std::string>(*this) += s;
+  }
+
+  String operator+=(char s) {
+    return *this = *this + s;
+  }
+
+  String operator+(char s) const {
     return static_cast<std::string>(*this) += s;
   }
 
@@ -74,7 +83,6 @@ public:
   }
 
   bool contains(const String& s) const {
-    cerr << s << endl;
     return this->find(s) != std::string::npos;
   }
 
@@ -86,6 +94,14 @@ public:
       }
     }
     return *this = res;
+  }
+
+  int count(char c) const {
+    return std::count(this->begin(), this->end(), c);
+  }
+
+  int kinds() const {
+    return std::set<char>(this->begin(), this->end()).size();
   }
 
   int size() const { return std::string::size(); }

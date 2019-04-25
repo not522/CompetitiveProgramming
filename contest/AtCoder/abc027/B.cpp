@@ -1,16 +1,16 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 int main() {
-  int n;
-  cin >> n;
-  vector<int> a(n);
-  for (int& i : a) cin >> i;
-  int sum = accumulate(a.begin(), a.end(), 0);
+  int n(in);
+  Vector<int> a(n, in);
+  int sum = a.accumulate();
   if (sum % n) {
     cout << -1 << endl;
     return 0;
   }
-  for (int& i : a) i -= sum / n;
-  partial_sum(a.begin(), a.end(), a.begin());
-  cout << n - count(a.begin(), a.end(), 0) << endl;
+  for (int &i : a) {
+    i -= sum / n;
+  }
+  a = a.partial_sum();
+  cout << n - a.count(0) << endl;
 }

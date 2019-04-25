@@ -1,10 +1,12 @@
-#include "template.hpp"
+#include "set.hpp"
+#include "string.hpp"
 
 int main() {
-  string s;
-  int k;
-  cin >> s >> k;
-  set<string> st;
-  for (int i = 0; i <= int(s.size()) - k; ++i) st.insert(s.substr(i, k));
+  String s(in);
+  int k(in);
+  Set<String> st;
+  for (int i = 0; i <= s.size() - k; ++i) {
+    st.emplace(s.substr(i, k));
+  }
   cout << st.size() << endl;
 }
