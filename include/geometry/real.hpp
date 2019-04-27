@@ -1,7 +1,7 @@
 #pragma once
 #include "arithmetic.hpp"
+#include "math.hpp"
 #include "ordered.hpp"
-#include "math/basic.hpp"
 
 class Real : public Arithmetic<Real>, public Ordered<Real> {
 private:

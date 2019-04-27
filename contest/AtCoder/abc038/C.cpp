@@ -1,10 +1,8 @@
 #include "vector.hpp"
 
 int main() {
-  int64_t n, p = -1, res = 0;
-  cin >> n;
-  vector<int> a(n);
-  cin >> a;
+  int64_t n(in), p = -1, res = 0;
+  Vector<int> a(n, in);
   a.emplace_back(-1e9);
   for (int i = 0; i < n; ++i) {
     if (a[i] >= a[i + 1]) {

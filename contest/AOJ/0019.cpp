@@ -1,3 +1,3 @@
-#include "math/basic.hpp"
+#include "math.hpp"
 
 int main() { cout << factorial(int64_t(in)) << endl; }

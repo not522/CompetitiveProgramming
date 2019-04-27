@@ -20,6 +20,8 @@ public:
 
   String(const std::string& s) : std::string(s) {}
 
+  String(int n, char c) : std::string(n, c) {}
+
   String(Input& in) {
     std::cin >> *this;
     in.eof = std::cin.eof();
@@ -30,7 +32,7 @@ public:
   }
 
   String operator+(const String &s) const {
-    return static_cast<std::string>(*this) += s;
+    return std::operator+(*this, s);
   }
 
   String operator+=(char s) {
@@ -38,7 +40,7 @@ public:
   }
 
   String operator+(char s) const {
-    return static_cast<std::string>(*this) += s;
+    return std::operator+(*this, s);
   }
 
   static String getline() {
@@ -100,13 +102,35 @@ public:
     return std::count(this->begin(), this->end(), c);
   }
 
-  int kinds() const {
-    return std::set<char>(this->begin(), this->end()).size();
+  template<bool Repeat = false> String replaceAll(const String& from, const String& to) {
+    for (size_t pos = 0; (pos = this->find(from, pos)) != std::string::npos;) {
+      this->replace(pos, from.size(), to);
+      if (!Repeat) pos += to.size();
+    }
+    return *this;
+  }
+
+  String sort() {
+    std::sort(this->begin(), this->end());
+    return *this;
+  }
+
+  String unique() {
+    std::string::erase(std::unique(this->begin(), this->end()), this->end());
+    return *this;
   }
 
   int size() const { return std::string::size(); }
 
   operator int() const { return std::stoi(*this); }
+
+  operator long() const { return std::stol(*this); }
+
+  operator long long() const { return std::stoll(*this); }
+
+  operator float() const { return std::stof(*this); }
+
+  operator double() const { return std::stod(*this); }
 
   operator long double() const { return std::stold(*this); }
 };

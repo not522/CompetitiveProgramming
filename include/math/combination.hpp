@@ -1,5 +1,5 @@
 #pragma once
-#include "math/basic.hpp"
+#include "math.hpp"
 #include "vector.hpp"
 
 template<typename T> class Combination {

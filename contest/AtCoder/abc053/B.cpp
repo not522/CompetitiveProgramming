@@ -1,10 +1,13 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  string s;
-  cin >> s;
+  String s(in);
   int a = 0, z = s.size() - 1;
-  while (s[a] != 'A') ++a;
-  while (s[z] != 'Z') --z;
+  while (s[a] != 'A') {
+    ++a;
+  }
+  while (s[z] != 'Z') {
+    --z;
+  }
   cout << z - a + 1 << endl;
 }

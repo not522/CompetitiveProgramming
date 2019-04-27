@@ -2,8 +2,8 @@
 #include <complex>
 
 #include "bit_operation.hpp"
+#include "math.hpp"
 #include "vector.hpp"
-#include "math/basic.hpp"
 
 void fft(Vector<std::complex<long double>> &a, int n, int dir) {
   long double theta = dir * 2 * pi() / n;

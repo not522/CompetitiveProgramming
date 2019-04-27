@@ -1,7 +1,7 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  string s;
-  cin >> s;
-  cout << (s.back() == 'T' ? "YES" : "NO") << endl;
+  setBoolName("YES", "NO");
+  String s(in);
+  cout << (s.back() == 'T') << endl;
 }

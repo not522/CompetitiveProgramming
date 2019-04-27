@@ -1,4 +1,4 @@
-#include "math/basic.hpp"
+#include "math.hpp"
 
 int main() {
   int64_t n(in), k(in);

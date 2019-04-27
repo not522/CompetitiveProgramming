@@ -1,7 +1,6 @@
-#include "math/basic.hpp"
+#include "math.hpp"
 
 int main() {
-  int64_t a, b, x;
-  cin >> a >> b >> x;
+  int64_t a(in), b(in), x(in);
   cout << b / x - floor(a - 1, x) << endl;
 }

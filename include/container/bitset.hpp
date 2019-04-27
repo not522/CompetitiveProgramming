@@ -84,11 +84,11 @@ public:
   }
 
   int count() {
-    return accumulate(static_cast<Vector<uint64_t>>(*this).begin(), static_cast<Vector<uint64_t>>(*this).end(), 0, [](int a, uint64_t b){return a + count_bit(b);});
+    return this->accumulate(0, [](int a, uint64_t b){return a + count_bit(b);});
   }
 
   bool parity() {
-    return accumulate(static_cast<Vector<uint64_t>>(*this).begin(), static_cast<Vector<uint64_t>>(*this).end(), 0, [](int a, uint64_t b){return a ^ __builtin_parityll(b);});
+    return this->accumulate(0, [](int a, uint64_t b){return a ^ __builtin_parityll(b);});
   }
 
   size_t size() const {

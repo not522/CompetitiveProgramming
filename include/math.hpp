@@ -97,3 +97,5 @@ template <typename T> T clamp(T v, T l, T u) {
 template <typename T> T hypot(T a, T b) { return std::hypot(a, b); }
 
 template <typename T> T pow(T a) { return std::pow(a); }
+
+template <typename T> T log10(T a) { return std::log10(a); }

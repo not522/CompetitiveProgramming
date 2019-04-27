@@ -1,4 +1,4 @@
-#include "math/basic.hpp"
+#include "math.hpp"
 #include "math/square_matrix.hpp"
 
 int main() {

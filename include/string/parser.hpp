@@ -1,35 +1,36 @@
 #pragma once
-#include "string/to_integer.hpp"
+#include "string.hpp"
+#include "unordered_map.hpp"
 
 template<typename T> struct Digit {
-  T operator() (string& s, int& p) {
+  T operator() (String& s, int& p) {
     if (!isdigit(s[p])) throw "empty term";
     if (s[p] == '0' && p + 1 < int(s.size()) && !isdigit(s[p + 1])) throw "leading zeros";
-    string res;
+    String res;
     for (; isdigit(s[p]); ++p) res += s[p];
-    return toInteger<T>(res);
+    return T(res);
   }
 };
 
 template<typename T> struct LeadingZeros {
-  T operator() (string& s, int& p) {
+  T operator() (String& s, int& p) {
     if (!isdigit(s[p])) throw "empty term";
-    string res;
+    String res;
     for (; isdigit(s[p]); ++p) res += s[p];
-    return toInteger<T>(res);
+    return T(res);
   }
 };
 
 template<typename T = int64_t, typename Lexer = Digit<T>> class Parser {
 private:
-  string s;
+  String s;
   int p;
-  unordered_map<char, function<T(T)>> unary_operator;
-  vector<unordered_map<char, function<T(T, T)>>> binary_operator;
-  unordered_map<char, char> brackets;
+  UnorderedMap<char, std::function<T(T)>> unary_operator;
+  Vector<UnorderedMap<char, std::function<T(T, T)>>> binary_operator;
+  UnorderedMap<char, char> brackets;
 
   T term() {
-    if (brackets.count(s[p])) {
+    if (brackets.contains(s[p])) {
       const char end = brackets[s[p]];
       ++p;
       T res = expr(0);
@@ -37,7 +38,7 @@ private:
       ++p;
       return res;
     }
-    if (unary_operator.count(s[p])) {
+    if (unary_operator.contains(s[p])) {
       auto f = unary_operator[s[p]];
       ++p;
       return f(term());
@@ -46,20 +47,20 @@ private:
     return lexer(s, p);
   }
 
-  T expr(size_t level) {
+  T expr(int level) {
     if (level == binary_operator.size()) return term();
     T res = expr(level + 1);
-    for (char c; c = s[p++], binary_operator[level].count(c);) res = binary_operator[level][c](res, expr(level + 1));
+    for (char c; c = s[p++], binary_operator[level].contains(c);) res = binary_operator[level][c](res, expr(level + 1));
     --p;
     return res;
   }
 
 public:
-  void addUnaryOperator(function<T(T)> func, char c) {
+  void addUnaryOperator(std::function<T(T)> func, char c) {
     unary_operator[c] = func;
   }
 
-  void addBinaryOperator(function<T(T, T)> func, char c, size_t level) {
+  void addBinaryOperator(std::function<T(T, T)> func, char c, int level) {
     if (binary_operator.size() <= level) binary_operator.resize(level + 1);
     binary_operator[level][c] = func;
   }
@@ -68,21 +69,21 @@ public:
     brackets[begin] = end;
   }
 
-  int64_t parse(const string& s) {
+  int64_t parse(const String& s) {
     this->s = s;
     p = 0;
     return expr(0);
   }
 };
 
-template<typename T = int64_t> T parse(const string& s) {
+template<typename T = int64_t> T parse(const String& s) {
   Parser<T> parser;
   parser.addUnaryOperator([](T t){return +t;}, '+');
-  parser.addUnaryOperator(negate<T>(), '-');
-  parser.addBinaryOperator(plus<T>(), '+', 0);
-  parser.addBinaryOperator(minus<T>(), '-', 0);
-  parser.addBinaryOperator(multiplies<T>(), '*', 1);
-  parser.addBinaryOperator(divides<T>(), '/', 1);
+  parser.addUnaryOperator(std::negate<T>(), '-');
+  parser.addBinaryOperator(std::plus<T>(), '+', 0);
+  parser.addBinaryOperator(std::minus<T>(), '-', 0);
+  parser.addBinaryOperator(std::multiplies<T>(), '*', 1);
+  parser.addBinaryOperator(std::divides<T>(), '/', 1);
   parser.addBrackets('(', ')');
   return parser.parse(s);
 }

@@ -1,7 +1,3 @@
 #include "math/mint.hpp"
 
-int main() {
-  Mint a, b, c;
-  cin >> a >> b >> c;
-  cout << a * b * c << endl;
-}
+int main() { cout << Mint(in) * Mint(in) * Mint(in) << endl; }

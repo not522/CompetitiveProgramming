@@ -4,17 +4,14 @@
 template<typename T> class Bitwise {
 public:
   T operator&(const T& v) const {
-    T res(static_cast<const T&>(*this));
-    return res &= v;
+    return T(static_cast<const T&>(*this)) &= v;
   }
 
   T operator|(const T& v) const {
-    T res(static_cast<const T&>(*this));
-    return res |= v;
+    return T(static_cast<const T&>(*this)) |= v;
   }
 
   T operator^(const T& v) const {
-    T res(static_cast<const T&>(*this));
-    return res ^= v;
+    return T(static_cast<const T&>(*this)) ^= v;
   }
 };

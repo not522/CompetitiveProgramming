@@ -1,7 +1,6 @@
-#include "math/basic.hpp"
+#include "math.hpp"
 
 int main() {
-  int a, b;
-  cin >> a >> b;
+  int a(in), b(in);
   cout << ceil(b, a) << endl;
 }

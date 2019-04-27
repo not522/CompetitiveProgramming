@@ -1,14 +1,12 @@
 #include "vector.hpp"
 
 int main() {
-  int n, m;
-  cin >> n;
-  vector<int> t(n);
-  cin >> t >> m;
-  auto s = accumulate(t);
+  int n(in);
+  Vector<int> t(n, in);
+  int m(in);
+  auto s = t.accumulate();
   for (int i = 0; i < m; ++i) {
-    int p, x;
-    cin >> p >> x;
+    int p(in), x(in);
     cout << s - t[p - 1] + x << endl;
   }
 }

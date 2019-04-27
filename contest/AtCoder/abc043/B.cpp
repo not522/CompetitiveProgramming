@@ -1,8 +1,7 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  string s, t;
-  cin >> s;
+  String s(in), t;
   for (char c : s) {
     switch (c) {
     case '0':
@@ -12,7 +11,9 @@ int main() {
       t += '1';
       break;
     case 'B':
-      if (!t.empty()) t.pop_back();
+      if (!t.empty()) {
+        t.pop_back();
+      }
       break;
     }
   }

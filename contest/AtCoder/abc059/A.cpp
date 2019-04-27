@@ -1,7 +1,7 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  string a, b, c;
-  cin >> a >> b >> c;
-  cout << char(toupper(a[0])) << char(toupper(b[0])) << char(toupper(c[0])) << endl;
+  String a(in), b(in), c(in);
+  cout << char(toupper(a[0])) << char(toupper(b[0])) << char(toupper(c[0]))
+       << endl;
 }

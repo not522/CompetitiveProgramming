@@ -1,10 +1,10 @@
 #include "coordinate_compression.hpp"
 
 int main() {
-  int n;
-  cin >> n;
-  vector<int> a(n);
-  cin >> a;
+  int n(in);
+  Vector<int> a(n, in);
   auto comp = coordinateCompression(a);
-  for (int i : a) cout << comp[i] << endl;
+  for (int i : a) {
+    cout << comp[i] << endl;
+  }
 }

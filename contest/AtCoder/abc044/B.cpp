@@ -1,13 +1,12 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  string w;
-  cin >> w;
+  String w(in);
   for (char c = 'a'; c <= 'z'; ++c) {
-    if (count(w.begin(), w.end(), c) % 2) {
-      cout << "No" << endl;
+    if (w.count(c) % 2) {
+      cout << false << endl;
       return 0;
     }
   }
-  cout << "Yes" << endl;
+  cout << true << endl;
 }

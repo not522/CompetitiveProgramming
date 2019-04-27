@@ -1,7 +1,3 @@
 #include "template.hpp"
 
-int main() {
-  int a, b;
-  cin >> a >> b;
-  cout << (a + b) % 24 << endl;
-}
+int main() { cout << (int(in) + int(in)) % 24 << endl; }

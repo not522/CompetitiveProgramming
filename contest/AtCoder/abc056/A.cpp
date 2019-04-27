@@ -1,7 +1,7 @@
 #include "template.hpp"
 
 int main() {
-  char a, b;
-  cin >> a >> b;
-  cout << (a == b ? 'H' : 'D') << endl;
+  setBoolName("H", "D");
+  char a(in), b(in);
+  cout << (a == b) << endl;
 }

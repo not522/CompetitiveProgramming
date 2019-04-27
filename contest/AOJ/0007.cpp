@@ -1,4 +1,4 @@
-#include "math/basic.hpp"
+#include "math.hpp"
 
 int main() {
   int n(in), k = 100000;

@@ -1,27 +1,37 @@
+#include "container/bitset.hpp"
+#include "unordered_map.hpp"
 #include "vector.hpp"
-#include "container/bit_iterator.hpp"
 
 int n, m, res = 0;
-vector<pair<int, int>> x;
-unordered_map<int, int64_t> mem;
+Vector<Tuple<int, int>> x;
+UnorderedMap<int, int64_t> mem;
 
 int64_t solve(int bit) {
-  if (bit == 0) return 1;
-  if (mem.count(bit)) return mem[bit];
+  if (bit == 0) {
+    return 1;
+  }
+  if (mem.contains(bit)) {
+    return mem[bit];
+  }
   int64_t res = 0;
-  for (int i : BitIterator(bit)) {
-    if (all_of(x, [&](pair<int, int> p){return (bit & 1 << p.first) || p.second != i;})) res += solve(bit ^ 1 << i);
+  for (int i : Bitset(bit)) {
+    if (x.all_of([&](const Tuple<int, int> &p) {
+          return (bit & 1 << p.get<0>()) || p.get<1>() != i;
+        })) {
+      res += solve(bit ^ 1 << i);
+    }
   }
   return mem[bit] = res;
 }
 
 int main() {
-  cin >> n >> m;
+  n = in;
+  m = in;
   x.resize(m);
   for (int i = 0; i < m; ++i) {
-    cin >> x[i].first >> x[i].second;
-    --x[i].first;
-    --x[i].second;
+    x[i] = in;
+    --x[i].get<0>();
+    --x[i].get<1>();
   }
   cout << solve((1 << n) - 1) << endl;
 }

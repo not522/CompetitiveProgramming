@@ -2,5 +2,5 @@
 
 int main() {
   setBoolName("SAME", "DIFFERENT");
-  cout << (String(in).kinds() == 1) << endl;
+  cout << (String(in).sort().unique().size() == 1) << endl;
 }

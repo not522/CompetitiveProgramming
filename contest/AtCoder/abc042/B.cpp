@@ -1,10 +1,10 @@
+#include "string.hpp"
 #include "vector.hpp"
 
 int main() {
-  int n, l;
-  cin >> n >> l;
-  vector<string> s(n);
-  cin >> s;
-  sort(s);
-  cout << accumulate(s) << endl;
+  int n(in), l(in);
+  (void)l;
+  Vector<String> s(n, in);
+  s.sort();
+  cout << s.accumulate() << endl;
 }

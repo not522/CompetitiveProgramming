@@ -1,7 +1,6 @@
-#include "template.hpp"
+#include "math.hpp"
 
 int main() {
-  int x;
-  cin >> x;
+  int x(in);
   cout << int(pow(x, 0.25)) << endl;
 }

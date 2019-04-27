@@ -1,6 +1,6 @@
 #pragma once
 #include "arithmetic.hpp"
-#include "container.hpp"
+#include "map.hpp"
 #include "ordered.hpp"
 
 #include <numeric>
@@ -129,6 +129,11 @@ public:
     return *this;
   }
 
+  template<typename Function> Vector<T> sort(Function func) {
+    std::sort(this->begin(), this->end(), func);
+    return *this;
+  }
+
   Vector<T> rsort() {
     std::sort(this->rbegin(), this->rend());
     return *this;
@@ -217,6 +222,18 @@ public:
   Vector<T> unique() {
     this->erase(std::unique(this->begin(), this->end()), this->end());
     return *this;
+  }
+
+  bool next_permutation() {
+    return std::next_permutation(this->begin(), this->end());
+  }
+
+  Map<T, int> countAll() const {
+    Map<T, int> res;
+    for (const auto& i : *this) {
+      ++res[i];
+    }
+    return res;
   }
 };
 

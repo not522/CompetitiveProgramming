@@ -1,13 +1,13 @@
 #include "template.hpp"
 
 int main() {
-  int a, b, c;
-  cin >> a >> b >> c;
+  setBoolName("YES", "NO");
+  int a(in), b(in), c(in);
   for (int i = 1; i < b; ++i) {
     if (a * i % b == c) {
-      cout << "YES" << endl;
+      cout << true << endl;
       return 0;
     }
   }
-  cout << "NO" << endl;
+  cout << false << endl;
 }

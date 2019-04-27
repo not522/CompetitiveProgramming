@@ -1,8 +1,7 @@
-#include "string/replace_all.hpp"
+#include "string.hpp"
 
 int main() {
-  string s;
-  cin >> s;
-  replaceAll(s, ",", " ");
+  String s(in);
+  s.replaceAll(",", " ");
   cout << s << endl;
 }

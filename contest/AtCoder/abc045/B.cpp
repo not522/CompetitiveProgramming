@@ -1,11 +1,11 @@
-#include "template.hpp"
+#include "string.hpp"
+#include "vector.hpp"
 
 int main() {
-  string s[3];
+  Vector<String> s(3, in);
   int t = 0;
-  for (auto& i : s) {
-    cin >> i;
-    reverse(i.begin(), i.end());
+  for (auto &i : s) {
+    i.reverse();
   }
   while (true) {
     if (s[t].empty()) {

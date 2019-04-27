@@ -4,14 +4,12 @@
 class Permutation {
 private:
   int id;
-  vector<int> perm;
+  Vector<int> perm;
 
 public:
-  Permutation(int n) : id(0), perm(n) {
-    iota(perm);
-  }
+  Permutation(int n) : id(0), perm(iota<int>(n)) {}
 
-  vector<int> operator*() {
+  Vector<int> operator*() {
     return perm;
   }
 
@@ -20,7 +18,7 @@ public:
   }
 
   void operator++() {
-    id = next_permutation(perm) ? id + 1 : -1;
+    id = perm.next_permutation() ? id + 1 : -1;
   }
 
   Permutation& begin() {

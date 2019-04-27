@@ -1,4 +1,4 @@
-#include "math/basic.hpp"
+#include "math.hpp"
 
 int main() {
   for (int a, b; a = in, b = in, !in.eof;) {

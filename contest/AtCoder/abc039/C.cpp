@@ -1,11 +1,10 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  const string res[] = {"Do", "Re", "Mi", "Fa", "So", "La", "Si"};
-  string s;
-  cin >> s;
+  const String res[] = {"Do", "Re", "Mi", "Fa", "So", "La", "Si"};
+  String s(in);
   s.resize(12);
-  for (int i = 0; ; ++i) {
+  for (int i = 0;; ++i) {
     if (s == "WBWBWWBWBWBW") {
       cout << res[i] << endl;
       return 0;

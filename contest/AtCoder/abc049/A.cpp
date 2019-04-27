@@ -1,7 +1,7 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  char c;
-  cin >> c;
-  cout << (string("aeiou").find(c) != string::npos ? "vowel" : "consonant") << endl;
+  setBoolName("vowel", "consonant");
+  char c(in);
+  cout << String("aeiou").contains(c) << endl;
 }

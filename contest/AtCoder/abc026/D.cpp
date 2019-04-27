@@ -1,5 +1,5 @@
 #include "bisection_method.hpp"
-#include "math/basic.hpp"
+#include "math.hpp"
 
 int main() {
   int a(in), b(in), c(in);

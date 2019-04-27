@@ -1,7 +1,6 @@
 #include "string/parser.hpp"
 
 int main() {
-  string a, op, b;
-  cin >> a >> op >> b;
+  String a(in), op(in), b(in);
   cout << parse(a + op + b) << endl;
 }
