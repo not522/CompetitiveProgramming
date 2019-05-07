@@ -3,6 +3,11 @@ command-timeout: 60
 build:
   steps:
     - script:
+        name: install
+        code: |
+          apt update
+          apt install clang-format -y
+    - script:
         name: build
         code: |
           make -j `grep -c ^processor /proc/cpuinfo 2>/dev/null`
