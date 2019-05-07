@@ -1,7 +1,7 @@
 #pragma once
 #include "math/mint.hpp"
 
-Mint garner(vector<int64_t> a, vector<int64_t> m){
+Mint garner(vector<int64_t> a, vector<int64_t> m) {
   int n = a.size();
   vector<int64_t> coffs(n, 1), constants(n), digs(n);
   for (int i = 0; i < n; ++i) {

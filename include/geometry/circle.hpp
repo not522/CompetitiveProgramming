@@ -15,7 +15,7 @@ public:
   Circle(Input &in) : c(in), r(in) {}
 };
 
-std::ostream& operator<<(std::ostream& os, const Circle& circle) {
+std::ostream &operator<<(std::ostream &os, const Circle &circle) {
   os << circle.c.x << " " << circle.c.y << " " << circle.r;
   return os;
 }

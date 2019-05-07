@@ -1,9 +1,11 @@
 #pragma once
 #include "template.hpp"
 
-template<typename T> int64_t inversion_number(const vector<T>& v) {
-  function<int64_t(vector<T>&)> f = [&](vector<T>& v){
-    if (v.size() <= 1u) return 0;
+template <typename T> int64_t inversion_number(const vector<T> &v) {
+  function<int64_t(vector<T> &)> f = [&](vector<T> &v) {
+    if (v.size() <= 1u) {
+      return 0;
+    }
     int n = v.size();
     vector<int> a(v.begin(), v.begin() + n / 2);
     vector<int> b(v.begin() + n / 2, v.end());

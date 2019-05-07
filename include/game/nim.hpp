@@ -1,6 +1,6 @@
 #pragma once
-#include "template.hpp"
+#include "vector.hpp"
 
-template<typename T> bool nim(const vector<T>& v) {
-  return accumulate(v.begin(), v.end(), T(0), bit_xor<T>());
+template <typename T> bool nim(const Vector<T> &v) {
+  return v.accumulate(T(0), std::bit_xor<T>());
 }

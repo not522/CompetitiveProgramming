@@ -1,7 +1,7 @@
 #include "container/fix_size_set.hpp"
 #include "math/mint.hpp"
 
-Vector<Vector<bool>> makeUsed(const auto &x, const auto &bit, int t) {
+auto makeUsed(const Vector<Vector<int>> &x, const Bitset64 &bit, int t) {
   auto res = Vector<bool>::makeVector(5, 5);
   int i = 0;
   for (int a = 0; a < 5; ++a) {

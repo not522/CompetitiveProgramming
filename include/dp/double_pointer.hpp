@@ -21,8 +21,11 @@ public:
         push();
         ++back;
       } else {
-        if (front < back) pop();
-        else ++back;
+        if (front < back) {
+          pop();
+        } else {
+          ++back;
+        }
         ++front;
       }
       result();

@@ -18,30 +18,22 @@ public:
 
   String(const char *s) : std::string(s) {}
 
-  String(const std::string& s) : std::string(s) {}
+  String(const std::string &s) : std::string(s) {}
 
   String(int n, char c) : std::string(n, c) {}
 
-  String(Input& in) {
+  String(Input &in) {
     std::cin >> *this;
     in.eof = std::cin.eof();
   }
 
-  String operator+=(const String &s) {
-    return *this = *this + s;
-  }
+  String operator+=(const String &s) { return *this = *this + s; }
 
-  String operator+(const String &s) const {
-    return std::operator+(*this, s);
-  }
+  String operator+(const String &s) const { return std::operator+(*this, s); }
 
-  String operator+=(char s) {
-    return *this = *this + s;
-  }
+  String operator+=(char s) { return *this = *this + s; }
 
-  String operator+(char s) const {
-    return std::operator+(*this, s);
-  }
+  String operator+(char s) const { return std::operator+(*this, s); }
 
   static String getline() {
     String v;
@@ -59,7 +51,9 @@ public:
     std::stringstream ss(*this);
     Vector<String> res;
     for (std::string tmp; std::getline(ss, tmp, delim);) {
-      if (tmp != "") res.emplace_back(tmp);
+      if (tmp != "") {
+        res.emplace_back(tmp);
+      }
     }
     return res;
   }
@@ -78,13 +72,13 @@ public:
     return *this;
   }
 
-  template<typename Function> String transform(Function func) const {
+  template <typename Function> String transform(Function func) const {
     String res;
     std::transform(this->begin(), this->end(), std::back_inserter(res), func);
     return res;
   }
 
-  bool contains(const String& s) const {
+  bool contains(const String &s) const {
     return this->find(s) != std::string::npos;
   }
 
@@ -98,14 +92,15 @@ public:
     return *this = res;
   }
 
-  int count(char c) const {
-    return std::count(this->begin(), this->end(), c);
-  }
+  int count(char c) const { return std::count(this->begin(), this->end(), c); }
 
-  template<bool Repeat = false> String replaceAll(const String& from, const String& to) {
+  template <bool Repeat = false>
+  String replaceAll(const String &from, const String &to) {
     for (size_t pos = 0; (pos = this->find(from, pos)) != std::string::npos;) {
       this->replace(pos, from.size(), to);
-      if (!Repeat) pos += to.size();
+      if (!Repeat) {
+        pos += to.size();
+      }
     }
     return *this;
   }

@@ -19,6 +19,8 @@ int main() {
   dx[9] = vector<int>{-1, 0, 1, -1, 0, 1, -1, 0, 1};
   for (int k = 0; k < n; ++k) {
     int i = y + dy[n][k], j = x + dx[n][k];
-    if (0 <= i && i < h && 0 <= j && j < w) cout << i << " " << j << endl;
+    if (0 <= i && i < h && 0 <= j && j < w) {
+      cout << i << " " << j << endl;
+    }
   }
 }

@@ -1,17 +1,22 @@
 #pragma once
 #include "math/bitset_matrix.hpp"
 
-class BitsetSquareMatrix : public BitsetMatrix, public Division<BitsetSquareMatrix> {
+class BitsetSquareMatrix : public BitsetMatrix,
+                           public Division<BitsetSquareMatrix> {
 public:
   BitsetSquareMatrix(int n) : BitsetMatrix(n, n) {}
 
-  BitsetSquareMatrix(const BitsetMatrix& m) : BitsetMatrix(m) {}
+  BitsetSquareMatrix(const BitsetMatrix &m) : BitsetMatrix(m) {}
 
-  BitsetSquareMatrix operator/=(const BitsetSquareMatrix& m) {return *this *= m.inverse();}
+  BitsetSquareMatrix operator/=(const BitsetSquareMatrix &m) {
+    return *this *= m.inverse();
+  }
 
   BitsetSquareMatrix identity() const {
     BitsetSquareMatrix res(size());
-    for (int i = 0; i < size(); ++i) res[i][i] = true;
+    for (int i = 0; i < size(); ++i) {
+      res[i][i] = true;
+    }
     return res;
   }
 
@@ -22,13 +27,16 @@ public:
     for (int i = 0; i < n; ++i) {
       int p = i;
       for (int j = i + 1; j < n; ++j) {
-        if (abs(mat[j][i]) > abs(mat[p][i])) p = j;
+        if (abs(mat[j][i]) > abs(mat[p][i])) {
+          p = j;
+        }
       }
       swap(mat[i], mat[p]);
       swap(inv[i], inv[p]);
       for (int j = 0; j < n; ++j) {
-        if (i == j) continue;
-        if (!mat[j][i]) continue;
+        if (i == j || !mat[j][i]) {
+          continue;
+        }
         mat[j] ^= mat[i];
         inv[j] ^= inv[i];
       }

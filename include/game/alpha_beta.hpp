@@ -1,7 +1,8 @@
 #pragma once
 #include "game/min_max.hpp"
 
-template<typename T, typename State> class AlphaBeta : public MinMax<T, State> {
+template <typename T, typename State>
+class AlphaBeta : public MinMax<T, State> {
 protected:
   T solve(const State &state, T alpha, T beta) {
     if (this->isTerminated(state)) {
@@ -17,7 +18,5 @@ protected:
   }
 
 public:
-  T solve(const State& state) {
-    return solve(state, -inf<T>(), inf<T>());
-  }
+  T solve(const State &state) { return solve(state, -inf<T>(), inf<T>()); }
 };

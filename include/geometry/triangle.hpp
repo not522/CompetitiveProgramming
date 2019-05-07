@@ -7,9 +7,9 @@ public:
 
   Triangle() {}
 
-  Triangle(const Point& a, const Point& b, const Point& c) : a(a), b(b), c(c) {}
+  Triangle(const Point &a, const Point &b, const Point &c) : a(a), b(b), c(c) {}
 
-  Triangle(Input& in) : a(in), b(in), c(in) {}
+  Triangle(Input &in) : a(in), b(in), c(in) {}
 
   Point circumcenter() const {
     Line s((a + b) / 2, (a + b) / 2 + (a - b) * Point(0, 1));
@@ -18,7 +18,7 @@ public:
   }
 };
 
-std::ostream& operator<<(std::ostream& os, const Triangle& triangle) {
+std::ostream &operator<<(std::ostream &os, const Triangle &triangle) {
   os << triangle.a << " " << triangle.b << " " << triangle.c;
   return os;
 }

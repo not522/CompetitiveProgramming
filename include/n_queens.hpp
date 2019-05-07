@@ -14,7 +14,9 @@ private:
     }
     for (int i = 0; i < n; ++i) {
       int bit = 1 << i;
-      if (bit & (a | b | c)) continue;
+      if (bit & (a | b | c)) {
+        continue;
+      }
       tmp.emplace_back(i);
       solve(m + 1, (a | bit) << 1, b | bit, (c | bit) >> 1);
       tmp.pop_back();

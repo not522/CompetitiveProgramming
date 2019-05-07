@@ -2,22 +2,29 @@
 #include "arithmetic.hpp"
 #include "container/binary_tree.hpp"
 
-template<typename T> class SkewHeap : public Addition<SkewHeap<T>>, public BinaryTree<T> {
+template <typename T>
+class SkewHeap : public Addition<SkewHeap<T>>, public BinaryTree<T> {
 private:
   using Node = typename BinaryTree<T>::Node;
 
-  shared_ptr<Node> merge(shared_ptr<Node> a, shared_ptr<Node> b) {
-    if (!a) return b;
-    if (!b) return a;
-    if (a->v > b->v) swap(a, b);
+  std::shared_ptr<Node> merge(shared_ptr<Node> a, std::shared_ptr<Node> b) {
+    if (!a) {
+      return b;
+    }
+    if (!b) {
+      return a;
+    }
+    if (a->v > b->v) {
+      swap(a, b);
+    }
     a->r = merge(b, a->r);
     swap(a->l, a->r);
     return a;
   }
 
 public:
-  template<typename... S> void emplace(S... s) {
-    this->root = merge(this->root, make_shared<Node>(s...));
+  template <typename... S> void emplace(S... s) {
+    this->root = merge(this->root, std::make_shared<Node>(s...));
     ++(this->n);
   }
 

@@ -61,7 +61,8 @@ protected:
   }
 
 public:
-  Game(const auto &b, const auto &c) : b(b), c(c) {}
+  Game(const Vector<Vector<int>> &b, const Vector<Vector<int>> &c)
+      : b(b), c(c) {}
 };
 
 int main() {

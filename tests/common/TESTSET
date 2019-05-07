@@ -1,2 +1,2 @@
-auto_generator(src='generator.cc', dependency=['testlib.h', 'generator.hpp'], flags=['-std=c++17', '-I/usr/local/include/'])
-auto_validator(src='validator.cc', dependency=['testlib.h'])
+auto_generator(src='generator.cpp', dependency=['testlib.h', 'generator.hpp'], flags=['-std=c++17', '-I/usr/local/include/'])
+auto_validator(src='validator.cpp', dependency=['testlib.h'])

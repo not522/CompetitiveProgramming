@@ -1,20 +1,20 @@
 #pragma once
-#include "graph/edge.hpp"
+#include "graph/graph.hpp"
 
-template<typename Graph> class LowLink {
+template <typename Graph> class LowLink {
 private:
   using Edge = typename Graph::EdgeType;
 
   const Graph graph;
-  vector<bool> visited;
-  vector<int> ord, low;
+  Vector<bool> visited;
+  Vector<int> ord, low;
   int k;
 
   void dfs(int pos, int par = -1) {
     visited[pos] = true;
     low[pos] = ord[pos] = k;
     ++k;
-    for (const auto& edge : graph.getEdges(pos)) {
+    for (const auto &edge : graph.getEdges(pos)) {
       int next = edge.to;
       if (!visited[next]) {
         dfs(next, pos);
@@ -26,16 +26,22 @@ private:
   }
 
 public:
-  LowLink(const Graph& graph) : graph(graph), visited(graph.size()), ord(graph.size()), low(graph.size()), k(0) {
+  LowLink(const Graph &graph)
+      : graph(graph), visited(graph.size()), ord(graph.size()),
+        low(graph.size()), k(0) {
     for (int i = 0; i < int(graph.size()); ++i) {
-      if (!visited[i]) dfs(i);
+      if (!visited[i]) {
+        dfs(i);
+      }
     }
   }
 
-  vector<FullEdge<Edge>> bridge() {
-    vector<FullEdge<Edge>> res;
-    for (const auto& edge : graph.getAllEdges()) {
-      if (ord[edge.from] < low[edge.to]) res.emplace_back(edge);
+  Vector<FullEdge<Edge>> bridge() {
+    Vector<FullEdge<Edge>> res;
+    for (const auto &edge : graph.getAllEdges()) {
+      if (ord[edge.from] < low[edge.to]) {
+        res.emplace_back(edge);
+      }
     }
     return res;
   }

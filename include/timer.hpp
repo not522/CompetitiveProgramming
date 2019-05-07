@@ -1,12 +1,15 @@
 #pragma once
 #include "template.hpp"
 
-using namespace std::chrono;
+#include <chrono>
 
 struct Timer {
-  time_point<system_clock> start;
+  std::chrono::time_point<std::chrono::system_clock> start;
 
-  Timer() : start(system_clock::now()) {}
+  Timer() : start(std::chrono::system_clock::now()) {}
 
-  double seconds() {return duration<double>(system_clock::now() - start).count();}
+  double seconds() {
+    auto now = std::chrono::system_clock::now();
+    return std::chrono::duration<double>(now - start).count();
+  }
 };

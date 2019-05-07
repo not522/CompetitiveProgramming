@@ -7,38 +7,38 @@ public:
 
   Point() {}
 
-  Point(const Real& x) : x(x), y(0) {}
+  Point(const Real &x) : x(x), y(0) {}
 
-  Point(const Real& x, const Real& y) : x(x), y(y) {}
+  Point(const Real &x, const Real &y) : x(x), y(y) {}
 
-  Point(Input& in) : x(in), y(in) {}
+  Point(Input &in) : x(in), y(in) {}
 
-  Point operator+=(const Point& p) {
+  Point operator+=(const Point &p) {
     x += p.x;
     y += p.y;
     return *this;
   }
 
-  Point operator-=(const Point& p) {
+  Point operator-=(const Point &p) {
     x -= p.x;
     y -= p.y;
     return *this;
   }
 
-  Point operator*=(const Point& p) {
+  Point operator*=(const Point &p) {
     Real xx = x * p.x - y * p.y;
     y = x * p.y + y * p.x;
     x = xx;
     return *this;
   }
 
-  Point operator*=(const Real& r) {
+  Point operator*=(const Real &r) {
     x *= r;
     y *= r;
     return *this;
   }
 
-  Point operator/=(const Point& p) {
+  Point operator/=(const Point &p) {
     Real nrm = p.norm();
     Real xx = (x * p.x + y * p.y) / nrm;
     y = (y * p.x - x * p.y) / nrm;
@@ -46,34 +46,28 @@ public:
     return *this;
   }
 
-  Point operator/=(const Real& r) {
+  Point operator/=(const Real &r) {
     x /= r;
     y /= r;
     return *this;
   }
 
-  bool operator<(const Point& p) const {
+  bool operator<(const Point &p) const {
     return (x == p.x) ? y < p.y : x < p.x;
   }
 
-  Real norm() const {
-    return x * x + y * y;
-  }
+  Real norm() const { return x * x + y * y; }
 
-  Real abs() const {
-    return norm().sqrt();
-  }
+  Real abs() const { return norm().sqrt(); }
 
-  Point conj() const {
-    return Point(x, -y);
-  }
+  Point conj() const { return Point(x, -y); }
 };
 
-Point operator*(const Real& real, const Point& point) {return point * real;}
+Point operator*(const Real &real, const Point &point) { return point * real; }
 
-Point operator/(const Real& real, const Point& point) {return point / real;}
+Point operator/(const Real &real, const Point &point) { return point / real; }
 
-std::ostream& operator<<(std::ostream& os, const Point& point) {
+std::ostream &operator<<(std::ostream &os, const Point &point) {
   os << point.x << " " << point.y;
   return os;
 }

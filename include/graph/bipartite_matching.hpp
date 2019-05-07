@@ -8,7 +8,7 @@ private:
 
   bool dfs(int v) {
     used[v] = true;
-    for (const Edge& u : graph[v]) {
+    for (const Edge &u : graph[v]) {
       int w = match[u.to];
       if (w < 0 || (!used[w] && dfs(w))) {
         match[v] = u.to;
@@ -18,24 +18,29 @@ private:
     }
     return false;
   }
-  
+
 public:
   Vector<int> match;
 
-  BipartiteMatching(const AdjacencyList<Edge>& graph) : graph(graph), used(graph.size()), match(graph.size(), -1) {}
-  
+  BipartiteMatching(const AdjacencyList<Edge> &graph)
+      : graph(graph), used(graph.size()), match(graph.size(), -1) {}
+
   int solve() {
     int res = 0;
     for (int i = 0; i < graph.size(); ++i) {
-      if (match[i] >= 0) continue;
+      if (match[i] >= 0) {
+        continue;
+      }
       fill(used.begin(), used.end(), false);
-      if (dfs(i)) ++res;
+      if (dfs(i)) {
+        ++res;
+      }
     }
     return res;
   }
 };
 
-int bipartiteMatching(const AdjacencyList<Edge>& graph) {
+int bipartiteMatching(const AdjacencyList<Edge> &graph) {
   BipartiteMatching bm(graph);
   return bm.solve();
 }

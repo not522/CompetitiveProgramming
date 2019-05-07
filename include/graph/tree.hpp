@@ -1,7 +1,7 @@
 #pragma once
 #include "vector.hpp"
 
-template<typename Edge> class Tree {
+template <typename Edge> class Tree {
 public:
   using EdgeType = Edge;
 
@@ -26,16 +26,14 @@ public:
     }
   }
 
-  int size() const {
-    return parent.size();
-  }
-  
-  template<typename... Args> void addEdge(int from, int to, Args... args) {
+  int size() const { return parent.size(); }
+
+  template <typename... Args> void addEdge(int from, int to, Args... args) {
     parent[from] = Edge(to, args...);
     children[to].emplace_back(from);
   }
 
-  void addEdge(int from, const Edge& edge) {
+  void addEdge(int from, const Edge &edge) {
     parent[from] = edge;
     children[edge.to].emplace_back(from);
   }
@@ -47,13 +45,19 @@ public:
       e.to = v;
       res.emplace_back(e);
     }
-    if (from != parent[from].to) res.emplace_back(parent[from]);
+    if (from != parent[from].to) {
+      res.emplace_back(parent[from]);
+    }
     return res;
   }
 
   int getDepth(int v) {
-    if (depth[v] != -1) return depth[v];
-    if (parent[v].to == v) return depth[v] = 0;
+    if (depth[v] != -1) {
+      return depth[v];
+    }
+    if (parent[v].to == v) {
+      return depth[v] = 0;
+    }
     return depth[v] = getDepth(parent[v].to) + 1;
   }
 

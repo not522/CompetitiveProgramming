@@ -1,7 +1,9 @@
 #pragma once
-#include "template.hpp"
+#include "math.hpp"
 
-template<typename Function> long double goldenSectionSearch(Function function, long double lower, long double upper) {
+template <typename Function>
+long double goldenSectionSearch(Function function, long double lower,
+                                long double upper) {
   const long double r = (sqrt(5.l) - 1) / 2;
   long double middle1 = upper - r * (upper - lower);
   long double middle2 = lower + r * (upper - lower);

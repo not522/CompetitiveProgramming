@@ -9,23 +9,15 @@ private:
 public:
   Permutation(int n) : id(0), perm(iota<int>(n)) {}
 
-  Vector<int> operator*() {
-    return perm;
-  }
+  Vector<int> operator*() { return perm; }
 
-  bool operator!=(const Permutation& itr) const {
-    return id != itr.id;
-  }
+  bool operator!=(const Permutation &itr) const { return id != itr.id; }
 
-  void operator++() {
-    id = perm.next_permutation() ? id + 1 : -1;
-  }
+  void operator++() { id = perm.next_permutation() ? id + 1 : -1; }
 
-  Permutation& begin() {
-    return *this;
-  }
+  Permutation &begin() { return *this; }
 
-  Permutation& end();
+  Permutation &end();
 
   static Permutation makeEnd() {
     Permutation p(0);
@@ -36,6 +28,4 @@ public:
 
 Permutation permutation_end = Permutation::makeEnd();
 
-Permutation& Permutation::end() {
-  return permutation_end;
-}
+Permutation &Permutation::end() { return permutation_end; }

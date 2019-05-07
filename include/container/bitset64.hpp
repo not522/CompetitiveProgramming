@@ -12,11 +12,11 @@ public:
 
     Iterator(int val, uint64_t bit) : val(val), bit(bit) {}
 
-    int operator*() {return val;}
+    int operator*() { return val; }
 
-    bool operator!=(const Iterator& itr) const {return val != itr.val;}
+    bool operator!=(const Iterator &itr) const { return val != itr.val; }
 
-    void operator++() {val = least_bit(bit & -(2 << val));}
+    void operator++() { val = least_bit(bit & -(2 << val)); }
   };
 
   uint64_t n;

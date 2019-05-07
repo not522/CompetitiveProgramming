@@ -13,6 +13,7 @@ all: $(OBJS)
 format: $(DIFF)
 
 %.diff: %.cpp
+	clang-format $< | diff - $<
 	! clang-format $< -output-replacements-xml | grep -q "<replacement "
 	touch $@
 

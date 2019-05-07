@@ -4,40 +4,46 @@
 #include "queue.hpp"
 #include "vector.hpp"
 
-template<typename Edge> struct BFSState {
+template <typename Edge> struct BFSState {
   int pos, prv;
 
   BFSState(const int pos, const int prv = -1) : pos(pos), prv(prv) {}
-  
-  BFSState next(const int pos, const Edge& edge) const {return BFSState(edge.to, pos);}
 
-  int getPos() {return pos;}
+  BFSState next(const int pos, const Edge &edge) const {
+    return BFSState(edge.to, pos);
+  }
+
+  int getPos() { return pos; }
 };
 
-template<typename Graph, typename State = BFSState<typename Graph::EdgeType>> class BFS : public Search<Graph, State> {
+template <typename Graph, typename State = BFSState<typename Graph::EdgeType>>
+class BFS : public Search<Graph, State> {
 protected:
   using Edge = typename Graph::EdgeType;
 
   Queue<State> que;
-  
-  void push(const State& state) { que.push(state); }
-  
+
+  void push(const State &state) { que.push(state); }
+
   State next() { return que.front(); }
-  
+
   bool isRunning() { return !que.empty(); }
 
 public:
-  BFS(const Graph& graph) : Search<Graph, State>(graph) {}
+  BFS(const Graph &graph) : Search<Graph, State>(graph) {}
 };
 
-template<typename Graph, bool Restoration = false> class BFSDistance : public BFS<Graph> {
+template <typename Graph, bool Restoration = false>
+class BFSDistance : public BFS<Graph> {
 private:
   using Edge = typename Graph::EdgeType;
   using State = BFSState<typename Graph::EdgeType>;
 
-  void visit(const State& state) {
+  void visit(const State &state) {
     if (state.prv != -1) {
-      if (Restoration) shortestPathTree.addEdge(state.pos, state.prv);
+      if (Restoration) {
+        shortestPathTree.addEdge(state.pos, state.prv);
+      }
       dis[state.pos] = dis[state.prv] + 1;
     }
   }
@@ -46,22 +52,28 @@ public:
   Vector<int> dis;
   Tree<Edge> shortestPathTree;
 
-  BFSDistance(const Graph& graph) : BFS<Graph>(graph), dis(graph.size(), 0) {
-    if (Restoration) shortestPathTree = Tree<Edge>(graph.size());
+  BFSDistance(const Graph &graph) : BFS<Graph>(graph), dis(graph.size(), 0) {
+    if (Restoration) {
+      shortestPathTree = Tree<Edge>(graph.size());
+    }
   }
 };
 
-template<typename Graph> BFSDistance<Graph> bfsDistance(const Graph& graph, int from) {
+template <typename Graph>
+BFSDistance<Graph> bfsDistance(const Graph &graph, int from) {
   BFSDistance<Graph> bfs(graph);
   bfs.solve(from);
   return bfs;
 }
 
-template<typename Graph> typename Graph::EdgeType::CostType bfsDistance(const Graph& graph, int from, int to) {
+template <typename Graph>
+typename Graph::EdgeType::CostType bfsDistance(const Graph &graph, int from,
+                                               int to) {
   return bfsDistance(graph, from).dis[to];
 }
 
-template<typename Graph> BFSDistance<Graph, true> bfsDistanceTree(const Graph& graph, int from) {
+template <typename Graph>
+BFSDistance<Graph, true> bfsDistanceTree(const Graph &graph, int from) {
   BFSDistance<Graph, true> bfs(graph);
   bfs.solve(from);
   return bfs;

@@ -1,7 +1,7 @@
 #pragma once
 #include "string.hpp"
 
-template<typename T, typename State> class DigitDP {
+template <typename T, typename State> class DigitDP {
 protected:
   String num;
   State curr;
@@ -12,9 +12,9 @@ protected:
 
 public:
   DigitDP(String num) : num(num) {}
-  
-  template<typename S> DigitDP(S num) : num(num) {}
-  
+
+  template <typename S> DigitDP(S num) : num(num) {}
+
   T solve() {
     for (char c : num) {
       prev = curr;

@@ -3,11 +3,11 @@
 
 #include <queue>
 
-template<typename T> class Queue : public std::queue<T> {
+template <typename T> class Queue : public std::queue<T> {
 public:
   Queue() : std::queue<T>() {}
 
-  Queue(const std::initializer_list<T>& q) : std::queue<T>(q) {}
+  Queue(const std::initializer_list<T> &q) : std::queue<T>(q) {}
 
   T front() {
     T res = std::queue<T>::front();
@@ -15,11 +15,7 @@ public:
     return res;
   }
 
-  T peek() const {
-    return std::queue<T>::top();
-  }
+  T peek() const { return std::queue<T>::top(); }
 
-  void pop() const {
-    assert(false);
-  }
+  void pop() const { assert(false); }
 };

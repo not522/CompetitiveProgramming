@@ -7,6 +7,10 @@ build:
         code: |
           make -j `grep -c ^processor /proc/cpuinfo 2>/dev/null`
     - script:
+        name: format
+        code: |
+          make format
+    - script:
         name: test
         code: |
           make test
