@@ -1,6 +1,7 @@
 #pragma once
 #include "license.hpp"
 
+#include <algorithm>
 #include <cassert>
 #include <functional>
 #include <iomanip>

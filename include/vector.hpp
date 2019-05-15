@@ -153,6 +153,16 @@ public:
     return *this;
   }
 
+  Vector<int> argsort() const {
+    Vector<Tuple<T, int>> v;
+    for (int i = 0; i < this->size(); ++i) {
+      v.emplace_back((*this)[i], i);
+    }
+    v.sort();
+    auto f = [](const Tuple<T, int> &t) { return t.template get<1>(); };
+    return v.transform(f);
+  }
+
   Vector<T> nth_element(int n, bool reverse = false) {
     if (!reverse) {
       std::nth_element(this->begin(), this->begin() + n, this->end());
