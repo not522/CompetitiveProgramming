@@ -1,5 +1,4 @@
 #pragma once
-#include "tuple.hpp"
 #include "vector.hpp"
 
 template <template <typename Edge> class Graph, typename Edge> class Clique {
