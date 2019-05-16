@@ -1,6 +1,4 @@
 #include "string.hpp"
-#include "tuple.hpp"
-#include "vector.hpp"
 
 void output(int s, int e) {
   cout << ZeroPadding(4) << s << "-" << ZeroPadding(4) << e << endl;

@@ -1,6 +1,4 @@
 #include "string.hpp"
-#include "tuple.hpp"
-#include "vector.hpp"
 
 int main() {
   int n(in);

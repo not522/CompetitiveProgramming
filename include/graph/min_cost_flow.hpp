@@ -1,7 +1,6 @@
 #pragma once
 #include "graph/residual_graph.hpp"
 #include "priority_queue.hpp"
-#include "tuple.hpp"
 
 template <typename Capacity, typename Cost> class MinCostFlow {
 private:

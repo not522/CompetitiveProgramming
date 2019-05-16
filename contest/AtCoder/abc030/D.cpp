@@ -1,5 +1,4 @@
 #include "string.hpp"
-#include "vector.hpp"
 
 int main() {
   int n(in), a(in);

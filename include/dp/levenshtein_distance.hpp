@@ -1,6 +1,5 @@
 #pragma once
 #include "string.hpp"
-#include "vector.hpp"
 
 int levenshteinDistance(const String &a, const String &b) {
   Vector<Vector<int>> dp(a.size() + 1, Vector<int>(b.size() + 1));

@@ -1,6 +1,5 @@
 #include "set.hpp"
 #include "string.hpp"
-#include "vector.hpp"
 
 int k, n;
 Vector<String> v, w;

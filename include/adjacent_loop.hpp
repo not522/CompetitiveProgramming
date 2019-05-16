@@ -1,5 +1,4 @@
 #pragma once
-#include "tuple.hpp"
 #include "vector.hpp"
 
 template <int N> class AdjacentLoop {

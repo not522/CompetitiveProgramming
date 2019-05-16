@@ -1,5 +1,4 @@
 #include "string.hpp"
-#include "vector.hpp"
 
 int main() {
   String s(in);
