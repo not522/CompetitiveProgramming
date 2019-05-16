@@ -88,8 +88,7 @@ public:
         }
       }
     }
-    sort(res.begin(), res.end());
-    return res;
+    return res.sort();
   }
 
   Vector<int64_t> primes(int64_t n) const {
@@ -103,19 +102,14 @@ public:
   }
 };
 
-Vector<int64_t> prime_factor(int64_t n) {
-  Vector<int64_t> res;
-  for (int64_t i = 2; i <= n / i; ++i) {
-    if (n % i) {
-      continue;
-    }
-    res.emplace_back(i);
-    while (n % i == 0) {
-      n /= i;
-    }
-  }
-  if (n >= 2) {
-    res.emplace_back(n);
-  }
-  return res;
-}
+Prime prime_;
+
+bool isPrime(int64_t n) { return prime_.isPrime(n); }
+
+Vector<int64_t> factor(int64_t n) { return prime_.factor(n); }
+
+Vector<int64_t> primeFactor(int64_t n) { return prime_.primeFactor(n); }
+
+Vector<int64_t> divisor(int64_t n) { return prime_.divisor(n); }
+
+Vector<int64_t> primes(int64_t n) { return prime_.primes(n); }
