@@ -264,6 +264,10 @@ public:
     }
     return res;
   }
+
+  T matmul(const T &a) const {
+    return this->transform([&](const T &i) { return i.inner_product(a); });
+  }
 };
 
 template <typename T> Vector<T> iota(int n, T m = 0) {
