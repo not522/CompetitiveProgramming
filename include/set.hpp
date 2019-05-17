@@ -7,6 +7,9 @@ template <typename T> class Set : public Container<std::set<T>> {
 public:
   Set() : Container<std::set<T>>() {}
 
+  template <typename Itr>
+  Set(Itr first, Itr last) : Container<std::set<T>>(first, last) {}
+
   Set(const std::initializer_list<T> &s) : Container<std::set<T>>(s) {}
 
   template <typename S> Set<T> operator&=(const S &a) {

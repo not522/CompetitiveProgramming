@@ -1,11 +1,8 @@
 #include "vector.hpp"
 
 int main() {
-  int l, n;
-  cin >> l >> n;
-  vector<int> w(n);
-  cin >> w;
-  sort(w);
-  auto v = partial_sum(w);
-  cout << upper_bound(v, l) << endl;
+  int l(in), n(in);
+  Vector<int> w(n, in);
+  auto v = w.sort().partial_sum();
+  cout << v.upper_bound(l) << endl;
 }

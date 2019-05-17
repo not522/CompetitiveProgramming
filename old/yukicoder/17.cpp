@@ -1,29 +1,23 @@
 #include "vector.hpp"
-#include "graph/edge.hpp"
 #include "graph/adjacency_list.hpp"
 #include "graph/all_pairs_shortest_path.hpp"
 
 int main() {
   using Graph = AdjacencyList<WeightedEdge<int>>;
-  int n;
-  cin >> n;
-  vector<int> s(n);
-  cin >> s;
-  Graph graph(n);
-  int m;
-  cin >> m;
-  for (int i = 0; i < m; ++i) {
-    int a, b, c;
-    cin >> a >> b >> c;
-    graph.addUndirectedEdge(a, b, c);
-  }
+  int n(in);
+  Vector<int> s(n, in);
+  int m(in);
+  Graph graph(in, n, m, true, false);
   auto dis = shortestPath(graph);
-  int res = numeric_limits<int>::max();
-  const int INF = WarshallFloyd<Graph>::INF;
+  int res = inf<int>();
   for (int i = 1; i < n - 1; ++i) {
-    for (int j = 1; j < n - 1; ++j) if (i != j) {
-      if (dis[0][i] == INF || dis[i][j] == INF || dis[j][n - 1] == INF) continue;
-      res = min(res, dis[0][i] + dis[i][j] + dis[j][n - 1] + s[i] + s[j]);
+    for (int j = 1; j < n - 1; ++j) {
+      if (i != j) {
+        if (dis[0][i] == inf<int>() || dis[i][j] == inf<int>() || dis[j][n - 1] == inf<int>()) {
+          continue;
+        }
+        chmin(res, dis[0][i] + dis[i][j] + dis[j][n - 1] + s[i] + s[j]);
+      }
     }
   }
   cout << res << endl;

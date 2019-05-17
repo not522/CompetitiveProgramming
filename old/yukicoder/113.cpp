@@ -1,8 +1,8 @@
-#include "template.hpp"
+#include "math.hpp"
+#include "string.hpp"
 
 int main() {
-  string s;
-  cin >> s;
+  String s(in);
   int x = 0, y = 0;
   for (char c : s) {
     switch(c) {

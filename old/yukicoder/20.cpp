@@ -1,14 +1,12 @@
 #include "vector.hpp"
-#include "graph/edge.hpp"
 #include "graph/adjacency_list.hpp"
 #include "graph/shortest_path.hpp"
 
 int main() {
-  int n, v, x, y;
-  cin >> n >> v >> x >> y;
+  setBoolName("YES", "NO");
+  int n(in), v(in), x(in), y(in);
   --x, --y;
-  vector<vector<int>> l(n, vector<int>(n));
-  cin >> l;
+  auto l = Vector<int>::makeVector(in, n, n);
   AdjacencyList<WeightedEdge<int>> graph(n * n);
   for (int i = 0; i < n; ++i) {
     for (int j = 0; j < n; ++j) {
@@ -22,7 +20,11 @@ int main() {
       }
     }
   }
-  if (shortestPath(graph, 0, n * n - 1) < v) cout << "YES" << endl;
-  else if (x == -1 && y == -1) cout << "NO" << endl;
-  else cout << ((v - shortestPath(graph, 0, y * n + x)) * 2 > shortestPath(graph, y * n + x, n * n - 1) ? "YES" : "NO") << endl;
+  if (shortestPath(graph, 0, n * n - 1) < v) {
+    cout << true << endl;
+  } else if (x == -1 && y == -1) {
+    cout << false << endl;
+  } else {
+    cout << ((v - shortestPath(graph, 0, y * n + x)) * 2 > shortestPath(graph, y * n + x, n * n - 1)) << endl;
+  }
 }

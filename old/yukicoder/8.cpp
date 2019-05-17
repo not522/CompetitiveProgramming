@@ -1,11 +1,10 @@
 #include "template.hpp"
 
 int main() {
-  int p;
-  cin >> p;
+  setBoolName("Win", "Lose");
+  int p(in);
   for (int i = 0; i < p; ++i) {
-    int n, k;
-    cin >> n >> k;
-    cout << (n % (k + 1) != 1 ? "Win" : "Lose") << endl;
+    int n(in), k(in);
+    cout << (n % (k + 1) != 1) << endl;
   }
 }

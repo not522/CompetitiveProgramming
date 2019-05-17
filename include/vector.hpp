@@ -213,6 +213,10 @@ public:
     return std::lower_bound(this->begin(), this->end(), t) - this->begin();
   }
 
+  T upper_bound(T t) const {
+    return std::upper_bound(this->begin(), this->end(), t) - this->begin();
+  }
+
   T accumulate() const {
     return std::accumulate(this->begin(), this->end(), T(0));
   }
@@ -255,6 +259,11 @@ public:
 
   bool next_permutation() {
     return std::next_permutation(this->begin(), this->end());
+  }
+
+  Vector<T> rotate(int n) {
+    std::rotate(this->begin(), this->begin() + n, this->end());
+    return *this;
   }
 
   Map<T, int> countAll() const {

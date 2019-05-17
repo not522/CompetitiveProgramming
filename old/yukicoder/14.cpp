@@ -1,14 +1,13 @@
+#include "multiset.hpp"
 #include "vector.hpp"
 #include "math/prime.hpp"
 
 int main() {
   Prime prime(10000);
-  int n;
-  cin >> n;
-  vector<int> a(n);
-  cin >> a;
-  multiset<int> s(a.begin() + 1, a.end());
-  vector<multiset<int>> v(10001);
+  int n(in);
+  Vector<int> a(n, in);
+  Multiset<int> s(a.begin() + 1, a.end());
+  Vector<Multiset<int>> v(10001);
   for (int i : s) for (auto d : prime.divisor(i)) v[d].insert(i);
   int p = a[0];
   while (!s.empty()) {

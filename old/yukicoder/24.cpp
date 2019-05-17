@@ -1,22 +1,26 @@
-#include "template.hpp"
+#include "string.hpp"
 
 struct Question {
-  array<int, 4> v;
+  Vector<int> v;
   bool res;
+
+  Question() : v(4) {}
 };
 
 int main() {
-  int n;
-  cin >> n;
-  vector<Question> q(n);
+  int n(in);
+  Vector<Question> q(n);
   for (int i = 0; i < n; ++i) {
-    for (int& j : q[i].v) cin >> j;
-    string s;
-    cin >> s;
+    for (int& j : q[i].v) {
+      j = in;
+    }
+    String s(in);
     q[i].res = (s == "YES");
   }
   for (int i = 0; i < 10; ++i) {
-    auto f = [&](Question q){return (find(q.v.begin(), q.v.end(), i) != q.v.end()) == q.res;};
-    if (all_of(q.begin(), q.end(), f)) cout << i << endl;
+    auto f = [&](Question q) { return (find(q.v.begin(), q.v.end(), i) != q.v.end()) == q.res; };
+    if (q.all_of(f)) {
+      cout << i << endl;
+    }
   }
 }

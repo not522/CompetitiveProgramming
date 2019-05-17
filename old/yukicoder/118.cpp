@@ -1,13 +1,10 @@
 #include "math/mint.hpp"
 
 int main() {
-  int n;
-  cin >> n;
+  int n(in);
   int64_t s[100] = {};
   for (int i = 0; i < n; ++i) {
-    int a;
-    cin >> a;
-    ++s[a - 1];
+    ++s[int(in) - 1];
   }
   Mint res = 0;
   for (int i = 0; i < 100; ++i) {

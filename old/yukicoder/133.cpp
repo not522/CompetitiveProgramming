@@ -1,13 +1,10 @@
-#include "math/basic.hpp"
+#include "math.hpp"
 
 int main() {
-  int n;
-  cin >> n;
-  vector<int> a(n), b(n);
-  for (int& i : a) cin >> i;
-  for (int& i : b) cin >> i;
-  sort(a.begin(), a.end());
-  sort(b.begin(), b.end());
+  int n(in);
+  Vector<int> a(n, in), b(n, in);
+  a.sort();
+  b.sort();
   int c = 0;
   do {
     do {

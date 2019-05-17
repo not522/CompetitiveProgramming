@@ -1,10 +1,12 @@
-#include "math/prime.hpp"
 #include "dp/double_pointer.hpp"
+#include "math/prime.hpp"
+#include "set.hpp"
+#include "string.hpp"
 
 class UniqueHash : public DoublePointer {
 private:
-  vector<int> v;
-  set<int> s;
+  Vector<int> v;
+  Set<int> s;
 
   bool valid() {return s.count(v[back]) == 0;}
 
@@ -20,22 +22,28 @@ private:
   }
 
 public:
-  size_t mx = 0, res;
+  int mx = 0, res;
 
-  UniqueHash(const vector<int>& v) : DoublePointer(v.size()), v(v) {}
+  UniqueHash(const Vector<int>& v) : DoublePointer(v.size()), v(v) {}
 };
 
 int main() {
-  int k, n;
-  cin >> k >> n;
+  int k(in), n(in);
   Prime prime(n);
-  vector<int> p;
-  for (int i = k; i <= n; ++i) if (prime.isPrime(i)) p.emplace_back(i);
+  Vector<int> p;
+  for (int i = k; i <= n; ++i) {
+    if (prime.isPrime(i)) {
+      p.emplace_back(i);
+    }
+  }
   auto v = p;
   for (int& i : v) {
     while (i >= 10) {
-      string s = to_string(i);
-      i = accumulate(s.begin(), s.end(), 0) - '0' * s.size();
+      String s(i);
+      i = 0;
+      for (char c : s) {
+        i += c - '0';
+      }
     }
   }
   UniqueHash uh(v);

@@ -31,6 +31,10 @@ public:
 
   String operator+(const String &s) const { return std::operator+(*this, s); }
 
+  String operator+=(const char *s) { return *this = *this + s; }
+
+  String operator+(const char *s) const { return std::operator+(*this, s); }
+
   String operator+=(char s) { return *this = *this + s; }
 
   String operator+(char s) const { return std::operator+(*this, s); }

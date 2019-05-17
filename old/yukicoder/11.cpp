@@ -1,14 +1,11 @@
-#include "template.hpp"
+#include "set.hpp"
 
 int main() {
-  int64_t w, h, n;
-  cin >> w >> h >> n;
-  set<int> a, b;
+  int64_t w(in), h(in), n(in);
+  Set<int> a, b;
   for (int i = 0; i < n; ++i) {
-    int s, k;
-    cin >> s >> k;
-    a.insert(s);
-    b.insert(k);
+    a.emplace(in);
+    b.emplace(in);
   }
   cout << a.size() * h + b.size() * w - a.size() * b.size() - n << endl;
 }

@@ -1,9 +1,7 @@
 #include "vector.hpp"
 
 int main() {
-  int n;
-  cin >> n;
-  vector<int> z(n);
-  cin >> z;
+  int n(in);
+  Vector<int> z(n, in);
   cout << z.back() << "/" << z[0] << endl;
 }

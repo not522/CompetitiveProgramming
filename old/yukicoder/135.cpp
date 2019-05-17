@@ -1,12 +1,8 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 int main() {
-  int n;
-  cin >> n;
-  vector<int> x(n);
-  for (int& i : x) cin >> i;
-  sort(x.begin(), x.end());
-  x.erase(unique(x.begin(), x.end()), x.end());
-  adjacent_difference(x.begin(), x.end(), x.begin());
-  cout << *min_element(x.begin() + 1, x.end()) << endl;
+  int n(in);
+  Vector<int> x(n, in);
+  x = x.sort().unique().adjacent_difference();
+  cout << x.subvector(1, x.size()).min() << endl;
 }

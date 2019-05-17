@@ -3,14 +3,11 @@
 
 int main() {
   Mint::setMod(1000003);
-  Mint x;
-  int n;
-  cin >> x >> n;
+  Mint x(in);
+  int n(in);
   Mint res = 0;
   for (int i = 0; i < n; ++i) {
-    int a;
-    cin >> a;
-    res += pow(x, a);
+    res += pow(x, int(in));
   }
   cout << res << endl;
 }

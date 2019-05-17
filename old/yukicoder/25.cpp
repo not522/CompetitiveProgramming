@@ -1,8 +1,7 @@
-#include "math/basic.hpp"
+#include "math.hpp"
 
 int main() {
-  int64_t n, m;
-  cin >> n >> m;
+  int64_t n(in), m(in);
   auto g = gcd(n, m);
   n /= g;
   m /= g;

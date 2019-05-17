@@ -9,14 +9,13 @@ struct Edge {
 };
 
 int main() {
-  int n, c, v;
-  cin >> n >> c >> v;
-  vector<int> s(v), t(v), y(v), m(v);
-  vector<vector<Edge>> edge(n);
-  cin >> s >> t >> y >> m;
-  for (int i = 0; i < v; ++i) edge[s[i] - 1].emplace_back(Edge(t[i] - 1, y[i], m[i]));
-  const int INF = numeric_limits<int>::max() / 2;
-  vector<vector<int>> dp(n, vector<int>(c + 1, INF));
+  int n(in), c(in), v(in);
+  Vector<int> s(v, in), t(v, in), y(v, in), m(v, in);
+  Vector<Vector<Edge>> edge(n);
+  for (int i = 0; i < v; ++i) {
+    edge[s[i] - 1].emplace_back(Edge(t[i] - 1, y[i], m[i]));
+  }
+  Vector<Vector<int>> dp(n, Vector<int>(c + 1, inf<int>()));
   fill(dp[0].begin(), dp[0].end(), 0);
   for (int i = 0; i < n; ++i) {
     for (const auto& e : edge[i]) {
@@ -25,5 +24,5 @@ int main() {
       }
     }
   }
-  cout << (dp[n - 1][c] != INF ? dp[n - 1][c] : -1) << endl;
+  cout << (dp[n - 1][c] != inf<int>() ? dp[n - 1][c] : -1) << endl;
 }

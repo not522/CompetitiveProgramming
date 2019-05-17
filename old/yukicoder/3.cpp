@@ -1,12 +1,10 @@
 #include "bit_operation.hpp"
-#include "graph/edge.hpp"
 #include "graph/adjacency_list.hpp"
 #include "graph/bfs.hpp"
 
 int main() {
   using Graph = AdjacencyList<Edge>;
-  int n;
-  cin >> n;
+  int n(in);
   Graph graph(n);
   for (int i = 0; i < n; ++i) {
     int c = count_bit(i + 1);

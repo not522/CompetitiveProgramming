@@ -1,10 +1,9 @@
 #include "vector.hpp"
 
 int main() {
-  int n, k;
-  cin >> n >> k;
-  vector<int> v(n);
-  cin >> v;
-  auto m = minmax_element(v.begin(), v.end());
-  cout << *m.second - *m.first << endl;
+  int n(in), k(in);
+  (void)k;
+  Vector<int> v(n, in);
+  auto m = v.minmax();
+  cout << m.get<1>() - m.get<0>() << endl;
 }

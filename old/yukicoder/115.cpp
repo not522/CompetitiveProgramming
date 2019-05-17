@@ -1,8 +1,7 @@
 #include "template.hpp"
 
 int main() {
-  int n, d, k;
-  cin >> n >> d >> k;
+  int n(in), d(in), k(in);
   if (d < (k + 1) * k / 2 || (2 * n - k + 1) * k / 2 < d) {
     cout << -1 << endl;
     return 0;

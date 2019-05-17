@@ -12,9 +12,11 @@ public:
 
   State(int n) : n(n) {}
 
-  vector<State> next() {
+  State(Input in) : n(in) {}
+
+  Vector<State> next() {
     auto factor = prime.primeFactor(n);
-    vector<State> res;
+    Vector<State> res;
     for (auto i : factor) {
       res.emplace_back(n / i);
       if (n / i % i == 0) res.emplace_back(n / i / i);
@@ -28,14 +30,9 @@ public:
 };
 
 int main() {
-  int n;
-  cin >> n;
-  vector<State> m(n);
-  for (auto& i : m) {
-    int j;
-    cin >> j;
-    i = j;
-  }
+  setBoolName("Alice", "Bob");
+  int n(in);
+  Vector<State> m(n, in);
   Grundy<State> grundy;
-  cout << (grundy.solve(m) ? "Alice" : "Bob") << endl;
+  cout << grundy.solve(m) << endl;
 }

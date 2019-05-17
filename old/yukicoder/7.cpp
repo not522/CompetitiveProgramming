@@ -3,15 +3,15 @@
 
 class Game : public MinMax<int, int, true> {
 private:
-  vector<int> mem;
-  vector<int> primes;
+  Vector<int> mem;
+  Vector<int> primes;
 
   int eval(const int&) const {
     return 1;
   }
 
-  vector<int> next(const int& state) const {
-    vector<int> res;
+  Vector<int> next(const int& state) const {
+    Vector<int> res;
     for (int p : primes) {
       if (p > state) break;
       res.emplace_back(state - p);
@@ -39,8 +39,8 @@ public:
 };
 
 int main() {
-  int n;
-  cin >> n;
+  setBoolName("Win", "Lose");
+  int n(in);
   Game game(n);
-  cout << (game.solve(n) == 1 ? "Win" : "Lose") << endl;
+  cout << (game.solve(n) == 1) << endl;
 }

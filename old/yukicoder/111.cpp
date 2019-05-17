@@ -1,7 +1,3 @@
-#include "template.hpp"
+#include "math.hpp"
 
-int main() {
-  int64_t n;
-  cin >> n;
-  cout << (n / 2) * (n / 2) << endl;
-}
+int main() { cout << pow(int(in) / 2, 2) << endl; }

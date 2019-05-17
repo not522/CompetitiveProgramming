@@ -3,21 +3,24 @@
 
 int main() {
   Combination<Mint> comb(2000000);
-  int t;
-  cin >> t;
+  int t(in);
   for (int i = 0; i < t; ++i) {
-    char c;
-    int n, k;
-    cin >> c;
-    cin.ignore();
-    cin >> n;
-    cin.ignore();
-    cin >> k;
-    cin.ignore();
+    char c(in);
+    in.ignore();
+    int n(in);
+    in.ignore();
+    int k(in);
+    in.ignore();
     switch (c) {
-    case 'C': cout << comb.combination(n, k) << endl; break;
-    case 'P': cout << comb.partial_permutation(n, k) << endl; break;
-    case 'H': cout << comb.repetition(n, k) << endl; break;
+    case 'C':
+      cout << comb.combination(n, k) << endl;
+      break;
+    case 'P':
+      cout << comb.partial_permutation(n, k) << endl;
+      break;
+    case 'H':
+      cout << comb.repetition(n, k) << endl;
+      break;
     }
   }
 }

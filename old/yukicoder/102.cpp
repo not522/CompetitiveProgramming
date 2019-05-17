@@ -1,4 +1,5 @@
 #include "game/grundy.hpp"
+#include "vector.hpp"
 
 class Card {
 private:
@@ -9,11 +10,19 @@ public:
 
   Card(int card) : card(card) {}
 
-  vector<Card> next() {
-    vector<Card> res;
-    if (card >= 1) res.emplace_back(card - 1);
-    if (card >= 2) res.emplace_back(card - 2);
-    if (card >= 3) res.emplace_back(card - 3);
+  Card(Input in) : card(in) {}
+
+  Vector<Card> next() {
+    Vector<Card> res;
+    if (card >= 1) {
+      res.emplace_back(card - 1);
+    }
+    if (card >= 2) {
+      res.emplace_back(card - 2);
+    }
+    if (card >= 3) {
+      res.emplace_back(card - 3);
+    }
     return res;
   }
 
@@ -23,12 +32,8 @@ public:
 };
 
 int main() {
-  vector<Card> n(4);
-  for (auto& i : n) {
-    int j;
-    cin >> j;
-    i = j;
-  }
+  setBoolName("Taro", "Jiro");
+  Vector<Card> n(4, in);
   Grundy<Card> grundy;
-  cout << (grundy.solve(n) ? "Taro" : "Jiro") << endl;
+  cout << grundy.solve(n) << endl;
 }

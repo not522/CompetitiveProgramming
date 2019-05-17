@@ -1,28 +1,28 @@
 #include "vector.hpp"
 
 void solve() {
-  int n;
-  cin >> n;
-  map<int, int> m;
+  int n(in);
+  Map<int, int> m;
   for (int i = 0; i < n; ++i) {
-    int l;
-    cin >> l;
-    ++m[l];
+    ++m[int(in)];
   }
-  vector<int> v = {0, 0, 0};
-  for (auto i : m) v.emplace_back(i.second);
-  rsort(v);
+  Vector<int> v = {0, 0, 0};
+  for (auto i : m) {
+    v.emplace_back(i.second);
+  }
+  v.rsort();
   int res = 0;
   while (v[2] > 0) {
     for (int i = 0; i < 3; ++i) --v[i];
-    rsort(v);
+    v.rsort();
     ++res;
   }
   cout << res << endl;
 }
 
 int main() {
-  int t;
-  cin >> t;
-  for (int i = 0; i < t; ++i) solve();
+  int t(in);
+  for (int i = 0; i < t; ++i) {
+    solve();
+  }
 }
