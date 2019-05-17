@@ -50,12 +50,12 @@ template <typename T> T lcm(const Vector<T> &v) {
 }
 
 template <typename T> T floor(T a, T b) {
-  auto d = div(a, b);
+  auto d = std::div(a, b);
   return d.quot - (d.rem && (a < 0) != (b < 0) ? 1 : 0);
 }
 
 template <typename T> T ceil(T a, T b) {
-  auto d = div(a, b);
+  auto d = std::div(a, b);
   return d.quot + (d.rem && (a > 0) == (b > 0) ? 1 : 0);
 }
 

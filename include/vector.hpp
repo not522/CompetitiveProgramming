@@ -1,15 +1,11 @@
 #pragma once
-#include "arithmetic.hpp"
 #include "map.hpp"
 #include "ordered.hpp"
 
 #include <numeric>
 
 template <typename T>
-class Vector : public Container<std::vector<T>>,
-               public Arithmetic<Vector<T>>,
-               public Modulus<Vector<T>>,
-               public Ordered<Vector<T>> {
+class Vector : public Container<std::vector<T>>, public Ordered<Vector<T>> {
 public:
   Vector() = default;
 
@@ -102,6 +98,26 @@ public:
     return *this;
   }
 
+  Vector operator+(const Vector &v) const { return Vector(*this) += v; }
+
+  Vector operator+(const T &v) const { return Vector(*this) += v; }
+
+  Vector operator-(const Vector &v) const { return Vector(*this) -= v; }
+
+  Vector operator-(const T &v) const { return Vector(*this) -= v; }
+
+  Vector operator*(const Vector &v) const { return Vector(*this) *= v; }
+
+  Vector operator*(const T &v) const { return Vector(*this) *= v; }
+
+  Vector operator/(const Vector &v) const { return Vector(*this) /= v; }
+
+  Vector operator/(const T &v) const { return Vector(*this) /= v; }
+
+  Vector operator%(const Vector &v) const { return Vector(*this) %= v; }
+
+  Vector operator%(const T &v) const { return Vector(*this) %= v; }
+
   bool operator<(const Vector &v) const {
     if (this->size() != v.size()) {
       return this->size() < v.size();
@@ -113,6 +129,8 @@ public:
     }
     return false;
   }
+
+  Vector operator-() const { return *this * -1; }
 
   T inner_product(const Vector<T> &v) const {
     return std::inner_product(this->begin(), this->end(), v.begin(), T(0));
@@ -299,4 +317,16 @@ void read(Vector<T> &t, Vector<S> &s, Vector<U> &u) {
     s[i] = S(in);
     u[i] = U(in);
   }
+}
+
+template <typename T> Vector<T> operator+(const T &a, const Vector<T> &b) {
+  return b + a;
+}
+
+template <typename T> Vector<T> operator-(const T &a, const Vector<T> &b) {
+  return -b + a;
+}
+
+template <typename T> Vector<T> operator*(const T &a, const Vector<T> &b) {
+  return b * a;
 }
