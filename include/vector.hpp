@@ -211,6 +211,12 @@ public:
     return res;
   }
 
+  template <typename Function> Vector<T> partial_sum(Function func) const {
+    Vector<T> res;
+    std::partial_sum(this->begin(), this->end(), std::back_inserter(res), func);
+    return res;
+  }
+
   Vector<T> reverse() {
     std::reverse(this->begin(), this->end());
     return *this;
