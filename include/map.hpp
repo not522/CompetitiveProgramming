@@ -9,7 +9,5 @@ public:
 
   bool contains(const T &a) const { return this->find(a) != this->end(); }
 
-  int count(const T &t) const {
-    return this->count(t);
-  }
+  int count(const T &t) const { return this->count(t); }
 };
