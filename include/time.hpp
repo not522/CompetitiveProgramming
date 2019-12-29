@@ -40,7 +40,7 @@ struct Time : public Addition<Time>, public Subtraction<Time> {
     }
   }
 
-  Time operator+=(const Time &time) {
+  Time &operator+=(const Time &time) {
     hour += time.hour;
     minute += time.minute;
     second += time.second;
@@ -48,7 +48,7 @@ struct Time : public Addition<Time>, public Subtraction<Time> {
     return *this;
   }
 
-  Time operator-=(const Time &time) {
+  Time &operator-=(const Time &time) {
     hour -= time.hour;
     minute -= time.minute;
     second -= time.second;

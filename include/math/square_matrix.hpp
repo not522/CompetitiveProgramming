@@ -1,13 +1,18 @@
 #pragma once
 #include "math/matrix.hpp"
 
-template <typename T> class SquareMatrix : public Matrix<T> {
+template <typename T>
+class SquareMatrix : public MatrixBase<SquareMatrix<T>, T> {
+  SquareMatrix(int n, int m) : MatrixBase<SquareMatrix<T>, T>(n, m) {}
+
+  friend MatrixBase<SquareMatrix<T>, T>;
+
 public:
-  SquareMatrix(int n) : Matrix<T>(n, n) {}
+  using value_type = T;
 
-  SquareMatrix(const Matrix<T> &m) : Matrix<T>(m) {}
+  SquareMatrix(int n) : MatrixBase<SquareMatrix<T>, T>(n, n) {}
 
-  SquareMatrix operator/=(const SquareMatrix &m) {
+  SquareMatrix &operator/=(const SquareMatrix &m) {
     return *this *= m.inverse();
   }
 

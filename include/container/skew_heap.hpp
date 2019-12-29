@@ -33,7 +33,7 @@ public:
     --(this->n);
   }
 
-  SkewHeap operator+=(SkewHeap x) {
+  SkewHeap &operator+=(SkewHeap x) {
     this->root = merge(this->root, x.root);
     this->n += x.size();
     return *this;

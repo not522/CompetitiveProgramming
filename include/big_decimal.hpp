@@ -98,7 +98,7 @@ public:
     }
   }
 
-  BigDecimal normal() {
+  BigDecimal &normal() {
     for (int i = 0; i < IntegerSize + DecimalSize - 1; ++i) {
       d[i + 1] += d[i] >> BitSize;
       d[i] &= (1ll << BitSize) - 1;
@@ -131,7 +131,7 @@ public:
     return BigDecimal(*this) %= a;
   }
 
-  BigDecimal operator<<=(int a) {
+  BigDecimal &operator<<=(int a) {
     if (a < 0) {
       return *this >>= -a;
     }
@@ -154,7 +154,7 @@ public:
     return normal();
   }
 
-  BigDecimal operator>>=(int a) {
+  BigDecimal &operator>>=(int a) {
     if (a < 0) {
       return *this <<= -a;
     }
@@ -175,7 +175,7 @@ public:
     return normal();
   }
 
-  BigDecimal operator+=(const BigDecimal &a) {
+  BigDecimal &operator+=(const BigDecimal &a) {
     if (sign == a.sign) {
       for (int i = 0; i < IntegerSize + DecimalSize; ++i) {
         d[i] += a.d[i];
@@ -188,9 +188,9 @@ public:
     return normal();
   }
 
-  BigDecimal operator-=(const BigDecimal &a) { return *this += -a; }
+  BigDecimal &operator-=(const BigDecimal &a) { return *this += -a; }
 
-  BigDecimal operator*=(const BigDecimal &a) {
+  BigDecimal &operator*=(const BigDecimal &a) {
     BigDecimal res = 0;
     for (int i = 0; i < IntegerSize + DecimalSize; ++i) {
       if (i < DecimalSize) {
@@ -203,14 +203,14 @@ public:
     return *this = res.normal();
   }
 
-  BigDecimal operator*=(const unsigned int &a) {
+  BigDecimal &operator*=(const unsigned int &a) {
     for (auto &i : d) {
       i *= a;
     }
     return normal();
   }
 
-  BigDecimal operator/=(const BigDecimal &a) {
+  BigDecimal &operator/=(const BigDecimal &a) {
     if (a == 0) {
       throw "divide by zero";
     }
@@ -222,7 +222,7 @@ public:
     return *this *= rev;
   }
 
-  BigDecimal operator%=(const BigDecimal &a) {
+  BigDecimal &operator%=(const BigDecimal &a) {
     if (a == 0) {
       throw "modulo by zero";
     }
@@ -233,17 +233,17 @@ public:
     return BigDecimal(*this) -= v;
   }
 
-  BigDecimal operator++() { return *this += 1; }
+  BigDecimal &operator++() { return *this += 1; }
 
-  BigDecimal operator++(int) {
+  BigDecimal &operator++(int) {
     BigDecimal bd = *this;
     *this += 1;
     return bd;
   }
 
-  BigDecimal operator--() { return *this -= 1; }
+  BigDecimal &operator--() { return *this -= 1; }
 
-  BigDecimal operator--(int) {
+  BigDecimal &operator--(int) {
     BigDecimal bd = *this;
     *this -= 1;
     return bd;

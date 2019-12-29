@@ -15,21 +15,21 @@ public:
 
   const Bitset &operator[](int n) const { return val[n]; }
 
-  BitsetMatrix operator+=(const BitsetMatrix &m) {
+  BitsetMatrix &operator+=(const BitsetMatrix &m) {
     for (int i = 0; i < size(); ++i) {
       val[i] ^= m[i];
     }
     return *this;
   }
 
-  BitsetMatrix operator-=(const BitsetMatrix &m) {
+  BitsetMatrix &operator-=(const BitsetMatrix &m) {
     for (int i = 0; i < size(); ++i) {
       val[i] ^= m[i];
     }
     return *this;
   }
 
-  BitsetMatrix operator*=(const BitsetMatrix &_m) {
+  BitsetMatrix &operator*=(const BitsetMatrix &_m) {
     BitsetMatrix m = _m.transpose(), res(size());
     for (int i = 0; i < size(); ++i) {
       res[i] = *this * m[i];

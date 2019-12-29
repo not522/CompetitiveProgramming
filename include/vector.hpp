@@ -22,7 +22,7 @@ public:
 
   Vector(int n, Input &in) : Container<std::vector<T>>(n, in) {}
 
-  Vector operator+=(const Vector &v) {
+  Vector &operator+=(const Vector &v) {
     if (this->size() < v.size()) {
       this->resize(v.size());
     }
@@ -32,14 +32,14 @@ public:
     return *this;
   }
 
-  Vector operator+=(const T &v) {
+  Vector &operator+=(const T &v) {
     for (auto &i : *this) {
       i += v;
     }
     return *this;
   }
 
-  Vector operator-=(const Vector &v) {
+  Vector &operator-=(const Vector &v) {
     if (this->size() < v.size()) {
       this->resize(v.size());
     }
@@ -49,49 +49,49 @@ public:
     return *this;
   }
 
-  Vector operator-=(const T &v) {
+  Vector &operator-=(const T &v) {
     for (auto &i : *this) {
       i -= v;
     }
     return *this;
   }
 
-  Vector operator*=(const Vector &v) {
+  Vector &operator*=(const Vector &v) {
     for (int i = 0; i < this->size(); ++i) {
       (*this)[i] *= v[i];
     }
     return *this;
   }
 
-  Vector operator*=(const T &v) {
+  Vector &operator*=(const T &v) {
     for (auto &i : *this) {
       i *= v;
     }
     return *this;
   }
 
-  Vector operator/=(const Vector &v) {
+  Vector &operator/=(const Vector &v) {
     for (int i = 0; i < this->size(); ++i) {
       (*this)[i] /= v[i];
     }
     return *this;
   }
 
-  Vector operator/=(const T &v) {
+  Vector &operator/=(const T &v) {
     for (auto &i : *this) {
       i /= v;
     }
     return *this;
   }
 
-  Vector operator%=(const Vector &v) {
+  Vector &operator%=(const Vector &v) {
     for (int i = 0; i < this->size(); ++i) {
       (*this)[i] %= v[i];
     }
     return *this;
   }
 
-  Vector operator%=(const T &v) {
+  Vector &operator%=(const T &v) {
     for (auto &i : *this) {
       i %= v;
     }
@@ -146,7 +146,7 @@ public:
     cout << end;
   }
 
-  Vector<T> partial_sort(int k, bool reverse = false) {
+  Vector<T> &partial_sort(int k, bool reverse = false) {
     if (!reverse) {
       std::partial_sort(this->begin(), this->begin() + k, this->end());
     } else {
@@ -156,17 +156,17 @@ public:
     return *this;
   }
 
-  Vector<T> sort() {
+  Vector<T> &sort() {
     std::sort(this->begin(), this->end());
     return *this;
   }
 
-  template <typename Function> Vector<T> sort(Function func) {
+  template <typename Function> Vector<T> &sort(Function func) {
     std::sort(this->begin(), this->end(), func);
     return *this;
   }
 
-  Vector<T> rsort() {
+  Vector<T> &rsort() {
     std::sort(this->rbegin(), this->rend());
     return *this;
   }
@@ -181,7 +181,7 @@ public:
     return v.transform(f);
   }
 
-  Vector<T> nth_element(int n, bool reverse = false) {
+  Vector<T> &nth_element(int n, bool reverse = false) {
     if (!reverse) {
       std::nth_element(this->begin(), this->begin() + n, this->end());
     } else {
@@ -217,7 +217,7 @@ public:
     return res;
   }
 
-  Vector<T> reverse() {
+  Vector<T> &reverse() {
     std::reverse(this->begin(), this->end());
     return *this;
   }
@@ -276,7 +276,7 @@ public:
     return res;
   }
 
-  Vector<T> unique() {
+  Vector<T> &unique() {
     this->erase(std::unique(this->begin(), this->end()), this->end());
     return *this;
   }
@@ -285,7 +285,7 @@ public:
     return std::next_permutation(this->begin(), this->end());
   }
 
-  Vector<T> rotate(int n) {
+  Vector<T> &rotate(int n) {
     std::rotate(this->begin(), this->begin() + n, this->end());
     return *this;
   }

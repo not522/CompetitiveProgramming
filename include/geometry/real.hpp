@@ -16,22 +16,22 @@ public:
 
   Real operator-() const { return -val; }
 
-  template <typename T> Real operator+=(const T &r) {
+  template <typename T> Real &operator+=(const T &r) {
     val += static_cast<long double>(r);
     return *this;
   }
 
-  template <typename T> Real operator-=(const T &r) {
+  template <typename T> Real &operator-=(const T &r) {
     val -= static_cast<long double>(r);
     return *this;
   }
 
-  template <typename T> Real operator*=(const T &r) {
+  template <typename T> Real &operator*=(const T &r) {
     val *= static_cast<long double>(r);
     return *this;
   }
 
-  template <typename T> Real operator/=(const T &r) {
+  template <typename T> Real &operator/=(const T &r) {
     val /= static_cast<long double>(r);
     return *this;
   }

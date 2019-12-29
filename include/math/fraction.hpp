@@ -20,28 +20,28 @@ public:
     d /= g;
   }
 
-  Fraction operator+=(const Fraction &f) {
+  Fraction &operator+=(const Fraction &f) {
     n = n * f.d + f.n * d;
     d *= f.d;
     normalize();
     return *this;
   }
 
-  Fraction operator-=(const Fraction &f) {
+  Fraction &operator-=(const Fraction &f) {
     n = n * f.d - f.n * d;
     d *= f.d;
     normalize();
     return *this;
   }
 
-  Fraction operator*=(const Fraction &f) {
+  Fraction &operator*=(const Fraction &f) {
     n *= f.n;
     d *= f.d;
     normalize();
     return *this;
   }
 
-  Fraction operator/=(const Fraction &f) {
+  Fraction &operator/=(const Fraction &f) {
     n *= f.d;
     d *= f.n;
     normalize();

@@ -10,7 +10,7 @@ private:
   public:
     Iterator(int val) : val(val) {}
 
-    Iterator operator*() { return *this; }
+    Iterator &operator*() { return *this; }
 
     bool operator!=(Iterator &itr) { return val != itr.val; }
 

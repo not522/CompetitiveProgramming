@@ -6,7 +6,7 @@
 template <typename T>
 class MultiSet : public std::multiset<T>, public Multiplication<MultiSet<T>> {
 public:
-  MultiSet operator*=(const MultiSet &m) {
+  MultiSet &operator*=(const MultiSet &m) {
     MultiSet a = *this, b = m, res;
     if (a.size() > b.size()) {
       swap(a, b);

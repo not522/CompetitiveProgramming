@@ -27,15 +27,15 @@ public:
     in.eof = std::cin.eof();
   }
 
-  String operator+=(const String &s) { return *this = *this + s; }
+  String &operator+=(const String &s) { return *this = *this + s; }
 
   String operator+(const String &s) const { return std::operator+(*this, s); }
 
-  String operator+=(const char *s) { return *this = *this + s; }
+  String &operator+=(const char *s) { return *this = *this + s; }
 
   String operator+(const char *s) const { return std::operator+(*this, s); }
 
-  String operator+=(char s) { return *this = *this + s; }
+  String &operator+=(char s) { return *this = *this + s; }
 
   String operator+(char s) const { return std::operator+(*this, s); }
 
@@ -50,7 +50,7 @@ public:
     return std::string::substr(pos, n_pos);
   }
 
-  String reverse() {
+  String &reverse() {
     std::reverse(this->begin(), this->end());
     return *this;
   }
@@ -66,14 +66,14 @@ public:
     return res;
   }
 
-  String toupper() {
+  String &toupper() {
     for (auto &c : *this) {
       c = std::toupper(c);
     }
     return *this;
   }
 
-  String tolower() {
+  String &tolower() {
     for (auto &c : *this) {
       c = std::tolower(c);
     }
@@ -90,7 +90,7 @@ public:
     return this->find(s) != std::string::npos;
   }
 
-  String erase(char c) {
+  String &erase(char c) {
     String res;
     for (char i : *this) {
       if (i != c) {
@@ -103,7 +103,7 @@ public:
   int count(char c) const { return std::count(this->begin(), this->end(), c); }
 
   template <bool Repeat = false>
-  String replaceAll(const String &from, const String &to) {
+  String &replaceAll(const String &from, const String &to) {
     for (size_t pos = 0; (pos = this->find(from, pos)) != std::string::npos;) {
       this->replace(pos, from.size(), to);
       if (!Repeat) {
@@ -113,12 +113,12 @@ public:
     return *this;
   }
 
-  String sort() {
+  String &sort() {
     std::sort(this->begin(), this->end());
     return *this;
   }
 
-  String unique() {
+  String &unique() {
     std::string::erase(std::unique(this->begin(), this->end()), this->end());
     return *this;
   }

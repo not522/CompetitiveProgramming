@@ -7,10 +7,10 @@ public:
 
   PermutationMatrix(const Vector<int> &v) : Vector<int>(v) {}
 
-  PermutationMatrix operator*=(const PermutationMatrix &m) {
+  PermutationMatrix &operator*=(const PermutationMatrix &m) {
     PermutationMatrix res(size());
     for (int i = 0; i < size(); ++i) {
-      res[i] = (*this)[const_cast<PermutationMatrix &>(m)[i]];
+      res[i] = (*this)[m[i]];
     }
     return *this = res;
   }
@@ -19,7 +19,7 @@ public:
     return PermutationMatrix(*this) *= m;
   }
 
-  PermutationMatrix operator/=(const PermutationMatrix &m) {
+  PermutationMatrix &operator/=(const PermutationMatrix &m) {
     return *this *= m.inverse();
   }
 

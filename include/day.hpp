@@ -45,7 +45,7 @@ struct Day {
     return this->day < day.day;
   }
 
-  Day operator++() {
+  Day &operator++() {
     ++day;
     if (getMaxDay(year, month) < day) {
       ++month;

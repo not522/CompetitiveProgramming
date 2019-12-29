@@ -16,7 +16,7 @@ public:
 
   Section(int64_t a, int64_t b) { v.emplace_back(a, b); }
 
-  Section operator&=(const Section &s) {
+  Section &operator&=(const Section &s) {
     VAL res;
     for (unsigned i = 0, j = 0; i < v.size() && j < s.v.size();) {
       if (v[i].first < s.v[j].second && s.v[j].first < v[i].second) {
@@ -33,7 +33,7 @@ public:
     return *this;
   }
 
-  Section operator|=(const Section &s) {
+  Section &operator|=(const Section &s) {
     v.insert(v.end(), s.v.begin(), s.v.end());
     sort(v);
     int p = 0;
@@ -50,7 +50,7 @@ public:
     return *this;
   }
 
-  Section operator^=(const Section &s) {
+  Section &operator^=(const Section &s) {
     Section a = *this, b = *this;
     a &= s;
     a.complement();

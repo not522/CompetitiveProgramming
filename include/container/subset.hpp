@@ -10,7 +10,7 @@ private:
   public:
     Iterator(int val, int n) : val(val), n(n) {}
 
-    Iterator operator*() { return *this; }
+    Iterator &operator*() { return *this; }
 
     bool operator!=(const Iterator &itr) const { return n != itr.n; }
 

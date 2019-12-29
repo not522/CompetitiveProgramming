@@ -13,32 +13,32 @@ public:
 
   Point(Input &in) : x(in), y(in) {}
 
-  Point operator+=(const Point &p) {
+  Point &operator+=(const Point &p) {
     x += p.x;
     y += p.y;
     return *this;
   }
 
-  Point operator-=(const Point &p) {
+  Point &operator-=(const Point &p) {
     x -= p.x;
     y -= p.y;
     return *this;
   }
 
-  Point operator*=(const Point &p) {
+  Point &operator*=(const Point &p) {
     Real xx = x * p.x - y * p.y;
     y = x * p.y + y * p.x;
     x = xx;
     return *this;
   }
 
-  Point operator*=(const Real &r) {
+  Point &operator*=(const Real &r) {
     x *= r;
     y *= r;
     return *this;
   }
 
-  Point operator/=(const Point &p) {
+  Point &operator/=(const Point &p) {
     Real nrm = p.norm();
     Real xx = (x * p.x + y * p.y) / nrm;
     y = (y * p.x - x * p.y) / nrm;
@@ -46,7 +46,7 @@ public:
     return *this;
   }
 
-  Point operator/=(const Real &r) {
+  Point &operator/=(const Real &r) {
     x /= r;
     y /= r;
     return *this;

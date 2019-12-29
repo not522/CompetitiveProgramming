@@ -32,7 +32,7 @@ public:
 
   Mint operator-() const { return Mint(val ? mod - val : 0); }
 
-  Mint operator+=(const Mint &m) {
+  Mint &operator+=(const Mint &m) {
     val += m.val;
     if (val >= mod) {
       val -= mod;
@@ -40,7 +40,7 @@ public:
     return *this;
   }
 
-  Mint operator-=(const Mint &m) {
+  Mint &operator-=(const Mint &m) {
     val -= m.val;
     if (val < 0) {
       val += mod;
@@ -48,13 +48,13 @@ public:
     return *this;
   }
 
-  Mint operator*=(const Mint &m) {
+  Mint &operator*=(const Mint &m) {
     val *= m.val;
     val %= mod;
     return *this;
   }
 
-  Mint operator/=(const Mint &m) {
+  Mint &operator/=(const Mint &m) {
     val *= inverse(m.val);
     val %= mod;
     return *this;
@@ -62,9 +62,9 @@ public:
 
   bool operator==(const Mint &m) const { return val == m.val; }
 
-  Mint operator++() { return *this += 1; }
+  Mint &operator++() { return *this += 1; }
 
-  Mint operator--() { return *this -= 1; }
+  Mint &operator--() { return *this -= 1; }
 
   template <typename T> Mint operator-(const T &m) {
     return Arithmetic<Mint>::operator-(m);

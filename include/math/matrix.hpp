@@ -1,38 +1,15 @@
 #pragma once
-#include "ordered.hpp"
+#include "arithmetic.hpp"
 #include "vector.hpp"
 
-template <typename T> class Matrix : public Vector<Vector<T>> {
+template <typename T, typename S>
+class MatrixBase : public Vector<Vector<S>>,
+                   public IndivisibleArithmetic<MatrixBase<T, S>> {
 public:
-  Matrix(int n, int m) : Vector<Vector<T>>(n, Vector<T>(m)) {}
+  MatrixBase(int n, int m) : Vector<Vector<S>>(n, Vector<S>(m)) {}
 
-  Matrix operator+=(const Matrix &m) {
-    for (int i = 0; i < this->size(); ++i) {
-      (*this)[i] += m[i];
-    }
-    return *this;
-  }
-
-  Matrix operator+(const Matrix &m) {
-    auto res = *this;
-    return res += m;
-  }
-
-  Matrix operator-=(const Matrix &m) {
-    for (int i = 0; i < this->size(); ++i) {
-      (*this)[i] -= m[i];
-    }
-    return *this;
-  }
-
-  Matrix operator-(const Matrix &m) {
-    auto res = *this;
-    return res -= m;
-  }
-
-  Matrix operator*=(const Matrix &_m) {
-    Matrix &m = const_cast<Matrix &>(_m);
-    Matrix res(this->size(), m[0].size());
+  template <typename V> T &operator*=(const V &m) {
+    T res(this->size(), m[0].size());
     for (int i = 0; i < this->size(); ++i) {
       for (int j = 0; j < m.size(); ++j) {
         for (int k = 0; k < m[0].size(); ++k) {
@@ -40,19 +17,20 @@ public:
         }
       }
     }
-    return *this = res;
+    *this = res;
+    return static_cast<T &>(*this);
   }
 
-  Matrix operator*(const Matrix &m) const {
-    Matrix res = *this;
-    return res *= m;
-  }
-
-  Vector<T> operator*(const Vector<T> &v) {
-    Vector<T> res(this->size());
+  template <typename V> Vector<S> operator*(const V &v) {
+    Vector<S> res(this->size());
     for (int i = 0; i < this->size(); ++i) {
       res[i] += (*this)[i].inner_product(v);
     }
     return res;
   }
+};
+
+template <typename T> class Matrix : public MatrixBase<Matrix<T>, T> {
+public:
+  Matrix(int n, int m) : MatrixBase<Matrix<T>, T>(n, m) {}
 };

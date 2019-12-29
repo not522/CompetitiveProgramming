@@ -17,7 +17,7 @@ public:
         : val(val), pos(pos) {}
 
   public:
-    reference operator=(const reference &r) {
+    reference &operator=(const reference &r) {
       if (static_cast<bool>(r)) {
         *val |= 1ull << pos;
       } else {
@@ -26,7 +26,7 @@ public:
       return *this;
     }
 
-    reference operator=(const bool b) {
+    reference &operator=(const bool b) {
       if (b) {
         *val |= 1ull << pos;
       } else {
@@ -62,7 +62,7 @@ public:
 
   uint64_t get(int n) const { return Vector<uint64_t>::operator[](n / 64); }
 
-  Bitset operator&=(const Bitset &b) {
+  Bitset &operator&=(const Bitset &b) {
     if (size() < b.size()) {
       resize(b.size());
     }
@@ -72,7 +72,7 @@ public:
     return *this;
   }
 
-  Bitset operator|=(const Bitset &b) {
+  Bitset &operator|=(const Bitset &b) {
     if (size() < b.size()) {
       resize(b.size());
     }
@@ -82,7 +82,7 @@ public:
     return *this;
   }
 
-  Bitset operator^=(const Bitset &b) {
+  Bitset &operator^=(const Bitset &b) {
     if (size() < b.size()) {
       resize(b.size());
     }

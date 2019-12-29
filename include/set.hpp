@@ -12,7 +12,7 @@ public:
 
   Set(const std::initializer_list<T> &s) : Container<std::set<T>>(s) {}
 
-  template <typename S> Set<T> operator&=(const S &a) {
+  template <typename S> Set<T> &operator&=(const S &a) {
     Set<T> r;
     if (this->size() < a.size()) {
       for (const auto &i : *this) {

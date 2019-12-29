@@ -6,7 +6,7 @@ template <typename T> class CirculantMatrix : public Vector<T> {
 public:
   CirculantMatrix(int n) : Vector<T>(n) {}
 
-  CirculantMatrix operator*=(const CirculantMatrix &m) {
+  CirculantMatrix &operator*=(const CirculantMatrix &m) {
     int n = this->size();
     CirculantMatrix res(n);
     for (int i = 0; i < n; ++i) {
@@ -25,7 +25,7 @@ public:
   }
 
   // TODO FFT
-  CirculantMatrix operator/=(const CirculantMatrix &m) {
+  CirculantMatrix &operator/=(const CirculantMatrix &m) {
     int n = this->size();
     SquareMatrix<T> a(n), b(n);
     for (int i = 0; i < n; ++i) {

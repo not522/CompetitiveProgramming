@@ -22,7 +22,7 @@ public:
 
   Polynomial(const int n, const T val) : Vector<T>(n, val) {}
 
-  Polynomial operator+=(const Polynomial &p) {
+  Polynomial &operator+=(const Polynomial &p) {
     for (int i = 0; i < p.size(); ++i) {
       if (int(this->size()) == i) {
         this->emplace_back(p[i]);
@@ -34,7 +34,7 @@ public:
     return *this;
   }
 
-  Polynomial operator-=(const Polynomial &p) {
+  Polynomial &operator-=(const Polynomial &p) {
     for (int i = 0; i < p.size(); ++i) {
       if (int(this->size()) == i) {
         (*this).emplace_back(-p[i]);
@@ -46,7 +46,7 @@ public:
     return *this;
   }
 
-  Polynomial operator*=(const Polynomial &p) {
+  Polynomial &operator*=(const Polynomial &p) {
     int a = this->size(), b = p.size();
     if (min(a, b) <= 256) {
       Polynomial res(a + b - 1);
@@ -88,7 +88,7 @@ public:
     return *this;
   }
 
-  Polynomial operator/=(const Polynomial &p) {
+  Polynomial &operator/=(const Polynomial &p) {
     Polynomial res;
     for (int i = this->size() - p.size(); i >= 0; --i) {
       res[i] = (*this)[p.size() + i - 1] / p.back();
@@ -101,7 +101,7 @@ public:
     return *this;
   }
 
-  Polynomial operator%=(const Polynomial &p) {
+  Polynomial &operator%=(const Polynomial &p) {
     for (int i = int(this->size()) - int(p.size()); i >= 0; --i) {
       T d = (*this)[p.size() + i - 1] / p.back();
       for (int j = 0; j < p.size(); ++j) {
