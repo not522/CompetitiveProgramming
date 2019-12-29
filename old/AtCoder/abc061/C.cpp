@@ -1,15 +1,13 @@
 #include "vector.hpp"
 
 int main() {
-  int64_t n, k;
-  cin >> n >> k;
-  vector<pair<int64_t, int64_t>> p(n);
-  for (int i = 0; i < n; ++i) cin >> p[i].first >> p[i].second;
-  sort(p);
+  int64_t n(in), k(in);
+  Vector<Tuple<int64_t, int64_t>> p(n, in);
+  p.sort();
   for (auto i : p) {
-    k -= i.second;
+    k -= i.get<1>();
     if (k <= 0) {
-      cout << i.first << endl;
+      cout << i.get<0>() << endl;
       return 0;
     }
   }

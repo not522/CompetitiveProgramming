@@ -2,8 +2,6 @@
 #include "graph/lowlink.hpp"
 
 int main() {
-  using MyGraph = AdjacencyList<Edge>;
-  MyGraph graph;
-  cin >> graph;
-  cout << LowLink<MyGraph>(graph).bridge().size() << endl;
+  AdjacencyList<Edge> graph(in);
+  cout << LowLink<AdjacencyList<Edge>>(graph).bridge().size() << endl;
 }

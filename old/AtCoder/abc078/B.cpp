@@ -1,7 +1,6 @@
 #include "template.hpp"
 
 int main() {
-  int x, y, z;
-  cin >> x >> y >> z;
+  int x(in), y(in), z(in);
   cout << (x - z) / (y + z) << endl;
 }

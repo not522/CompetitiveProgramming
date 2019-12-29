@@ -1,9 +1,7 @@
-#include "math/basic.hpp"
+#include "math.hpp"
 
 int main() {
-  int n;
-  cin >> n;
-  vector<int64_t> t(n);
-  cin >> t;
+  int n(in);
+  Vector<int64_t> t(n, in);
   cout << lcm(t) << endl;
 }

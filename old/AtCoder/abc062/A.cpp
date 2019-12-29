@@ -1,8 +1,7 @@
-#include "template.hpp"
+#include "vector.hpp"
 
 int main() {
-  vector<int> a{0, 1, 3, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1};
-  int x, y;
-  cin >> x >> y;
-  cout << (a[x] == a[y] ? "Yes" : "No") << endl;
+  Vector<int> a{0, 1, 3, 1, 2, 1, 2, 1, 1, 2, 1, 2, 1};
+  int x(in), y(in);
+  cout << (a[x] == a[y]) << endl;
 }

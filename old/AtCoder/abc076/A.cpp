@@ -1,7 +1,6 @@
 #include "template.hpp"
 
 int main() {
-  int r, g;
-  cin >> r >> g;
+  int r(in), g(in);
   cout << 2 * g - r << endl;
 }

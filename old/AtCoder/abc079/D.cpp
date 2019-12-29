@@ -2,21 +2,21 @@
 #include "graph/shortest_path.hpp"
 
 int main() {
-  int h, w;
-  cin >> h >> w;
+  int h(in), w(in);
   AdjacencyList<WeightedEdge<int>> graph(10);
   for (int i = 0; i < 10; ++i) {
     for (int j = 0; j < 10; ++j) {
-      int c;
-      cin >> c;
+      int c(in);
       graph[j].emplace_back(i, c);
     }
   }
   auto dis = shortestPath(graph, 1).dis;
-  int res = 0, a;
+  int res = 0;
   for (int i = 0; i < h * w; ++i) {
-    cin >> a;
-    if (a != -1) res += dis[a];
+    int a(in);
+    if (a != -1) {
+      res += dis[a];
+    }
   }
   cout << res << endl;
 }

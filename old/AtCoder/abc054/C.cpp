@@ -2,8 +2,8 @@
 #include "permutation.hpp"
 
 int main() {
-  int n(in), m(in), r = 0;
-  AdjacencyList<Edge> graph(in, n, m);
+  AdjacencyList<Edge> graph(in);
+  int n = graph.size(), r = 0;
   for (const auto &perm : Permutation(n - 1)) {
     bool f = true;
     if (!graph.hasEdge(0, perm[0] + 1)) {

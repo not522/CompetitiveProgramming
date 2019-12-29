@@ -1,7 +1,6 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  string n;
-  cin >> n;
-  cout << (n[0] == '9' || n[1] == '9' ? "Yes" : "No") << endl;
+  String n(in);
+  cout << (n[0] == '9' || n[1] == '9') << endl;
 }

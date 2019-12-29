@@ -12,6 +12,11 @@ public:
 
   AdjacencyList(int n) : graph(n) {}
 
+  AdjacencyList(Input &in, bool undirected = true, bool one_origin = true) {
+    int n(in), m(in);
+    *this = readGraph<AdjacencyList<Edge>>(in, n, m, undirected, one_origin);
+  }
+
   AdjacencyList(Input &in, int n, int m, bool undirected = true,
                 bool one_origin = true) {
     *this = readGraph<AdjacencyList<Edge>>(in, n, m, undirected, one_origin);

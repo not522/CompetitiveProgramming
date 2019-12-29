@@ -1,7 +1,3 @@
 #include "template.hpp"
 
-int main() {
-  int a, b, c;
-  cin >> a >> b >> c;
-  cout << (a ^ b ^ c) << endl;
-}
+int main() { cout << (int(in) ^ int(in) ^ int(in)) << endl; }

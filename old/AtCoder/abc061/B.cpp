@@ -1,14 +1,12 @@
 #include "vector.hpp"
 
 int main() {
-  int n, m;
-  cin >> n >> m;
-  vector<int> c(n);
+  int n(in), m(in);
+  Vector<int> c(n);
   for (int i = 0; i < m; ++i) {
-    int a, b;
-    cin >> a >> b;
+    int a(in), b(in);
     ++c[a - 1];
     ++c[b - 1];
   }
-  cout << c;
+  c.output();
 }

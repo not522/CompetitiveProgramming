@@ -1,9 +1,7 @@
 #include "vector.hpp"
 
 int main() {
-  int n;
-  cin >> n;
-  vector<int> a(n);
-  cin >> a;
-  cout << max(a) - min(a) << endl;
+  int n(in);
+  Vector<int> a(n, in);
+  cout << a.max() - a.min() << endl;
 }

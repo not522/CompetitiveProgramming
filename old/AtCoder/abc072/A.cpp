@@ -1,7 +1,6 @@
 #include "template.hpp"
 
 int main() {
-  int x, t;
-  cin >> x >> t;
+  int x(in), t(in);
   cout << max(x - t, 0) << endl;
 }

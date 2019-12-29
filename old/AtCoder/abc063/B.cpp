@@ -1,7 +1,7 @@
-#include "template.hpp"
+#include "string.hpp"
 
 int main() {
-  string s;
-  cin >> s;
-  cout << (set<char>(s.begin(), s.end()).size() == s.size() ? "yes" : "no") << endl;
+  setBoolName("yes", "no");
+  String s(in);
+  cout << (s.size() == s.unique().size()) << endl;
 }
