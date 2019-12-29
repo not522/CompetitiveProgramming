@@ -1,4 +1,4 @@
-#include "container/bitset.hpp"
+#include "container/bitset64.hpp"
 #include "unordered_map.hpp"
 #include "vector.hpp"
 
@@ -14,7 +14,7 @@ int64_t solve(int bit) {
     return mem[bit];
   }
   int64_t res = 0;
-  for (int i : Bitset(bit)) {
+  for (int i : Bitset64(bit)) {
     if (x.all_of([&](const Tuple<int, int> &p) {
           return (bit & 1 << p.get<0>()) || p.get<1>() != i;
         })) {

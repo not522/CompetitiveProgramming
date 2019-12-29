@@ -242,7 +242,7 @@ public:
   }
 
   T accumulate() const {
-    return std::accumulate(this->begin(), this->end(), T(0));
+    return std::accumulate(this->begin(), this->end(), T());
   }
 
   template <typename S, typename Function>
