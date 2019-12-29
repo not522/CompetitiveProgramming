@@ -46,6 +46,10 @@ public:
     return v;
   }
 
+  String substr(size_t pos, size_t n_pos = std::string::npos) {
+    return std::string::substr(pos, n_pos);
+  }
+
   String reverse() {
     std::reverse(this->begin(), this->end());
     return *this;
