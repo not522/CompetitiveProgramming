@@ -54,7 +54,7 @@ public:
         }
       }
     }
-    return a.accumulate(1, std::multiplies<T>());
+    return a.accumulate(T(1), std::multiplies<T>());
   }
 
   T repetition(int n, int m) {

@@ -25,12 +25,14 @@ def getHeader(file, headers):
             continue
         if line == '' or line[0] != '#' or line[-1] != '"':
             if first:
+                if output != '':
+                    output += '\n'
                 if file[-11:] == 'license.hpp':
                     pass
                 elif file[-3:] == 'hpp':
-                    output += '\n' + comment_out(file.split('/include/')[1])
+                    output += comment_out(file.split('/include/')[1])
                 else:
-                    output += '\n' + comment_out('main.cpp')
+                    output += comment_out('main.cpp')
                 first = False
             output += raw_line
             continue

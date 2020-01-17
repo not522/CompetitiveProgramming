@@ -19,7 +19,7 @@ template <typename Edge> struct DijkstraState {
     return DijkstraState(from, edge, cost + edge.cost);
   }
 
-  bool operator<(const DijkstraState &state) const { return cost > state.cost; }
+  bool operator<(const DijkstraState &state) const { return state.cost < cost; }
 
   int getPos() const { return edge.to; }
 };
@@ -34,17 +34,13 @@ protected:
   PriorityQueue<State> que;
 
   void push(const State &state) {
-    if (dis[state.getPos()] <= state.cost) {
-      return;
+    if (state.cost < dis[state.getPos()]) {
+      que.push(state);
+      dis[state.getPos()] = state.cost;
     }
-    que.push(state);
-    dis[state.getPos()] = state.cost;
   }
 
-  State next() {
-    State now = que.top();
-    return now;
-  }
+  State next() { return que.top(); }
 
   bool isRunning() { return !que.empty(); }
 

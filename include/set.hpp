@@ -30,4 +30,8 @@ public:
     *this = r;
     return *this;
   }
+
+  int count(const T &a) const { return std::set<T>::count(a); }
+
+  int contains(const T &a) const { return count(a) > 0; }
 };

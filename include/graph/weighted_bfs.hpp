@@ -1,5 +1,7 @@
 #pragma once
+#include "deque.hpp"
 #include "graph/search.hpp"
+#include "queue.hpp"
 
 template <typename Edge> struct WeightedBFSState {
   using Cost = typename Edge::CostType;
@@ -68,7 +70,7 @@ private:
   }
 
 public:
-  vector<int> dis;
+  Vector<int> dis;
 
   WeightedBFSDistance(const Graph &graph)
       : WeightedBFS<Graph>(graph), dis(graph.size(), 0) {}

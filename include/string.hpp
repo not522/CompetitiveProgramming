@@ -1,11 +1,12 @@
 #pragma once
 #include "vector.hpp"
 
-#include <set>
 #include <string>
 
 class String : public std::string {
 public:
+  constexpr static auto npos = std::string::npos;
+
   String() : std::string() {}
 
   String(char c) : std::string(1, c) {}
@@ -118,9 +119,46 @@ public:
     return *this;
   }
 
+  String &rsort() {
+    std::sort(this->rbegin(), this->rend());
+    return *this;
+  }
+
   String &unique() {
     std::string::erase(std::unique(this->begin(), this->end()), this->end());
     return *this;
+  }
+
+  String &rotate(int n) {
+    std::rotate(this->begin(), this->begin() + n, this->end());
+    return *this;
+  }
+
+  bool next_permutation() {
+    return std::next_permutation(this->begin(), this->end());
+  }
+
+  template <typename T, typename Function1, typename Function2>
+  T inner_product(const String &v, T init, Function1 func1,
+                  Function2 func2) const {
+    return std::inner_product(this->begin(), this->end(), v.begin(), init,
+                              func1, func2);
+  }
+
+  template <typename Function> int find_if(Function func) const {
+    return std::find_if(this->begin(), this->end(), func) - this->begin();
+  }
+
+  template <typename Function> bool all_of(Function func) const {
+    return std::all_of(this->begin(), this->end(), func);
+  }
+
+  template <typename Function> bool any_of(Function func) const {
+    return std::any_of(this->begin(), this->end(), func);
+  }
+
+  template <typename Function> bool none_of(Function func) const {
+    return std::none_of(this->begin(), this->end(), func);
   }
 
   int size() const { return std::string::size(); }

@@ -27,20 +27,20 @@ public:
     *this = Container<T>(v.begin(), v.end());
   }
 
-  S max() const { return *max_element(this->begin(), this->end()); }
+  S max() const { return *std::max_element(this->begin(), this->end()); }
 
   template <typename Function> auto max(Function func) const {
     std::vector<std::pair<decltype(func(S())), S>> res;
     for (const auto &i : *this) {
       res.emplace_back(func(i), i);
     }
-    return max_element(res.begin(), res.end())->second;
+    return std::max_element(res.begin(), res.end())->second;
   }
 
-  S min() const { return *min_element(this->begin(), this->end()); }
+  S min() const { return *std::min_element(this->begin(), this->end()); }
 
   Tuple<S, S> minmax() const {
-    auto itrs = minmax_element(this->begin(), this->end());
+    auto itrs = std::minmax_element(this->begin(), this->end());
     return Tuple<S, S>(*itrs.first, *itrs.second);
   }
 
@@ -49,19 +49,26 @@ public:
     for (const auto &i : *this) {
       res.emplace_back(func(i), i);
     }
-    return min_element(res.begin(), res.end())->second;
+    return std::min_element(res.begin(), res.end())->second;
   }
 
   int argmax() const {
-    return max_element(this->begin(), this->end()) - this->begin();
+    return std::distance(this->begin(),
+                         std::max_element(this->begin(), this->end()));
   }
 
   int argmin() const {
-    return min_element(this->begin(), this->end()) - this->begin();
+    return std::distance(this->begin(),
+                         std::min_element(this->begin(), this->end()));
+  }
+
+  int find(const S &a) const {
+    return std::distance(this->begin(),
+                         std::find(this->begin(), this->end(), a));
   }
 
   bool contains(const S &a) const {
-    return find(this->begin(), this->end(), a) != this->end();
+    return std::find(this->begin(), this->end(), a) != this->end();
   }
 
   int size() const { return T::size(); }
@@ -84,5 +91,19 @@ public:
 
   int count(const S &s) const {
     return std::count(this->begin(), this->end(), s);
+  }
+
+  bool is_sorted() const { return std::is_sorted(this->begin(), this->end()); }
+
+  void output(std::string sep = "\n", std::string end = "\n") const {
+    bool first = true;
+    for (const auto &i : *this) {
+      if (!first) {
+        cout << sep;
+      }
+      first = false;
+      cout << i;
+    }
+    cout << end;
   }
 };

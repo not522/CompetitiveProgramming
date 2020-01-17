@@ -47,13 +47,12 @@ public:
   Vector<Edge> getEdges(int from) const { return graph[from]; }
 
   Edge getEdge(int from, int to) const {
-    Edge res;
     for (const auto &edge : graph[from]) {
       if (edge.to == to) {
-        res = edge;
+        return edge;
       }
     }
-    return res;
+    return Edge();
   }
 
   bool hasEdge(int from, int to) const {

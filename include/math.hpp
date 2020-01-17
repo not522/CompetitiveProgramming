@@ -94,8 +94,19 @@ template <typename T> T clamp(T v, T l, T u) {
   return v < l ? l : v > u ? u : v;
 }
 
-template <typename T> T hypot(T a, T b) { return std::hypot(a, b); }
+template <typename T> auto hypot(T a, T b) { return std::hypot(a, b); }
 
-template <typename T> T pow(T a, T b) { return std::pow(a, b); }
+template <typename T> auto pow(T a, T b) { return std::pow(a, b); }
 
-template <typename T> T log10(T a) { return std::log10(a); }
+template <typename T> auto log10(T a) { return std::log10(a); }
+
+template <typename T> T sqrt_int(T a) {
+  T x = std::sqrt(a);
+  while (x * x > a) {
+    --x;
+  }
+  while ((x + 1) * (x + 1) < a) {
+    ++x;
+  }
+  return x;
+}

@@ -21,8 +21,13 @@ std::ostream &operator<<(std::ostream &s, const Edge &edge) {
 
 template <typename Cost> struct WeightedEdge : public Edge {
   using CostType = Cost;
+
   Cost cost;
-  WeightedEdge(int to = -1, Cost cost = 0) : Edge(to), cost(cost) {}
+
+  WeightedEdge(int to = -1) : Edge(to), cost() {}
+
+  template <typename... Args>
+  WeightedEdge(int to, Args... args) : Edge(to), cost(args...) {}
 
   WeightedEdge(Input &in) : Edge(in), cost(in) {}
 };

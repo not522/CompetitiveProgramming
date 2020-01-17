@@ -22,6 +22,8 @@ public:
 
   Polynomial(const int n, const T val) : Vector<T>(n, val) {}
 
+  Polynomial(const int n, Input &in) : Vector<T>(n, in) {}
+
   Polynomial &operator+=(const Polynomial &p) {
     for (int i = 0; i < p.size(); ++i) {
       if (int(this->size()) == i) {

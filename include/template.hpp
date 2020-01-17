@@ -40,7 +40,8 @@ struct Input {
 
   operator char() {
     char v;
-    this->eof = (std::scanf("%c", &v) != 1);
+    while (!(this->eof = (std::scanf("%c", &v) != 1)) && std::isspace(v)) {
+    }
     return v;
   }
 
@@ -97,17 +98,19 @@ struct Input {
 
 template <typename T> T abs(T a) { return a >= 0 ? a : -a; }
 
-template <typename T> bool chmin(T &a, T b) {
+template <typename T, typename S> bool chmin(T &a, const S &b) {
   return a > b ? a = b, true : false;
 }
 
-template <typename T> bool chmax(T &a, T b) {
+template <typename T, typename S> bool chmax(T &a, const S &b) {
   return a < b ? a = b, true : false;
 }
 
 template <typename T, typename S> std::function<S(T)> cast() {
   return [](const T &t) { return static_cast<S>(t); };
 }
+
+template <typename T> T copy(const T &a) { return T(a); }
 
 class ZeroPadding {
 public:

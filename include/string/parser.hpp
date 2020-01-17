@@ -7,7 +7,7 @@ template <typename T> struct Digit {
     if (!isdigit(s[p])) {
       throw "empty term";
     }
-    if (s[p] == '0' && p + 1 < int(s.size()) && !isdigit(s[p + 1])) {
+    if (s[p] == '0' && p + 1 < s.size() && isdigit(s[p + 1])) {
       throw "leading zeros";
     }
     String res;
@@ -88,7 +88,11 @@ public:
   int64_t parse(const String &s) {
     this->s = s;
     p = 0;
-    return expr(0);
+    auto res = expr(0);
+    if (p != s.size()) {
+      throw "format error";
+    }
+    return res;
   }
 };
 

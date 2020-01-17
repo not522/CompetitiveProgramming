@@ -1,13 +1,13 @@
 CC = g++
 FLAGS = -Wall -Wextra -Werror -Wold-style-cast -std=gnu++14 -I../include
 SRCS = $(shell find * -name "*.cpp" | sort)
-OBJS = $(patsubst %.cpp,%.o,$(SRCS))
+EXES = $(patsubst %.cpp,%.exe,$(SRCS))
 DEPS = $(patsubst %.cpp,%.d,$(SRCS))
 DIFF = $(patsubst %.cpp,%.diff,$(SRCS))
 
-all: $(OBJS)
+all: $(EXES)
 
-.cpp.o:
+%.exe: %.cpp
 	$(CC) $< $(FLAGS) -O0 -c -MMD -MP -o $@
 
 format: $(DIFF)
@@ -18,7 +18,7 @@ format: $(DIFF)
 	touch $@
 
 clean:
-	rm -f $(shell find * -name "*.o")
+	rm -f $(shell find * -name "*.exe")
 	rm -f $(shell find * -name "*.d")
 	rm -f $(shell find * -name "*.diff")
 

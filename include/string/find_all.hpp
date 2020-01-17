@@ -1,10 +1,10 @@
 #pragma once
-#include "template.hpp"
+#include "string.hpp"
 
-vector<int> find_all(const string &s1, const string &s2) {
-  vector<int> res;
+Vector<int> find_all(const String &s1, const String &s2) {
+  Vector<int> res;
   auto pos = s1.find(s2);
-  while (pos != string::npos) {
+  while (pos != String::npos) {
     res.emplace_back(pos);
     pos = s1.find(s2, pos + 1);
   }

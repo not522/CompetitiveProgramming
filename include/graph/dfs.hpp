@@ -29,10 +29,7 @@ private:
 
   void push(const State &state) { st.push(state); }
 
-  State next() {
-    State now = st.top();
-    return now;
-  }
+  State next() { return st.top(); }
 
   bool isRunning() { return !st.empty(); }
 

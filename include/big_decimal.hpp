@@ -1,6 +1,6 @@
 #pragma once
 #include "arithmetic.hpp"
-#include "ordered.hpp"
+#include "string.hpp"
 
 #include <array>
 #include <cmath>
@@ -39,7 +39,7 @@ public:
     normal();
   }
 
-  BigDecimal(std::string str) {
+  BigDecimal(String str) {
     *this = BigDecimal(0);
     bool minus = false;
     if (str[0] == '-') {
@@ -48,7 +48,7 @@ public:
     }
     BigDecimal t = 1;
     bool decimal = false;
-    for (unsigned i = 0; i < str.size(); ++i) {
+    for (int i = 0; i < str.size(); ++i) {
       if (str[i] == '.') {
         decimal = true;
       } else {
@@ -98,6 +98,8 @@ public:
     }
   }
 
+  BigDecimal(Input &in) { *this = BigDecimal(String(in)); }
+
   BigDecimal &normal() {
     for (int i = 0; i < IntegerSize + DecimalSize - 1; ++i) {
       d[i + 1] += d[i] >> BitSize;
@@ -113,7 +115,7 @@ public:
     if (d.back() >= (1ll << BitSize)) {
       throw "overflow";
     }
-    if (all_of(d.begin(), d.end(), [](int64_t i) { return i == 0; })) {
+    if (std::all_of(d.begin(), d.end(), [](int64_t i) { return i == 0; })) {
       sign = PLUS;
     }
     return *this;
@@ -297,8 +299,8 @@ public:
     return res;
   }
 
-  std::string toString(int digit = 100, std::string mode = "near") const {
-    std::string str;
+  String toString(int digit = 100, String mode = "near") const {
+    String str;
     BigDecimal a = *this, bd = 1;
     if (a.sign == MINUS) {
       str += "-";
@@ -340,7 +342,7 @@ public:
       }
       if (d > 9) {
         d -= 10;
-        std::string::iterator itr = str.end();
+        auto itr = str.end();
         while (true) {
           if (itr == str.begin()) {
             str = "1" + str;
@@ -426,15 +428,6 @@ std::ostream &operator<<(std::ostream &os,
                          BigDecimal<IntegerSize, DecimalSize> a) {
   os << a.toString(os.precision());
   return os;
-}
-
-template <int IntegerSize, int DecimalSize>
-std::istream &operator>>(std::istream &is,
-                         BigDecimal<IntegerSize, DecimalSize> &a) {
-  std::string str;
-  is >> str;
-  a = BigDecimal<IntegerSize, DecimalSize>(str);
-  return is;
 }
 
 template <int IntegerSize, int DecimalSize>

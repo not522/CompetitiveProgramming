@@ -21,7 +21,11 @@ public:
     return static_cast<T &>(*this);
   }
 
-  template <typename V> Vector<S> operator*(const V &v) {
+  template <typename V> T operator*(const V &m) const {
+    return copy(*this) *= m;
+  }
+
+  Vector<S> operator*(const Vector<S> &v) {
     Vector<S> res(this->size());
     for (int i = 0; i < this->size(); ++i) {
       res[i] += (*this)[i].inner_product(v);

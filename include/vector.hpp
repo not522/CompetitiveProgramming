@@ -4,8 +4,7 @@
 
 #include <numeric>
 
-template <typename T>
-class Vector : public Container<std::vector<T>>, public Ordered<Vector<T>> {
+template <typename T> class Vector : public Container<std::vector<T>> {
 public:
   Vector() = default;
 
@@ -118,32 +117,10 @@ public:
 
   Vector operator%(const T &v) const { return Vector(*this) %= v; }
 
-  bool operator<(const Vector &v) const {
-    if (this->size() != v.size()) {
-      return this->size() < v.size();
-    }
-    for (int i = 0; i < this->size(); ++i) {
-      if ((*this)[i] != v[i]) {
-        return (*this)[i] < v[i];
-      }
-    }
-    return false;
-  }
-
   Vector operator-() const { return *this * -1; }
 
   T inner_product(const Vector<T> &v) const {
     return std::inner_product(this->begin(), this->end(), v.begin(), T(0));
-  }
-
-  void output(std::string sep = "\n", std::string end = "\n") const {
-    if (!this->empty()) {
-      cout << (*this)[0];
-    }
-    for (int i = 1; i < this->size(); ++i) {
-      cout << sep << (*this)[i];
-    }
-    cout << end;
   }
 
   Vector<T> &partial_sort(int k, bool reverse = false) {
