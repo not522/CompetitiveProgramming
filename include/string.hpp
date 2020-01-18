@@ -161,6 +161,16 @@ public:
     return std::none_of(this->begin(), this->end(), func);
   }
 
+  Vector<int> find_all(const String &s) const {
+    Vector<int> res;
+    auto pos = this->find(s);
+    while (pos != String::npos) {
+      res.emplace_back(pos);
+      pos = this->find(s, pos + 1);
+    }
+    return res;
+  }
+
   int size() const { return std::string::size(); }
 
   operator int() const { return std::stoi(*this); }
