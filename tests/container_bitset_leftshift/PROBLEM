@@ -1,0 +1,7 @@
+problem(
+    time_limit=1.0,
+    wiki_name='container_bitset_leftshift',
+    assignees=['not'],
+    reference_solution='ref',
+    need_custom_judge=False
+)

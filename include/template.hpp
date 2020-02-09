@@ -38,6 +38,12 @@ struct Input {
 
   Input() : eof(false) {}
 
+  operator bool() {
+    int v;
+    this->eof = (std::scanf("%d", &v) != 1);
+    return v;
+  }
+
   operator char() {
     char v;
     while (!(this->eof = (std::scanf("%c", &v) != 1)) && std::isspace(v)) {
