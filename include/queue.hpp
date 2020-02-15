@@ -15,7 +15,7 @@ public:
     return res;
   }
 
-  T peek() const { return std::queue<T>::top(); }
+  T peek() const { return std::queue<T>::front(); }
 
-  void pop() const { assert(false); }
+  void pop() { std::queue<T>::pop(); }
 };
