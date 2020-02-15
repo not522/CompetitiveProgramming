@@ -40,6 +40,14 @@ public:
 
   String operator+(char s) const { return std::operator+(*this, s); }
 
+  String operator*(int n) const {
+    String res;
+    for (int i = 0; i < n; ++i) {
+      res += *this;
+    }
+    return res;
+  }
+
   static String getline() {
     String v;
     std::getline(std::cin, v);
