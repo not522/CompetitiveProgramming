@@ -10,7 +10,7 @@ int main() {
     for (int i = 0; i < n; ++i) {
       v[i] = (q - p[i]) * w[i];
     }
-    return v.nth_element(k).subvector(k).accumulate();
+    return v.nth_element(k).subvector(0, k).accumulate();
   };
   cout << bisectionMethod(f) << endl;
 }

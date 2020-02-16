@@ -168,11 +168,10 @@ public:
     return *this;
   }
 
-  Vector<T> subvector(int a) const {
-    return Vector<T>(this->begin(), this->begin() + a);
-  }
-
-  Vector<T> subvector(int a, int b) const {
+  Vector<T> subvector(int a, int b = -1) const {
+    if (b == -1) {
+      return Vector<T>(this->begin() + a, this->end());
+    }
     return Vector<T>(this->begin() + a, this->begin() + b);
   }
 

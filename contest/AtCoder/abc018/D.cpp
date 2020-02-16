@@ -14,7 +14,7 @@ int main() {
         v[y[i]] += z[i];
       }
     }
-    chmax(res, v.nth_element(q, true).subvector(q).accumulate());
+    chmax(res, v.nth_element(q, true).subvector(0, q).accumulate());
   }
   cout << res << endl;
 }

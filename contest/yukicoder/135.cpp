@@ -7,6 +7,6 @@ int main() {
   if (x.size() == 1) {
     cout << 0 << endl;
   } else {
-    cout << x.subvector(1, x.size()).min() << endl;
+    cout << x.subvector(1).min() << endl;
   }
 }
