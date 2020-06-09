@@ -6,7 +6,7 @@ struct Time : public Addition<Time>, public Subtraction<Time> {
 
   Time() : hour(0), minute(0), second(0) {}
 
-  Time(int hour, int minute, int second)
+  Time(int hour, int minute = 0, int second = 0)
       : hour(hour), minute(minute), second(second) {
     normalize();
   }
