@@ -1,6 +1,29 @@
 #pragma once
 #include "template.hpp"
 
+template <typename T> struct is_integral;
+
+template <> struct is_integral<int> { using value_type = int; };
+
+template <> struct is_integral<long> { using value_type = long; };
+
+template <> struct is_integral<long long> { using value_type = long long; };
+
+template <> struct is_integral<unsigned> { using value_type = unsigned; };
+
+template <> struct is_integral<unsigned long> {
+  using value_type = unsigned long;
+};
+
+template <> struct is_integral<unsigned long long> {
+  using value_type = unsigned long long;
+};
+
+template <typename T> typename is_integral<T>::value_type identity(const T &m) {
+  (void)m;
+  return T(1);
+}
+
 template <typename T> auto identity(const T &m) -> decltype(T::identity(0)) {
   return T::identity(m.size());
 }

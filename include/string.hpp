@@ -193,3 +193,7 @@ public:
 
   operator long double() const { return std::stold(*this); }
 };
+
+bool islower(char c) { return 'a' <= c && c <= 'z'; }
+
+bool isupper(char c) { return 'a' <= c && c <= 'z'; }
