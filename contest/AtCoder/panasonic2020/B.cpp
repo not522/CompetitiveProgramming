@@ -1,4 +1,4 @@
-#include  "math.hpp"
+#include "math.hpp"
 
 int main() {
   int64_t h(in), w(in);
