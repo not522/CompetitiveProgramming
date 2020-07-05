@@ -226,6 +226,14 @@ public:
     return std::accumulate(this->begin(), this->end(), n, func);
   }
 
+  Vector<T> maximum(T t) const {
+    return this->transform([&](T i) { return max(i, t); });
+  }
+
+  Vector<T> minimum(T t) const {
+    return this->transform([&](T i) { return min(i, t); });
+  }
+
   template <typename Int> static Vector<T> makeVector(Int n) {
     return Vector<T>(n);
   }
