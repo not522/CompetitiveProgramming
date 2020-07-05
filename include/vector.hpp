@@ -198,10 +198,6 @@ public:
     return *this;
   }
 
-  template <typename Function> int count_if(Function func) const {
-    return std::count_if(this->begin(), this->end(), func);
-  }
-
   Vector<T> adjacent_difference() const {
     Vector<T> res;
     std::adjacent_difference(this->begin(), this->end(),

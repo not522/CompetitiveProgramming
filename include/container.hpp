@@ -67,6 +67,11 @@ public:
                          std::find(this->begin(), this->end(), a));
   }
 
+  template <typename Function> int find_if(Function func) const {
+    return std::distance(this->begin(),
+                         std::find_if(this->begin(), this->end(), func));
+  }
+
   bool contains(const S &a) const {
     return std::find(this->begin(), this->end(), a) != this->end();
   }
@@ -91,6 +96,10 @@ public:
 
   int count(const S &s) const {
     return std::count(this->begin(), this->end(), s);
+  }
+
+  template <typename Function> int count_if(Function func) const {
+    return std::count_if(this->begin(), this->end(), func);
   }
 
   bool is_sorted() const { return std::is_sorted(this->begin(), this->end()); }
