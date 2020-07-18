@@ -1,8 +1,8 @@
 #pragma once
 #include "vector.hpp"
 
-#include <string>
 #include <sstream>
+#include <string>
 
 class String : public std::string {
 public:
