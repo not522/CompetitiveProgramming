@@ -2,6 +2,7 @@
 #include "vector.hpp"
 
 #include <string>
+#include <sstream>
 
 class String : public std::string {
 public:
