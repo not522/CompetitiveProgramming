@@ -6,7 +6,7 @@ template <typename Graph>
 typename Graph::EdgeType::CostType bellman_ford(const Graph &graph, int from,
                                                 int to) {
   using Cost = typename Graph::EdgeType::CostType;
-  constexpr auto NEGATIVE_INF = std::numeric_limits<Cost>::lowest();
+  constexpr auto NEGATIVE_INF = -inf<Cost>();
   Vector<Cost> cost(graph.size(), inf<Cost>());
   Queue<int> que;
   Vector<bool> in(graph.size());

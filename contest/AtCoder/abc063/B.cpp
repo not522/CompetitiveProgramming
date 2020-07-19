@@ -3,5 +3,5 @@
 int main() {
   setBoolName("yes", "no");
   String s(in);
-  cout << (s.size() == s.unique().size()) << endl;
+  cout << (s.size() == s.sort().unique().size()) << endl;
 }
