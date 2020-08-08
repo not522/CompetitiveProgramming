@@ -119,6 +119,10 @@ public:
 
   Vector operator-() const { return *this * -1; }
 
+  Vector &operator++() { return *this += 1; }
+
+  Vector &operator--() { return *this -= 1; }
+
   T inner_product(const Vector<T> &v) const {
     return std::inner_product(this->begin(), this->end(), v.begin(), T(0));
   }

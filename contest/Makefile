@@ -1,5 +1,5 @@
 CC = g++
-FLAGS = -Wall -Wextra -Werror -Wold-style-cast -std=gnu++14 -I../include
+FLAGS = -Wall -Wextra -Werror -Wold-style-cast -std=gnu++17 -I../include
 SRCS = $(shell find * -name "*.cpp" | sort)
 EXES = $(patsubst %.cpp,%.exe,$(SRCS))
 DEPS = $(patsubst %.cpp,%.d,$(SRCS))
