@@ -10,8 +10,7 @@ int main() {
   UnionFind uf(h * w);
   for (int i = 0; i < h; ++i) {
     for (int j = 0; j < w; ++j) {
-      for (auto k : AdjacentLoop<2>(i, j, h, w)) {
-        int ii = k.get<0>(), jj = k.get<1>();
+      for (auto [ii, jj] : AdjacentLoop<2>(i, j, h, w)) {
         if (abs(b[i][j] - b[ii][jj]) <= 1) {
           uf.unite(i * w + j, ii * w + jj);
         }

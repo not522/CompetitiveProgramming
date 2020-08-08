@@ -15,5 +15,5 @@ int main() {
   for (auto i : res) {
     cout << i.get<0>() << " " << i.get<1>() << endl;
   }
-  static_cast<int>(in);
+  (void)static_cast<int>(in);
 }

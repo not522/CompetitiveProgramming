@@ -15,12 +15,9 @@ int main() {
   k.sort();
   Mint res = 0;
   for (auto i : k) {
-    int u, y, x;
-    std::tie(u, y, x) = i;
+    auto [u, y, x] = i;
     res += dp[y][x];
-    for (auto t : AdjacentLoop<4>(y, x, h, w)) {
-      int yy, xx;
-      std::tie(yy, xx) = t;
+    for (auto [yy, xx] : AdjacentLoop<4>(y, x, h, w)) {
       if (a[yy][xx] > u) {
         dp[yy][xx] += dp[y][x];
       }

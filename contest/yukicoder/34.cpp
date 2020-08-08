@@ -13,8 +13,7 @@ int main() {
   while (!que.empty()) {
     auto now = que.front();
     int y = now.get<0>(), x = now.get<1>();
-    for (auto i : AdjacentLoop<4>(y, x, n, n)) {
-      int yy = i.get<0>(), xx = i.get<1>();
+    for (auto [yy, xx] : AdjacentLoop<4>(y, x, n, n)) {
       if (!chmax(u[yy][xx], u[y][x] - l[yy][xx])) {
         continue;
       }

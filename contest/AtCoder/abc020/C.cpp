@@ -11,9 +11,7 @@ int main() {
     AdjacencyList<WeightedEdge<int64_t>> graph(h * w);
     for (int i = 0; i < h; ++i) {
       for (int j = 0; j < w; ++j) {
-        for (auto p : AdjacentLoop<4>(i, j, h, w)) {
-          int ii, jj;
-          std::tie(ii, jj) = p;
+        for (auto [ii, jj] : AdjacentLoop<4>(i, j, h, w)) {
           graph.addEdge(i * w + j, ii * w + jj, s[ii][jj] == '#' ? n : 1);
         }
       }

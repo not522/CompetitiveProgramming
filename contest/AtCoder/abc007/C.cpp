@@ -16,8 +16,7 @@ int main() {
       if (v[i][j] == '#') {
         continue;
       }
-      for (auto k : AdjacentLoop<4>(i, j, r, c)) {
-        int ii = k.get<0>(), jj = k.get<1>();
+      for (auto [ii, jj] : AdjacentLoop<4>(i, j, r, c)) {
         if (v[ii][jj] != '#') {
           graph.addEdge(i * c + j, ii * c + jj);
         }

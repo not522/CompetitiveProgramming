@@ -2,7 +2,7 @@
 
 int main() {
   int n(in), k(in);
-  static_cast<int>(in);
+  (void)static_cast<int>(in);
   Vector<int> aa, bb, r;
   auto v = iota<int>(n);
   auto u = iota<int>(n);
