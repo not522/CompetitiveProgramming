@@ -180,6 +180,15 @@ public:
     return res;
   }
 
+  bool isPalindrome() const {
+    for (int i = 0; i < this->size() / 2; ++i) {
+      if ((*this)[i] != (*this)[this->size() - i - 1]) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   int size() const { return std::string::size(); }
 
   operator int() const { return std::stoi(*this); }
