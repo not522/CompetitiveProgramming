@@ -2,12 +2,12 @@
 
 int main() {
   int r(in), c(in), k(in);
-  auto bd = Vector<int64_t>(r + 1, c + 1);
+  auto bd = Vector<int64_t>::makeVector(r + 1, c + 1);
   for (int i = 0; i < k; ++i) {
     int a(in), b(in), v(in);
     bd[a][b] = v;
   }
-  auto dp = Vector<int64_t> dp = makeVector(r + 1, c + 1, 4);
+  auto dp = Vector<int64_t>::makeVector(r + 1, c + 1, 4);
   for (int i = 1; i <= r; ++i) {
     for (int j = 1; j <= c; ++j) {
       for (int a = 0; a <= 3; ++a) {
