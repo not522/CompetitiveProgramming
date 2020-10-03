@@ -22,7 +22,8 @@ int main() {
   int res = 0;
   for (int i = 0; i < n; ++i) {
     for (int j = 1; i + j <= n; ++j) {
-      if (sum_a.sum(i, i + j) == sum_t.sum(i, i + j) && sum_c.sum(i, i + j) == sum_g.sum(i, i + j)) {
+      if (sum_a.sum(i, i + j) == sum_t.sum(i, i + j) &&
+          sum_c.sum(i, i + j) == sum_g.sum(i, i + j)) {
         ++res;
       }
     }
