@@ -21,6 +21,17 @@ public:
 
   Vector(int n, Input &in) : Container<std::vector<T>>(n, in) {}
 
+  Vector &operator=(const Vector<T> &v) = default;
+
+  Vector &operator=(Vector<T> &&v) = default;
+
+  template <typename S> Vector &operator=(const S &v) {
+    for (auto &i : *this) {
+      i = v;
+    }
+    return *this;
+  }
+
   Vector &operator+=(const Vector &v) {
     if (this->size() < v.size()) {
       this->resize(v.size());
