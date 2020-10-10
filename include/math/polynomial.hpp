@@ -1,5 +1,6 @@
 #pragma once
 #include "math/fft.hpp"
+#include "math/pow.hpp"
 #include "vector.hpp"
 
 template <typename T> class Polynomial : public Vector<T> {
@@ -22,7 +23,44 @@ public:
 
   Polynomial(const int n, const T val) : Vector<T>(n, val) {}
 
+  Polynomial(const std::initializer_list<T> &v) : Vector<T>(v) {}
+
   Polynomial(const int n, Input &in) : Vector<T>(n, in) {}
+
+  Polynomial &operator+=(const T &t) {
+    for (auto &v : *this) {
+      v += t;
+    }
+    return *this;
+  }
+
+  Polynomial &operator-=(const T &t) {
+    for (auto &v : *this) {
+      v -= t;
+    }
+    return *this;
+  }
+
+  Polynomial &operator*=(const T &t) {
+    for (auto &v : *this) {
+      v *= t;
+    }
+    return *this;
+  }
+
+  Polynomial &operator/=(const T &t) {
+    for (auto &v : *this) {
+      v /= t;
+    }
+    return *this;
+  }
+
+  Polynomial &operator%=(const T &t) {
+    for (auto &v : *this) {
+      v %= t;
+    }
+    return *this;
+  }
 
   Polynomial &operator+=(const Polynomial &p) {
     for (int i = 0; i < p.size(); ++i) {
@@ -91,7 +129,7 @@ public:
   }
 
   Polynomial &operator/=(const Polynomial &p) {
-    Polynomial res;
+    Polynomial res(this->size() - p.size() + 1);
     for (int i = this->size() - p.size(); i >= 0; --i) {
       res[i] = (*this)[p.size() + i - 1] / p.back();
       for (int j = 0; j < p.size(); ++j) {
@@ -112,6 +150,32 @@ public:
     }
     normalize();
     return *this;
+  }
+
+  template <typename S> T operator()(const S &s) const {
+    T res = 0;
+    for (int i = 0; i < this->size(); ++i) {
+      res += (*this)[i] * pow(s, i);
+    }
+    return res;
+  }
+
+  Polynomial &integrate() {
+    Polynomial res(this->size() + 1);
+    for (int i = 0; i < this->size(); ++i) {
+      res[i + 1] = (*this)[i] / (i + 1);
+    }
+    *this = res;
+    normalize();
+    return *this;
+  }
+
+  Polynomial &differentiate() {
+    Polynomial res(this->size() - 1);
+    for (int i = 1; i < this->size(); ++i) {
+      res[i - 1] = i * (*this)[i];
+    }
+    return *this = res;
   }
 
   static constexpr Polynomial identity() { return Polynomial(1, 1); }
