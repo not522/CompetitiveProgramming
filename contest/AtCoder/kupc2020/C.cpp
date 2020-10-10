@@ -15,7 +15,8 @@ int main() {
   for (int i = 1; i < 13; ++i) {
     for (int j = 1; j < 13; ++j) {
       for (int k = 0; k < 26; ++k) {
-        if (!s.contains(makeTuple(v[i - 1][j], k)) && !s.contains(makeTuple(v[i][j - 1], k))) {
+        if (!s.contains(makeTuple(v[i - 1][j], k)) &&
+            !s.contains(makeTuple(v[i][j - 1], k))) {
           v[i][j] = k;
           s.emplace(v[i - 1][j], k);
           s.emplace(v[i][j - 1], k);
