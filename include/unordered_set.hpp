@@ -15,6 +15,8 @@ public:
   UnorderedSet(const std::initializer_list<T> &s)
       : Container<std::unordered_set<T>>(s) {}
 
+  UnorderedSet(int n, Input &in) : Container<std::unordered_set<T>>(n, in) {}
+
   template <typename S> UnorderedSet<T> &operator&=(const S &a) {
     UnorderedSet<T> r;
     if (this->size() < a.size()) {
