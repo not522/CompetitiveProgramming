@@ -12,6 +12,8 @@ public:
 
   Set(const std::initializer_list<T> &s) : Container<std::set<T>>(s) {}
 
+  Set(int n, Input &in) : Container<std::set<T>>(n, in) {}
+
   template <typename S> Set<T> &operator&=(const S &a) {
     Set<T> r;
     if (this->size() < a.size()) {
