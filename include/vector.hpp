@@ -320,6 +320,16 @@ void read(Vector<T> &t, Vector<S> &s, Vector<U> &u) {
   }
 }
 
+template <typename T, typename S, typename U, typename V>
+void read(Vector<T> &t, Vector<S> &s, Vector<U> &u, Vector<V> &v) {
+  for (int i = 0; i < t.size(); ++i) {
+    t[i] = T(in);
+    s[i] = S(in);
+    u[i] = U(in);
+    v[i] = V(in);
+  }
+}
+
 template <typename T> Vector<T> operator+(const T &a, const Vector<T> &b) {
   return b + a;
 }
