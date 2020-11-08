@@ -5,7 +5,7 @@ int main() {
   Mint res;
   Combination<Mint> comb;
   for (int i = 1; i <= s / 3; ++i) {
-    res += comb.combination(s - 3 * i + i - 1, i - 1);
+    res += comb.repetition(i, s - 3 * i);
   }
   cout << res << endl;
 }
