@@ -71,3 +71,7 @@ std::ostream &operator<<(std::ostream &os, const Point &point) {
   os << point.x << " " << point.y;
   return os;
 }
+
+Point polar(const Real &r, const Real &theta) {
+  return Point(r * cos(theta), r * sin(theta));
+}

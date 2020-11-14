@@ -67,3 +67,7 @@ std::ostream &operator<<(std::ostream &os, const Real &a) {
   os << static_cast<long double>(a);
   return os;
 }
+
+const Real PI = std::acos(static_cast<long double>(-1));
+
+Real deg2rad(const Real &d) { return d / 180 * PI; }
