@@ -15,6 +15,8 @@ using std::max;
 using std::min;
 using std::swap;
 
+#define debug(x) (cerr << __LINE__ << " " << #x << " " << (x) << endl)
+
 struct BoolName : std::numpunct<char> {
   std::string t, f;
   BoolName(std::string t, std::string f) : t(t), f(f) {}
