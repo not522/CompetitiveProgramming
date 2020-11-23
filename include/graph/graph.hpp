@@ -38,6 +38,23 @@ std::ostream &operator<<(std::ostream &s, const WeightedEdge<Cost> &edge) {
   return s;
 }
 
+template <typename Label> struct LabeledEdge : public Edge {
+  Label label;
+
+  LabeledEdge(int to = -1) : Edge(to), label() {}
+
+  template <typename... Args>
+  LabeledEdge(int to, Args... args) : Edge(to), label(args...) {}
+
+  LabeledEdge(Input &in) : Edge(in), label(in) {}
+};
+
+template <typename Cost>
+std::ostream &operator<<(std::ostream &s, const LabeledEdge<Cost> &edge) {
+  s << edge.to << ',' << edge.cost;
+  return s;
+}
+
 template <typename Capacity> struct ResidualEdge : public Edge {
   using CapacityType = Capacity;
   Capacity cap;

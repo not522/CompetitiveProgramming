@@ -1,5 +1,5 @@
 #pragma once
-#include "vector.hpp"
+#include "graph/adjacency_list.hpp"
 
 template <typename Edge> class Tree {
 public:
@@ -68,5 +68,15 @@ public:
       res.emplace_back(v);
     }
     return res;
+  }
+
+  AdjacencyList<Edge> toGraph() {
+    AdjacencyList<Edge> graph(size());
+    for (int i = 0; i < size(); ++i) {
+      for (const auto &edge : getEdges(i)) {
+        graph.addEdge(FullEdge(i, edge));
+      }
+    }
+    return graph;
   }
 };
