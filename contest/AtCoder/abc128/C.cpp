@@ -9,7 +9,7 @@ int main() {
   }
   Vector<int> p(m, in);
   int res = 0;
-  for (const auto bit : powerSet(n)) {
+  for (const auto &bit : powerSet(n)) {
     bool ok = true;
     for (int i = 0; i < m; ++i) {
       int c = 0;
