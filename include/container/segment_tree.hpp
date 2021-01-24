@@ -21,7 +21,7 @@ private:
   }
 
 protected:
-  virtual T function(T l, T r) = 0;
+  virtual T function(T vl, T vr) = 0;
 
 public:
   SegmentTree(int n, T def = inf<T>())

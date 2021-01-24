@@ -3,7 +3,7 @@
 
 template <typename T> class RMQ : public SegmentTree<T> {
 protected:
-  T function(T l, T r) { return min(l, r); }
+  T function(T vl, T vr) { return min(vl, vr); }
 
 public:
   RMQ(int n) : SegmentTree<T>(n) {}
